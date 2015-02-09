@@ -133,7 +133,7 @@ class GambitShortcodelessColumns {
 	 */
 	public function cleanOutput( $content ) {
 		if ( ! function_exists( 'file_get_html' ) ) {
-			require_once( 'simple_html_dom.php' );
+			require_once( 'inc/simple_html_dom.php' );
 		}
 	
 		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
