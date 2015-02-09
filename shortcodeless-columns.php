@@ -132,11 +132,19 @@ class GambitShortcodelessColumns {
 	 * @return	string The modified content
 	 */
 	public function cleanOutput( $content ) {
+		
+		// simple_html_dom errors out when we don't have any content
+		$contentChecker = trim( $content );
+		if ( empty( $contentChecker ) ) {
+			return $content;
+		}
+		
 		if ( ! function_exists( 'file_get_html' ) ) {
 			require_once( 'inc/simple_html_dom.php' );
 		}
 	
 		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
+		
 	
 		$html = str_get_html( $content );
 
