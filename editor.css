@@ -1,0 +1,21 @@
+/**
+ * Editor only div-like styling
+ */
+body#tinymce.wp-editor .scless_column td {
+	vertical-align: top;
+	padding: 0;
+}
+
+/**
+ * Aesthetic margins
+ */
+body#tinymce.wp-editor .scless_column {
+	margin: 1em 0;
+}
+
+/**
+ * Don't show drag handlers for our tables
+ */
+body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle {
+	display: none !important;
+}
