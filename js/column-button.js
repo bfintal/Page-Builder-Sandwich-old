@@ -11,14 +11,14 @@
 		}
 		
 		var $ = jQuery;
+		var contents = [];
 		
-		if ( ! $(content).is('table.scless_column') ) {
+		var $content = $('<div></div>').html(content);
+		if ( $content.find('table.scless_column').length == 0 ) {
 			return scless_column.dummy_content;
 		}
 		
-		var contents = [];
-		
-		$(content).find('td').each( function( i, e ) {
+		$content.find('table.scless_column td').each( function( i, e ) {
 			if ( i >= numColumns ) {
 				contents[ contents.length - 1] += '<p>' + $(e).html() + '</p>';
 			} else {
