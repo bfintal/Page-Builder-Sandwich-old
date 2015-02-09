@@ -48,7 +48,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function addEditorColumnStyles() {
-	    add_editor_style( plugins_url( 'editor.css', __FILE__ ) );
+	    add_editor_style( plugins_url( 'css/editor.css', __FILE__ ) );
 	}
 
 	
@@ -58,7 +58,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function columnButtonIcon() {
-	    wp_enqueue_style( 'column-icon', plugins_url( 'column-icon.css', __FILE__ ) );
+	    wp_enqueue_style( 'column-icon', plugins_url( 'css/column-icon.css', __FILE__ ) );
 	}
 	
 	
@@ -69,7 +69,7 @@ class GambitShortcodelessColumns {
 	 * @return	An array of TinyMCE plugins
 	 */
 	public function addTinyMCEPlugin( $pluginArray ) {
-	    $pluginArray['scless_column'] = plugins_url( 'column-button.js', __FILE__ );
+	    $pluginArray['scless_column'] = plugins_url( 'js/column-button.js', __FILE__ );
 	    return $pluginArray;
 	}
 	
@@ -136,7 +136,7 @@ class GambitShortcodelessColumns {
 			require_once( 'simple_html_dom.php' );
 		}
 	
-		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'columns.css', __FILE__ ) );
+		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
 	
 		$html = str_get_html( $content );
 
