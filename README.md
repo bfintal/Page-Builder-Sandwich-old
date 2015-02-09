@@ -1,4 +1,4 @@
-# Shortcodeless-Columns
+# Shortcodeless Columns
 Create columns striaght in the visual editor without using any shortcodes
 
 It lets you do this while editing posts and pages:
