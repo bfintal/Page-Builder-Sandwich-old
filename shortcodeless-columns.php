@@ -114,6 +114,9 @@ class GambitShortcodelessColumns {
 	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
 			
+			$nonSortableElements = 'p,code,blockquote,span,pre,td:not(.scless_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img';
+			$nonSortableElements = apply_filters( 'sc_non_sortable_elements', $nonSortableElements );
+			
 			?>
 			<script type="text/javascript">
 	        var scless_column = {
@@ -122,6 +125,7 @@ class GambitShortcodelessColumns {
 	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'default' ) ) ?>',
 				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'default' ) ) ?>',
 				columns: '<?php echo addslashes( __( '%s Columns', 'default' ) ) ?>',
+				non_sortable_elements: '<?php echo addslashes( $nonSortableElements ) ?>'
 	        };
 	        </script>
 			<?php

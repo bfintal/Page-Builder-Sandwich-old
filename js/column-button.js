@@ -110,7 +110,8 @@
 			scroll: false, 
 			connectWith: jQuery(editor.getBody()).find('.scless_column td'), 
 			placeholder: "sortable-placeholder",
-			cancel: 'p,code,blockquote,span,pre,td:not(.scless_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img',
+			cancel: scless_column.non_sortable_elements,
+			opacity: 0.7,
 			stop:function() {
 				jQuery(editor.getBody()).sortable('refresh');
 				jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
@@ -120,7 +121,8 @@
 			scroll: false, 
 			connectWith: jQuery(editor.getBody()).find('.scless_column td').add(jQuery(editor.getBody())), 
 			placeholder: "sortable-placeholder",
-			cancel: 'p,code,blockquote,span,pre,td:not(.scless_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img',
+			cancel: scless_column.non_sortable_elements,
+			opacity: 0.7,
 			stop:function() {
 				$(editor.getBody()).sortable('refresh');
 				$(editor.getBody()).find('.scless_column td').sortable('refresh');
