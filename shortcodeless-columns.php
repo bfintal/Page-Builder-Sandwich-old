@@ -29,6 +29,7 @@ class GambitShortcodelessColumns {
 		add_action( 'admin_enqueue_scripts', array( $this, 'columnButtonIcon' ) );
 		add_action( 'admin_head', array( $this, 'addColumnButton' ) );
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_custom_wp_admin_style' ) );
 	}
 
 	
@@ -85,6 +86,10 @@ class GambitShortcodelessColumns {
 	   return $buttons;
 	}
 	
+	public function load_custom_wp_admin_style() {
+		wp_enqueue_script( 'jquery-ui-draggable' );
+	}
+	
 	
 	/**
 	 * Adds our column button in the TinyMCE visual editor
@@ -108,7 +113,7 @@ class GambitShortcodelessColumns {
 	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
 	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
-		
+			
 			?>
 			<script type="text/javascript">
 	        var scless_column = {

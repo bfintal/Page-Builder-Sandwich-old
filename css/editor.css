@@ -19,3 +19,14 @@ body#tinymce.wp-editor .scless_column {
 body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle {
 	display: none !important;
 }
+
+/**
+ * Drag placeholder
+ */
+body#tinymce.wp-editor .sortable-placeholder {
+	display: block;
+	height: 50px;
+	width: auto;
+	background: #f1f1f1;
+	border-radius: 5px;
+}
