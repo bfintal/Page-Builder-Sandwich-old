@@ -1,4 +1,11 @@
 /**
+ * Clear the columns
+ */
+.scless_column {
+	clear: both;
+}
+
+/**
  * Clear column floats
  */
 .scless_column:after {
