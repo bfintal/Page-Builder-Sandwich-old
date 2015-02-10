@@ -96,8 +96,10 @@
 	 */
 	function preUpdateSortable( editor ) {
 		var $ = jQuery;
-		$(editor.getBody()).sortable('destroy');
-		$(editor.getBody()).find('.scless_column td').sortable('destroy');
+		try {
+			$(editor.getBody()).sortable('destroy');
+			$(editor.getBody()).find('.scless_column td').sortable('destroy');
+		} catch (e) { }
 	}
 	
 	
@@ -113,8 +115,10 @@
 			cancel: scless_column.non_sortable_elements,
 			opacity: 0.7,
 			stop:function() {
-				jQuery(editor.getBody()).sortable('refresh');
-				jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
+				try {
+					jQuery(editor.getBody()).sortable('refresh');
+					jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
+				} catch (e) { }
 			}
 		});
 		$(editor.getBody()).find('.scless_column td').sortable({ 
@@ -124,8 +128,10 @@
 			cancel: scless_column.non_sortable_elements,
 			opacity: 0.7,
 			stop:function() {
-				$(editor.getBody()).sortable('refresh');
-				$(editor.getBody()).find('.scless_column td').sortable('refresh');
+				try {
+					$(editor.getBody()).sortable('refresh');
+					$(editor.getBody()).find('.scless_column td').sortable('refresh');
+				} catch (e) { }
 			}
 		});
 	}
@@ -207,7 +213,6 @@
 			}
 		} );
 		
-		
 		/**
 		 * Paragraph tags are being removed inside tables. Fix it
 		 * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
@@ -226,6 +231,30 @@
 				$(editor.getBody()).addClass('scless_column_selected');
 			} else {
 				$(editor.getBody()).removeClass('scless_column_selected');
+			}
+		});
+		
+		
+		/**
+		 * When creating a column, then creating a shortcake/view inside it, we
+		 * get errors: the view cannot be dragged because the sortables aren't updated.
+		 * There's currently no event when shortcake adds an element, we can check for it
+		 * using this event instead, then refresh our sortables to make the view work
+		 * right away.
+		 */
+		var numShortcakes = -1;
+		editor.on('wp-body-class-change', function(e) {
+			var $ = jQuery;
+			// At the start, remember the number of shortcakes/views
+			if ( numShortcakes === -1 ) {
+				numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
+				return;
+			}
+			// When the number changes, update our sortables
+			if ( numShortcakes !== $(editor.getBody()).find('.wpview-wrap').length ) {
+				numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
+				preUpdateSortable( editor );
+				updateSortable( editor );
 			}
 		});
 		
