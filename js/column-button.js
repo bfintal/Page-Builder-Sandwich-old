@@ -1,5 +1,6 @@
 (function() {
 
+	var sortableInit = false;
 	
 	/**
 	 * Checks if the content selected is an existing column table.
@@ -97,7 +98,6 @@
 		var $ = jQuery;
 		$(editor.getBody()).sortable('destroy');
 		$(editor.getBody()).find('.scless_column td').sortable('destroy');
-		
 	}
 	
 	
@@ -132,6 +132,19 @@
 	
 	
 	/**
+	 * On save/preview, remove sortable. But still allow re-initialization
+	 */
+	jQuery('body').on('click', '[name="save"], #post-preview', function() { 
+		var $ = jQuery;
+		try {
+			preUpdateSortable( tinyMCE.activeEditor );
+			$( tinyMCE.activeEditor.getBody() ).find('[class=""]').removeAttr('class');
+			sortableInit = false;
+		} catch (e) { }
+	});
+	
+	
+	/**
 	 * When unselected, single clicking Shortcake / TinyMCE views will somehow start a sortable drag event.
 	 * This makes the view hard to release. This function fixes it. 
 	 * When the view is clicked (mousedown then mouseup only), it doesn't trigger a sortable drag event
@@ -159,6 +172,25 @@
 	
 	
 	/**
+	 * Paragraph tags are being removed inside tables. Fix it
+	 * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
+	 */
+	function fixTableParagraphs( editor ) {
+		var $ = jQuery;
+		$(editor.getBody()).find('.scless_column td').each(function() {
+			
+			// @see http://stackoverflow.com/questions/20183324/javascript-wrapping-unwrapped-plain-text
+			$(this).contents().filter( function() {
+			    return this.nodeType === 3;
+			} ).each( function() {
+			    this.nodeValue = $.trim( this.nodeValue );
+			} ).wrap( '<p></p>' );
+			
+		});
+	}
+	
+	
+	/**
 	 * Add the button
 	 */
     tinymce.PluginManager.add( 'scless_column', function( editor, url ) {
@@ -166,14 +198,36 @@
 		/**
 		 * Sortable / drag and drop initializer
 		 */
-		var sortableInit = false;
 		editor.on('mousemove', function(e) {
 			if ( ! sortableInit ) {
+				// fixTableParagraphs( editor );
 				updateSortable( editor );
 				fixShortcakeDragging( editor );
 				sortableInit = true;
 			}
 		} );
+		
+		
+		/**
+		 * Paragraph tags are being removed inside tables. Fix it
+		 * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
+		 */
+		editor.on('init', function(e) {
+			fixTableParagraphs( editor );
+		});
+		
+		
+		/**
+		 * Hide the drag handles of tables when our columns are selected
+		 */
+		editor.on('mousedown', function(e) {
+			var $ = jQuery;
+			if ( $(e.target).parents('.scless_column:eq(0)').length > 0 ) {
+				$(editor.getBody()).addClass('scless_column_selected');
+			} else {
+				$(editor.getBody()).removeClass('scless_column_selected');
+			}
+		});
 		
 
         editor.addButton( 'scless_column', {

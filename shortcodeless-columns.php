@@ -169,8 +169,15 @@ class GambitShortcodelessColumns {
 				}
 
 				$style = 'float: left;' . $td->style;
+				
+				// Only add in paragraph tags if there aren't any. 
+				// This is to ensure that the spacing remains correct.
+				$innerHTML = $td->innertext;
+				if ( preg_match( '/<p>/', $innerHTML ) !== false ) {
+					$innerHTML = '<p>' . $td->innertext . '</p>';
+				}
 			
-				$newDivs .= '<div style="' . esc_attr( $style ) . '"><p>' . $td->innertext . '</p></div>';
+				$newDivs .= '<div style="' . esc_attr( $style ) . '">' . $innerHTML . '</div>';
 			}
 			$newDivs .= '</div>';
 						
@@ -184,5 +191,6 @@ class GambitShortcodelessColumns {
 	
 		return $html;
 	}
+
 }
 new GambitShortcodelessColumns();

@@ -16,7 +16,8 @@ body#tinymce.wp-editor .scless_column {
 /**
  * Don't show drag handlers for our tables
  */
-body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle {
+body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle,
+body#tinymce.wp-editor.scless_column_selected .mce-resizehandle {
 	display: none !important;
 }
 
