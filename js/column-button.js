@@ -506,16 +506,19 @@
 					}
 				}
 				
-				/**
-				 * If views are deleted, sortable stops working (for unknown reasons). This fixes that weird error.
-				 */
-				if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
-					if ( $(e.target).is('.dashicons.remove') ) {
-						setTimeout( function() { 
-							preUpdateSortable( editor );
-							updateSortable( editor );
-						}, 1);
-					}
+			});
+		
+			/**
+			 * If views are deleted, sortable stops working (for unknown reasons). This fixes that weird error.
+			 */
+			$( editor.getBody() ).on('DOMNodeRemoved', function(e) {
+				var $ = jQuery;
+				if ( $(e.target).is('.wpview-wrap') ) {
+					// console.log(e);
+					setTimeout( function() { 
+						preUpdateSortable( editor );
+						updateSortable( editor );
+					}, 1);
 				}
 			});
 		});
