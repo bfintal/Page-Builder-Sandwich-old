@@ -62,7 +62,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function columnButtonIcon() {
-	    wp_enqueue_style( 'column-icon', plugins_url( 'css/column-icon.css', __FILE__ ) );
+	    wp_enqueue_style( 'column-admin', plugins_url( 'css/column-admin.css', __FILE__ ) );
 	}
 	
 	
@@ -128,6 +128,12 @@ class GambitShortcodelessColumns {
 	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'default' ) ) ?>',
 				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'default' ) ) ?>',
 				columns: '<?php echo addslashes( __( '%s Columns', 'default' ) ) ?>',
+				change_column: '<?php echo addslashes( __( 'Change Column', 'default' ) ) ?>',
+				cancel: '<?php echo addslashes( __( 'Cancel', 'default' ) ) ?>',
+				preset: '<?php echo addslashes( __( 'Preset', 'default' ) ) ?>',
+				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'default' ) ) ?>',
+				use_custom: '<?php echo addslashes( __( 'Use custom', 'default' ) ) ?>',
+				custom: '<?php echo addslashes( __( 'Custom', 'default' ) ) ?>',
 				non_sortable_elements: '<?php echo addslashes( $nonSortableElements ) ?>'
 	        };
 	        </script>

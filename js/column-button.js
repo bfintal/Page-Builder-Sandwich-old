@@ -272,6 +272,31 @@
 	
 	
 	/**
+	 * Change columns modal action handler. When a change column button is clicked
+	 */
+	jQuery('body').on('click', '#scless_column_change_modal button', function() {
+		var $ = jQuery;
+		
+		// Get the column composition
+		var columns = $(this).attr('data-columns');
+		if ( typeof columns === 'undefined' ) {
+			columns = $(this).parents('#scless_column_change_modal').find('input.custom_column').val();
+		}
+		
+		// The column container will have the attribute data-wp-columnselect
+		tinyMCE.activeEditor.selection.select( $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]')[0] );
+		
+		// Change the column
+		preUpdateSortable( tinyMCE.activeEditor );
+        tinyMCE.activeEditor.insertContent( _shortcodeless_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
+		updateSortable( tinyMCE.activeEditor );
+		
+		// Close our modal window
+		tinyMCE.activeEditor.windowManager.getWindows()[0].close();
+	});
+	
+	
+	/**
 	 * Perform a toolbar action
 	 */
 	function _shortcodeless_do_action( editor, node, action ) {
@@ -281,10 +306,38 @@
 			$(editor.getBody()).find('[data-wp-columnselect]').remove();
 			preUpdateSortable( editor );
 			updateSortable( editor );
+			
 		} else if ( action === 'clone' ) {
 			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
 			preUpdateSortable( editor );
 			updateSortable( editor );
+			
+		} else if ( action === 'columns' ) {
+		    var colModal = editor.windowManager.open( {
+		        title: scless_column.change_column,
+				buttons: [{
+                    text: scless_column.cancel,
+                    onclick: 'close'
+                }],
+		        body: [{
+					type: 'container',
+					html: '<div id="scless_column_change_modal"><h4>' + scless_column.preset + '</h4><p class="desc">' + scless_column.preset_desc + '</p>' +
+						'<p class="mce-btn"><button data-columns="1/2+1/2">' + _shortcodeless_columns_sprintf( scless_column.columns, '2' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _shortcodeless_columns_sprintf( scless_column.columns, '4' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/3+2/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="2/3+1/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _shortcodeless_columns_sprintf( scless_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
+						'<hr>' +
+						'<h4>' + scless_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + scless_column.use_custom + '</button></p><p class="desc">' + scless_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
+				}],
+		        onsubmit: function( e ) {
+					preUpdateSortable( editor );
+                    editor.insertContent( _shortcodeless_columns_formTable( e.data.columns, editor.selection.getContent() ) );
+					updateSortable( editor );
+		        }
+		    });
+			
 		} else if ( action === 'edit' ) {
 			// TODO
 		}
@@ -323,6 +376,7 @@
 		// Create the toolbar
 		// TODO edit
 		toolbarHtml = '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="Edit" style="opacity: .5"></div>' +
+			'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="Change Columns"></div>' +
 			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone"></div>' +
 			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="Delete"></div>';
 
