@@ -337,13 +337,14 @@
 					updateSortable( editor );
 		        }
 		    });
+
 			
 		} else if ( action === 'edit' ) {
 			// TODO
+
 		}
 
 		_shortcodeless_removeToolbar( editor );
-		cancelSortable( editor );
 	}
 	
 
