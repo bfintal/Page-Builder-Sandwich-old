@@ -510,11 +510,11 @@
 		
 			/**
 			 * If views are deleted, sortable stops working (for unknown reasons). This fixes that weird error.
+			 * DOMNodeRemoved event can catch view removals
 			 */
 			$( editor.getBody() ).on('DOMNodeRemoved', function(e) {
 				var $ = jQuery;
 				if ( $(e.target).is('.wpview-wrap') ) {
-					// console.log(e);
 					setTimeout( function() { 
 						preUpdateSortable( editor );
 						updateSortable( editor );
