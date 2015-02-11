@@ -1,4 +1,11 @@
 /**
+ * Float the columns
+ */
+.scless_column > div {
+	float: left;
+}
+
+/**
  * Clear the columns
  */
 .scless_column {

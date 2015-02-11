@@ -16,7 +16,10 @@
  * Column Shortcodeless Columns Class
  */
 class GambitShortcodelessColumns {
-
+	
+	// Keep the record of the current column. Used for outputting styles
+	private static $columnContainerID = 1;
+	
 
 	/**
 	 * Hook onto WordPress
@@ -154,6 +157,7 @@ class GambitShortcodelessColumns {
 	
 		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
 		
+		$columnStyles = '';
 	
 		$html = str_get_html( $content );
 
@@ -161,14 +165,12 @@ class GambitShortcodelessColumns {
 		while ( count( $tables ) > 0 ) {
 			$tr = $html->find( 'table.scless_column', 0 )->find( 'tr', 0 );
 	
-			$newDivs = '<div class="scless_column">';
+			$newDivs = '<div class="scless_column scless_column_' . self::$columnContainerID . '">';
 
 			foreach ( $tr->children() as $key => $td ) {
 				if ( $td->tag != 'td' ) {
 					continue;
 				}
-
-				$style = 'float: left;' . $td->style;
 				
 				// Only add in paragraph tags if there aren't any. 
 				// This is to ensure that the spacing remains correct.
@@ -176,8 +178,11 @@ class GambitShortcodelessColumns {
 				if ( preg_match( '/<p>/', $innerHTML ) !== false ) {
 					$innerHTML = '<p>' . $td->innertext . '</p>';
 				}
+				
+				// Gather the column styles
+				$columnStyles .= '.scless_column_' . self::$columnContainerID . ' > div:nth-of-type(' . $key . ') { ' . esc_attr( $td->style ) . ' }';
 			
-				$newDivs .= '<div style="' . esc_attr( $style ) . '">' . $innerHTML . '</div>';
+				$newDivs .= '<div>' . $innerHTML . '</div>';
 			}
 			$newDivs .= '</div>';
 						
@@ -187,9 +192,11 @@ class GambitShortcodelessColumns {
 			$html = str_get_html( $html );
 		
 			$tables = $html->find( 'table.scless_column' );
+			
+			self::$columnContainerID++;
 		}
 	
-		return $html;
+		return '<style id="scless_column">' . $columnStyles . '</style>' . $html;
 	}
 
 }
