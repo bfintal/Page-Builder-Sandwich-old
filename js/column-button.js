@@ -447,7 +447,6 @@
 				$(editor.getBody()).removeClass('scless_column_selected');
 			}
 			_shortcodeless_removeToolbar( editor );
-			_shortcodeless_addToolbar(editor, e.target);
 		});
 		
 		
@@ -514,7 +513,7 @@
 			 */
 			$( editor.getBody() ).on('DOMNodeRemoved', function(e) {
 				var $ = jQuery;
-				if ( $(e.target).is('.wpview-wrap') ) {
+				if ( $(e.target).is('.wpview-wrap') || $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
 					setTimeout( function() { 
 						preUpdateSortable( editor );
 						updateSortable( editor );
