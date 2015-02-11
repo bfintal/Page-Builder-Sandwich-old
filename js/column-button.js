@@ -121,9 +121,14 @@
 					jQuery(editor.getBody()).sortable('refresh');
 					jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
 				} catch (e) { }
+				jQuery(editor.getBody()).removeClass('scless_just_dragged');
 			},
 			update: function() {
 				fixTableParagraphs( editor );
+			},
+			start: function() {
+				jQuery(editor.getBody()).addClass('scless_just_dragged');
+				_shortcodeless_removeToolbar( editor );
 			}
 		});
 		$(editor.getBody()).find('.scless_column td').sortable({ 
@@ -138,9 +143,14 @@
 					$(editor.getBody()).sortable('refresh');
 					$(editor.getBody()).find('.scless_column td').sortable('refresh');
 				} catch (e) { }
+				jQuery(editor.getBody()).removeClass('scless_just_dragged');
 			},
 			update: function() {
 				fixTableParagraphs( editor );
+			},
+			start: function() {
+				jQuery(editor.getBody()).addClass('scless_just_dragged');
+				_shortcodeless_removeToolbar( editor );
 			}
 		});
 	}
@@ -250,9 +260,87 @@
 	
 	
 	/**
+	 * Perform a toolbar action
+	 */
+	function _shortcodeless_do_action( editor, node, action ) {
+		var $ = jQuery;
+		
+		if ( action === 'remove' ) {
+			$(editor.getBody()).find('[data-wp-columnselect]').remove();
+		} else if ( action === 'clone' ) {
+			
+		} else if ( action === 'edit' ) {
+			
+		}
+		
+		_shortcodeless_removeToolbar( editor );
+	}
+	
+
+	/**
+	 * Adds the toolbar
+	 * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+	 */
+    function _shortcodeless_addToolbar( editor, node ) {
+		var $ = jQuery;
+		var rectangle, toolbarHtml, toolbar, left,
+		dom = editor.dom;
+
+		_shortcodeless_removeToolbar( editor );
+		
+		// Don't create the toolbar if the column was just dragged
+		if ( $(editor.getBody()).hasClass('scless_just_dragged') ) {
+			return;
+		}
+
+		// Only add the toolbar for columns
+		if ( $(node).parents('.scless_column:eq(0)').length === 0 ) {
+			return;
+		}
+		node = $(node).parents('.scless_column:eq(0)')[0];
+
+		// Remember the column that has the toolbar
+		$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
+		dom.setAttrib( node, 'data-wp-columnselect', 1 );
+
+		// Create the toolbar
+		toolbarHtml = '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="Edit" style="opacity: .5"></div>' +
+			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone" style="opacity: .5"></div>' +
+			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="Delete"></div>';
+
+		toolbar = dom.create( 'div', {
+			'id': 'wp-column-toolbar',
+			'data-mce-bogus': '1',
+			'contenteditable': false
+		}, toolbarHtml );
+
+		editor.getBody().appendChild( toolbar );
+		rectangle = dom.getRect( node );
+		dom.setStyles( toolbar, {
+			top: rectangle.y,
+			left: rectangle.x + rectangle.w / 2
+		});
+    }
+	
+
+	/**
+	 * Remove the toolbar
+	 * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+	 */
+	function _shortcodeless_removeToolbar( editor ) {
+		var toolbar = editor.dom.get( 'wp-column-toolbar' );
+
+		if ( toolbar ) {
+			editor.dom.remove( toolbar );
+		}
+	}
+	  
+	
+	/**
 	 * Add the button
 	 */
     tinymce.PluginManager.add( 'scless_column', function( editor, url ) {
+		
 		
 		/**
 		 * Sortable / drag and drop initializer
@@ -264,6 +352,7 @@
 				sortableInit = true;
 			}
 		} );
+		
 		
 		/**
 		 * Paragraph tags are being removed inside tables. Fix it
@@ -284,6 +373,40 @@
 			} else {
 				$(editor.getBody()).removeClass('scless_column_selected');
 			}
+			_shortcodeless_removeToolbar( editor );
+			_shortcodeless_addToolbar(editor, e.target);
+		});
+		
+		
+		/**
+		 * Show the toolbar
+		 */
+		editor.on('mouseup', function(e) {
+			var $ = jQuery;
+			if ( $(e.target).is( '[data-column-action]' ) ) {
+				_shortcodeless_do_action( editor, e.target, $(e.target).attr('data-column-action') );
+				return;
+			}
+			_shortcodeless_addToolbar( editor, e.target );
+		});
+		
+		
+		/**
+		 * Hide the toolbar. We do it this way since when a view is clicked,
+		 * the normal mousedown/click handlers are not fired
+		 */
+		editor.on('init', function(e) {
+			var $ = jQuery;
+			$( editor.getBody() ).on('mousedown', function(e) {
+				
+				// Don't remove the toolbar when the toolbar is clicked
+				if ( $(e.target).is( '[data-column-action]' ) ) {
+					e.stopPropagation();
+					return;
+				}
+			
+				_shortcodeless_removeToolbar( editor );
+			});
 		});
 		
 		
