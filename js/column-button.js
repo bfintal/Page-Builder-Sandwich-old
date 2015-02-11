@@ -303,13 +303,13 @@
 		var $ = jQuery;
 		
 		if ( action === 'remove' ) {
-			$(editor.getBody()).find('[data-wp-columnselect]').remove();
 			preUpdateSortable( editor );
+			$(editor.getBody()).find('[data-wp-columnselect]').remove();
 			updateSortable( editor );
 			
 		} else if ( action === 'clone' ) {
-			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
 			preUpdateSortable( editor );
+			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
 			updateSortable( editor );
 			
 		} else if ( action === 'columns' ) {
