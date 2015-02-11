@@ -342,8 +342,8 @@
 			// TODO
 		}
 
-		cancelSortable( editor );
 		_shortcodeless_removeToolbar( editor );
+		cancelSortable( editor );
 	}
 	
 
@@ -498,9 +498,9 @@
 				
 				if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
 					if ( $(e.target).is('.dashicons.clone') ) {
-						cancelSortable( editor );
-						$(e.target).parents('.wpview-wrap:eq(0)').clone().insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
+						// cancelSortable( editor );
 						preUpdateSortable( editor );
+						$(e.target).parents('.wpview-wrap:eq(0)').clone().insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
 						updateSortable( editor );
 					}
 				}
