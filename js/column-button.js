@@ -268,7 +268,7 @@
 		if ( action === 'remove' ) {
 			$(editor.getBody()).find('[data-wp-columnselect]').remove();
 		} else if ( action === 'clone' ) {
-			
+			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
 		} else if ( action === 'edit' ) {
 			
 		}
@@ -305,7 +305,7 @@
 
 		// Create the toolbar
 		toolbarHtml = '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="Edit" style="opacity: .5"></div>' +
-			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone" style="opacity: .5"></div>' +
+			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone"></div>' +
 			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="Delete"></div>';
 
 		toolbar = dom.create( 'div', {
