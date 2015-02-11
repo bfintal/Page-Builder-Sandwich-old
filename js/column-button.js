@@ -504,6 +504,18 @@
 						updateSortable( editor );
 					}
 				}
+				
+				/**
+				 * If views are deleted, sortable stops working (for unknown reasons). This fixes that weird error.
+				 */
+				if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
+					if ( $(e.target).is('.dashicons.remove') ) {
+						setTimeout( function() { 
+							preUpdateSortable( editor );
+							updateSortable( editor );
+						}, 1);
+					}
+				}
 			});
 		});
 		
