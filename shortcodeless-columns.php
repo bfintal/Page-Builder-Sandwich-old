@@ -180,7 +180,7 @@ class GambitShortcodelessColumns {
 				}
 				
 				// Gather the column styles
-				$columnStyles .= '.scless_column_' . self::$columnContainerID . ' > div:nth-of-type(' . $key . ') { ' . esc_attr( $td->style ) . ' }';
+				$columnStyles .= '.scless_column_' . self::$columnContainerID . ' > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
 			
 				$newDivs .= '<div>' . $innerHTML . '</div>';
 			}
