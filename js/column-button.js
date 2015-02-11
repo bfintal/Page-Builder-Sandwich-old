@@ -49,7 +49,7 @@
 			// Get what content we will use
 			if ( typeof columnContents === 'object' ) {
 				if ( i >= columnContents.length ) {
-					columnContent = '';
+					columnContent = '&nbsp;';
 				} else {
 					columnContent = columnContents[ i ]
 				}
@@ -58,7 +58,7 @@
 					if ( i === 0 ) {
 						columnContent = content;
 					} else {
-						columnContent = '';
+						columnContent = '&nbsp;';
 					}
 				}
 			}
@@ -108,17 +108,22 @@
 	 */
 	function updateSortable( editor ) {
 		var $ = jQuery;
+		// fixTableParagraphs( editor );
 		jQuery(editor.getBody()).sortable({
 			scroll: false, 
 			connectWith: jQuery(editor.getBody()).find('.scless_column td'), 
 			placeholder: "sortable-placeholder",
 			cancel: scless_column.non_sortable_elements,
 			opacity: 0.7,
-			stop:function() {
+			forceHelperSize: true, // This is to help dragging
+			stop: function() {
 				try {
 					jQuery(editor.getBody()).sortable('refresh');
 					jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
 				} catch (e) { }
+			},
+			update: function() {
+				fixTableParagraphs( editor );
 			}
 		});
 		$(editor.getBody()).find('.scless_column td').sortable({ 
@@ -127,11 +132,15 @@
 			placeholder: "sortable-placeholder",
 			cancel: scless_column.non_sortable_elements,
 			opacity: 0.7,
-			stop:function() {
+			forceHelperSize: true, // This is to help dragging
+			stop: function() {
 				try {
 					$(editor.getBody()).sortable('refresh');
 					$(editor.getBody()).find('.scless_column td').sortable('refresh');
 				} catch (e) { }
+			},
+			update: function() {
+				fixTableParagraphs( editor );
 			}
 		});
 	}
@@ -147,6 +156,23 @@
 			$( tinyMCE.activeEditor.getBody() ).find('[class=""]').removeAttr('class');
 			sortableInit = false;
 		} catch (e) { }
+	});
+	
+	
+	/**
+	 * Switching between different editors screw up our stuff.
+	 * 1. paragraphs are removed
+	 * 2. sortables become unsortable
+	 * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
+	 */
+	jQuery('body').on('click', '.wp-switch-editor', function() {
+		
+		// 1. paragraphs are removed
+		fixTableParagraphs( tinyMCE.activeEditor );
+		
+		// 2. sortables become unsortable
+		preUpdateSortable( tinyMCE.activeEditor );
+		updateSortable( tinyMCE.activeEditor );
 	});
 	
 	
@@ -183,14 +209,41 @@
 	 */
 	function fixTableParagraphs( editor ) {
 		var $ = jQuery;
+		
 		$(editor.getBody()).find('.scless_column td').each(function() {
 			
 			// @see http://stackoverflow.com/questions/20183324/javascript-wrapping-unwrapped-plain-text
+			var elemCount = $(this).contents().length;
 			$(this).contents().filter( function() {
 			    return this.nodeType === 3;
 			} ).each( function() {
 			    this.nodeValue = $.trim( this.nodeValue );
+				if ( elemCount === 0 || ( this.nodeValue === '' && elemCount === 1 ) ) {
+					this.nodeValue = '\u00a0';
+				}
 			} ).wrap( '<p></p>' );
+
+			// Remove blank paragraphs in columns which have other contents
+			if ( $(this).children().length > 1 ) {
+				$(this).find('> p').each(function() {
+					if ( $(this).text().trim() === '' ) {
+						$(this).remove();
+					}
+				});
+			}
+			
+			// Columns that get emptied should still have a paragraph
+			if ( $(this).children().length == 0 ) {
+				$(this).append('<p></p>');
+			}
+			
+			// Columns with just a blank paragraph will not be edited unless they have a space
+			if ( $(this).children().length == 1 ) {
+				var firstChild = $(this).children(':eq(0)');
+				if ( firstChild.is('p') && firstChild.text() === '' ) {
+					firstChild.text( '\u00a0' );
+				}
+			}
 			
 		});
 	}
@@ -206,7 +259,6 @@
 		 */
 		editor.on('mousemove', function(e) {
 			if ( ! sortableInit ) {
-				// fixTableParagraphs( editor );
 				updateSortable( editor );
 				fixShortcakeDragging( editor );
 				sortableInit = true;
