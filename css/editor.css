@@ -6,12 +6,14 @@ body#tinymce.wp-editor .scless_column td {
 	padding: 0;
 }
 
+
 /**
  * Aesthetic margins
  */
 body#tinymce.wp-editor .scless_column {
 	margin: 1em 0;
 }
+
 
 /**
  * Don't show drag handlers for our tables
@@ -20,6 +22,7 @@ body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle
 body#tinymce.wp-editor.scless_column_selected .mce-resizehandle {
 	display: none !important;
 }
+
 
 /**
  * Drag placeholder
@@ -32,6 +35,7 @@ body#tinymce.wp-editor .sortable-placeholder {
 	border-radius: 5px;
 }
 
+
 /**
  * Move cursor for our columns
  */
@@ -42,6 +46,7 @@ body#tinymce.wp-editor .scless_column td td:hover {
 body#tinymce.wp-editor .scless_column td *:not(.wpview-wrap) {
 	cursor: text;
 }
+
 
 /**
  * Move cursor and hover color for shortcake & views
