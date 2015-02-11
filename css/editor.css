@@ -31,3 +31,24 @@ body#tinymce.wp-editor .sortable-placeholder {
 	background: #f1f1f1;
 	border-radius: 5px;
 }
+
+/**
+ * Move cursor for our columns
+ */
+body#tinymce.wp-editor .scless_column td:hover,
+body#tinymce.wp-editor .scless_column td td:hover {
+	cursor: move;
+}
+body#tinymce.wp-editor .scless_column td *:not(.wpview-wrap) {
+	cursor: text;
+}
+
+/**
+ * Move cursor and hover color for shortcake & views
+ */
+body#tinymce.wp-editor .wpview-wrap:hover {
+	background: #f1f1f1;
+}
+body#tinymce.wp-editor .wpview-wrap, body#tinymce.wp-editor .wpview-wrap * {
+	cursor: move !important;
+}
