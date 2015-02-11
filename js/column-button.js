@@ -104,6 +104,18 @@
 	
 	
 	/**
+	 * Cancel sortable
+	 */
+	function cancelSortable( editor ) {
+		var $ = jQuery;
+		try {
+			$(editor.getBody()).sortable('cancel');
+			$(editor.getBody()).find('.scless_column td').sortable('cancel');
+		} catch (e) { }
+	}
+	
+	
+	/**
 	 * Create sortables
 	 */
 	function updateSortable( editor ) {
@@ -269,10 +281,13 @@
 			$(editor.getBody()).find('[data-wp-columnselect]').remove();
 		} else if ( action === 'clone' ) {
 			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
+			preUpdateSortable( editor );
+			updateSortable( editor );
 		} else if ( action === 'edit' ) {
-			
+			// TODO
 		}
-		
+
+		cancelSortable( editor );
 		_shortcodeless_removeToolbar( editor );
 	}
 	
@@ -304,6 +319,7 @@
 		dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 		// Create the toolbar
+		// TODO edit
 		toolbarHtml = '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="Edit" style="opacity: .5"></div>' +
 			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone"></div>' +
 			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="Delete"></div>';
@@ -406,6 +422,32 @@
 				}
 			
 				_shortcodeless_removeToolbar( editor );
+			});
+		});
+		
+		
+		/**
+		 * Adds a clone button in shortcake/view toolbars.
+		 * Add a click handler & clone method for the new clone button.
+		 */
+		editor.on('init', function(e) {
+			var $ = jQuery;
+			$( editor.getBody() ).on('mousedown', function(e) {
+				
+				if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
+					if ( $(e.target).parents('.wpview-wrap:eq(0)').find('.clone').length === 0 ) {
+						$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( $(e.target).parents('.wpview-wrap:eq(0)').find('.toolbar > .dashicons:eq(-1)') );
+					}
+				}
+				
+				if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
+					if ( $(e.target).is('.dashicons.clone') ) {
+						cancelSortable( editor );
+						$(e.target).parents('.wpview-wrap:eq(0)').clone().insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
+						preUpdateSortable( editor );
+						updateSortable( editor );
+					}
+				}
 			});
 		});
 		

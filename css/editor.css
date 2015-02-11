@@ -104,3 +104,9 @@ body#tinymce.wp-editor #wp-column-toolbar {
 	box-sizing: border-box;
 	margin-bottom: 8px;
 }
+/**
+ * Clone buttons added to toolbars cannot be hovered on properly. This fixes the buttons
+ */
+body#tinymce.wp-editor .toolbar .dashicons {
+	position: relative;
+}
