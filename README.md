@@ -16,10 +16,10 @@ Drag and drop stuff
 ![Drag and Drop](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/drag-and-drop.jpg)
 
 It lets you do this while editing posts and pages:
-![Visual Column Editing](https://raw.githubusercontent.com/gambitph/Shortcodeless-Columns/master/preview/visual-editor.jpg)
+![Visual Column Editing](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/visual-editor.jpg)
 
 You'll get this as your output:
-![Column Results](https://raw.githubusercontent.com/gambitph/Shortcodeless-Columns/master/preview/frontend.jpg)
+![Column Results](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/frontend.jpg)
 
 # Usage
 
