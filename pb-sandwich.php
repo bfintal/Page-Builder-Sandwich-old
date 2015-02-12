@@ -13,9 +13,9 @@
 
 
 /**
- * Column Shortcodeless Columns Class
+ * PB Sandwich Class
  */
-class GambitShortcodelessColumns {
+class GambitPBSandwich {
 	
 
 	/**
@@ -307,4 +307,4 @@ class GambitShortcodelessColumns {
 	}
 	
 }
-new GambitShortcodelessColumns();
+new GambitPBSandwich();
