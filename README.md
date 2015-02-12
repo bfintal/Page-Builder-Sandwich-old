@@ -12,6 +12,9 @@ Sure you can use shortcodes columns, but are not user friendly with all those di
 
 # Preview
 
+Drag and drop stuff
+![Drag and Drop](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/drag-and-drop.jpg)
+
 It lets you do this while editing posts and pages:
 ![Visual Column Editing](https://raw.githubusercontent.com/gambitph/Shortcodeless-Columns/master/preview/visual-editor.jpg)
 
