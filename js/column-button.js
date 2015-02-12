@@ -532,6 +532,7 @@
 			}
 		});
 		editor.on('init', function(e) {
+			var $ = jQuery;
 		
 			/**
 			 * DOMNodeRemoved event can catch view removals
@@ -540,7 +541,6 @@
 				if ( numShortcakes === -1 ) {
 					return;
 				}
-				var $ = jQuery;
 				if ( numShortcakes !== $(editor.getBody()).find('.wpview-wrap').length ) {
 					numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
 					preUpdateSortable( editor );
