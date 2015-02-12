@@ -1,13 +1,13 @@
 <?php
 /**
-* Plugin Name: Shortcodeless Columns
+* Plugin Name: Page Builder Sandwich
 * Plugin URI: https://github.com/gambitph/Shortcodeless-Columns
-* Description: Create columns striaght in the visual editor without using any shortcodes
+* Description: Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid
 * Version: 0.1
 * Author: Benjamin Intal - Gambit Technologies Inc
 * Author URI: http://gambit.ph
 * License: GPL2
-* Text Domain: shortcodeless-columns
+* Text Domain: pb-sandwich
 * Domain Path: /languages
 */
 
@@ -41,7 +41,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function loadTextDomain() {
-		load_plugin_textdomain( 'shortcodeless-columns', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+		load_plugin_textdomain( 'pb-sandwich', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 	}
 
 	
