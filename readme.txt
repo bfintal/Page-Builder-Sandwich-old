@@ -24,6 +24,14 @@ Sure you can use shortcodes columns, but are not user friendly with all those di
 
 Extends your visual editor to include page builder capabilities
 
+= The Goal =
+
+The goal is to create a page builder that
+* Feels and acts *native* and part of WordPress
+* Not clunky and doesn't pollute *much*
+* Leaves *most* of the content working fine event if the plugin is deactivated or deleted
+* Lazy, no settings pages specific for the plugin
+
 = What can you do with it =
 
 * Create editable, nestable columns
