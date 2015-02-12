@@ -506,20 +506,6 @@
 				}
 				
 			});
-		
-			/**
-			 * If views are deleted, sortable stops working (for unknown reasons). This fixes that weird error.
-			 * DOMNodeRemoved event can catch view removals
-			 */
-			$( editor.getBody() ).on('DOMNodeRemoved', function(e) {
-				var $ = jQuery;
-				if ( $(e.target).is('.wpview-wrap') || $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
-					setTimeout( function() { 
-						preUpdateSortable( editor );
-						updateSortable( editor );
-					}, 1);
-				}
-			});
 		});
 		
 		
@@ -531,7 +517,7 @@
 		 * right away.
 		 */
 		var numShortcakes = -1;
-		editor.on('wp-body-class-change', function(e) {
+		editor.on('wp-body-class-change change', function(e) {
 			var $ = jQuery;
 			// At the start, remember the number of shortcakes/views
 			if ( numShortcakes === -1 ) {
@@ -544,6 +530,23 @@
 				preUpdateSortable( editor );
 				updateSortable( editor );
 			}
+		});
+		editor.on('init', function(e) {
+		
+			/**
+			 * DOMNodeRemoved event can catch view removals
+			 */
+			$( editor.getBody() ).on('DOMNodeRemoved', function(e) {
+				if ( numShortcakes === -1 ) {
+					return;
+				}
+				var $ = jQuery;
+				if ( numShortcakes !== $(editor.getBody()).find('.wpview-wrap').length ) {
+					numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
+					preUpdateSortable( editor );
+					updateSortable( editor );
+				}
+			});
 		});
 		
 
