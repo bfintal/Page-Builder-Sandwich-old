@@ -375,11 +375,11 @@
 		dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 		// Create the toolbar
-		// TODO edit
-		toolbarHtml = '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="Edit" style="opacity: .5"></div>' +
-			'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="Change Columns"></div>' +
-			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="Clone"></div>' +
-			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="Delete"></div>';
+		toolbarHtml = 
+			// '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + scless_column.edit + '"></div>' +
+			'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + scless_column.change_columns + '"></div>' +
+			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + scless_column.clone + '"></div>' +
+			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + scless_column.delete + '"></div>';
 
 		toolbar = dom.create( 'div', {
 			'id': 'wp-column-toolbar',
