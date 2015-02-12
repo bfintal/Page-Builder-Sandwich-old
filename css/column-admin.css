@@ -13,38 +13,38 @@
 /**
  * Change column modal window
  */
-#scless_column_change_modal {
+#pbsandwich_column_change_modal {
 	width: 425px;
 }
-#scless_column_change_modal .mce-btn {
+#pbsandwich_column_change_modal .mce-btn {
 	display: inline-block;
 	width: 200px;
 	margin: 0 5px 5px;
 	float: left;
 }
-#scless_column_change_modal .mce-btn button {
+#pbsandwich_column_change_modal .mce-btn button {
 	display: block;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 4px 10px;
 }
-.mce-container #scless_column_change_modal h4 {
+.mce-container #pbsandwich_column_change_modal h4 {
 	font-weight: bold;
 	font-size: 1.1em;
 }
-.mce-container #scless_column_change_modal hr {
+.mce-container #pbsandwich_column_change_modal hr {
 	clear: both;
 	width: 100%;
 	height: 1px;
 	background: #eee;
 	margin: 20px 0;
 }
-.mce-container #scless_column_change_modal p.desc {
+.mce-container #pbsandwich_column_change_modal p.desc {
 	margin-bottom: .5em;
 	clear: both;
 	line-height: 1.6em;
 }
-.mce-container #scless_column_change_modal input {
+.mce-container #pbsandwich_column_change_modal input {
 	display: block;
 	width: 200px;
 	float: left;

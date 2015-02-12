@@ -7,7 +7,7 @@
 * Author: Benjamin Intal - Gambit Technologies Inc
 * Author URI: http://gambit.ph
 * License: GPL2
-* Text Domain: pb-sandwich
+* Text Domain: pbsandwich
 * Domain Path: /languages
 */
 
@@ -41,7 +41,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function loadTextDomain() {
-		load_plugin_textdomain( 'pb-sandwich', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+		load_plugin_textdomain( 'pbsandwich', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 	}
 
 	
@@ -61,7 +61,7 @@ class GambitShortcodelessColumns {
 	 * @return	void
 	 */
 	public function columnButtonIcon() {
-	    wp_enqueue_style( 'column-admin', plugins_url( 'css/column-admin.css', __FILE__ ) );
+	    wp_enqueue_style( 'pbsandwich-admin', plugins_url( 'css/column-admin.css', __FILE__ ) );
 	}
 	
 	
@@ -72,7 +72,7 @@ class GambitShortcodelessColumns {
 	 * @return	An array of TinyMCE plugins
 	 */
 	public function addTinyMCEPlugin( $pluginArray ) {
-	    $pluginArray['scless_column'] = plugins_url( 'js/column-button.js', __FILE__ );
+	    $pluginArray['pbsandwich_column'] = plugins_url( 'js/column-button.js', __FILE__ );
 	    return $pluginArray;
 	}
 	
@@ -84,7 +84,7 @@ class GambitShortcodelessColumns {
 	 * @return	An array of TinyMCE buttons
 	 */
 	public function registerTinyMCEButton( $buttons ) {
-	   array_push( $buttons, 'scless_column' );
+	   array_push( $buttons, 'pbsandwich_column' );
 	   return $buttons;
 	}
 	
@@ -122,12 +122,12 @@ class GambitShortcodelessColumns {
 	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
 			
-			$nonSortableElements = 'p,code,blockquote,span,pre,td:not(.scless_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img,#wp-column-toolbar,.toolbar,.toolbar .dashicons';
+			$nonSortableElements = 'p,code,blockquote,span,pre,td:not(.pbsandwich_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img,#wp-column-toolbar,.toolbar,.toolbar .dashicons';
 			$nonSortableElements = apply_filters( 'sc_non_sortable_elements', $nonSortableElements );
 			
 			?>
 			<script type="text/javascript">
-	        var scless_column = {
+	        var pbsandwich_column = {
 				dummy_content: '<?php echo addslashes( __( 'Column text', 'default' ) ) ?>',
 				modal_title: '<?php echo addslashes( __( 'Columns', 'default' ) ) ?>',
 	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'default' ) ) ?>',
@@ -171,16 +171,16 @@ class GambitShortcodelessColumns {
 		if ( ! function_exists( 'file_get_html' ) ) {
 			require_once( 'inc/simple_html_dom.php' );
 		}
-		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
+		wp_enqueue_style( 'pbsandwich_columns', plugins_url( 'css/columns.css', __FILE__ ) );
 		
 		$columnStyles = '';
 	
 		$html = str_get_html( $content );
 
-		$tables = $html->find( 'table.scless_column' );
+		$tables = $html->find( 'table.pbsandwich_column' );
 		$hashes = array();
 		while ( count( $tables ) > 0 ) {
-			$tr = $html->find( 'table.scless_column', 0 )->find( 'tr', 0 );
+			$tr = $html->find( 'table.pbsandwich_column', 0 )->find( 'tr', 0 );
 			
 			$newDivs = '';
 			$styleDump = '';
@@ -198,7 +198,7 @@ class GambitShortcodelessColumns {
 				}
 				
 				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
-				$columnStyles .= '.scless_column_%' . ( count( $hashes ) + 1 ) . '$s > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
 				$styleDump .= esc_attr( $td->style );
 			
 				$newDivs .= '<div>' . $innerHTML . '</div>';
@@ -209,14 +209,14 @@ class GambitShortcodelessColumns {
 			$hashes[] = $hash;
 			
 			// This is our converted <table>
-			$newDivs = '<div class="scless_column scless_column_' . $hash . '">' . $newDivs . '</div>';
+			$newDivs = '<div class="pbsandwich_column pbsandwich_column_' . $hash . '">' . $newDivs . '</div>';
 						
-			$html->find( 'table.scless_column', 0 )->outertext = $newDivs;
+			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
 			$html = $html->save();
 			$html = str_get_html( $html );
 		
-			$tables = $html->find( 'table.scless_column' );
+			$tables = $html->find( 'table.pbsandwich_column' );
 		}
 		
 		// Insert the hashes
@@ -276,7 +276,7 @@ class GambitShortcodelessColumns {
 		
 		// Generate the styles & save as post meta
 		$parsed = $this->parseColumnContent( stripslashes( $_POST[ 'content' ] ) );
-		update_post_meta( $postID, 'scless_styles' . $suffix, $parsed[ 'styles' ] );
+		update_post_meta( $postID, 'pbsandwich_styles' . $suffix, $parsed[ 'styles' ] );
 	}
 	
 	
@@ -298,12 +298,12 @@ class GambitShortcodelessColumns {
 			$suffix = '_preview';
 		}
 		
-		$styles = get_post_meta( $post->ID, 'scless_styles' . $suffix, true );
+		$styles = get_post_meta( $post->ID, 'pbsandwich_styles' . $suffix, true );
 		if ( empty( $styles ) ) {
 			return;
 		}
 		
-		echo '<style id="scless_column">' . $styles . '</style>';
+		echo '<style id="pbsandwich_column">' . $styles . '</style>';
 	}
 	
 }

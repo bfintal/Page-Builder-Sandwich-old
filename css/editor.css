@@ -1,7 +1,7 @@
 /**
  * Editor only div-like styling
  */
-body#tinymce.wp-editor .scless_column td {
+body#tinymce.wp-editor .pbsandwich_column td {
 	vertical-align: top;
 	padding: 0;
 }
@@ -10,7 +10,7 @@ body#tinymce.wp-editor .scless_column td {
 /**
  * Aesthetic margins
  */
-body#tinymce.wp-editor .scless_column {
+body#tinymce.wp-editor .pbsandwich_column {
 	margin: 1em 0;
 }
 
@@ -18,8 +18,8 @@ body#tinymce.wp-editor .scless_column {
 /**
  * Don't show drag handlers for our tables
  */
-body#tinymce.wp-editor .scless_column[data-mce-selected="1"] ~ .mce-resizehandle,
-body#tinymce.wp-editor.scless_column_selected .mce-resizehandle {
+body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle,
+body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
 	display: none !important;
 }
 
@@ -39,11 +39,11 @@ body#tinymce.wp-editor .sortable-placeholder {
 /**
  * Move cursor for our columns
  */
-body#tinymce.wp-editor .scless_column td:hover,
-body#tinymce.wp-editor .scless_column td td:hover {
+body#tinymce.wp-editor .pbsandwich_column td:hover,
+body#tinymce.wp-editor .pbsandwich_column td td:hover {
 	cursor: move;
 }
-body#tinymce.wp-editor .scless_column td *:not(.wpview-wrap) {
+body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
 	cursor: text;
 }
 

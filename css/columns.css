@@ -1,21 +1,21 @@
 /**
  * Float the columns
  */
-.scless_column > div {
+.pbsandwich_column > div {
 	float: left;
 }
 
 /**
  * Clear the columns
  */
-.scless_column {
+.pbsandwich_column {
 	clear: both;
 }
 
 /**
  * Clear column floats
  */
-.scless_column:after {
+.pbsandwich_column:after {
 	content: '';
 	clear: both;
 	display: block;
@@ -25,7 +25,7 @@
  * Responsive columns, shrink to a single column
  */
 @media (max-width: 768px) {
-	.scless_column > div {
+	.pbsandwich_column > div {
 		margin-right: 0 !important;
 		float: none !important;
 		width: auto !important;

@@ -6,20 +6,20 @@
 	 * Checks if the content selected is an existing column table.
 	 * If it is, get each column content
 	 */
-	function _shortcodeless_columns_formContent( content, numColumns ) {
+	function _pbsandwich_columns_formContent( content, numColumns ) {
 		if ( content === '' ) {
-			return scless_column.dummy_content;
+			return pbsandwich_column.dummy_content;
 		}
 		
 		var $ = jQuery;
 		var contents = [];
 		
 		var $content = $('<div></div>').html(content);
-		if ( $content.find('table.scless_column').length == 0 ) {
-			return scless_column.dummy_content;
+		if ( $content.find('table.pbsandwich_column').length == 0 ) {
+			return pbsandwich_column.dummy_content;
 		}
 		
-		$content.find('table.scless_column td').each( function( i, e ) {
+		$content.find('table.pbsandwich_column td').each( function( i, e ) {
 			if ( i >= numColumns ) {
 				contents[ contents.length - 1] += '<p>' + $(e).html() + '</p>';
 			} else {
@@ -34,15 +34,15 @@
 	/**
 	 * Forms the table "columns"
 	 */
-	function _shortcodeless_columns_formTable( columns, content ) {
+	function _pbsandwich_columns_formTable( columns, content ) {
 		var $ = jQuery;
 		
 		var cols = columns.split('+');
 		var margin = 3.5;
-		var table = '<table class="scless_column" style="width: 100%; height: auto; border: none;" border="0"><tbody><tr>';
+		var table = '<table class="pbsandwich_column" style="width: 100%; height: auto; border: none;" border="0"><tbody><tr>';
 		var widthOffset = 100 - ( cols.length - 1 ) * margin;
-		var columnContents = _shortcodeless_columns_formContent( content, cols.length );
-		var columnContent = scless_column.dummy_content;
+		var columnContents = _pbsandwich_columns_formContent( content, cols.length );
+		var columnContent = pbsandwich_column.dummy_content;
 		
 		$.each( cols, function( i, e ) {
 			
@@ -84,7 +84,7 @@
 	/**
 	 * Forms the column labels for TinyMCE
 	 */
-	function _shortcodeless_columns_sprintf( format, etc ) {
+	function _pbsandwich_columns_sprintf( format, etc ) {
 	    var arg = arguments;
 	    var i = 1;
 	    return format.replace(/%((%)|s)/g, function (m) { return m[2] || arg[i++] })
@@ -98,7 +98,7 @@
 		var $ = jQuery;
 		try {
 			$(editor.getBody()).sortable('destroy');
-			$(editor.getBody()).find('.scless_column td').sortable('destroy');
+			$(editor.getBody()).find('.pbsandwich_column td').sortable('destroy');
 		} catch (e) { }
 	}
 	
@@ -110,7 +110,7 @@
 		var $ = jQuery;
 		try {
 			$(editor.getBody()).sortable('cancel');
-			$(editor.getBody()).find('.scless_column td').sortable('cancel');
+			$(editor.getBody()).find('.pbsandwich_column td').sortable('cancel');
 		} catch (e) { }
 	}
 	
@@ -120,8 +120,8 @@
 	 */
 	function sortStartHandler( editor ) {
 		var editorBody = jQuery( editor.getBody() );
-		editorBody.addClass('scless_just_dragged');
-		_shortcodeless_removeToolbar( editor );
+		editorBody.addClass('pbsandwich_just_dragged');
+		_pbsandwich_removeToolbar( editor );
 		
 		// Views with iframes (e.g. audio & video embeds) get very slow when dragging, hide them
 		if ( editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').length > 0 ) {
@@ -137,10 +137,10 @@
 		var editorBody = jQuery( editor.getBody() );
 		try {
 			editorBody.sortable('refresh');
-			editorBody.find('.scless_column td').sortable('refresh');
+			editorBody.find('.pbsandwich_column td').sortable('refresh');
 		} catch (e) { }
 		
-		editorBody.removeClass('scless_just_dragged');
+		editorBody.removeClass('pbsandwich_just_dragged');
 		
 		// Views with iframes do not refresh after sorting, mceCleanup fixes this (also brings back the visibility)
 		if ( editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').length > 0 ) {
@@ -158,9 +158,9 @@
 		// fixTableParagraphs( editor );
 		jQuery(editor.getBody()).sortable({
 			scroll: false, 
-			connectWith: jQuery(editor.getBody()).find('.scless_column td'), 
+			connectWith: jQuery(editor.getBody()).find('.pbsandwich_column td'), 
 			placeholder: "sortable-placeholder",
-			cancel: scless_column.non_sortable_elements,
+			cancel: pbsandwich_column.non_sortable_elements,
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
 			stop: function() {
@@ -173,11 +173,11 @@
 				sortStartHandler( editor );
 			}
 		});
-		$(editor.getBody()).find('.scless_column td').sortable({ 
+		$(editor.getBody()).find('.pbsandwich_column td').sortable({ 
 			scroll: false, 
-			connectWith: jQuery(editor.getBody()).find('.scless_column td').add(jQuery(editor.getBody())), 
+			connectWith: jQuery(editor.getBody()).find('.pbsandwich_column td').add(jQuery(editor.getBody())), 
 			placeholder: "sortable-placeholder",
-			cancel: scless_column.non_sortable_elements,
+			cancel: pbsandwich_column.non_sortable_elements,
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
 			stop: function() {
@@ -257,7 +257,7 @@
 	function fixTableParagraphs( editor ) {
 		var $ = jQuery;
 		
-		$(editor.getBody()).find('.scless_column td').each(function() {
+		$(editor.getBody()).find('.pbsandwich_column td').each(function() {
 			
 			// @see http://stackoverflow.com/questions/20183324/javascript-wrapping-unwrapped-plain-text
 			var elemCount = $(this).contents().length;
@@ -299,13 +299,13 @@
 	/**
 	 * Change columns modal action handler. When a change column button is clicked
 	 */
-	jQuery('body').on('click', '#scless_column_change_modal button', function() {
+	jQuery('body').on('click', '#pbsandwich_column_change_modal button', function() {
 		var $ = jQuery;
 		
 		// Get the column composition
 		var columns = $(this).attr('data-columns');
 		if ( typeof columns === 'undefined' ) {
-			columns = $(this).parents('#scless_column_change_modal').find('input.custom_column').val();
+			columns = $(this).parents('#pbsandwich_column_change_modal').find('input.custom_column').val();
 		}
 		
 		// The column container will have the attribute data-wp-columnselect
@@ -313,7 +313,7 @@
 		
 		// Change the column
 		preUpdateSortable( tinyMCE.activeEditor );
-        tinyMCE.activeEditor.insertContent( _shortcodeless_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
+        tinyMCE.activeEditor.insertContent( _pbsandwich_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
 		updateSortable( tinyMCE.activeEditor );
 		
 		// Close our modal window
@@ -324,7 +324,7 @@
 	/**
 	 * Perform a toolbar action
 	 */
-	function _shortcodeless_do_action( editor, node, action ) {
+	function _pbsandwich_do_action( editor, node, action ) {
 		var $ = jQuery;
 		
 		if ( action === 'remove' ) {
@@ -339,26 +339,26 @@
 			
 		} else if ( action === 'columns' ) {
 		    var colModal = editor.windowManager.open( {
-		        title: scless_column.change_column,
+		        title: pbsandwich_column.change_column,
 				buttons: [{
-                    text: scless_column.cancel,
+                    text: pbsandwich_column.cancel,
                     onclick: 'close'
                 }],
 		        body: [{
 					type: 'container',
-					html: '<div id="scless_column_change_modal"><h4>' + scless_column.preset + '</h4><p class="desc">' + scless_column.preset_desc + '</p>' +
-						'<p class="mce-btn"><button data-columns="1/2+1/2">' + _shortcodeless_columns_sprintf( scless_column.columns, '2' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _shortcodeless_columns_sprintf( scless_column.columns, '4' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+2/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="2/3+1/3">' + _shortcodeless_columns_sprintf( scless_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _shortcodeless_columns_sprintf( scless_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
+					html: '<div id="pbsandwich_column_change_modal"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
+						'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
+						'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
 						'<hr>' +
-						'<h4>' + scless_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + scless_column.use_custom + '</button></p><p class="desc">' + scless_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
+						'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
 				}],
 		        onsubmit: function( e ) {
 					preUpdateSortable( editor );
-                    editor.insertContent( _shortcodeless_columns_formTable( e.data.columns, editor.selection.getContent() ) );
+                    editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
 					updateSortable( editor );
 		        }
 		    });
@@ -369,7 +369,7 @@
 
 		}
 
-		_shortcodeless_removeToolbar( editor );
+		_pbsandwich_removeToolbar( editor );
 	}
 	
 
@@ -377,23 +377,23 @@
 	 * Adds the toolbar
 	 * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
 	 */
-    function _shortcodeless_addToolbar( editor, node ) {
+    function _pbsandwich_addToolbar( editor, node ) {
 		var $ = jQuery;
 		var rectangle, toolbarHtml, toolbar, left,
 		dom = editor.dom;
 
-		_shortcodeless_removeToolbar( editor );
+		_pbsandwich_removeToolbar( editor );
 		
 		// Don't create the toolbar if the column was just dragged
-		if ( $(editor.getBody()).hasClass('scless_just_dragged') ) {
+		if ( $(editor.getBody()).hasClass('pbsandwich_just_dragged') ) {
 			return;
 		}
 
 		// Only add the toolbar for columns
-		if ( $(node).parents('.scless_column:eq(0)').length === 0 ) {
+		if ( $(node).parents('.pbsandwich_column:eq(0)').length === 0 ) {
 			return;
 		}
-		node = $(node).parents('.scless_column:eq(0)')[0];
+		node = $(node).parents('.pbsandwich_column:eq(0)')[0];
 
 		// Remember the column that has the toolbar
 		$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
@@ -401,10 +401,10 @@
 
 		// Create the toolbar
 		toolbarHtml = 
-			// '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + scless_column.edit + '"></div>' +
-			'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + scless_column.change_columns + '"></div>' +
-			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + scless_column.clone + '"></div>' +
-			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + scless_column.delete + '"></div>';
+			// '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit + '"></div>' +
+			'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
+			'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone + '"></div>' +
+			'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete + '"></div>';
 
 		toolbar = dom.create( 'div', {
 			'id': 'wp-column-toolbar',
@@ -425,7 +425,7 @@
 	 * Remove the toolbar
 	 * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
 	 */
-	function _shortcodeless_removeToolbar( editor ) {
+	function _pbsandwich_removeToolbar( editor ) {
 		var toolbar = editor.dom.get( 'wp-column-toolbar' );
 
 		if ( toolbar ) {
@@ -437,7 +437,7 @@
 	/**
 	 * Add the button
 	 */
-    tinymce.PluginManager.add( 'scless_column', function( editor, url ) {
+    tinymce.PluginManager.add( 'pbsandwich_column', function( editor, url ) {
 		
 		
 		/**
@@ -466,12 +466,12 @@
 		 */
 		editor.on('mousedown', function(e) {
 			var $ = jQuery;
-			if ( $(e.target).parents('.scless_column:eq(0)').length > 0 ) {
-				$(editor.getBody()).addClass('scless_column_selected');
+			if ( $(e.target).parents('.pbsandwich_column:eq(0)').length > 0 ) {
+				$(editor.getBody()).addClass('pbsandwich_column_selected');
 			} else {
-				$(editor.getBody()).removeClass('scless_column_selected');
+				$(editor.getBody()).removeClass('pbsandwich_column_selected');
 			}
-			_shortcodeless_removeToolbar( editor );
+			_pbsandwich_removeToolbar( editor );
 		});
 		
 		
@@ -481,10 +481,10 @@
 		editor.on('mouseup', function(e) {
 			var $ = jQuery;
 			if ( $(e.target).is( '[data-column-action]' ) ) {
-				_shortcodeless_do_action( editor, e.target, $(e.target).attr('data-column-action') );
+				_pbsandwich_do_action( editor, e.target, $(e.target).attr('data-column-action') );
 				return;
 			}
-			_shortcodeless_addToolbar( editor, e.target );
+			_pbsandwich_addToolbar( editor, e.target );
 		});
 		
 		
@@ -502,7 +502,7 @@
 					return;
 				}
 			
-				_shortcodeless_removeToolbar( editor );
+				_pbsandwich_removeToolbar( editor );
 			});
 		});
 		
@@ -575,83 +575,83 @@
 		});
 		
 
-        editor.addButton( 'scless_column', {
-            title: scless_column.modal_title,
+        editor.addButton( 'pbsandwich_column', {
+            title: pbsandwich_column.modal_title,
             icon: 'wp_tagcloud',
 			type: 'menubutton',
 			menu: [
 				{
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '2' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ),
 	                value: '1/2+1/2',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '3' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ),
 	                value: '1/3+1/3+1/3',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '4' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ),
 	                value: '1/4+1/4+1/4+1/4',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '1/3 + 2/3' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ),
 	                value: '1/3+2/3',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '2/3 + 1/3' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ),
 	                value: '2/3+1/3',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: _shortcodeless_columns_sprintf( scless_column.columns, '1/4 + 1/2 + 1/4' ),
+	                text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 1/2 + 1/4' ),
 	                value: '1/4+2/4+1/4',
 	                onclick: function() {
 						preUpdateSortable( editor );
-	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
+	                    editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
 						fixTableParagraphs( editor );
 	                }
 				}, {
-	                text: scless_column.custom_columns,
+	                text: pbsandwich_column.custom_columns,
 					onclick: function() {
 					    editor.windowManager.open( {
-					        title: scless_column.custom_columns,
+					        title: pbsandwich_column.custom_columns,
 					        body: [{
 					            type: 'textbox',
 					            name: 'columns',
-					            label: scless_column.modal_title,
+					            label: pbsandwich_column.modal_title,
 								value: '1/2+1/2'
 					        },
 							{
 								type: 'container',
-								html: '<p style="line-height: 1.6em;">' + scless_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p>'
+								html: '<p style="line-height: 1.6em;">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p>'
 							}],
 					        onsubmit: function( e ) {
 								preUpdateSortable( editor );
-			                    editor.insertContent( _shortcodeless_columns_formTable( e.data.columns, editor.selection.getContent() ) );
+			                    editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
 								updateSortable( editor );
 								fixTableParagraphs( editor );
 					        }
