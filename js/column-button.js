@@ -116,6 +116,41 @@
 	
 	
 	/**
+	 * Sortable start handler
+	 */
+	function sortStartHandler( editor ) {
+		var editorBody = jQuery( editor.getBody() );
+		editorBody.addClass('scless_just_dragged');
+		_shortcodeless_removeToolbar( editor );
+		
+		// Views with iframes (e.g. audio & video embeds) get very slow when dragging, hide them
+		if ( editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').length > 0 ) {
+			editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').css('visibility', 'hidden');
+		}
+	}
+	
+	
+	/**
+	 * Sortable end handler
+	 */
+	function sortEndHandler( editor ) {
+		var editorBody = jQuery( editor.getBody() );
+		try {
+			editorBody.sortable('refresh');
+			editorBody.find('.scless_column td').sortable('refresh');
+		} catch (e) { }
+		
+		editorBody.removeClass('scless_just_dragged');
+		
+		// Views with iframes do not refresh after sorting, mceCleanup fixes this (also brings back the visibility)
+		if ( editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').length > 0 ) {
+			editorBody.find('.wpview-wrap[data-mce-selected="1"]').removeAttr('data-mce-selected');
+			editor.execCommand( 'mceCleanup' );
+		}
+	}
+	
+	
+	/**
 	 * Create sortables
 	 */
 	function updateSortable( editor ) {
@@ -129,18 +164,13 @@
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
 			stop: function() {
-				try {
-					jQuery(editor.getBody()).sortable('refresh');
-					jQuery(editor.getBody()).find('.scless_column td').sortable('refresh');
-				} catch (e) { }
-				jQuery(editor.getBody()).removeClass('scless_just_dragged');
+				sortEndHandler( editor );
 			},
 			update: function() {
 				fixTableParagraphs( editor );
 			},
 			start: function() {
-				jQuery(editor.getBody()).addClass('scless_just_dragged');
-				_shortcodeless_removeToolbar( editor );
+				sortStartHandler( editor );
 			}
 		});
 		$(editor.getBody()).find('.scless_column td').sortable({ 
@@ -151,18 +181,13 @@
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
 			stop: function() {
-				try {
-					$(editor.getBody()).sortable('refresh');
-					$(editor.getBody()).find('.scless_column td').sortable('refresh');
-				} catch (e) { }
-				jQuery(editor.getBody()).removeClass('scless_just_dragged');
+				sortEndHandler( editor );
 			},
 			update: function() {
 				fixTableParagraphs( editor );
 			},
 			start: function() {
-				jQuery(editor.getBody()).addClass('scless_just_dragged');
-				_shortcodeless_removeToolbar( editor );
+				sortStartHandler( editor );
 			}
 		});
 	}
