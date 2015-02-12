@@ -8,47 +8,53 @@ Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create columns striaght in the visual editor without using any shortcodes
+Turn your visual editor into a page builder hybrid
 
 == Description ==
 
-One of the most frustrating things when creating content is layouting them by creating columns.
+= PB Sandwich for short =
 
-Sure you can use shortcodes, but are not user friendly. They look great in the frontend, but they are not actual columns in the backend. Page builders are great, but we wanted to find a way to do it using the existing visual editor everyone knows.
+One of the most frustrating things when creating content is layouting and writing them.
 
-Check out the screenshots to see how Shortcodeless Columns works.
+Sure you can use shortcodes columns, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Page builders are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
 
-= Features =
+*Check out the screenshots to see how Shortcodeless Columns works.*
 
-* Adds a column button in the content editor when in visual mode
-* Columns show up within the content editor as columns
-* Edit your column contents directly without any shortcode fuss
-* Ability to add 2, 3, 4 or custom width columns
-* Nestable columns
-* Percentages are used on column widths to make them flexible
-* Includes column margins
-* Clean output: columns are rendered as floating divs
-* Works great with [Shortcake](https://github.com/fusioneng/Shortcake)
+= What it does =
 
-Report bugs and help out in the code from the [Github repository](https://github.com/gambitph/Shortcodeless-Columns)
+Extends your visual editor to include page builder capabilities
+
+= What can you do with it =
+
+* Create editable, nestable columns
+* Drag and drop content into other locations (except text since you can copy/paste them anyway)
+* Clone shortcodes & columns
+* Create different shortcodes (no shortcodes are included yet, contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/) )
+
+= Contributing =
+
+Report bugs and help out in the code from the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)
 
 == Installation ==
 
 1. Head over to Plugins > Add New in the admin
-2. Search for "Shortcodeless Column"
+2. Search for "Page Builder Sandwich"
 3. Install & activate the plugin
-4. Click the "Columns" button while editing your posts and pages to insert your columns
-5. You can highlight existing columns to replace them with columns of a different size
+4. Create your content:
+	* Click the "Columns" button while editing your posts and pages to insert your columns, or
+	* Click on the "Add Media" button to insert shortcodes
+5. Click, drap, drop, edit away on your visual editor
 
 == Screenshots ==
 
-1. Shortcodeless Columns let you do this while editing posts and pages
-2. You then get these columns as your output
+1. Drag and drop stuff
+2. You can do this while editing posts and pages
+3. You then get these columns as your output
 
 == Frequently Asked Questions ==
 
-* [Shortcodeless Columns GitHub Repository](https://github.com/gambitph/Shortcodeless-Columns)
-* [Issue Tracker](https://github.com/gambitph/Shortcodeless-Columns/issues)
+* [Page Builder Sandwich GitHub Repository](https://github.com/gambitph/Page-Builder-Sandwich/)
+* [Issue Tracker](https://github.com/gambitph/Page-Builder-Sandwich/issues)
 
 == Upgrade Notice ==
 
