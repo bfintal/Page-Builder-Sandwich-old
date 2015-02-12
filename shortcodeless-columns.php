@@ -17,9 +17,6 @@
  */
 class GambitShortcodelessColumns {
 	
-	// Keep the record of the current column. Used for outputting styles
-	private static $columnContainerID = 1;
-	
 
 	/**
 	 * Hook onto WordPress
@@ -33,6 +30,8 @@ class GambitShortcodelessColumns {
 		add_action( 'admin_head', array( $this, 'addColumnButton' ) );
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'loadjQuerySortable' ) );
+		add_action( 'save_post', array( $this, 'rememberColumnStyles' ), 10, 3 );
+		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 	}
 
 	
@@ -149,24 +148,25 @@ class GambitShortcodelessColumns {
 	
 	
 	/**
-	 * Since we are essentially creating tables in the visual composer, we should convert these tables
-	 * into divs for the frontend
+	 * Parses the html content, and fixes the columns. <table>s are converted into <div>s, and the
+	 * styles (margins) are separated.
 	 *
 	 * @param	$content string The content being outputted in the frontend
 	 * @return	string The modified content
 	 */
-	public function cleanOutput( $content ) {
-		
+	protected function parseColumnContent( $content ) {
 		// simple_html_dom errors out when we don't have any content
 		$contentChecker = trim( $content );
 		if ( empty( $contentChecker ) ) {
-			return $content;
+			return array(
+				'content' => $content,
+				'styles' => '',
+			);
 		}
 		
 		if ( ! function_exists( 'file_get_html' ) ) {
 			require_once( 'inc/simple_html_dom.php' );
 		}
-	
 		wp_enqueue_style( 'shortcodeless_columns', plugins_url( 'css/columns.css', __FILE__ ) );
 		
 		$columnStyles = '';
@@ -174,11 +174,13 @@ class GambitShortcodelessColumns {
 		$html = str_get_html( $content );
 
 		$tables = $html->find( 'table.scless_column' );
+		$hashes = array();
 		while ( count( $tables ) > 0 ) {
 			$tr = $html->find( 'table.scless_column', 0 )->find( 'tr', 0 );
-	
-			$newDivs = '<div class="scless_column scless_column_' . self::$columnContainerID . '">';
-
+			
+			$newDivs = '';
+			$styleDump = '';
+			
 			foreach ( $tr->children() as $key => $td ) {
 				if ( $td->tag != 'td' ) {
 					continue;
@@ -191,12 +193,19 @@ class GambitShortcodelessColumns {
 					$innerHTML = '<p>' . $td->innertext . '</p>';
 				}
 				
-				// Gather the column styles
-				$columnStyles .= '.scless_column_' . self::$columnContainerID . ' > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
+				$columnStyles .= '.scless_column_%' . ( count( $hashes ) + 1 ) . '$s > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				$styleDump .= esc_attr( $td->style );
 			
 				$newDivs .= '<div>' . $innerHTML . '</div>';
 			}
-			$newDivs .= '</div>';
+			
+			// Generate the unique ID of this column based on the margin rules it has. (crc32 is fast)
+			$hash = crc32( $styleDump );
+			$hashes[] = $hash;
+			
+			// This is our converted <table>
+			$newDivs = '<div class="scless_column scless_column_' . $hash . '">' . $newDivs . '</div>';
 						
 			$html->find( 'table.scless_column', 0 )->outertext = $newDivs;
 			
@@ -204,16 +213,94 @@ class GambitShortcodelessColumns {
 			$html = str_get_html( $html );
 		
 			$tables = $html->find( 'table.scless_column' );
-			
-			self::$columnContainerID++;
+		}
+		
+		// Insert the hashes
+		foreach ( $hashes as $key => $hash ) {
+			$columnStyles = str_replace( '%' . ( $key + 1 ) . '$s', $hash, $columnStyles );
 		}
 		
 		// Remove stray jQuery sortable classes
-		// $strHTML = (string) $html;
 		$html = preg_replace( '/ui-sortable-handle/', '', $html );
-	
-		return '<style id="scless_column">' . $columnStyles . '</style>' . $html;
+		
+		return array(
+			'content' => (string) $html,
+			'styles' => $columnStyles,
+		);
 	}
-
+	
+	
+	/**
+	 * Since we are essentially creating tables in the visual composer, we should convert these tables
+	 * into divs for the frontend
+	 *
+	 * @param	$content string The content being outputted in the frontend
+	 * @return	string The modified content
+	 */
+	public function cleanOutput( $content ) {
+		$parsed = $this->parseColumnContent( $content );
+		return $parsed[ 'content' ];
+	}
+	
+	
+	/**
+	 * Instead of retaining the inline styles of the columns, gather the styles upon saving and
+	 * save it as post meta, we will use that in `wp_head` to render the styles
+	 *
+	 * @param	$content string The content being outputted in the frontend
+	 * @return	string The modified content
+	 */
+	public function rememberColumnStyles( $postID, $post, $update ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		if ( empty( $_POST['content'] ) ) {
+			return;
+		}
+		if ( get_post_status( $postID ) === 'trash' ) {
+			return;
+		}
+		
+		// If the post is being previewed, save it differently so as not to overwrite
+		// the currently saved styles
+		$suffix = '';
+		if ( ! empty( $_POST['wp-preview'] ) ) {
+			if ( $_POST['wp-preview'] == 'dopreview' ) {
+				$suffix = '_preview';
+			}
+		}
+		
+		// Generate the styles & save as post meta
+		$parsed = $this->parseColumnContent( stripslashes( $_POST[ 'content' ] ) );
+		update_post_meta( $postID, 'scless_styles' . $suffix, $parsed[ 'styles' ] );
+	}
+	
+	
+	/**
+	 * Gets the column styles saved within the post/page. Saved styles are from the `save_post`
+	 * action and are saved as post meta data.
+	 *
+	 * @return	void
+	 */
+	public function renderColumnStyles() {
+		global $post;
+		if ( empty( $post ) ) {
+			return;
+		}
+		
+		// 2 sets of styles are saved, preview & published, get what we need
+		$suffix = '';
+		if ( is_preview() ) {
+			$suffix = '_preview';
+		}
+		
+		$styles = get_post_meta( $post->ID, 'scless_styles' . $suffix, true );
+		if ( empty( $styles ) ) {
+			return;
+		}
+		
+		echo '<style id="scless_column">' . $styles . '</style>';
+	}
+	
 }
 new GambitShortcodelessColumns();
