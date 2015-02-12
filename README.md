@@ -1,5 +1,9 @@
 # PB Sandwich
-Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid
+*Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid*
+
+One of the most frustrating things when creating content is layouting and writing them.
+
+Sure you can use shortcodes columns, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Page builders are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
 
 * Create columns straight from the editor, no shortcodes necessary
 * Drag and drop galleries, videos, audio and containers into other locations
