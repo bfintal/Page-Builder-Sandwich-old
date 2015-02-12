@@ -5,6 +5,16 @@ One of the most frustrating things when creating content is layouting and writin
 
 Sure you can use shortcodes columns, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Page builders are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
 
+# Goal
+
+The goal is to create a page builder that
+* Feels and acts *native* and part of WordPress
+* Not clunky and doesn't pollute *much*
+* Leaves *most* of the content working fine event if the plugin is deactivated or deleted
+* Lazy, no settings pages specific for the plugin
+
+# What you can do with it
+
 * Create columns straight from the editor, no shortcodes necessary
 * Drag and drop galleries, videos, audio and containers into other locations
 * Edit your content like you normally would
