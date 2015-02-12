@@ -587,6 +587,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: _shortcodeless_columns_sprintf( scless_column.columns, '3' ),
@@ -595,6 +596,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: _shortcodeless_columns_sprintf( scless_column.columns, '4' ),
@@ -603,6 +605,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: _shortcodeless_columns_sprintf( scless_column.columns, '1/3 + 2/3' ),
@@ -611,6 +614,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: _shortcodeless_columns_sprintf( scless_column.columns, '2/3 + 1/3' ),
@@ -619,6 +623,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: _shortcodeless_columns_sprintf( scless_column.columns, '1/4 + 1/2 + 1/4' ),
@@ -627,6 +632,7 @@
 						preUpdateSortable( editor );
 	                    editor.insertContent( _shortcodeless_columns_formTable( this.value(), editor.selection.getContent() ) );
 						updateSortable( editor );
+						fixTableParagraphs( editor );
 	                }
 				}, {
 	                text: scless_column.custom_columns,
@@ -647,6 +653,7 @@
 								preUpdateSortable( editor );
 			                    editor.insertContent( _shortcodeless_columns_formTable( e.data.columns, editor.selection.getContent() ) );
 								updateSortable( editor );
+								fixTableParagraphs( editor );
 					        }
 					    });
 					}
