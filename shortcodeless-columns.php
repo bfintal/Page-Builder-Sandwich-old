@@ -32,7 +32,7 @@ class GambitShortcodelessColumns {
 		add_action( 'admin_enqueue_scripts', array( $this, 'columnButtonIcon' ) );
 		add_action( 'admin_head', array( $this, 'addColumnButton' ) );
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'load_custom_wp_admin_style' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'loadjQuerySortable' ) );
 	}
 
 	
@@ -89,8 +89,14 @@ class GambitShortcodelessColumns {
 	   return $buttons;
 	}
 	
-	public function load_custom_wp_admin_style() {
-		wp_enqueue_script( 'jquery-ui-draggable' );
+	
+	/**
+	 * Enqueues jQuery sortable
+	 *
+	 * @return	void
+	 */
+	public function loadjQuerySortable() {
+		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
 	
 	
@@ -201,6 +207,10 @@ class GambitShortcodelessColumns {
 			
 			self::$columnContainerID++;
 		}
+		
+		// Remove stray jQuery sortable classes
+		// $strHTML = (string) $html;
+		$html = preg_replace( '/ui-sortable-handle/', '', $html );
 	
 		return '<style id="scless_column">' . $columnStyles . '</style>' . $html;
 	}
