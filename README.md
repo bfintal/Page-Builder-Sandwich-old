@@ -6,6 +6,8 @@ Turn your typical WordPress visual editor into a super charged visual-editor-pag
 * Edit your content like you normally would
 * Blends perfectly with [Shortcake](https://github.com/fusioneng/Shortcake)
 
+# Preview
+
 It lets you do this while editing posts and pages:
 ![Visual Column Editing](https://raw.githubusercontent.com/gambitph/Shortcodeless-Columns/master/preview/visual-editor.jpg)
 
