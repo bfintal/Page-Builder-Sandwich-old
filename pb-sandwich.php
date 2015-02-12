@@ -1,7 +1,7 @@
 <?php
 /**
 * Plugin Name: Page Builder Sandwich
-* Plugin URI: https://github.com/gambitph/Shortcodeless-Columns
+* Plugin URI: https://github.com/gambitph/Page-Builder-Sandwich
 * Description: Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid
 * Version: 0.1
 * Author: Benjamin Intal - Gambit Technologies Inc
