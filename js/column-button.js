@@ -237,27 +237,55 @@
 		// For views with iframes (e.g. video & audio), clicking on the iframe to play a preview
 		// won't work with sortable sorting. Our semi work-around is to just deselect the iframe
 		// so that it can still be dragged around after moving the mouse around/outside the iframe.
-		$(editor.getBody()).on('mousemove', function(e) {
+		$(editor.getBody())
+		.on('mousemove', '.wpview-wrap[data-mce-selected="1"] .toolbar', function(e) {
+			var $ = jQuery;
+
+			var parent = $(this).parents('.wpview-wrap:eq(0)');
+			if ( ! parent.is('[data-check-move="1"]') ) {
+				return;
+			}
+			if ( parent.find('iframe').length === 0 ) {
+				return;
+			}
+			
+			if ( e.which !== 1 ) {
+				try {
+					$(editor.getBody()).sortable('disable');
+					$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
+				} catch (e) { }
+
+				parent.trigger('mouseup');
+	
+				try {
+					$(editor.getBody()).sortable('enable');
+					$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
+				} catch (e) { }
+				
+			}
+		})
+		.on('mousemove', function(e) {
 			var $ = jQuery;
 			
-			if ( $(this).find('[data-mce-selected="1"][data-check-move="1"] iframe').length > 0 ) {
-				
-				var wrapper = $(this).find('[data-mce-selected="1"][data-check-move="1"] iframe').parents('[data-mce-selected="1"]:eq(0)');
-				if ( e.which !== 1 ) {
-				
-					try {
-						$(editor.getBody()).sortable('disable');
-						$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-					} catch (e) { }
+			var iframe = $(this).find('.wpview-wrap[data-mce-selected="1"] iframe');
+			if ( iframe.length === 0 ) {
+				return;
+			}
+			
+			if ( e.which !== 1 ) {
+			
+				try {
+					$(editor.getBody()).sortable('disable');
+					$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
+				} catch (e) { }
 
-					wrapper.trigger('mouseup');
-		
-					try {
-						$(editor.getBody()).sortable('enable');
-						$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-					} catch (e) { }
-					
-				}
+				iframe.parents('.wpview-wrap:eq(0)').trigger('mouseup');
+	
+				try {
+					$(editor.getBody()).sortable('enable');
+					$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
+				} catch (e) { }
+				
 			}
 		})
 		
@@ -364,8 +392,14 @@
 			
 		} else if ( action === 'clone' ) {
 			preUpdateSortable( editor );
-			$(editor.getBody()).find('[data-wp-columnselect]').clone().insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
+			var newElement = $(editor.getBody()).find('[data-wp-columnselect]').clone();
+			newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
 			updateSortable( editor );
+			
+			// Cleanup to make views with iframes display again
+			if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
+				editor.execCommand( 'mceCleanup' );
+			}
 			
 		} else if ( action === 'columns' ) {
 		    var colModal = editor.windowManager.open( {
@@ -555,8 +589,14 @@
 					if ( $(e.target).is('.dashicons.clone') ) {
 						// cancelSortable( editor );
 						preUpdateSortable( editor );
-						$(e.target).parents('.wpview-wrap:eq(0)').clone().insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
+						var newElement = $(e.target).parents('.wpview-wrap:eq(0)').clone();
+						newElement.insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
 						updateSortable( editor );
+			
+						// Cleanup to make views with iframes display again
+						if ( newElement.find('iframe').length > 0 ) {
+							editor.execCommand( 'mceCleanup' );
+						}
 					}
 				}
 				
