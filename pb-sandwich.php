@@ -122,9 +122,6 @@ class GambitPBSandwich {
 	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
 			
-			$nonSortableElements = 'p,code,blockquote,span,pre,td:not(.pbsandwich_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img,#wp-column-toolbar,.toolbar,.toolbar .dashicons';
-			$nonSortableElements = apply_filters( 'sc_non_sortable_elements', $nonSortableElements );
-			
 			?>
 			<script type="text/javascript">
 	        var pbsandwich_column = {
@@ -143,11 +140,38 @@ class GambitPBSandwich {
 				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'default' ) ) ?>',
 				use_custom: '<?php echo addslashes( __( 'Use custom', 'default' ) ) ?>',
 				custom: '<?php echo addslashes( __( 'Custom', 'default' ) ) ?>',
-				non_sortable_elements: '<?php echo addslashes( $nonSortableElements ) ?>'
+				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>'
 	        };
 	        </script>
 			<?php
 	    }
+	}
+	
+	
+	/**
+	 * Forms a list of elements that when clicked won't initiate a drag
+	 *
+	 * @return	void
+	 */
+	protected function formNonSortableElements() {
+		// When these elements are clicked, don't drag the element
+		$nonSortableElements = 'p,code,blockquote,span,pre,td:not(.pbsandwich_column td),th,h1,h2,h3,h4,h5,h6,dt,dd,li,a,address,img';
+		$nonSortableElements = apply_filters( 'sc_non_sortable_elements', $nonSortableElements );
+		
+		// Allow all contents of views to be draggable
+		$nonSortableElementsArray = explode( ',', $nonSortableElements );
+		$nonSortableElements = '';
+		foreach ( $nonSortableElementsArray as $key => $element ) {
+			if ( $key > 0 ) {
+				$nonSortableElements .= ',';
+			}
+			$nonSortableElements .= $element . ':not(.wpview-wrap ' . $element . ')';
+		}
+		
+		// Add the toolbar elements
+		$nonSortableElements .= '#wp-column-toolbar,.toolbar,.toolbar .dashicons';
+		
+		return $nonSortableElements;
 	}
 	
 	
