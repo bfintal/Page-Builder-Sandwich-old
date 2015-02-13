@@ -169,6 +169,7 @@ class GambitPBSandwich {
 		}
 		
 		// Add the toolbar elements
+		$nonSortableElements .= empty( $nonSortableElements ) ? '' : ',';
 		$nonSortableElements .= '#wp-column-toolbar,.toolbar,.toolbar .dashicons';
 		
 		return $nonSortableElements;

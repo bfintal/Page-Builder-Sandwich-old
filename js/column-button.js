@@ -233,21 +233,47 @@
 	 */
 	function fixShortcakeDragging( editor ) {
 		var $ = jQuery;
-		$(editor.getBody()).on('mousemove', '.wpview-wrap', function(e) {
+		
+		// For views with iframes (e.g. video & audio), clicking on the iframe to play a preview
+		// won't work with sortable sorting. Our semi work-around is to just deselect the iframe
+		// so that it can still be dragged around after moving the mouse around/outside the iframe.
+		$(editor.getBody()).on('mousemove', function(e) {
+			var $ = jQuery;
+			if ( $(this).find('[data-check-move="1"] iframe').length > 0 ) {
+				if ( e.which !== 1 ) {
+				
+					try {
+						$(editor.getBody()).sortable('disable');
+						$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
+					} catch (e) { }
+
+					editor.selection.select( $(this).find('[data-check-move="1"]')[0] );
+					$(this).find('[data-check-move="1"]').trigger('mouseup');
+		
+					try {
+						$(editor.getBody()).sortable('enable');
+						$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
+					} catch (e) { }
+					
+				}
+			}
+		})
+		
+		.on('mousemove', '.wpview-wrap', function(e) {
 			if ( $(this).is('[data-check-move="1"]') ) {
 				$(this).removeAttr('data-check-move');
 			}
-		});
-		$(editor.getBody()).on('mouseup', '.wpview-wrap', function(e) {
+		})
+		
+		.on('mouseup', '.wpview-wrap', function(e) {
 			if ( $(this).is('[data-check-move="1"]') ) {
 				$(this).removeAttr('data-check-move');
 				$(this).trigger('mousemove').trigger('mouseup');
 			}
-		});
-		$(editor.getBody()).on('mousedown', '.wpview-wrap', function(e) {
-			if ( ! $(this).is('[data-mce-selected="1"]') ) {
-				$(this).attr('data-check-move', '1');
-			}
+		})
+		
+		.on('mousedown', '.wpview-wrap', function(e) {
+			$(this).attr('data-check-move', '1');
 		});
 	}
 	
