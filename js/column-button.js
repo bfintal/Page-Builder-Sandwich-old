@@ -163,6 +163,7 @@
 			cancel: pbsandwich_column.non_sortable_elements,
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
+			tolerance: 'pointer',
 			stop: function() {
 				sortEndHandler( editor );
 			},
@@ -180,6 +181,7 @@
 			cancel: pbsandwich_column.non_sortable_elements,
 			opacity: 0.7,
 			forceHelperSize: true, // This is to help dragging
+			tolerance: 'pointer',
 			stop: function() {
 				sortEndHandler( editor );
 			},
