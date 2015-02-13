@@ -239,7 +239,10 @@
 		// so that it can still be dragged around after moving the mouse around/outside the iframe.
 		$(editor.getBody()).on('mousemove', function(e) {
 			var $ = jQuery;
-			if ( $(this).find('[data-check-move="1"] iframe').length > 0 ) {
+			
+			if ( $(this).find('[data-mce-selected="1"][data-check-move="1"] iframe').length > 0 ) {
+				
+				var wrapper = $(this).find('[data-mce-selected="1"][data-check-move="1"] iframe').parents('[data-mce-selected="1"]:eq(0)');
 				if ( e.which !== 1 ) {
 				
 					try {
@@ -247,8 +250,7 @@
 						$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
 					} catch (e) { }
 
-					editor.selection.select( $(this).find('[data-check-move="1"]')[0] );
-					$(this).find('[data-check-move="1"]').trigger('mouseup');
+					wrapper.trigger('mouseup');
 		
 					try {
 						$(editor.getBody()).sortable('enable');
