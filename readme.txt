@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Page Builder Sandwich ===
 Contributors: bfintal
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2MK28E7BDLHC
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
@@ -28,7 +28,8 @@ Extends your visual editor to include page builder capabilities
 
 = The Goal =
 
-The goal is to create a page builder that
+The goal is to create a page builder that:
+
 * Feels and acts *native* and part of WordPress
 * Leaves *most* of the content working fine event if the plugin is deactivated or deleted
 * Lazy, no settings pages specific for the plugin
