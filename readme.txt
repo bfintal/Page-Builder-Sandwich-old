@@ -8,15 +8,15 @@ Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Turn your visual editor into a page builder hybrid
+Visual editor - page builder hybrid
 
 == Description ==
 
-= PB Sandwich for short =
+= Call it PB Sandwich for short =
 
 One of the most frustrating things when creating content is layouting and writing them.
 
-Sure you can use shortcodes columns, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Page builders are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
+Sure you can use **shortcodes columns**, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Existing **page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
 
 *Check out the screenshots to see how Shortcodeless Columns works.*
 
