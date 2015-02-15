@@ -1,15 +1,16 @@
 # PB Sandwich
 *Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid*
 
-One of the most frustrating things when creating content is layouting and writing them.
+One of the most frustrating things when creating content is layouting and writing them inside the visual editor.
 
-Sure you can use **shortcodes columns**, but are not user friendly with all those distracting square brackets. They look great in the frontend, but they are not actual columns in the backend. Existing **Page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows.
+Sure you can use **shortcodes columns**, but are not user friendly with all those distracting square brackets. Not to mention that column shortcodes are just displayed as a single column in the visual editor.
+
+Existing **Page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows. Page builders have a ton of code in them for creating brand new interfaces, but more code means more stuff which can go wrong in the future.
 
 # Goal
 
 The goal is to create a page builder that
 * Feels and acts *native* and part of WordPress
-* Not clunky and doesn't pollute *much*
 * Leaves *most* of the content working fine event if the plugin is deactivated or deleted
 * Lazy, no settings pages specific for the plugin
 
