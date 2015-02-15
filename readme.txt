@@ -35,7 +35,11 @@ The goal is to create a page builder that
 = What can you do with it =
 
 * Create editable, nestable columns
-* Drag and drop content into other locations (except text since you can copy/paste them anyway)
+* Drag and drop TinyMCE views into other locations. Works with:
+  * WordPress image galleries,
+  * Jetpack video embeds,
+  * Jetpack audio embeds,
+  * Shortcake
 * Clone shortcodes & columns
 * Create different shortcodes (no shortcodes are included yet, contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/) )
 
