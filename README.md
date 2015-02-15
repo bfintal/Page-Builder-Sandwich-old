@@ -16,7 +16,10 @@ The goal is to create a page builder that
 # What you can do with it
 
 * Create columns straight from the editor, no shortcodes necessary
-* Drag and drop galleries, videos, audio and containers into other locations
+* Drag and drop TinyMCE views into other locations. Works with:
+  * WordPress image galleries,
+  * Jetpack video embeds,
+  * Jetpack audio embeds
 * Edit your content like you normally would
 * Blends perfectly with [Shortcake](https://github.com/fusioneng/Shortcake)
 
