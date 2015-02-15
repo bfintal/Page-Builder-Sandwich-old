@@ -52,7 +52,7 @@ Report bugs and help out in the code from the [Github repository](https://github
 == Installation ==
 
 1. Head over to Plugins > Add New in the admin
-2. Search for "Page Builder Sandwich"
+2. Search for "PB Sandwich"
 3. Install & activate the plugin
 4. Create your content:
 	* Click the "Columns" button while editing your posts and pages to insert your columns, or
