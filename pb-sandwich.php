@@ -2,8 +2,8 @@
 /**
 * Plugin Name: Page Builder Sandwich
 * Plugin URI: https://github.com/gambitph/Page-Builder-Sandwich
-* Description: Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid
-* Version: 0.1
+* Description: The native visual editor page builder. Empower your visual editor with drag and drop & column capabilities.
+* Version: 0.2
 * Author: Benjamin Intal - Gambit Technologies Inc
 * Author URI: http://gambit.ph
 * License: GPL2
@@ -12,7 +12,7 @@
 */
 
 // Used for tracking the version used
-defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.1' );
+defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.2' );
 
 
 /**
@@ -248,7 +248,7 @@ class GambitPBSandwich {
 			$hashes[] = $hash;
 			
 			// This is our converted <table>
-			$customClass = empty( $columnStyles ) ? 'sandwich' : 'pbsandwich_column_' . $hash;
+			$customClass = empty( $columnStyles ) ? 'sandwich' : 'pbsandwich_column_' . $hash; // Backward compatibility
 			$newDivs = '<div class="pbsandwich_column ' . $customClass . '"><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
