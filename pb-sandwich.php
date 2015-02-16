@@ -11,6 +11,9 @@
 * Domain Path: /languages
 */
 
+// Used for tracking the version used
+defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.1' );
+
 
 /**
  * PB Sandwich Class
@@ -32,6 +35,8 @@ class GambitPBSandwich {
 		add_action( 'admin_enqueue_scripts', array( $this, 'loadjQuerySortable' ) );
 		add_action( 'save_post', array( $this, 'rememberColumnStyles' ), 10, 3 );
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
+		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendStyles' ) );
 	}
 
 	
@@ -52,6 +57,10 @@ class GambitPBSandwich {
 	 */
 	public function addEditorColumnStyles() {
 	    add_editor_style( plugins_url( 'css/editor.css', __FILE__ ) );
+	}
+	
+	public function loadFrontendStyles() {
+	    wp_enqueue_style( 'pbsandwich-bootstrap', plugins_url( 'css/bootstrap-sandwich.css', __FILE__ ), array(), PBS_VERSION );
 	}
 
 	
@@ -200,7 +209,10 @@ class GambitPBSandwich {
 		
 		$columnStyles = '';
 	
-		$html = str_get_html( $content );
+		
+		// Remove stray jQuery sortable classes
+		$html = preg_replace( '/(ui-sortable-handle|ui-sortable)/', '', $content );
+		$html = str_get_html( $html );
 
 		$tables = $html->find( 'table.pbsandwich_column' );
 		$hashes = array();
@@ -223,10 +235,12 @@ class GambitPBSandwich {
 				}
 				
 				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
-				$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				if ( empty( $td->class ) ) {
+					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				}
 				$styleDump .= esc_attr( $td->style );
 			
-				$newDivs .= '<div>' . $innerHTML . '</div>';
+				$newDivs .= '<div class="' . esc_attr( $td->class ) . '">' . $innerHTML . '</div>';
 			}
 			
 			// Generate the unique ID of this column based on the margin rules it has. (crc32 is fast)
@@ -234,7 +248,8 @@ class GambitPBSandwich {
 			$hashes[] = $hash;
 			
 			// This is our converted <table>
-			$newDivs = '<div class="pbsandwich_column pbsandwich_column_' . $hash . '">' . $newDivs . '</div>';
+			$customClass = empty( $columnStyles ) ? 'sandwich' : 'pbsandwich_column_' . $hash;
+			$newDivs = '<div class="pbsandwich_column ' . $customClass . '"><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
@@ -248,9 +263,6 @@ class GambitPBSandwich {
 		foreach ( $hashes as $key => $hash ) {
 			$columnStyles = str_replace( '%' . ( $key + 1 ) . '$s', $hash, $columnStyles );
 		}
-		
-		// Remove stray jQuery sortable classes
-		$html = preg_replace( '/ui-sortable-handle/', '', $html );
 		
 		return array(
 			'content' => (string) $html,
@@ -329,6 +341,11 @@ class GambitPBSandwich {
 		}
 		
 		echo '<style id="pbsandwich_column">' . $styles . '</style>';
+	}
+	
+	public function addSandwichBootstrap( $init ) {
+		$init['body_class'] = 'sandwich';
+		return $init;
 	}
 	
 }
