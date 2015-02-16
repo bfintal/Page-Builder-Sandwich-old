@@ -38,9 +38,7 @@
 		var $ = jQuery;
 		
 		var cols = columns.split('+');
-		var margin = 3.5;
-		var table = '<table class="pbsandwich_column" style="width: 100%; height: auto; border: none;" border="0"><tbody><tr>';
-		var widthOffset = 100 - ( cols.length - 1 ) * margin;
+		var table = '<table class="pbsandwich_column" style="width: 100%; height: auto; border: none;" border="0"><tbody class="row"><tr>';
 		var columnContents = _pbsandwich_columns_formContent( content, cols.length );
 		var columnContent = pbsandwich_column.dummy_content;
 		
@@ -65,14 +63,11 @@
 			
 			// Compute our margins
 			var fraction = e.split('/');
-			var width = parseInt( fraction[0] ) / parseInt( fraction[1] ) * widthOffset;
+			var width = parseInt( fraction[0] ) / parseInt( fraction[1] ) * 100;
+			var col = parseInt( parseInt( fraction[0] ) / parseInt( fraction[1] ) * 12 );
 			
-			var marginStyle = '';
-			if ( i !== cols.length - 1 ) {
-				marginStyle = 'margin-right: ' + margin + '%;';
-			}
-			
-			table += '<td style="width: ' + width + '%; ' + marginStyle + '"><p>' + columnContent + '</p></td>';
+			// the style: width is only used in the backend since the table WON'T allow us to FIX it's width
+			table += '<td class="col-sm-' + col + '" style="width: ' + width + '%;"><p>' + columnContent + '</p></td>';
 		} );
 		
 		table += '</tr></tbody></table>';

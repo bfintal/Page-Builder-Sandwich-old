@@ -1,7 +1,7 @@
 /**
  * Float the columns
  */
-.pbsandwich_column > div {
+.pbsandwich_column > div > div {
 	float: left;
 }
 
@@ -25,7 +25,7 @@
  * Responsive columns, shrink to a single column
  */
 @media (max-width: 768px) {
-	.pbsandwich_column > div {
+	.pbsandwich_column > div > div {
 		margin-right: 0 !important;
 		float: none !important;
 		width: auto !important;
