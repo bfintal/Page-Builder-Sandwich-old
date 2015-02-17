@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 0.2
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,11 @@ Report bugs and help out in the code from the [Github repository](https://github
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.3 =
+
+* Fixed bug where images were being removed inside columns
+* Removed page & post type restriction
 
 = 0.2 =
 
