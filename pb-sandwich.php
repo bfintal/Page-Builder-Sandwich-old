@@ -70,7 +70,8 @@ class GambitPBSandwich {
 	 * @return	void
 	 */
 	public function columnButtonIcon() {
-	    wp_enqueue_style( 'pbsandwich-admin', plugins_url( 'css/column-admin.css', __FILE__ ) );
+	    wp_enqueue_style( 'pbsandwich-admin', plugins_url( 'css/admin.css', __FILE__ ) );
+	    wp_enqueue_script( 'pbsandwich-admin', plugins_url( 'js/min/admin-min.js', __FILE__ ), array( 'jquery' ), PBS_VERSION );
 	}
 	
 	
@@ -81,7 +82,7 @@ class GambitPBSandwich {
 	 * @return	An array of TinyMCE plugins
 	 */
 	public function addTinyMCEPlugin( $pluginArray ) {
-	    $pluginArray['pbsandwich_column'] = plugins_url( 'js/column-button.js', __FILE__ );
+	    $pluginArray['pbsandwich'] = plugins_url( 'js/min/editor-min.js', __FILE__ );
 	    return $pluginArray;
 	}
 	
@@ -200,7 +201,7 @@ class GambitPBSandwich {
 		if ( ! function_exists( 'file_get_html' ) ) {
 			require_once( 'inc/simple_html_dom.php' );
 		}
-		wp_enqueue_style( 'pbsandwich_columns', plugins_url( 'css/columns.css', __FILE__ ) );
+		wp_enqueue_style( 'pbsandwich-frontend', plugins_url( 'css/frontend.css', __FILE__ ) );
 		
 		$columnStyles = '';
 	
