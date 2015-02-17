@@ -326,7 +326,7 @@
 			// Remove blank paragraphs in columns which have other contents
 			if ( $(this).children().length > 1 ) {
 				$(this).find('> p').each(function() {
-					if ( $(this).text().trim() === '' ) {
+					if ( $(this).html().trim() === '' ) {
 						$(this).remove();
 					}
 				});
