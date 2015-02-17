@@ -37,13 +37,41 @@ The goal is to create a page builder that:
 = What can you do with it =
 
 * Create editable, nestable columns
+* Edit text and content using the TinyMCE visual editor like how you normally would
+* Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
 * Drag and drop TinyMCE views into other locations. Works with:
-  * WordPress image galleries,
-  * Jetpack video embeds,
-  * Jetpack audio embeds,
-  * Shortcake
-* Clone shortcodes & columns
-* Create different shortcodes (no shortcodes are included yet, contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/) )
+	* WordPress:
+		* Image galleries
+		* Videos
+		* Video playlists
+		* Audio
+		* Audio playlists
+	* Jetpack:
+	  	* Video embeds *via Add Media > Insert From URL*
+			* Dailymotion embed
+			* Flickr videos
+			* TED talks embed
+			* Vimeo embed
+			* Vine embed
+			* Youtube embed
+		* Audio embeds *via Add Media > Insert From URL*
+			* Rdio embeds
+			* SoundCloud embeds
+			* Spotify embeds
+		* Other embeds *via Add Media > Insert From URL*
+			* Github Gists
+	* All shortcake post elements
+* Clone shortcodes/embeds & columns
+* Create different shortcodes
+* Working undo
+
+= Shortcodes =
+
+Aside from the shortcodes and embeds listed above, we've included other shortcodes as well:
+
+* *Still being created*
+
+*Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
 
 = Contributing =
 
