@@ -14,6 +14,10 @@
 // Used for tracking the version used
 defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.3' );
 
+// Used for file includes
+defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
+
+require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
 
 /**
  * PB Sandwich Class
@@ -37,6 +41,7 @@ class GambitPBSandwich {
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendStyles' ) );
+		
 	}
 
 	
