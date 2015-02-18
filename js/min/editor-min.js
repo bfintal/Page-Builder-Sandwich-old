@@ -215,22 +215,37 @@ function fixShortcakeDragging( editor ) {
 		}
 	})
 	
+	
+	/**
+	 * All these below are weird hacky stuff that was written via trial and error
+	 * These do/fix:
+	 *	- clicking on a view should do nothing (sometimes, clicking starts a drag)
+	 * 	- click + drag on a view should drag it
+	 * 	- mouseup after a drag should release the drag (mouse up after a drag somehow doesn't work)
+	 */
+	.on('click', '.wpview-wrap', function(e) {
+		if ( $(this).is('[data-check-move="1"]') ) {
+			$(this).trigger('mouseup');
+		}
+	})
 	.on('mousemove', '.wpview-wrap', function(e) {
 		if ( $(this).is('[data-check-move="1"]') ) {
 			$(this).removeAttr('data-check-move');
 		}
 	})
-	
-	.on('mouseup', '.wpview-wrap', function(e) {
-		if ( $(this).is('[data-check-move="1"]') ) {
-			$(this).removeAttr('data-check-move');
-			$(this).trigger('mousemove').trigger('mouseup');
+	.on('mouseup', '.wpview-wrap', function( e, stopRecurse ) {
+		if ( stopRecurse ) {
+			return false;
 		}
+		var $this = $(this);
+		setTimeout(function() {
+			$this.trigger('mousemove').trigger('mouseup', [ e, true ]);
+		}, 100);
 	})
-	
 	.on('mousedown', '.wpview-wrap', function(e) {
 		$(this).attr('data-check-move', '1');
 	});
+	
 }
 
 
