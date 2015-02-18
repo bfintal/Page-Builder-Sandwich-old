@@ -198,6 +198,22 @@ function fixShortcakeDragging( editor ) {
 			
 		}
 	})
+
+
+	/**
+	 * Fixes the bug in Firefox when a view with an iframe is clicked, it
+	 * always gets dragged
+	 */
+	.on('mousedown', '.wpview-wrap', function(e) {
+		if ( $(this).find('iframe').length > 0 ) {
+			
+			e.stopPropagation();
+			if ( $(this).is('[data-check-move="1"]') ) {
+				$(this).trigger('mouseup');
+			}
+			
+		}
+	})
 	
 	
 	/**
