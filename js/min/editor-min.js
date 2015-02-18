@@ -223,6 +223,11 @@ function fixShortcakeDragging( editor ) {
 	.on('mousedown', '.wpview-wrap', function(e) {
 		if ( $(this).find('iframe').length > 0 ) {
 			
+			// normal behavior if the toolbar is clicked
+			if ( $(e.target).parents('.toolbar').length > 0 ) {
+				return;
+			}
+			
 			e.stopPropagation();
 			if ( $(this).is('[data-check-move="1"]') ) {
 				$(this).trigger('mouseup');
