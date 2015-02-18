@@ -3,7 +3,7 @@
 * Plugin Name: Page Builder Sandwich
 * Plugin URI: https://github.com/gambitph/Page-Builder-Sandwich
 * Description: The native visual editor page builder. Empower your visual editor with drag and drop & column capabilities.
-* Version: 0.3
+* Version: 0.4-dev
 * Author: Benjamin Intal - Gambit Technologies Inc
 * Author URI: http://gambit.ph
 * License: GPL2
@@ -12,7 +12,7 @@
 */
 
 // Used for tracking the version used
-defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.3' );
+defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.4-dev' );
 
 // Used for file includes
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
@@ -41,7 +41,7 @@ class GambitPBSandwich {
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendStyles' ) );
-		
+		add_action( 'init', array( $this, 'loadShortcake' ) );
 	}
 
 	
@@ -111,6 +111,18 @@ class GambitPBSandwich {
 	 */
 	public function loadjQuerySortable() {
 		wp_enqueue_script( 'jquery-ui-sortable' );
+	}
+	
+	
+	/**
+	 * Loads Shortcake UI if not available
+	 *
+	 * @return	void
+	 */
+	public function loadShortcake() {
+		if ( ! class_exists( 'Shortcode_UI' ) ) {
+			require_once( PBS_PATH . 'inc/shortcake/shortcode-ui.php' );
+		}
 	}
 	
 	
