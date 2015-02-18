@@ -103,6 +103,7 @@ body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
  */
 body#tinymce.wp-editor .jetpack-video-wrapper iframe {
   max-width: 100%;
+  width: 100%;
   height: 518px; }
 
 body#tinymce.wp-editor .pbsandwich_column .jetpack-video-wrapper iframe {
