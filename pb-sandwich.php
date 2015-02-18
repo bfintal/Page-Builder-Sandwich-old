@@ -120,6 +120,17 @@ class GambitPBSandwich {
 	 * @return	void
 	 */
 	public function loadShortcake() {
+		// Don't do anything when we're activating a plugin to prevent errors
+		// on redeclaring Shortcake classes
+		if ( is_admin() ) {
+			if ( ! empty( $_GET['action'] ) && ! empty( $_GET['plugin'] ) ) {
+			    if ( $_GET['action'] == 'activate' ) {
+			        return;
+			    }
+			}
+		}
+		
+		// Include Shortcake if we don't have it yet
 		if ( ! class_exists( 'Shortcode_UI' ) ) {
 			require_once( PBS_PATH . 'inc/shortcake/shortcode-ui.php' );
 		}
