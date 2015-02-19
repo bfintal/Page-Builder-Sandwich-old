@@ -7,17 +7,7 @@
 add_action( 'init', 'sandwich_jetpack_contact_form', 11 );
 
 function sandwich_jetpack_contact_form() {
-	
-	// Make sure Jetpack is activated
-	if ( ! class_exists( 'Jetpack' ) ) {
-		return;
-	}
-	
-	// Make sure the contact form module is turned on
-	if ( ! Jetpack::is_module_active( 'contact-form' ) ) {
-		return;
-	}
-	
+
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
 		return;
@@ -37,4 +27,23 @@ function sandwich_jetpack_contact_form() {
 			),
         )
     );
+	
+	// Make sure Jetpack is activated
+	if ( ! class_exists( 'Jetpack' ) ) {
+		add_action( 'print_media_templates', 'sandwich_jetpack_contact_form_disabled' );
+		return;
+	}
+
+	// Make sure the contact form module is turned on
+	if ( ! Jetpack::is_module_active( 'contact-form' ) ) {
+		add_action( 'print_media_templates', 'sandwich_jetpack_contact_form_disabled' );
+		return;
+	}
+	
+	
+}
+
+
+function sandwich_jetpack_contact_form_disabled() {
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'contact-form', "Requires Jetpack's Contact Form module" );
 }

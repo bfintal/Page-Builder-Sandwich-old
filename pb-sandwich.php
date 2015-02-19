@@ -372,5 +372,30 @@ class GambitPBSandwich {
 		return $init;
 	}
 	
+	public static function printDisabledShortcakeStlyes( $shortcode, $label ) {
+		?>
+		<style>
+		.add-shortcode-list .shortcode-list-item[data-shortcode="<?php echo $shortcode ?>"]:after {
+			content: "<?php echo addslashes( $label ) ?>";
+			top: 50%;
+			position: absolute;
+			text-align: center;
+			transform: translateY(-50%);
+			background: rgba(255,255,255,.8);
+			padding: .3em .5em;
+			font-style: italic;
+			left: 0;
+		}
+		.add-shortcode-list .shortcode-list-item[data-shortcode="<?php echo $shortcode ?>"] {
+			box-shadow: none;
+			pointer-events: none;
+		}
+		.add-shortcode-list .shortcode-list-item[data-shortcode="<?php echo $shortcode ?>"] > * {
+			opacity: .3;
+		}
+		</style>
+		<?php
+	}
+	
 }
 new GambitPBSandwich();
