@@ -18,6 +18,7 @@ defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.4' );
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
 
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
+require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
 
 /**
  * PB Sandwich Class
