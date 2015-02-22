@@ -75,6 +75,7 @@ We support the following Jetpack shortcodes. To see these, install & activate Je
 
 Aside from the shortcodes and embeds listed above, we've included other shortcodes as well:
 
+* Toggle
 * *Still being created*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
