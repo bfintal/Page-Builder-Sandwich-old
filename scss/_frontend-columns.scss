@@ -1,4 +1,13 @@
 /**
+ * Fix box-sizing widths
+ */
+.pbsandwich_column,
+.pbsandwich_column > div,
+.pbsandwich_column > div > div {
+	box-sizing: border-box;
+}
+
+/**
  * Float the columns
  */
 .pbsandwich_column > div > div {
