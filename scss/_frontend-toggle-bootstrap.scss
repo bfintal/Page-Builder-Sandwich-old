@@ -1,0 +1,27 @@
+.sandwich .fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear; }
+  .sandwich .fade.in {
+    opacity: 1; }
+.sandwich .collapse {
+  display: none;
+  visibility: hidden; }
+  .sandwich .collapse.in {
+    display: block;
+    visibility: visible; }
+.sandwich tr.collapse.in {
+  display: table-row; }
+.sandwich tbody.collapse.in {
+  display: table-row-group; }
+.sandwich .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease; }
