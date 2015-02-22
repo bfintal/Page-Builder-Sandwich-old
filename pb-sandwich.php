@@ -67,6 +67,7 @@ class GambitPBSandwich {
 	}
 	
 	public function loadFrontendScripts() {
+		wp_enqueue_style( 'dashicons' );
 	    wp_enqueue_style( 'pbsandwich', plugins_url( 'css/frontend.css', __FILE__ ), array(), PBS_VERSION );
 	    wp_enqueue_script( 'pbsandwich', plugins_url( 'js/min/frontend-min.js', __FILE__ ), array( 'jquery' ), PBS_VERSION );
 	}

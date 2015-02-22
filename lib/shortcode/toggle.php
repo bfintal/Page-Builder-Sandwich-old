@@ -55,9 +55,13 @@ function sandwich_toggle_shortcode( $attr, $content ) {
 	
 	?>
 	
-	<div class='sandwich'>
-		<a data-toggle="collapse" href="#<?php echo esc_attr( $id ) ?>" aria-expanded="false" aria-controls="<?php echo esc_attr( $id ) ?>"><?php echo esc_html( $attr['title'] ) ?></a>
-		<div class="collapse" id="<?php echo esc_attr( $id ) ?>"><?php echo do_shortcode( $content ) ?></div>
+	<div class="sandwich">
+		<div class="panel panel-default toggle">
+			<div class="panel-body">
+				<a data-toggle="collapse" href="#<?php echo esc_attr( $id ) ?>" aria-expanded="false" aria-controls="<?php echo esc_attr( $id ) ?>"><?php echo esc_html( $attr['title'] ) ?></a>
+				<div class="collapse" id="<?php echo esc_attr( $id ) ?>"><?php echo wpautop( do_shortcode( $content ) ) ?></div>
+			</div>
+		</div>
 	</div>
 	
 	<?php
