@@ -1,4 +1,8 @@
 /**
+ * Styles for the main page builder core
+ */
+
+/**
  * Drag placeholder
  */
 body#tinymce.wp-editor .sortable-placeholder {
@@ -72,23 +76,3 @@ body#tinymce.wp-editor .toolbar .dashicons {
 	position: relative;
 	cursor: pointer !important;
 }
-
-
-/**
- * Some of our shortcodes use bootstrap, use them also in the editor to get a nice display
- */
-body#tinymce.wp-editor .sandwich {
-
-	// Core variables and mixins
-	@import "bootstrap/variables";
-	@import "bootstrap/mixins";
-	
-	// Used by toggle shortcode
-	@import "bootstrap/panels";
-	
-}
-
-
-@import "editor-columns";
-@import "editor-jetpack";
-@import "frontend-toggle";
