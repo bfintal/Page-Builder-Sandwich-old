@@ -81,4 +81,6 @@ You'll get this as your output:
 # Contributing
 
 * [Report bugs](https://github.com/gambitph/Page-Builder-Sandwich/issues) that you may encounter, this is quite new so I'm betting there're some
-* We're looking to add common shortcodes via Shortcake to be included in the page builder. [Pull requests on new shortcodes](https://github.com/gambitph/Page-Builder-Sandwich/pulls) are very welcome.
+* We're looking to add common shortcodes via Shortcake to be included in the page builder. You can see our guides on the developer resources.
+
+[View Developer Resources](https://github.com/gambitph/Page-Builder-Sandwich/wiki)
