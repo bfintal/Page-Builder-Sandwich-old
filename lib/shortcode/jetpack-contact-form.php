@@ -16,15 +16,9 @@ function sandwich_jetpack_contact_form() {
 	shortcode_ui_register_for_shortcode(
         'contact-form',
         array(
-            'label' => __( 'Jetpack' , 'jetpack' ) . ' ' . _x( 'Contact Form', 'Module Name', 'jetpack' ),
+            'label' => __( 'Jetpack' , 'pbsandwich' ) . ' ' . __( 'Contact Form', 'pbsandwich' ),
             'listItemImage' => 'dashicons-email-alt',
-            'attrs' => array(
-                array(
-                    'label' => '',
-                    'attr'  => 'content',
-                    'type'  => 'textarea',
-                ),
-			),
+            'attrs' => array(),
         )
     );
 	
@@ -40,10 +34,9 @@ function sandwich_jetpack_contact_form() {
 		return;
 	}
 	
-	
 }
 
 
 function sandwich_jetpack_contact_form_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'contact-form', "Requires Jetpack's Contact Form module" );
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'contact-form', __( "Requires Jetpack's Contact Form module", 'pbsandwich' ) );
 }
