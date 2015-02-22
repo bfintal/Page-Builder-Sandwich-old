@@ -198,27 +198,6 @@ function fixShortcakeDragging( editor ) {
 			
 		}
 	})
-
-
-	/**
-	 * Fixes the bug in Firefox when a view with an iframe is clicked, it
-	 * always gets dragged
-	 */
-	.on('mousedown', '.wpview-wrap', function(e) {
-		if ( $(this).find('iframe').length > 0 ) {
-			
-			// normal behavior if the toolbar is clicked
-			if ( $(e.target).parents('.toolbar').length > 0 ) {
-				return;
-			}
-			
-			e.stopPropagation();
-			if ( $(this).is('[data-check-move="1"]') ) {
-				$(this).trigger('mouseup');
-			}
-			
-		}
-	})
 	
 	
 	/**
@@ -412,23 +391,44 @@ editor.on('init', function(e) {
 	var $ = jQuery;
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
-		if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
-			if ( $(e.target).parents('.wpview-wrap:eq(0)').find('.clone').length === 0 ) {
-				$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( $(e.target).parents('.wpview-wrap:eq(0)').find('.toolbar > .dashicons:eq(-1)') );
+		var wrapper = null;
+		if ( $(e.target).is('.wpview-wrap') ) {
+			wrapper = $(e.target);
+		} else if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
+			wrapper = $(e.target).parents('.wpview-wrap:eq(0)');
+		}
+		
+		if ( wrapper === null ) {
+			return;
+		}
+		
+		if ( wrapper.find('.clone').length === 0 ) {
+			$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+		
+		if ( $(e.target).is('.dashicons.clone') ) {
+			// cancelSortable( editor );
+			preUpdateSortable( editor );
+			var newElement = wrapper.clone();
+			newElement.insertAfter( wrapper ).trigger('click');
+			updateSortable( editor );
+
+			// Cleanup to make views with iframes display again
+			if ( newElement.find('iframe').length > 0 ) {
+				editor.execCommand( 'mceCleanup' );
 			}
 		}
 		
-		if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
-			if ( $(e.target).is('.dashicons.clone') ) {
-				// cancelSortable( editor );
-				preUpdateSortable( editor );
-				var newElement = $(e.target).parents('.wpview-wrap:eq(0)').clone();
-				newElement.insertAfter( $(e.target).parents('.wpview-wrap:eq(0)') ).trigger('click');
-				updateSortable( editor );
-	
-				// Cleanup to make views with iframes display again
-				if ( newElement.find('iframe').length > 0 ) {
-					editor.execCommand( 'mceCleanup' );
+		
+		/**
+		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
+		 * always gets dragged
+		 */
+		if ( ! $(e.target).is('.toolbar .dashicons') && ! $(e.target).parents('.toolbar').length > 0 ) {
+			if ( wrapper.find('iframe').length > 0 ) {
+				e.stopPropagation();
+				if ( $(this).is('[data-check-move="1"]') ) {
+					$(this).trigger('mouseup');
 				}
 			}
 		}
