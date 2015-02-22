@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Shortcodeless Columns\n"
-"POT-Creation-Date: 2015-02-12 22:20+0800\n"
-"PO-Revision-Date: 2015-02-12 22:20+0800\n"
+"POT-Creation-Date: 2015-02-22 16:53+0800\n"
+"PO-Revision-Date: 2015-02-22 16:54+0800\n"
 "Last-Translator: Benjamin Intal <bf.intal@gambit.ph>\n"
 "Language-Team: Gambit <bf.intal@gambit.ph>\n"
 "Language: en_US\n"
@@ -14,65 +14,121 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../pb-sandwich.php:131
+#: ../inc/shortcake/inc/fields/class-field-attachment.php:47
+#: ../inc/shortcake/inc/fields/class-field-attachment.php:48
+msgid "Select Attachment"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-contact-form.php:19
+#: ../lib/shortcode/jetpack-googlemaps.php:19
+#: ../lib/shortcode/jetpack-googlemaps.php:36
+msgid "Jetpack"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-contact-form.php:19
+msgid "Contact Form"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-contact-form.php:41
+msgid "Requires Jetpack's Contact Form module"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:19
+#: ../lib/shortcode/jetpack-googlemaps.php:36
+msgid "Google Maps"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:40
+msgid "IFrame embed code"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:43
+msgid "Enter embed code generated from Google Maps."
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:46
+msgid "Height"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:49
+msgid "Enter height in pixels"
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:97
+msgid "Requires Jetpack's shortcode embed module"
+msgstr ""
+
+#: ../lib/shortcode/toggle.php:21
+msgid "Toggle"
+msgstr ""
+
+#: ../lib/shortcode/toggle.php:25
+msgid "Title"
+msgstr ""
+
+#: ../lib/shortcode/toggle.php:30
+msgid "Toggled Content"
+msgstr ""
+
+#: ../pb-sandwich.php:165
 msgid "Column text"
 msgstr ""
 
-#: ../pb-sandwich.php:132
+#: ../pb-sandwich.php:166
 msgid "Columns"
 msgstr ""
 
-#: ../pb-sandwich.php:133
+#: ../pb-sandwich.php:167
 msgid ""
 "Enter a composition here of column ratios separated by spaces.<br>Make sure "
 "the ratios sum up to 1.<br>For example: "
 msgstr ""
 
-#: ../pb-sandwich.php:134
+#: ../pb-sandwich.php:168
 msgid "Custom Columns"
 msgstr ""
 
-#: ../pb-sandwich.php:135
+#: ../pb-sandwich.php:169
 #, php-format
 msgid "%s Columns"
 msgstr ""
 
-#: ../pb-sandwich.php:136
+#: ../pb-sandwich.php:170
 msgid "Delete"
 msgstr ""
 
-#: ../pb-sandwich.php:137
+#: ../pb-sandwich.php:171
 msgid "Edit"
 msgstr ""
 
-#: ../pb-sandwich.php:138
+#: ../pb-sandwich.php:172
 msgid "Change Column"
 msgstr ""
 
-#: ../pb-sandwich.php:139
+#: ../pb-sandwich.php:173
 msgid "Clone"
 msgstr ""
 
-#: ../pb-sandwich.php:140
+#: ../pb-sandwich.php:174
 msgid "Change Columns"
 msgstr ""
 
-#: ../pb-sandwich.php:141
+#: ../pb-sandwich.php:175
 msgid "Cancel"
 msgstr ""
 
-#: ../pb-sandwich.php:142
+#: ../pb-sandwich.php:176
 msgid "Preset"
 msgstr ""
 
-#: ../pb-sandwich.php:143
+#: ../pb-sandwich.php:177
 msgid "You can change the number of columns below:"
 msgstr ""
 
-#: ../pb-sandwich.php:144
+#: ../pb-sandwich.php:178
 msgid "Use custom"
 msgstr ""
 
-#: ../pb-sandwich.php:145
+#: ../pb-sandwich.php:179
 msgid "Custom"
 msgstr ""
