@@ -1,0 +1,19 @@
+/**
+ * Toggle shortcode
+ */
+.sandwich .toggle {
+	[data-toggle="collapse"] {
+		display: block;
+		text-decoration: none;
+	}
+	[data-toggle="collapse"].collapsed:before,
+	[data-toggle="collapse"][aria-expanded="false"]:before {
+		content: "\f132";
+	}
+	[data-toggle="collapse"]:before {
+		content: "\f460";
+		font-family: 'Dashicons';
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+}
