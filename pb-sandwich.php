@@ -17,9 +17,11 @@ defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.4' );
 // Used for file includes
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
 
+require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
 require_once( PBS_PATH . 'lib/shortcode/toggle.php' );
+
 
 /**
  * PB Sandwich Class
