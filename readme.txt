@@ -81,6 +81,8 @@ Aside from the shortcodes and embeds listed above, we've included other shortcod
 
 = Contributing =
 
+**We're looking for help creating shortcodes to be included in PB Sandwich. Check out the [Developer Resources](https://github.com/gambitph/Page-Builder-Sandwich/wiki) for more information.**
+
 Report bugs and help out in the code from the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)
 
 == Installation ==
