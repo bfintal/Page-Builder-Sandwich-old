@@ -20,7 +20,7 @@ Sure you can use **shortcodes columns**, but are not user friendly with all thos
 
 Existing **Page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows. Page builders have a ton of code in them for creating brand new interfaces, but more code means more stuff which can go wrong in the future.
 
-*Check out the screenshots to see how Shortcodeless Columns works.*
+*Check out the screenshots to see how PB Sandwich works.*
 
 = What it does =
 
@@ -31,7 +31,6 @@ Extends your visual editor to include page builder capabilities
 The goal is to create a page builder that:
 
 * Feels and acts *native* and part of WordPress
-* Leaves *most* of the content working fine event if the plugin is deactivated or deleted
 * Lazy, no settings pages specific for the plugin
 
 = What can you do with it =
@@ -102,8 +101,21 @@ Report bugs and help out in the code from the [Github repository](https://github
 
 == Frequently Asked Questions ==
 
-* [Page Builder Sandwich GitHub Repository](https://github.com/gambitph/Page-Builder-Sandwich/)
-* [Issue Tracker](https://github.com/gambitph/Page-Builder-Sandwich/issues)
+= WTF, I hate tables! Why are tables used to display columns? =
+
+*Be calm!* Tables are **only** used in the backend / visual editor. In the front end, those tables will be **gone** and will be replaced by good ol' clean divs that use Bootstrap's grid to display your content.
+
+Why did we do it this way? Because table editing is handled pretty well by TinyMCE. Instead of re-inventing the wheel, we simply used what TinyMCE already does well and extended that into what we needed.
+
+**So once again, I repeat, no tables are present in the front end.**
+
+= Where can I report bugs? =
+
+You can do so in our [Issue Tracker](https://github.com/gambitph/Page-Builder-Sandwich/issues)
+
+= I want to contribute! =
+
+Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/gambitph/Page-Builder-Sandwich/), star it, do a pull request, we're grateful for any help
 
 == Upgrade Notice ==
 

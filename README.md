@@ -11,7 +11,6 @@ Existing **Page builders** are also great, but we didn't want to hijack the cont
 
 The goal is to create a page builder that
 * Feels and acts *native* and part of WordPress
-* Leaves *most* of the content working fine event if the plugin is deactivated or deleted
 * Lazy, no settings pages specific for the plugin
 
 # What you can do with it
@@ -52,6 +51,14 @@ Aside from the shortcodes and embeds listed above, we've included other shortcod
 * *Still being created*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
+
+#### WTF, I hate tables! Why are tables used to display columns?
+
+*Be calm!* Tables are **only** used in the backend / visual editor. In the front end, those tables will be **gone** and will be replaced by good ol' clean divs that use Bootstrap's grid to display your content.
+
+Why did we do it this way? Because table editing is handled pretty well by TinyMCE. Instead of re-inventing the wheel, we simply used what TinyMCE already does well and extended that into what we needed.
+
+**So once again, I repeat, no tables are present in the front end.**
 
 # Preview
 
