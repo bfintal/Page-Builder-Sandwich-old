@@ -16,4 +16,7 @@
 		vertical-align: middle;
 		margin-right: 10px;
 	}
+	.panel-body > div > p:last-of-type {
+		margin-bottom: 0;
+	}
 }

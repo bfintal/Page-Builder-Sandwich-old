@@ -994,3 +994,5 @@
   font-family: 'Dashicons';
   vertical-align: middle;
   margin-right: 10px; }
+.sandwich .toggle .panel-body > div > p:last-of-type {
+  margin-bottom: 0; }
