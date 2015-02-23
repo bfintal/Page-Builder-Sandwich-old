@@ -36,6 +36,7 @@ require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-display-wordpress-posts.p
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-facebook-like-box.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-gravatar-profile.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-rss-links.php' );
+require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-subscriptions.php' );
 
 
 /**
