@@ -27,6 +27,8 @@ require_once( PBS_PATH . 'lib/shortcode/widget-categories.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-custom-menu.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-meta.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-pages.php' );
+require_once( PBS_PATH . 'lib/shortcode/widget-recent-comments.php' );
+require_once( PBS_PATH . 'lib/shortcode/widget-recent-posts.php' );
 
 
 /**
