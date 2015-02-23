@@ -1,8 +1,17 @@
 <?php
 
-/**
- * Creates the view for Jetpack's contact form
- */
+$numberOfColumns = array();
+for ( $i = 1; $i <= 6; $i++ ) {
+	$numberOfColumns[ $i ] = $i;
+}
+
+$displayOrder['author'] = __( 'Author', 'pbsandwich' );
+$displayOrder['date'] = __( 'Post Date', 'pbsandwich' );
+$displayOrder['title'] = __( 'Post Title', 'pbsandwich' );
+$displayOrder['rand'] = __( 'Randomized', 'pbsandwich' );
+
+$displayDir['ASC'] = __( 'Ascending', 'pbsandwich' );
+$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
 
 add_action( 'init', 'sandwich_jetpack_portfolio', 11 );
 
@@ -20,58 +29,62 @@ function sandwich_jetpack_portfolio() {
             'listItemImage' => 'dashicons-portfolio',
             'attrs' => array(
                 array(
-                    'label' => 'Display Portfolio Types',
+                    'label' => __( 'Display Portfolio Types', 'pbsandwich' ),
                     'attr'  => 'display_types',
                     'type'  => 'checkbox',
                 ),
                 array(
-                    'label' => 'Display Portfolio Tags',
+                    'label' => __( 'Display Portfolio Tags', 'pbsandwich' ),
                     'attr'  => 'display_tags',
                     'type'  => 'checkbox',
                 ),
                 array(
-                    'label' => 'Display Portfolio Tags',
+                    'label' => __( 'Display Portfolio Content', 'pbsandwich' ),
                     'attr'  => 'display_content',
                     'type'  => 'checkbox',
                 ),
                 array(
-                    'label' => 'Entries to display',
+                    'label' => __( 'Entry Types to display', 'pbsandwich' ),
                     'attr'  => 'include_type',
                     'type'  => 'text',
-					'description' => 'Enter slug names of entries to display. If none entered, defaults to displaying all entries',
+					'description' => __( 'Display Portfolio Types', 'pbsandwich' )'Enter slug names of entries to display. If none entered, defaults to displaying all entries',
                 ),
                 array(
-                    'label' => 'Tags to display',
+                    'label' => __( 'Tags to display', 'pbsandwich' ),
                     'attr'  => 'include_tag',
                     'type'  => 'text',
-					'description' => 'Enter slug names of tags to display. If none entered, defaults to displaying all tags',
+					'description' => __( 'Enter slug names of tags to display. If none entered, defaults to displaying all tags', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => 'Columns to display',
+                    'label' => __( 'Columns to display', 'pbsandwich' ),
                     'attr'  => 'columns',
-                    'type'  => 'text',
-					'description' => 'Enter slug names of entries to display. If none entered, defaults to displaying all entries',
+                    'type'  => 'select',
+					'description' => __( 'Enter slug names of entries to display. If none entered, defaults to displaying all entries', 'pbsandwich' ),
+					'options' => $numberOfColumns,
+					'default' => '2',
                 ),
                 array(
-                    'label' => 'Entries to display',
+                    'label' => __( 'Amount of posts to display', 'pbsandwich' ),
                     'attr'  => 'showposts',
                     'type'  => 'text',
-					'description' => 'Enter the number of entries to display. If none entered, defaults to 5',
+					'description' => __( 'Enter the number of entries to display. If none entered, defaults to 5', 'pbsandwich' ),
 					'value' => '5',
                 ),
                 array(
-                    'label' => 'Display order',
+                    'label' => __( 'Display Order', 'pbsandwich' ),
                     'attr'  => 'order',
-                    'type'  => 'text',
-					'description' => 'Enter the sorting direction. Use ASC or DESC only',
-					'value' => 'DESC',
+                    'type'  => 'select',
+					'description' => __( 'Choose sorting direction. Ascending takes your latest post to the last page, while Descending displays your latest post first.', 'pbsandwich' ),
+					'options' => $displayDir,
+					'default' => 'DESC',
                 ),
                 array(
-                    'label' => 'Order Criteria',
+                    'label' => __( 'Display Order criteria', 'pbsandwich' ),
                     'attr'  => 'orderby',
-                    'type'  => 'text',
-					'description' => 'Enter the criteria of entries to be sorted by. Choose from date, author, title, rand',
-					'value' => 'date',
+                    'type'  => 'select',
+					'description' => __( 'Choose the criteria of entries to be sorted by.', 'pbsandwich' ),
+					'options' => $displayOrder,
+					'default' => 'date',
                 ),
 			),
         )
@@ -89,12 +102,10 @@ function sandwich_jetpack_portfolio() {
 		return;
 	}
 	
-	
 }
 
-
 function sandwich_jetpack_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'portfolio', "Requires Jetpack plugin and its Portfolio module" );
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'portfolio', "Requires Jetpack plugin and its Custom Content Type module" );
 }
 
 function sandwich_jetpack_portfolio_disabled() {
