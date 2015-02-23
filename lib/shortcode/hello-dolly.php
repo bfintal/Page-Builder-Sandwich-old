@@ -16,7 +16,7 @@ function sandwich_hello_dolly() {
 	add_shortcode( 'pbs_hello_dolly', 'sandwich_hello_dolly_shortcode' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	

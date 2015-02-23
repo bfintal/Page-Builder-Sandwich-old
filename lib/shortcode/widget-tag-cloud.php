@@ -11,7 +11,7 @@ function sandwich_tag_cloud_widget() {
 	add_shortcode( 'pbs_tag_cloud_widget', 'sandwich_tag_cloud_widget_shortcode' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	

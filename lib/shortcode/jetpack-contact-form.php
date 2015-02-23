@@ -9,7 +9,7 @@ add_action( 'init', 'sandwich_jetpack_contact_form', 11 );
 function sandwich_jetpack_contact_form() {
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	

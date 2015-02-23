@@ -11,7 +11,7 @@ function sandwich_jetpack_gravatar_profile_widget() {
 	add_shortcode( 'pbs_jetpack_gravatar_profile_widget', 'sandwich_jetpack_gravatar_profile_widget_shortcode' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	

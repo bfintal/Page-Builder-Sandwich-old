@@ -11,7 +11,7 @@ function sandwich_categories_widget() {
 	add_shortcode( 'pbs_categories_widget', 'sandwich_categories_widget_shortcode' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	

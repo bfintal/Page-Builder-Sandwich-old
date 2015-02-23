@@ -11,7 +11,7 @@ function sandwich_calendar_widget() {
 	add_shortcode( 'pbs_calendar_widget', 'sandwich_calendar_widget_shortcode' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	
