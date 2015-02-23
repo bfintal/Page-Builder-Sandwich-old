@@ -11,3 +11,8 @@
 [data-shortcode="googlemaps"] {
 	display: none;
 }
+
+.shortcode-list-item .dashicons-wordpress.jetpack-logo:before {
+	font-family: 'jetpack';
+	content: '\f102';
+}
