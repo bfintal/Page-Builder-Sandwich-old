@@ -47,7 +47,7 @@ function sandwich_jetpack_portfolio() {
                     'label' => __( 'Entry Types to display', 'pbsandwich' ),
                     'attr' => 'include_type',
                     'type' => 'text',
-					'description' => __( 'Display Portfolio Types', 'pbsandwich' )'Enter slug names of entries to display. If none entered, defaults to displaying all entries',
+					'description' => __( 'Enter slug names of entries to display. If none entered, defaults to displaying all entries', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Tags to display', 'pbsandwich' ),
