@@ -25,6 +25,8 @@ require_once( PBS_PATH . 'lib/shortcode/widget-archives.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-calendar.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-categories.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-custom-menu.php' );
+require_once( PBS_PATH . 'lib/shortcode/widget-meta.php' );
+require_once( PBS_PATH . 'lib/shortcode/widget-pages.php' );
 
 
 /**
