@@ -46,9 +46,27 @@ The goal is to create a page builder that
 
 #### Shortcodes
 
-Aside from the shortcodes and embeds listed above, we've included other shortcodes as well:
+We support the following shortcodes & widgets:
 
-* *Still being created*
+* Archives (Widget)
+* Calendar (Widget)
+* Categories (Widget)
+* Contact Form (Jetpack)
+* Custom Menu (Widget)
+* Display WordPress Posts (Jetpack)
+* Facebook Like Box (Jetpack)
+* Gravatar Profile (Jetpack)
+* Meta (Widget)
+* Pages (Widget)
+* Recent Comments (Widget)
+* Recent Posts (Widget)
+* RSS (Widget)
+* RSS Links (Jetpack)
+* Search (Widget)
+* Subscribe (Jetpack)
+* Tag Cloud (Widget)
+* Toggle / FAQ
+* *More being created.*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
 
@@ -61,6 +79,9 @@ Why did we do it this way? Because table editing is handled pretty well by TinyM
 **So once again, I repeat, no tables are present in the front end.**
 
 # Preview
+
+Shortcodes & widgets
+![Shortcodes & Widgets](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/shortcodes.jpg)
 
 Drag and drop stuff
 ![Drag and Drop](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/drag-and-drop.jpg)
