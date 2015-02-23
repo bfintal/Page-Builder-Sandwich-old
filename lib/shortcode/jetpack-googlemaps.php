@@ -94,5 +94,5 @@ function sandwich_googlemaps( $attr, $content = '' ) {
 
 
 function sandwich_jetpack_googlemaps_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'pbs_googlemaps', __( "Requires Jetpack's shortcode embed module", 'pbsandwich' ) );
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'pbs_googlemaps', __( "Requires Jetpack's Shortcode Embed module", 'pbsandwich' ) );
 }
