@@ -45,7 +45,7 @@ class GambitPBSandwich {
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendScripts' ) );
-		add_action( 'init', array( $this, 'loadShortcake' ) );
+		add_action( 'init', array( $this, 'loadShortcake' ), 1 );
 	}
 
 	
