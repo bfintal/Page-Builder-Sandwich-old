@@ -23,8 +23,8 @@ function sandwich_jetpack_subscriptions_widget() {
 	shortcode_ui_register_for_shortcode(
         'pbs_jetpack_subscriptions_widget',
         array(
-            'label' => __( 'Jetpack Widget - Subscriptions', 'pbsandwich' ),
-            'listItemImage' => 'dashicons-wordpress jetpack-logo',
+            'label' => __( 'Jetpack - Subscriptions', 'pbsandwich' ),
+            'listItemImage' => 'dashicons-rss',
             'attrs' => array(
                 array(
                     'label' => __( 'Title', 'pbsandwich' ),
