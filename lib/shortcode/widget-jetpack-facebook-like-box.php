@@ -30,7 +30,7 @@ function sandwich_jetpack_facebook_like_box_widget() {
                     'label' => __( 'Title', 'pbsandwich' ),
                     'attr' => 'title',
                     'type' => 'text',
-					'value' => __( 'Facebook', 'pbsandwich' ),
+					'value' => __( 'Facebook Like Box', 'jetpack' ),
 					'description' => __( 'The title to display for this widget', 'pbsandwich' ),
                 ),
 				array(
@@ -114,7 +114,7 @@ function sandwich_jetpack_facebook_like_box_widget_shortcode( $attr, $content ) 
 	}
 		
 	$attr = wp_parse_args( $attr, array(
-        'title' => __( 'Facebook', 'pbsandwich' ),
+        'title' => __( 'Facebook Like Box', 'jetpack' ),
 		'href' => '',
 		'width' => '200', // Width is overridden to 100% in frontend.css
 		'height' => '432',

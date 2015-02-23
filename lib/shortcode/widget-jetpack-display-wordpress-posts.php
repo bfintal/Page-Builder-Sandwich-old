@@ -30,7 +30,7 @@ function sandwich_jetpack_display_wordpress_posts_widget() {
                     'label' => __( 'Title', 'pbsandwich' ),
                     'attr' => 'title',
                     'type' => 'text',
-					'value' => __( 'Recent Posts', 'pbsandwich' ),
+					'value' => __( 'Display WordPress Posts', 'jetpack' ),
 					'description' => __( 'The title to display for this widget', 'pbsandwich' ),
                 ),
 				array(
@@ -83,7 +83,7 @@ function sandwich_jetpack_display_wordpress_posts_widget_shortcode( $attr, $cont
 	}
 		
 	$attr = wp_parse_args( $attr, array(
-        'title' => __( 'Recent Posts', 'pbsandwich' ),
+        'title' => __( 'Display WordPress Posts', 'jetpack' ),
 		'url' => '',
 		'number_of_posts' => 5,
 		'featured_image' => false,
