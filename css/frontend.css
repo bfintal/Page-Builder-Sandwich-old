@@ -996,3 +996,9 @@
   margin-right: 10px; }
 .sandwich .toggle .panel-body > div > p:last-of-type {
   margin-bottom: 0; }
+
+/**
+ * Widget Titles
+ */
+.sandwich.hide_title .widgettitle {
+  display: none; }
