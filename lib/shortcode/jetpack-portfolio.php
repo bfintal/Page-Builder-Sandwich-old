@@ -18,7 +18,7 @@ function sandwich_jetpack_portfolio() {
 	$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
 
 	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
 	
