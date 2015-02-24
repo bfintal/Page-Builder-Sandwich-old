@@ -8,7 +8,7 @@ Stable tag: 0.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The native visual editor page builder. Empower your visual editor with drag and drop & column capabilities.
+The native visual editor page builder. Empower your visual editor with shortcodes and drag and drop & column capabilities.
 
 == Description ==
 
