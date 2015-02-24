@@ -283,7 +283,12 @@ body#tinymce.wp-editor .sandwich .panel-danger {
  */
 body#tinymce.wp-editor .pbsandwich_column td {
   vertical-align: top;
-  padding: 0 10px; }
+  padding: 0 10px;
+  border: 1px dashed #ccc;
+  border-left: none; }
+
+body#tinymce.wp-editor .pbsandwich_column td:first-of-type {
+  border-left: 1px dashed #ccc; }
 
 /**
  * Aesthetic margins
