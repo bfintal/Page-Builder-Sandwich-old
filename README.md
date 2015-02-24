@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gambitph/Page-Builder-Sandwich.svg?branch=master)](https://travis-ci.org/gambitph/Page-Builder-Sandwich)
+
 # PB Sandwich
 *Turn your typical WordPress visual editor into a super charged visual-editor-page-builder hybrid*
 
