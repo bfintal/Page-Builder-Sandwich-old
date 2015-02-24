@@ -58,6 +58,7 @@ We support the following shortcodes & widgets:
 * Gravatar Profile (Jetpack)
 * Meta (Widget)
 * Pages (Widget)
+* Portfolio (Jetpack)
 * Recent Comments (Widget)
 * Recent Posts (Widget)
 * RSS (Widget)
