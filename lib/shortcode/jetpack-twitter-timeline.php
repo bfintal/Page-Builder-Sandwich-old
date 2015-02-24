@@ -12,7 +12,7 @@ add_action( 'init', 'sandwich_jetpack_twitter_timeline', 11 );
 function sandwich_jetpack_twitter_timeline() {
 	
 	// Register shortcode
-	add_shortcode( 'shortcake-twitter-timeline', 'sandwich_jetpack_twitter_timeline_shortcode' );
+	add_shortcode( 'sandwich-jetpack-twitter-timeline', 'sandwich_jetpack_twitter_timeline_shortcode' );
 
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
@@ -23,7 +23,7 @@ function sandwich_jetpack_twitter_timeline() {
 	shortcode_ui_register_for_shortcode(
         'twitter-timeline',
         array(
-            'label' => __( 'Twitter Timeline', 'pbsandwich' ),
+            'label' => __( 'Jetpack Twitter Timeline', 'pbsandwich' ),
             'listItemImage' => 'dashicons-twitter',
             'attrs' => array(
                 array(
@@ -48,20 +48,26 @@ function sandwich_jetpack_twitter_timeline() {
                     'label' => __( 'Twitter Widget Height', 'pbsandwich' ),
                     'attr' => 'height',
                     'type' => 'text',
-					'value' => '282',
+					'value' => '282px',
 					'description' => __( 'Enter the height of the widget, in pixels or percentage.', 'pbsandwich' ),
                 ),
 			),
         )
     );
+
+	// Make sure Jetpack is activated
+	if ( ! class_exists( 'Jetpack' ) ) {
+		add_action( 'print_media_templates', 'sandwich_jetpack_twitter_timeline_disabled' );
+		return;
+	}
+
+	// Make sure the Jetpack shortcode module is turned on
+	if ( ! Jetpack::is_module_active( 'shortcodes' ) ) {
+		add_action( 'print_media_templates', 'sandwich_jetpack_twitter_timeline_disabled' );		
+		return;
+	}	
 }
 
-// Make sure the Jetpack shortcode module is turned on
-if ( ! Jetpack::is_module_active( 'shortcodes' ) ) {
-	add_action( 'print_media_templates', 'sandwich_jetpack_twitter_timeline_disabled' );		
-	return;
-}
-
-function sandwich_jetpack_googlemaps_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'shortcake-twitter-timeline', __( "Requires Jetpack's shortcode embed module", 'pbsandwich' ) );
+function sandwich_jetpack_twitter_timeline_disabled() {
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'sandwich-jetpack-twitter-timeline', __( "Requires Jetpack and its shortcode embed module", 'pbsandwich' ) );
 }
