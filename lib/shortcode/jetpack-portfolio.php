@@ -90,6 +90,12 @@ function sandwich_jetpack_portfolio() {
 			),
 		)
 	);
+	
+	// Make sure Jetpack is activated
+	if ( ! class_exists( 'Jetpack' ) ) {
+		add_action( 'print_media_templates', 'sandwich_jetpack_portfolio_disabled' );
+		return;
+	}
 
 	// Make sure the contact form module is turned on
 	if ( ! Jetpack::is_module_active( 'custom-content-types' ) ) {
