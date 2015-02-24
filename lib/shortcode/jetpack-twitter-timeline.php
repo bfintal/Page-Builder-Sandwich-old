@@ -8,11 +8,11 @@
 /**
  * Create our shortcode
  */
-add_action( 'init', 'sandwich_twitter_timeline', 11 );
-function sandwich_twitter_timeline() {
+add_action( 'init', 'sandwich_jetpack_twitter_timeline', 11 );
+function sandwich_jetpack_twitter_timeline() {
 	
 	// Register shortcode
-	add_shortcode( 'shortcake-twitter-timeline', 'sandwich_twitter_timeline_shortcode' );
+	add_shortcode( 'shortcake-twitter-timeline', 'sandwich_jetpack_twitter_timeline_shortcode' );
 
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
@@ -28,28 +28,40 @@ function sandwich_twitter_timeline() {
             'attrs' => array(
                 array(
                     'label' => __( 'Twitter Username', 'pbsandwich' ),
-                    'attr'  => 'username',
-                    'type'  => 'textarea',
+                    'attr' => 'username',
+                    'type' => 'text',
                 ),
                 array(
                     'label' => __( 'Twitter Widget ID', 'pbsandwich' ),
-                    'attr'  => 'id',
-                    'type'  => 'text',
+                    'attr' => 'id',
+                    'type' => 'text',
+					'description' => __( 'Enter your Twitter Widget ID here. If you do not have one, log in to your Twitter account and generate your free Widget ID: https://en.support.wordpress.com/widgets/twitter-timeline-widget/', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Twitter Widget Width', 'pbsandwich' ),
-                    'attr'  => 'width',
-                    'type'  => 'text',
+                    'attr' => 'width',
+                    'type' => 'text',
 					'value' => '100%',
+					'description' => __( 'Enter the width of the widget, in pixels or percentage.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Twitter Widget Height', 'pbsandwich' ),
-                    'attr'  => 'height',
-                    'type'  => 'text',
+                    'attr' => 'height',
+                    'type' => 'text',
+					'value' => '282',
+					'description' => __( 'Enter the height of the widget, in pixels or percentage.', 'pbsandwich' ),
                 ),
 			),
         )
     );
-	
 }
 
+// Make sure the Jetpack shortcode module is turned on
+if ( ! Jetpack::is_module_active( 'shortcodes' ) ) {
+	add_action( 'print_media_templates', 'sandwich_jetpack_twitter_timeline_disabled' );		
+	return;
+}
+
+function sandwich_jetpack_googlemaps_disabled() {
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'shortcake-twitter-timeline', __( "Requires Jetpack's shortcode embed module", 'pbsandwich' ) );
+}
