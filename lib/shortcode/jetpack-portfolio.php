@@ -100,5 +100,5 @@ function sandwich_jetpack_portfolio() {
 }
 
 function sandwich_jetpack_portfolio_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'portfolio', __( "Requires Jetpack's Custom Content Type module", 'pbsandwich' );
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'portfolio', __( "Requires Jetpack's Custom Content Type module", 'pbsandwich' ) );
 }
