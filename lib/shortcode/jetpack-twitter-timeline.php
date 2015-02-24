@@ -10,9 +10,6 @@
  */
 add_action( 'init', 'sandwich_jetpack_twitter_timeline', 11 );
 function sandwich_jetpack_twitter_timeline() {
-	
-	// Register shortcode
-	add_shortcode( 'sandwich-jetpack-twitter-timeline', 'sandwich_jetpack_twitter_timeline_shortcode' );
 
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode') ) {
@@ -48,7 +45,7 @@ function sandwich_jetpack_twitter_timeline() {
                     'label' => __( 'Twitter Widget Height', 'pbsandwich' ),
                     'attr' => 'height',
                     'type' => 'text',
-					'value' => '282px',
+					'value' => '282',
 					'description' => __( 'Enter the height of the widget, in pixels or percentage.', 'pbsandwich' ),
                 ),
 			),
@@ -69,5 +66,5 @@ function sandwich_jetpack_twitter_timeline() {
 }
 
 function sandwich_jetpack_twitter_timeline_disabled() {
-	GambitPBSandwich::printDisabledShortcakeStlyes( 'sandwich-jetpack-twitter-timeline', __( "Requires Jetpack and its shortcode embed module", 'pbsandwich' ) );
+	GambitPBSandwich::printDisabledShortcakeStlyes( 'twitter-timeline', __( "Requires Jetpack's Shortcode Embed module", 'pbsandwich' ) );
 }
