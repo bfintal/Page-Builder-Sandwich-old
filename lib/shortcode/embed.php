@@ -12,7 +12,7 @@ function sandwich_embed_media() {
 	shortcode_ui_register_for_shortcode(
 		'embed',
 		array(
-			'label' => __( 'Jetpack' , 'jetpack' ) . ' ' . __( ' Embed Media', 'pbsandwich' ),
+			'label' => __( 'Media Embed', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-admin-media',
 			'attrs' => array(
 				array(
