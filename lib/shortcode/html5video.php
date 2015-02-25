@@ -103,15 +103,15 @@ function sandwich_html5video_shortcode( $attr, $content ) {
 		$attr['mp4'] = wp_get_attachment_url( $attr['mp4'] );
 	}
 
-	$args = ( $attr['autoplay'] == "true" && ! is_admin() ? ' autoplay="' . esc_attr( $attr['autoplay'] ) . '"' : "" );
-	$args .= ( $attr['preload'] == "auto" ? ' preload="' . esc_attr( $attr['preload'] ) . '"' : "" );
+	$args = ( $attr['autoplay'] == "true" && ! is_admin() ? ' autoplay="true"' : "" );
+	$args .= ( $attr['preload'] == "auto" ? ' preload="auto"' : "" );
 	$args .= ( $attr['controls'] == "disabled" ? " controls" : "" );	
 
 	ob_start();
 	?>
 	
 	<div class="sandwich">
-		<video class="html5video"<?php echo $args ?> poster="<?php echo esc_attr( $attr['poster'] ) ?>" style="width: 100%; height: auto" >
+		<video class="html5video" <?php echo $args ?> poster="<?php echo esc_attr( $attr['poster'] ) ?>" style="width: 100%; height: auto" >
 			<?php 
 				if ( ! empty( $attr['webm'] ) ) { 
 					echo '<source src="' . esc_attr( $attr['webm'] ) . '" type="video/webm">';
