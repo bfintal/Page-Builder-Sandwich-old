@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 3.9
 Tested up to: 4.1.1
-Stable tag: 0.7.1
+Stable tag: 0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ Existing **Page builders** are also great, but we didn't want to hijack the cont
 
 = What it does =
 
-Extends your visual editor to include page builder capabilities
+Extends your visual editor to include page builder capabilities and new shortcodes
 
 = The Goal =
 
@@ -38,28 +38,7 @@ The goal is to create a page builder that:
 * Create editable, nestable columns
 * Edit text and content using the TinyMCE visual editor like how you normally would
 * Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
-* Drag and drop TinyMCE views into other locations. Works with:
-	* WordPress:
-		* Image galleries
-		* Videos
-		* Video playlists
-		* Audio
-		* Audio playlists
-	* Jetpack:
-	  	* Video embeds *via Add Media > Insert From URL*
-			* Dailymotion embed
-			* Flickr videos
-			* TED talks embed
-			* Vimeo embed
-			* Vine embed
-			* Youtube embed
-		* Audio embeds *via Add Media > Insert From URL*
-			* Rdio embeds
-			* SoundCloud embeds
-			* Spotify embeds
-		* Other embeds *via Add Media > Insert From URL*
-			* Github Gists
-	* All shortcake post elements
+* Drag and drop TinyMCE views into other locations
 * Clone shortcodes/embeds & columns
 * Create different shortcodes
 * Working undo
@@ -68,16 +47,23 @@ The goal is to create a page builder that:
 
 Shortcodes are added by clicking on **Add Media > Insert Post Element**.
 
-We support the following shortcodes & widgets:
+We support the following shortcodes, widgets & elements:
 
 * Archives (Widget)
+* Audio (Add Media)
+* Audio Playlists (Add Media)
 * Calendar (Widget)
 * Categories (Widget)
 * Contact Form (Jetpack)
 * Custom Menu (Widget)
 * Display WordPress Posts (Jetpack)
+* Embed
+	* Supported URLs include Animoto, Blip, CollegeHumor, DailyMotion, Flickr, FunnyOrDie, Hulu, Imgur, Instagram, iSnare, Issuu, Meetup, EmbedArticles, Mixcloud, Photobucket, PollDaddy, Rdio, Revision3, Scribd, SlideShare, SmugMug, SoundCloud, Spotify, TED, Vimeo, Vine, WordPress.tv and YouTube
+	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* Images (Add Media)
+* Image Galleries (Add Media)
 * Meta (Widget)
 * Pages (Widget)
 * Portfolio (Jetpack)
@@ -89,6 +75,8 @@ We support the following shortcodes & widgets:
 * Subscribe (Jetpack)
 * Tag Cloud (Widget)
 * Toggle / FAQ
+* Video (Add Media)
+* Video Playlists (Add Media)
 * *More being created. Have a suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
@@ -106,7 +94,7 @@ Report bugs and help out in the code from the [Github repository](https://github
 3. Install & activate the plugin
 4. Create your content:
 	* Click the "Columns" button while editing your posts and pages to insert your columns, or
-	* Click on the "Add Media" button to insert shortcodes
+	* Click on the "Add Media" button, then "Insert Post Element" to insert shortcodes
 5. Click, drap, drop, edit away on your visual editor
 
 == Screenshots ==
@@ -117,6 +105,26 @@ Report bugs and help out in the code from the [Github repository](https://github
 4. Shortcodes
 
 == Frequently Asked Questions ==
+
+= I just installed Sandwich. Where is it? =
+
+Go ahead and edit a post or page using the visual editor. You might not notice it, but your visual editor is now a page builder *(mic drop)*.
+
+= How do I add columns? =
+
+We have added a **column** button in your visual editor (first row of buttons, right-most), click on that to create columns
+
+= How do I add shortcodes? =
+
+Click on **Add Media**, then **Insert Post Element**. Click on one, edit its settings, then hit **insert**. Some shortcodes are only available if you have Jetpack activated.
+
+= You don't have shortcode _____! I need it! =
+
+*Suggest it to us.* We're thinking of more ways to further expand the capabilities of Sandwich, [suggest it in our Github Repo](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)
+
+= Do I need Jetpack installed to make this work? =
+
+*Nope,* although if you have it activated, then additional widgets and shortcodes will become available in Sandwich.
 
 = WTF, I hate tables! Why are tables used to display columns? =
 
@@ -134,9 +142,20 @@ You can do so in our [Issue Tracker](https://github.com/gambitph/Page-Builder-Sa
 
 Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/gambitph/Page-Builder-Sandwich/), star it, do a pull request, we're grateful for any help
 
+(View more FAQs)[https://github.com/gambitph/Page-Builder-Sandwich/wiki/FAQ]
+
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.8 =
+
+* Added new shortcodes/widget. All of these are accessible via Add Media > Insert Post Element
+	* Media/URL Embed
+	* Twitter timeline (Jetpack)
+* Updated Shortcake
+* Fixed: editor column styles get overridden
+* Fixed: Bootstrap conflicting with other non-sandwich elements
 
 = 0.7 =
 

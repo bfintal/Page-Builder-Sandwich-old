@@ -20,28 +20,7 @@ The goal is to create a page builder that
 * Create editable, nestable columns
 * Edit text and content using the TinyMCE visual editor like how you normally would
 * Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
-* Drag and drop TinyMCE views into other locations. Works with:
-	* WordPress:
-		* Image galleries
-		* Videos
-		* Video playlists
-		* Audio
-		* Audio playlists
-	* Jetpack:
-	  	* Video embeds *via Add Media > Insert From URL*
-			* Dailymotion embed
-			* Flickr videos
-			* TED talks embed
-			* Vimeo embed
-			* Vine embed
-			* Youtube embed
-		* Audio embeds *via Add Media > Insert From URL*
-			* Rdio embeds
-			* SoundCloud embeds
-			* Spotify embeds
-		* Other embeds *via Add Media > Insert From URL*
-			* Github Gists
-	* All shortcake post elements
+* Drag and drop TinyMCE views into other locations
 * Clone shortcodes/embeds & columns
 * Create different shortcodes
 * Working undo
@@ -51,13 +30,20 @@ The goal is to create a page builder that
 We support the following shortcodes & widgets:
 
 * Archives (Widget)
+* Audio (Add Media)
+* Audio Playlists (Add Media)
 * Calendar (Widget)
 * Categories (Widget)
 * Contact Form (Jetpack)
 * Custom Menu (Widget)
 * Display WordPress Posts (Jetpack)
+* Embed
+	* Supported URLs include Animoto, Blip, CollegeHumor, DailyMotion, Flickr, FunnyOrDie, Hulu, Imgur, Instagram, iSnare, Issuu, Meetup, EmbedArticles, Mixcloud, Photobucket, PollDaddy, Rdio, Revision3, Scribd, SlideShare, SmugMug, SoundCloud, Spotify, TED, Vimeo, Vine, WordPress.tv and YouTube
+	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* Images (Add Media)
+* Image Galleries (Add Media)
 * Meta (Widget)
 * Pages (Widget)
 * Portfolio (Jetpack)
@@ -69,9 +55,11 @@ We support the following shortcodes & widgets:
 * Subscribe (Jetpack)
 * Tag Cloud (Widget)
 * Toggle / FAQ
-* *More being created.*
+* Video (Add Media)
+* Video Playlists (Add Media)
+* *More being created. Have a suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
-*Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
+*Shortcode contributions are welcome, we have docs on how to [create them](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Creating-a-Shortcode).
 
 #### WTF, I hate tables! Why are tables used to display columns?
 

@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18270",
+"creatorBuild": "18493",
 "files": {
 	"\/css\/admin.css": {
 		"fileType": 16,
@@ -29,189 +29,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/inc\/shortcake\/css\/sass\/_field-image.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/_field-image.scss",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/_field-image.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
-		},
-	"\/inc\/shortcake\/css\/sass\/shortcode-ui-editor-styles.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/shortcode-ui-editor-styles.scss",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/shortcode-ui-editor-styles.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
-		},
-	"\/inc\/shortcake\/css\/sass\/shortcode-ui.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/shortcode-ui.scss",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/shortcode-ui.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
-		},
-	"\/inc\/shortcake\/css\/shortcode-ui-editor-styles.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/shortcode-ui-editor-styles.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/css\/shortcode-ui.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/shortcode-ui.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/class-shortcode-ui.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/class-shortcode-ui.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/fields\/class-field-attachment.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/fields\/class-field-attachment.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/fields\/class-field-color.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/fields\/class-field-color.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/fields\/class-shortcode-ui-fields.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/fields\/class-shortcode-ui-fields.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/templates\/edit-form.tpl.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/templates\/edit-form.tpl.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/templates\/list-item.tpl.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/templates\/list-item.tpl.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/inc\/templates\/media-frame.tpl.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/inc\/templates\/media-frame.tpl.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/js\/field-attachment.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/field-attachment.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/min\/field-attachment-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/js\/field-color.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/field-color.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/min\/field-color-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/js\/shortcode-ui.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/shortcode-ui.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/min\/shortcode-ui-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/README.md": {
-		"enableFootnoteSupport": 0,
-		"enableSmartyPants": 1,
-		"expandTabs": 1,
-		"fileType": 4096,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/README.md",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/README.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/shortcode-ui.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/shortcode-ui.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/inc\/simple_html_dom.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -227,6 +44,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/_admin-jetpack.js",
 		"outputAbbreviatedPath": "\/js\/min\/_admin-jetpack-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/_bootstrap.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/_bootstrap.js",
+		"outputAbbreviatedPath": "\/js\/min\/_bootstrap-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -276,17 +104,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/_frontend-bootstrap-collapse.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/_frontend-bootstrap-collapse.js",
-		"outputAbbreviatedPath": "\/js\/min\/_frontend-bootstrap-collapse-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/js\/admin.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -296,6 +113,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/bootstrap\/_collapse.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/bootstrap\/_collapse.js",
+		"outputAbbreviatedPath": "\/js\/bootstrap\/min\/_collapse-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/bootstrap\/_transition.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/bootstrap\/_transition.js",
+		"outputAbbreviatedPath": "\/js\/bootstrap\/min\/_transition-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/js\/editor.js": {
@@ -376,6 +215,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lib\/shortcode\/jetpack-contact-form.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/shortcode\/jetpack-googlemaps.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/shortcode\/jetpack-googlemaps.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -621,6 +469,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/README.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/README.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,
@@ -1983,7 +1840,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Hermann Malapit",
+"lastSavedByUser": "Benjamin Intal",
 "manualImportLinks": {
 	},
 "projectAttributes": {
@@ -2029,6 +1886,10 @@
 			},
 		"empty_constructor_needs_parens": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"ensure_comprehensions": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"indentation": {
@@ -2122,6 +1983,10 @@
 		"space_operators": {
 			"active": 0,
 			"flagValue": -1
+			},
+		"spacing_after_comma": {
+			"active": 1,
+			"flagValue": -1
 			}
 		},
 	"coffeeMinifyOutput": 1,
@@ -2178,6 +2043,10 @@
 			"active": 1,
 			"flagValue": -1
 			},
+		"browserify": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"camelcase": {
 			"active": 0,
 			"flagValue": -1
@@ -2200,6 +2069,10 @@
 			},
 		"dojo": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"elision": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"eqeqeq": {
@@ -2254,6 +2127,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"jasmine": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"jquery": {
 			"active": 1,
 			"flagValue": -1
@@ -2297,6 +2174,10 @@
 		"maxstatements": {
 			"active": 0,
 			"flagValue": 4
+			},
+		"mocha": {
+			"active": 0,
+			"flagValue": -1
 			},
 		"mootools": {
 			"active": 0,
@@ -2363,6 +2244,10 @@
 			"flagValue": -1
 			},
 		"prototypejs": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"qunit": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -2590,6 +2475,7 @@
 	"slimAutoOutputPathStyle": 0,
 	"slimCompileOnly": 0,
 	"slimLogicless": 0,
+	"slimOutputFormat": 0,
 	"slimOutputStyle": 1,
 	"slimRailsCompatible": 0,
 	"stylusAutoOutputPathEnabled": 1,
@@ -2614,8 +2500,9 @@
 	"typescriptMinifyOutput": 0,
 	"typescriptModuleType": 0,
 	"typescriptNoImplicitAny": 0,
-	"typescriptNoResolve": 0,
+	"typescriptPreserveConstEnums": 0,
 	"typescriptRemoveComments": 0,
+	"typescriptSuppressImplicitAnyIndexErrors": 0,
 	"typescriptTargetECMAVersion": 0,
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
@@ -2652,6 +2539,10 @@
 			"flagValue": -1
 			},
 		"dead_code": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"drop_console": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -2695,6 +2586,10 @@
 			"active": 1,
 			"flagValue": -1
 			},
+		"keep_fargs": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"loops": {
 			"active": 1,
 			"flagValue": -1
@@ -2707,8 +2602,16 @@
 			"active": 1,
 			"flagValue": 32000
 			},
+		"negate_iife": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"properties": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"pure_getters": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"quote-keys": {
