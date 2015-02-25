@@ -103,9 +103,9 @@ function sandwich_html5video_shortcode( $attr, $content ) {
 		$attr['mp4'] = wp_get_attachment_url( $attr['mp4'] );
 	}
 
-	$args = ( $attr['autoplay'] == "true" && ! is_admin() ? ' autoplay="true"' : "" );
-	$args .= ( $attr['preload'] == "auto" ? ' preload="auto"' : "" );
-	$args .= ( $attr['controls'] == "disabled" ? " controls" : "" );
+	$args = $attr['autoplay'] == "true" && ! is_admin() ? ' autoplay="true"' : "";
+	$args .= $attr['preload'] == "auto" ? ' preload="auto"' : "";
+	$args .= $attr['controls'] == "disabled" ? ' controls' : "";
 	
 	if ( ! empty( $attr['poster'] ) ) {
 		$imageAttributes = wp_get_attachment_image_src( $attr['poster'], 'large' );
