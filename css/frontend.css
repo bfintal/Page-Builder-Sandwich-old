@@ -981,6 +981,13 @@
     float: none !important;
     width: auto !important; } }
 /**
+ * HTML5 Videos
+ */
+.sandwich .html5video {
+  width: 100%;
+  height: auto; }
+
+/**
  * Jetpack Facbeook Like Box
  */
 .sandwich .widget_facebook_likebox iframe {

@@ -313,6 +313,14 @@ body#tinymce.wp-editor .pbsandwich_column td td:hover {
 body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
   cursor: text; }
 
+body#tinymce.wp-editor {
+  /**
+   * HTML5 Videos
+   */ }
+  body#tinymce.wp-editor .sandwich .html5video {
+    width: 100%;
+    height: auto; }
+
 /**
  * Jetpack Videos
  */

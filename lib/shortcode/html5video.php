@@ -119,7 +119,7 @@ function sandwich_html5video_shortcode( $attr, $content ) {
 	?>
 	
 	<div class="sandwich">
-		<video class="html5video" <?php echo $args ?> style="width: 100%; height: auto" >
+		<video class="html5video" <?php echo $args ?>>
 			<?php 
 				if ( ! empty( $attr['webm'] ) ) { 
 					echo '<source src="' . esc_attr( $attr['webm'] ) . '" type="video/webm">';
