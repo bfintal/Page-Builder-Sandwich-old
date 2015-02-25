@@ -28,19 +28,19 @@ function sandwich_html5video() {
             'attrs' => array(			
                 array(
                     'label' => __( 'Video Webm Format', 'pbsandwich' ),
-                    'attr' => 'videowebm',
+                    'attr' => 'webm',
                     'type' => 'attachment',
 					'description' => __( 'Choose the WEBM video to be embedded.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Video OGV Format', 'pbsandwich' ),
-                    'attr' => 'videoogv',
+                    'attr' => 'ogv',
                     'type' => 'attachment',
 					'description' => __( 'Choose the OGV video to be embedded.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Video MP4 Format', 'pbsandwich' ),
-                    'attr' => 'videomp4',
+                    'attr' => 'mp4',
                     'type' => 'attachment',
 					'description' => __( 'Choose the MP4 video to be embedded.', 'pbsandwich' ),
                 ),
@@ -84,23 +84,23 @@ function sandwich_html5video() {
 function sandwich_html5video_shortcode( $attr, $content ) {
 		
 	$attr = wp_parse_args( $attr, array(
-		'videowebm' => '',
-		'videoogv' => '',
-		'videomp4' => '',
+		'webm' => '',
+		'ogv' => '',
+		'mp4' => '',
         'poster' => '',
 		'autoplay' => '',
         'preload' => '',
 		'controls' => 'disabled',
     ) );
 	
-	if ( ! empty( $attr['videowebm'] ) ) { 
-		$attr['videowebm'] = wp_get_attachment_url( $attr['videowebm'] ); 
+	if ( ! empty( $attr['webm'] ) ) { 
+		$attr['webm'] = wp_get_attachment_url( $attr['webm'] ); 
 	}
-	if ( ! empty( $attr['videoogv'] ) ) { 
-		$attr['videoogv'] = wp_get_attachment_url( $attr['videoogv'] );
+	if ( ! empty( $attr['ogv'] ) ) { 
+		$attr['ogv'] = wp_get_attachment_url( $attr['ogv'] );
 	}
-	if ( ! empty( $attr['videomp4'] ) ) { 
-		$attr['videomp4'] = wp_get_attachment_url( $attr['videomp4'] );
+	if ( ! empty( $attr['mp4'] ) ) { 
+		$attr['mp4'] = wp_get_attachment_url( $attr['mp4'] );
 	}
 
 	$args = ( $attr['autoplay'] == "true" && ! is_admin() ? ' autoplay="' . esc_attr( $attr['autoplay'] ) . '"' : "" );
@@ -113,14 +113,14 @@ function sandwich_html5video_shortcode( $attr, $content ) {
 	<div class="sandwich">
 		<video class="html5video"<?php echo $args ?> poster="<?php echo esc_attr( $attr['poster'] ) ?>" style="width: 100%; height: auto" >
 			<?php 
-				if ( ! empty( $attr['videowebm'] ) ) { 
-					echo '<source src="' . esc_attr( $attr['videowebm'] ) . '" type="video/webm">';
+				if ( ! empty( $attr['webm'] ) ) { 
+					echo '<source src="' . esc_attr( $attr['webm'] ) . '" type="video/webm">';
 				}
-				if ( ! empty( $attr['videoogv'] ) ) { 
-					echo '<source src="' . esc_attr( $attr['videoogv'] ) . '" type="video/ogv">';
+				if ( ! empty( $attr['ogv'] ) ) { 
+					echo '<source src="' . esc_attr( $attr['ogv'] ) . '" type="video/ogv">';
 				}
-				if ( ! empty( $attr['videomp4'] ) ) { 
-					echo '<source src="' . esc_attr( $attr['videomp4'] ) . '" type="video/mp4">';
+				if ( ! empty( $attr['mp4'] ) ) { 
+					echo '<source src="' . esc_attr( $attr['mp4'] ) . '" type="video/mp4">';
 				}
 				?>
 		</video>
