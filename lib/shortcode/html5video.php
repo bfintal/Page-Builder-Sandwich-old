@@ -21,59 +21,59 @@ function sandwich_html5video() {
 	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
-        'pbs_html5video',
-        array(
-            'label' => __( 'HTML5 Video (Self-Hosted)', 'pbsandwich' ),
-            'listItemImage' => 'dashicons-video-alt2',
-            'attrs' => array(			
-                array(
-                    'label' => __( 'Video Webm Format', 'pbsandwich' ),
-                    'attr' => 'webm',
-                    'type' => 'attachment',
+		'pbs_html5video',
+		array(
+			'label' => __( 'HTML5 Video (Self-Hosted)', 'pbsandwich' ),
+			'listItemImage' => 'dashicons-video-alt2',
+			'attrs' => array(			
+				array(
+					'label' => __( 'Video Webm Format', 'pbsandwich' ),
+					'attr' => 'webm',
+					'type' => 'attachment',
 					'description' => __( 'Choose the WEBM video to be embedded.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Video OGV Format', 'pbsandwich' ),
-                    'attr' => 'ogv',
-                    'type' => 'attachment',
+				),
+				array(
+					'label' => __( 'Video OGV Format', 'pbsandwich' ),
+					'attr' => 'ogv',
+					'type' => 'attachment',
 					'description' => __( 'Choose the OGV video to be embedded.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Video MP4 Format', 'pbsandwich' ),
-                    'attr' => 'mp4',
-                    'type' => 'attachment',
+				),
+				array(
+					'label' => __( 'Video MP4 Format', 'pbsandwich' ),
+					'attr' => 'mp4',
+					'type' => 'attachment',
 					'description' => __( 'Choose the MP4 video to be embedded.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Video Poster', 'pbsandwich' ),
-                    'attr'  => 'poster',
-                    'type'  => 'attachment',
+				),
+				array(
+					'label' => __( 'Video Poster', 'pbsandwich' ),
+					'attr'	=> 'poster',
+					'type'	=> 'attachment',
 					'description' => __( "Choose an image that will serve as the video's poster while the video has not been played.", 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Autoplay Video', 'pbsandwich' ),
-                    'attr' => 'autoplay',
-                    'type' => 'checkbox',
+				),
+				array(
+					'label' => __( 'Autoplay Video', 'pbsandwich' ),
+					'attr' => 'autoplay',
+					'type' => 'checkbox',
 					'description' => __( "Check this to let videos play right after they load.", 'pbsandwich' ),
 					'value' => "true",
-                ),
-                array(
-                    'label' => __( 'Preload Video', 'pbsandwich' ),
-                    'attr' => 'preload',
-                    'type' => 'checkbox',
+				),
+				array(
+					'label' => __( 'Preload Video', 'pbsandwich' ),
+					'attr' => 'preload',
+					'type' => 'checkbox',
 					'description' => __( "Check this to let videos buffer while the page loads.", 'pbsandwich' ),
 					'value' => "auto",
-                ),
-                array(
-                    'label' => __( 'Hide video controls', 'pbsandwich' ),
-                    'attr' => 'controls',
-                    'type' => 'checkbox',
+				),
+				array(
+					'label' => __( 'Hide video controls', 'pbsandwich' ),
+					'attr' => 'controls',
+					'type' => 'checkbox',
 					'description' => __( "Check this to disable control of video playback.", 'pbsandwich' ),
 					'value' => 'disabled',
-                ),
+				),
 			),
-        )
-    );
+		)
+	);
 	
 }
 
@@ -87,11 +87,11 @@ function sandwich_html5video_shortcode( $attr, $content ) {
 		'webm' => '',
 		'ogv' => '',
 		'mp4' => '',
-        'poster' => '',
+		'poster' => '',
 		'autoplay' => '',
-        'preload' => '',
+		'preload' => '',
 		'controls' => 'disabled',
-    ) );
+	) );
 	
 	if ( ! empty( $attr['webm'] ) ) { 
 		$attr['webm'] = wp_get_attachment_url( $attr['webm'] ); 
