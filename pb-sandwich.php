@@ -420,6 +420,10 @@ class GambitPBSandwich {
 			top: 50%;
 			position: absolute;
 			text-align: center;
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
 			transform: translateY(-50%);
 			background: rgba(255,255,255,.8);
 			padding: .3em .5em;
