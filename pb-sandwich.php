@@ -43,7 +43,6 @@ require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-gravatar-profile.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-rss-links.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-subscriptions.php' );
 require_once( PBS_PATH . 'lib/shortcode/woocommerce.php' );
-require_once( PBS_PATH . 'lib/shortcode/woocommerce-add-to-cart-url.php' );
 require_once( PBS_PATH . 'lib/shortcode/woocommerce-add-to-cart.php' );
 require_once( PBS_PATH . 'lib/shortcode/woocommerce-best-selling-products.php' );
 require_once( PBS_PATH . 'lib/shortcode/woocommerce-product-attribute.php' );
