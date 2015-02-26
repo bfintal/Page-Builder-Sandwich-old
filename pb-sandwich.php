@@ -43,7 +43,19 @@ require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-gravatar-profile.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-rss-links.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-subscriptions.php' );
 require_once( PBS_PATH . 'lib/shortcode/woocommerce.php' );
-
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-add-to-cart-url.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-add-to-cart.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-best-selling-products.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-product-attribute.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-product-categories.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-product-category.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-product-page.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-product.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-products.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-recent-products.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-related-products.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-sale-products.php' );
+require_once( PBS_PATH . 'lib/shortcode/woocommerce-top-rated-products.php' );
 
 /**
  * PB Sandwich Class
