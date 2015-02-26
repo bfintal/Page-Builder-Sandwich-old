@@ -21,30 +21,30 @@ function sandwich_myshortcode() {
 	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
-        'pbs_myshortcode',
-        array(
-            'label' => __( 'My Shortcode', 'pbsandwich' ),
-            'listItemImage' => 'dashicons-wordpress',
-            'attrs' => array(
-                array(
-                    'label' => __( 'Content', 'pbsandwich' ),
-                    'attr'  => 'content',
-                    'type'  => 'textarea',
-                ),
-                array(
-                    'label' => __( 'Some Text', 'pbsandwich' ),
-                    'attr'  => 'some_text',
-                    'type'  => 'text',
-                ),
-                array(
-                    'label' => __( 'Some Color', 'pbsandwich' ),
-                    'attr'  => 'some_color',
-                    'type'  => 'color',
+		'pbs_myshortcode',
+		array(
+			'label' => __( 'My Shortcode', 'pbsandwich' ),
+			'listItemImage' => 'dashicons-wordpress',
+			'attrs' => array(
+				array(
+					'label' => __( 'Content', 'pbsandwich' ),
+					'attr'	=> 'content',
+					'type'	=> 'textarea',
+				),
+				array(
+					'label' => __( 'Some Text', 'pbsandwich' ),
+					'attr'	=> 'some_text',
+					'type'	=> 'text',
+				),
+				array(
+					'label' => __( 'Some Color', 'pbsandwich' ),
+					'attr'	=> 'some_color',
+					'type'	=> 'color',
 					'value' => '#333333',
-                ),
+				),
 			),
-        )
-    );
+		)
+	);
 	
 }
 
@@ -55,9 +55,9 @@ function sandwich_myshortcode() {
 function sandwich_myshortcode_shortcode( $attr, $content ) {
 		
 	$attr = wp_parse_args( $attr, array(
-        'some_text' => '',
+		'some_text' => '',
 		'some_color' => '',
-    ) );
+	) );
 	
 	ob_start();
 	
