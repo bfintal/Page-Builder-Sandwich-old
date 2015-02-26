@@ -68,6 +68,7 @@ class GambitPBSandwich {
 		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendScripts' ) );
 		add_action( 'init', array( $this, 'loadShortcake' ), 1 );
+		add_action( 'media_buttons', array( $this, 'addShortcodeButton' ), 100 );
 	}
 
 	
@@ -423,6 +424,11 @@ class GambitPBSandwich {
 		}
 		</style>
 		<?php
+	}
+	
+	
+	public function addShortcodeButton() {
+		echo '<a href="#" class="button sandwich-add-shortcode"><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span> ' . __( 'Add Post Element', 'pbsandwich' ) . '</a>';
 	}
 	
 }

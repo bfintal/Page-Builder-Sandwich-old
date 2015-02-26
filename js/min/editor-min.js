@@ -1,8 +1,20 @@
+// @codekit-append "_editor-add-post-element.js";
 // @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
+
+/**
+ * Click handler for the "Add Post Element" button. Basically we open the WP Media Manager then activate the shortcake state
+ */
+jQuery(document).ready(function($) {
+	$('body').on('click', '.sandwich-add-shortcode', function() {
+		$(this).siblings('[id="insert-media-button"]').click();
+		wp.media.frame.setState('shortcode-ui');
+		return false;
+	});
+});
 
 
 (function() {

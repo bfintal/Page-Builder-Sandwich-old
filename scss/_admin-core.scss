@@ -1,0 +1,13 @@
+.wp-media-buttons .sandwich-add-shortcode span.wp-media-buttons-icon:nth-of-type(1) {
+	overflow: hidden;
+	width: 6px;
+}
+.wp-media-buttons .sandwich-add-shortcode span.wp-media-buttons-icon:nth-of-type(2) {
+	overflow: hidden;
+	width: 6px;
+	-webkit-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-ms-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
