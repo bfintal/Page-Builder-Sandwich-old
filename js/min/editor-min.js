@@ -1,7 +1,9 @@
+// @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
+
 
 (function() {
 	
@@ -11,8 +13,8 @@
     tinymce.PluginManager.add( 'pbsandwich', function( editor, url ) {
 		
 		
-
-        
+		
+		
 
 var sortableInit = false;
 
@@ -788,6 +790,24 @@ editor.addButton( 'pbsandwich_column', {
 			}
 		}
 	]
+});
+
+
+/**
+ * Embeds display in the wrong aspect ratio inside columns.
+ * This triggers whenever there's an embed, takes the iframe dimensions
+ * and scales it down to make it look good inside columns
+ */
+editor.on('wp-body-class-change change', function(e) {
+	var $ = jQuery;
+	
+	$(editor.getBody()).find('.pbsandwich_column .wpview-content.wpview-type-embed iframe:not(.resized)').each(function() {
+		var ratio = parseInt( $(this).attr('height') ) / parseInt( $(this).attr('width') );
+		
+		var w = $(this).attr('width', '100%').width();
+		
+		$(this).attr('height', w * ratio).addClass('resized');
+	});
 });
 
 /**
