@@ -2,6 +2,7 @@
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-jetpack.js";
+// @codekit-append "_editor-woocommerce.js";
 // @codekit-append "_editor-end.js";
 
 
@@ -822,6 +823,16 @@ editor.on('init', function(e) {
 		$('#insert-jetpack-contact-form').trigger('click');
 		return false;
 	});
+});
+
+/**
+ * For some reason, woocommerce stuff don't have a "product" class, 
+ * because of that, styles are not being applied properly. Bring it back
+ */
+editor.on('PostProcess', function(e) {
+	var $ = jQuery;
+	
+	$(editor.getBody()).find('.wpview-type-recent_products li.type-product').addClass('product');
 });
 
 /**
