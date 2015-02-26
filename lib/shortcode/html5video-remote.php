@@ -23,26 +23,26 @@ function sandwich_external_html5video() {
 	shortcode_ui_register_for_shortcode(
 		'pbs_external_html5video',
 		array(
-			'label' => __( 'HTML5 Video (External)', 'pbsandwich' ),
+			'label' => __( 'HTML5 Video (Remote)', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-video-alt2',
 			'attrs' => array(			
 				array(
 					'label' => __( 'Video Webm Format', 'pbsandwich' ),
 					'attr' => 'webm',
 					'type' => 'url',
-					'description' => __( 'Choose the WEBM video to be embedded.', 'pbsandwich' ),
+					'description' => __( 'The URL of the WEBM video to be embedded.', 'pbsandwich' ),
 				),
 				array(
 					'label' => __( 'Video OGV Format', 'pbsandwich' ),
 					'attr' => 'ogv',
 					'type' => 'url',
-					'description' => __( 'Choose the OGV video to be embedded.', 'pbsandwich' ),
+					'description' => __( 'The URL of the OGV video to be embedded.', 'pbsandwich' ),
 				),
 				array(
 					'label' => __( 'Video MP4 Format', 'pbsandwich' ),
 					'attr' => 'mp4',
 					'type' => 'url',
-					'description' => __( 'Choose the MP4 video to be embedded.', 'pbsandwich' ),
+					'description' => __( 'The URL of the MP4 video to be embedded.', 'pbsandwich' ),
 				),
 				array(
 					'label' => __( 'Video Poster', 'pbsandwich' ),
