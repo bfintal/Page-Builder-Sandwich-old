@@ -13,6 +13,6 @@
 }
 
 .shortcode-list-item .dashicons-wordpress.jetpack-logo:before {
-	font-family: 'jetpack';
+	font-family: 'jetpack' !important;
 	content: '\f102';
 }

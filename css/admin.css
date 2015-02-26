@@ -64,3 +64,7 @@
 .shortcode-list-item .dashicons-wordpress.jetpack-logo:before {
   font-family: 'jetpack' !important;
   content: '\f102'; }
+
+.shortcode-list-item .dashicons-admin-generic.woocommerce:before {
+  font-family: 'WooCommerce' !important;
+  content: "\e03d"; }
