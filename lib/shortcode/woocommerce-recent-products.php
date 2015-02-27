@@ -9,14 +9,6 @@ add_action( 'init', 'sandwich_woocommerce_recent_products', 11 );
 
 function sandwich_woocommerce_recent_products() {
 
-	$displayOrder['author'] = __( 'Author', 'pbsandwich' );
-	$displayOrder['date'] = __( 'Item Date', 'pbsandwich' );
-	$displayOrder['title'] = __( 'Title', 'pbsandwich' );
-	$displayOrder['rand'] = __( 'Randomized', 'pbsandwich' );
-
-	$displayDir['ASC'] = __( 'Ascending', 'pbsandwich' );
-	$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
-
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;

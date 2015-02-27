@@ -23,3 +23,15 @@ function sandwich_woocommerce_init_editor_styles() {
 		}
 	}
 }
+
+/**
+ * Commonly-used variables stored here for better management.
+ */
+
+$displayOrder['author'] = __( 'Author', 'pbsandwich' );
+$displayOrder['date'] = __( 'Item Date', 'pbsandwich' );
+$displayOrder['title'] = __( 'Title', 'pbsandwich' );
+$displayOrder['rand'] = __( 'Randomized', 'pbsandwich' );
+
+$displayDir['ASC'] = __( 'Ascending', 'pbsandwich' );
+$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
