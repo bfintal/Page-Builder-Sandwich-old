@@ -45,7 +45,7 @@ function sandwich_woocommerce_product_category() {
                     'type' => 'select',
 					'description' => __( 'Select the ordering of the Products to display.', 'pbsandwich' ),
 					'value' => 'date',
-					'options' => $displayOrder,
+					'options' => sandwich_woocommerce_display_order(),
                 ),
                 array(
                     'label' => __( 'Display ordering criteria', 'pbsandwich' ),
@@ -53,14 +53,14 @@ function sandwich_woocommerce_product_category() {
                     'type' => 'select',
 					'description' => __( 'Choose Descending to display your most recent Product first, or Ascending to choose your oldest item first.', 'pbsandwich' ),
 					'value' => 'DESC',
-					'options' => $displayDir,
+					'options' => sandwich_woocommerce_display_dir(),
                 ),
                 array(
                     'label' => __( 'Product Category', 'pbsandwich' ),
                     'attr' => 'category',
-                    'type' => 'text',
-					'description' => __( 'Select the slug name of the Category of the Products to display. IDs will NOT WORK.', 'pbsandwich' ),
-					'value' => '',
+                    'type' => 'select',
+					'description' => __( 'Select the slug name of the Category of the Products to display.', 'pbsandwich' ),
+					'options' => sandwich_woocommerce_product_category_list(),
                 ),
             ),
         )

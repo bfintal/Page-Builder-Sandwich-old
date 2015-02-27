@@ -45,7 +45,7 @@ function sandwich_woocommerce_top_rated_products() {
                     'type' => 'select',
 					'description' => __( 'Select the ordering of the Top-Rated Products to display.', 'pbsandwich' ),
 					'value' => 'date',
-					'options' => $displayOrder,
+					'options' => sandwich_woocommerce_display_order(),
                 ),
                 array(
                     'label' => __( 'Display ordering criteria', 'pbsandwich' ),
@@ -53,7 +53,7 @@ function sandwich_woocommerce_top_rated_products() {
                     'type' => 'select',
 					'description' => __( 'Choose Descending to display your most recent Top-Rated Products first, or Ascending to choose your oldest Top-Rated Products first.', 'pbsandwich' ),
 					'value' => 'DESC',
-					'options' => $displayDir,
+					'options' => sandwich_woocommerce_display_dir(),
                 ),
             ),
         )

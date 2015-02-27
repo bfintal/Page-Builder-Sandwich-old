@@ -26,18 +26,11 @@ function sandwich_woocommerce_add_to_cart() {
             'listItemImage' => 'dashicons-admin-generic woocommerce',
             'attrs' => array(
                 array(
-                    'label' => __( 'Item ID', 'pbsandwich' ),
+                    'label' => __( 'Product Item', 'pbsandwich' ),
                     'attr' => 'id',
-                    'type' => 'text',
-					'description' => __( 'Enter the WordPress post ID of the Product to show its price and Add to Cart button. NOTE: If the ID is specified, do not populate the SKU field.', 'pbsandwich' ),
-					'value' => '',
-                ),
-                array(
-                    'label' => __( 'Item SKU', 'pbsandwich' ),
-                    'attr' => 'sku',
-                    'type' => 'text',
-					'description' => __( 'Enter the SKU code of the Product to show its price and Add to Cart button. NOTE: If the SKU is specified, do not use populate the ID field.', 'pbsandwich' ),
-					'value' => '',
+                    'type' => 'select',
+					'description' => __( 'Select the Product to show its price and Add to Cart button.', 'pbsandwich' ),
+					'options' => sandwich_woocommerce_product_list(),
                 ),
                 array(
                     'label' => __( 'Styling', 'pbsandwich' ),

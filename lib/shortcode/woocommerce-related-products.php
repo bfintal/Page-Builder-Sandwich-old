@@ -45,7 +45,7 @@ function sandwich_woocommerce_related_products() {
                     'type' => 'select',
 					'description' => __( 'Select the ordering of the Related Products to display.', 'pbsandwich' ),
 					'value' => 'date',
-					'options' => $displayOrder,
+					'options' => sandwich_woocommerce_display_order(),
                 ),
             ),
         )

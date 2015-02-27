@@ -45,7 +45,7 @@ function sandwich_woocommerce_featured_products() {
                     'type' => 'select',
 					'description' => __( 'Select the ordering of the Featured Products to display.', 'pbsandwich' ),
 					'value' => 'date',
-					'options' => $displayOrder,
+					'options' => sandwich_woocommerce_display_order(),
                 ),
                 array(
                     'label' => __( 'Display ordering criteria', 'pbsandwich' ),
@@ -53,7 +53,7 @@ function sandwich_woocommerce_featured_products() {
                     'type' => 'select',
 					'description' => __( 'Choose Descending to display your most recent Featured Product first, or Ascending to choose your oldest Featured Product first.', 'pbsandwich' ),
 					'value' => 'DESC',
-					'options' => $displayDir,
+					'options' => sandwich_woocommerce_display_dir(),
                 ),
             ),
         )
