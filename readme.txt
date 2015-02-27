@@ -22,6 +22,8 @@ Existing **Page builders** are also great, but we didn't want to hijack the cont
 
 *Check out the screenshots to see how PB Sandwich works.*
 
+**Requires PHP 5.3+**
+
 = What it does =
 
 Extends your visual editor to include page builder capabilities and new shortcodes
