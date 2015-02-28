@@ -27,7 +27,7 @@ The goal is to create a page builder that
 
 #### Shortcodes
 
-We support the following shortcodes & widgets:
+We support the following shortcodes, widgets & elements:
 
 * Archives (Widget)
 * Audio (Add Media)
@@ -42,6 +42,8 @@ We support the following shortcodes & widgets:
 	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* HTML5 Video - Self-hosted
+* HTML5 Video - Remote-hosted
 * Images (Add Media)
 * Image Galleries (Add Media)
 * Meta (Widget)
@@ -58,6 +60,11 @@ We support the following shortcodes & widgets:
 * Video (Add Media)
 * Video Playlists (Add Media)
 * *More being created. Have a suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
+
+Third-party shortcodes - these show up when the necessary plugin is activated
+
+* Contact Form 7
+* *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Shortcode contributions are welcome, we have docs on how to [create them](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Creating-a-Shortcode).
 

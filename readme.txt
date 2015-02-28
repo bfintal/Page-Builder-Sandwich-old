@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 3.9
 Tested up to: 4.1.1
-Stable tag: 0.8
+Stable tag: 0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,8 @@ We support the following shortcodes, widgets & elements:
 	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* HTML5 Video - Self-hosted
+* HTML5 Video - Remote-hosted
 * Images (Add Media)
 * Image Galleries (Add Media)
 * Meta (Widget)
@@ -78,6 +80,11 @@ We support the following shortcodes, widgets & elements:
 * Video (Add Media)
 * Video Playlists (Add Media)
 * *More being created. Have a suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
+
+Third-party shortcodes - these show up when the necessary plugin is activated
+
+* Contact Form 7
+* *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
 
@@ -147,6 +154,16 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.9 =
+
+* Added "Add Post Element" button beside the "Add Media" button for easier access
+* Added new shortcodes:
+	* Contact Form 7 shortcode (only accessible if Contact Form 7 is activated)
+	* Self hosted HTML5 video
+	* Remote hosted HTML5 video
+* Added FitVids for embedded videos to auto-resize videos in the frontend
+* Updated Shortcake
 
 = 0.8 =
 
