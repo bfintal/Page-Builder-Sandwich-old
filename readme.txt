@@ -22,6 +22,8 @@ Existing **Page builders** are also great, but we didn't want to hijack the cont
 
 *Check out the screenshots to see how PB Sandwich works.*
 
+**Requires PHP 5.3+**
+
 = What it does =
 
 Extends your visual editor to include page builder capabilities and new shortcodes
@@ -125,6 +127,8 @@ We have added a **column** button in your visual editor (first row of buttons, r
 
 Click on **Add Media**, then **Insert Post Element**. Click on one, edit its settings, then hit **insert**. Some shortcodes are only available if you have Jetpack activated.
 
+As of v0.9+, we've added an **Add Post Element** button beside the **Add Media** button for easy access.
+
 = You don't have shortcode _____! I need it! =
 
 *Suggest it to us.* We're thinking of more ways to further expand the capabilities of Sandwich, [suggest it in our Github Repo](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)
@@ -132,6 +136,10 @@ Click on **Add Media**, then **Insert Post Element**. Click on one, edit its set
 = Do I need Jetpack installed to make this work? =
 
 *Nope,* although if you have it activated, then additional widgets and shortcodes will become available in Sandwich.
+
+= I'm getting a `Parse error: syntax error, unexpected T_FUNCTION error` =
+
+Page Builder Sandwich requires PHP 5.3 or higher. Some of the stuff we use require PHP 5.3, so unfortunately we cannot support lower versions.
 
 = WTF, I hate tables! Why are tables used to display columns? =
 
