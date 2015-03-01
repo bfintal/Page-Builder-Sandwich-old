@@ -17,8 +17,8 @@ function sandwich_embed_media() {
 			'attrs' => array(
 				array(
 					'label' => __( 'Media URL', 'pbsandwich' ),
-					'attr' => 'content',
-					'type' => 'text',
+					'attr' => 'src',
+					'type' => 'url',
 					'description' => __( "Enter the URL of the media you wish to embed. Supported sites include Animoto, Blip, CollegeHumor, DailyMotion, Flickr, FunnyOrDie, Hulu, Imgur, Instagram, iSnare, Issuu, Meetup, EmbedArticles, Mixcloud, Photobucket, PollDaddy, Rdio, Revision3, Scribd, SlideShare, SmugMug, SoundCloud, Spotify, TED, Vimeo, Vine, WordPress.tv and YouTube. If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links", 'pbsandwich' ),
 				),
 			),
