@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Shortcodeless Columns\n"
-"POT-Creation-Date: 2015-02-22 16:53+0800\n"
-"PO-Revision-Date: 2015-02-22 16:54+0800\n"
+"Project-Id-Version: Page Builder Sandwich\n"
+"POT-Creation-Date: 2015-03-01 11:42+0800\n"
+"PO-Revision-Date: 2015-03-01 11:45+0800\n"
 "Last-Translator: Benjamin Intal <bf.intal@gambit.ph>\n"
 "Language-Team: Gambit <bf.intal@gambit.ph>\n"
 "Language: en_US\n"
@@ -10,125 +10,506 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.7.1\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __:1,2c;_e:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ../pb-sandwich.php\n"
+"X-Poedit-SearchPath-1: ../lib\n"
 
-#: ../inc/shortcake/inc/fields/class-field-attachment.php:47
-#: ../inc/shortcake/inc/fields/class-field-attachment.php:48
-msgid "Select Attachment"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-archives.php:1
+msgid "Archives"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-contact-form.php:19
-#: ../lib/shortcode/jetpack-googlemaps.php:19
-#: ../lib/shortcode/jetpack-googlemaps.php:36
-msgid "Jetpack"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Autoplay Video"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-contact-form.php:19
-msgid "Contact Form"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Blog URL"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-contact-form.php:41
-msgid "Requires Jetpack's Contact Form module"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Button label"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:19
-#: ../lib/shortcode/jetpack-googlemaps.php:36
-msgid "Google Maps"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-calendar.php:1
+msgid "Calendar"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:40
-msgid "IFrame embed code"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-categories.php:1
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+msgid "Categories"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:43
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Check this to disable control of video playback."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Check this to let videos buffer while the page loads."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Check this to let videos play right after they load."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Choose an image that will serve as the video's poster while the video has not been played."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Choose the MP4 video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Choose the OGV video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Choose the WEBM video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/template.php:1
+msgid "Content"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+msgid "Custom Menu"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Email field placeholder"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
 msgid "Enter embed code generated from Google Maps."
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:46
-msgid "Height"
-msgstr ""
-
-#: ../lib/shortcode/jetpack-googlemaps.php:49
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
 msgid "Enter height in pixels"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:97
-msgid "Requires Jetpack's shortcode embed module"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+msgid "Exclude pages"
 msgstr ""
 
-#: ../lib/shortcode/toggle.php:21
-msgid "Toggle"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "Feed(s) to Display"
 msgstr ""
 
-#: ../lib/shortcode/toggle.php:25
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "Format"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
+msgid "Google Maps"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+msgid "HTML5 Video (Remote)"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "HTML5 Video (Self-Hosted)"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
+msgid "Height"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/hello-dolly.php:1
+#: page-builder-sandwich/lib/shortcode/hello-dolly.php:53
+msgid "Hello"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Hide Subscriber Count"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Hide video controls"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-meta.php:1
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+#: page-builder-sandwich/lib/shortcode/widget-search.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+#: page-builder-sandwich/lib/shortcode/widget-categories.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-facebook-like-box.php:1
+#: page-builder-sandwich/lib/shortcode/widget-archives.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+#: page-builder-sandwich/lib/shortcode/widget-calendar.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-gravatar-profile.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Hide widget title"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
+msgid "IFrame embed code"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "Image Color"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "Image Size"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/jetpack-googlemaps.php:1
+msgid "Jetpack"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Jetpack Widget - Display WordPress Posts"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-facebook-like-box.php:1
+msgid "Jetpack Widget - Facebook Like Box"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-gravatar-profile.php:1
+msgid "Jetpack Widget - Gravatar Profile"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "Jetpack Widget - RSS Links"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Jetpack Widget - Subscriptions"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-meta.php:1
+msgid "Meta"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/template.php:1
+msgid "My Shortcode"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Number of Posts to Display"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+msgid "Number of comments to show "
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+msgid "Number of posts to show"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+msgid "Pages"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Preload Video"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+msgid "RSS"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "RSS Links"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+msgid "RSS feed URL"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+msgid "Recent Comments"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+msgid "Recent Posts"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-search.php:1
+msgid "Search"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+msgid "Select"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+msgid "Select Menu"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Show Excerpts"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "Show Featured Image"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/template.php:1
+msgid "Some Color"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/template.php:1
+msgid "Some Text"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+msgid "Sort by"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Subscribe Text"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "Subscribe Text (when Logged in)"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-tag-cloud.php:1
+msgid "Tag Cloud"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-tag-cloud.php:1
+msgid "Taxonomy"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-facebook-like-box.php:1
+msgid "The Like Box only works with Facebook Pages."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+msgid "The URL of the MP4 video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+msgid "The URL of the OGV video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+msgid "The URL of the WEBM video to be embedded."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-meta.php:1
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+#: page-builder-sandwich/lib/shortcode/widget-search.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+#: page-builder-sandwich/lib/shortcode/widget-tag-cloud.php:1
+#: page-builder-sandwich/lib/shortcode/widget-categories.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-facebook-like-box.php:1
+#: page-builder-sandwich/lib/shortcode/widget-archives.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+#: page-builder-sandwich/lib/shortcode/widget-calendar.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-gravatar-profile.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
+msgid "The title to display for this widget"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "This is the text body that is shown to your visitors if they are logged in."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+msgid "This is the text body that is shown to your visitors."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+msgid "This setting only applies if you selected a format that includes images above."
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-meta.php:1
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+#: page-builder-sandwich/lib/shortcode/widget-search.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-subscriptions.php:1
+#: page-builder-sandwich/lib/shortcode/widget-tag-cloud.php:1
+#: page-builder-sandwich/lib/shortcode/widget-categories.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-facebook-like-box.php:1
+#: page-builder-sandwich/lib/shortcode/widget-archives.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-rss-links.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+#: page-builder-sandwich/lib/shortcode/widget-calendar.php:1
+#: page-builder-sandwich/lib/shortcode/toggle.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-gravatar-profile.php:1
+#: page-builder-sandwich/lib/shortcode/widget-jetpack-display-wordpress-posts.php:1
 msgid "Title"
 msgstr ""
 
-#: ../lib/shortcode/toggle.php:30
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/toggle.php:1
+msgid "Toggle"
+msgstr ""
+
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/toggle.php:1
 msgid "Toggled Content"
 msgstr ""
 
-#: ../pb-sandwich.php:165
-msgid "Column text"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Video MP4 Format"
 msgstr ""
 
-#: ../pb-sandwich.php:166
-msgid "Columns"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Video OGV Format"
 msgstr ""
 
-#: ../pb-sandwich.php:167
-msgid ""
-"Enter a composition here of column ratios separated by spaces.<br>Make sure "
-"the ratios sum up to 1.<br>For example: "
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Video Poster"
 msgstr ""
 
-#: ../pb-sandwich.php:168
-msgid "Custom Columns"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/html5video-remote.php:1
+#: page-builder-sandwich/lib/shortcode/html5video.php:1
+msgid "Video Webm Format"
 msgstr ""
 
-#: ../pb-sandwich.php:169
-#, php-format
-msgid "%s Columns"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-archives.php:1
+msgid "Widget - Archives"
 msgstr ""
 
-#: ../pb-sandwich.php:170
-msgid "Delete"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-calendar.php:1
+msgid "Widget - Calendar"
 msgstr ""
 
-#: ../pb-sandwich.php:171
-msgid "Edit"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-categories.php:1
+msgid "Widget - Categories"
 msgstr ""
 
-#: ../pb-sandwich.php:172
-msgid "Change Column"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-custom-menu.php:1
+msgid "Widget - Custom Menu"
 msgstr ""
 
-#: ../pb-sandwich.php:173
-msgid "Clone"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-meta.php:1
+msgid "Widget - Meta"
 msgstr ""
 
-#: ../pb-sandwich.php:174
-msgid "Change Columns"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-pages.php:1
+msgid "Widget - Pages"
 msgstr ""
 
-#: ../pb-sandwich.php:175
-msgid "Cancel"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-rss.php:1
+msgid "Widget - RSS"
 msgstr ""
 
-#: ../pb-sandwich.php:176
-msgid "Preset"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-comments.php:1
+msgid "Widget - Recent Comments"
 msgstr ""
 
-#: ../pb-sandwich.php:177
-msgid "You can change the number of columns below:"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-recent-posts.php:1
+msgid "Widget - Recent Posts"
 msgstr ""
 
-#: ../pb-sandwich.php:178
-msgid "Use custom"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-search.php:1
+msgid "Widget - Search"
 msgstr ""
 
-#: ../pb-sandwich.php:179
-msgid "Custom"
+#. Text in function
+#: page-builder-sandwich/lib/shortcode/widget-tag-cloud.php:1
+msgid "Widget - Tag Cloud"
 msgstr ""

@@ -16,7 +16,7 @@ function sandwich_contact_form_7() {
 	}
 	
 	$options = array(
-		'0' => __( '— Select —', 'pbsandwich' ),
+		'0' => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) ),
 	);
 	$forms = WPCF7_ContactForm::find();
 	foreach ( $forms as $form ) {

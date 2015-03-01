@@ -16,7 +16,7 @@ function sandwich_custom_menu_widget() {
 	}
 	
 	$options = array(
-		'0' => __( '— Select —', 'pbsandwich' ),
+		'0' => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) ),
 	);
 	
 	$menus = wp_get_nav_menus();
