@@ -71,7 +71,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-forum-index', 
 		array(
 			'label' => __( 'BBPress Forum Index', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 	
@@ -79,7 +79,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-forum-form', 
 		array(
 			'label' => __( 'BBPress Forum Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -88,7 +88,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-single-forum',
 		array(
 			'label' => __( 'BBPress Single Forum Display', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select Forum to display', 'pbsandwich' ),
@@ -104,7 +104,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-topic-index', 
 		array(
 			'label' => __( 'BBPress Topic Index', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 	
@@ -113,7 +113,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-topic-form',
 		array(
 			'label' => __( 'BBPress Topic Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select Forum to display the New Topic form in', 'pbsandwich' ),
@@ -130,7 +130,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-single-topic',
 		array(
 			'label' => __( 'BBPress Single Topic display', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select the Topic to display', 'pbsandwich' ),
@@ -146,7 +146,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-reply-form', 
 		array(
 			'label' => __( 'BBPress Reply Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -155,7 +155,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-single-reply',
 		array(
 			'label' => __( 'BBPress Single Reply display', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select the Reply to display', 'pbsandwich' ),
@@ -171,7 +171,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-topic-tags', 
 		array(
 			'label' => __( 'BBPress Topic Tags', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -180,7 +180,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-single-tag',
 		array(
 			'label' => __( 'BBPress Single Tag display', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select the Tag to display topics associated with it', 'pbsandwich' ),
@@ -197,7 +197,7 @@ function sandwich_bbp_shortcodes() {
 		'bbp-single-view',
 		array(
 			'label' => __( 'BBPress Single View', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 			'attrs' => array(
 				array(
 					'label' => __( 'Select the viewing type to display topics according to a certain attribute.', 'pbsandwich' ),
@@ -213,7 +213,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-search', 
 		array(
 			'label' => __( 'BBPress Search Input Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -221,7 +221,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-search-form', 
 		array(
 			'label' => __( 'BBPress Search Input Template', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -229,7 +229,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-login', 
 		array(
 			'label' => __( 'BBPress Login Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -237,7 +237,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-register', 
 		array(
 			'label' => __( 'BBPress Registration Screen', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 
@@ -245,7 +245,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-lost-pass', 
 		array(
 			'label' => __( 'BBPress Lost Password Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 	
@@ -253,7 +253,7 @@ function sandwich_bbp_shortcodes() {
 	shortcode_ui_register_for_shortcode( 'bbp-stats', 
 		array(
 			'label' => __( 'BBPress Statistics', 'pbsandwich' ),
-			'listItemImage' => 'dashicons dashicons-bbpress-logo',
+			'listItemImage' => 'dashicons-wordpress dashicons-bbpress-logo',
 		) 
 	);
 }
