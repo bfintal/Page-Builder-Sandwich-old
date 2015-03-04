@@ -109,6 +109,7 @@ function sandwich_easy_digital_downloads() {
 	);
 
 	// Register Shortcake UI for Easy Digital Downloads Login Form
+	sandwich_add_logged_out_shortcode( 'edd_login' );
 	shortcode_ui_register_for_shortcode(
 		'edd_login',
 		array(
@@ -126,7 +127,7 @@ function sandwich_easy_digital_downloads() {
 	);
 	
 	// Register Shortcake UI for Easy Digital Downloads Discount Codes
-		shortcode_ui_register_for_shortcode( 'download_discounts', 
+	shortcode_ui_register_for_shortcode( 'download_discounts', 
 		array(
 			'label' => __( 'EDD Discount Codes', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-wordpress download-count',
@@ -134,7 +135,7 @@ function sandwich_easy_digital_downloads() {
 	);
 	
 	// Register Shortcake UI for Easy Digital Downloads Download History
-		shortcode_ui_register_for_shortcode( 'downloads', 
+	shortcode_ui_register_for_shortcode( 'downloads', 
 		array(
 			'label' => __( 'EDD Downloadable Products', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-wordpress download-count',
