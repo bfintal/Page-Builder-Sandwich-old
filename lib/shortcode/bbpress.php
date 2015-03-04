@@ -25,8 +25,12 @@ function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
  		'posts_per_page' => '-1'
  		);
  	$loop = new WP_Query( $args );
+	
+	$output = array(
+		0 => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) )
+	);
+	
  	if ( $loop->have_posts() ) {
-		$output[0] = sprintf( '— %s —', __( 'Select', 'pbsandwich' ) );
  		while ( $loop->have_posts() ) : $loop->the_post();
  			$fieldout = get_the_title();
 			if ( $id != "false" ) {
@@ -34,8 +38,6 @@ function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
 			}
 			$output[get_the_ID()] = $fieldout;
  		endwhile;
- 	} else {
- 			$output[0] = __( 'None found!', 'pbsandwich' );
  	}
  	wp_reset_postdata();
 
