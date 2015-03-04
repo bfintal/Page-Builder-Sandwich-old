@@ -64,7 +64,11 @@ function sandwich_myshortcode() {
 				),
 			),
 		)
-	);	
+	);
+	
+	// TODO: If the rendered shortcode in the editor NEEDS to be previewed in a logged out state (e.g. login forms)
+	// uncomment this and add in your shortcode here.
+	// sandwich_add_logged_out_shortcode( 'pbs_myshortcode' );
 }
 
 // TODO: Does your Shortcake require additional functions for rendering?
