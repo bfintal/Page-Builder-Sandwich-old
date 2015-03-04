@@ -34,7 +34,7 @@ function sandwich_mailchimp() {
 		'mc4wp_form',
 		array(
 			'label' => __( 'MailChimp Form', 'pbsandwich' ),
-			'listItemImage' => 'dashicons-wordpress',
+			'listItemImage' => 'dashicons-email-alt',
 		)
 	);
 }
