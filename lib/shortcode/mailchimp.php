@@ -20,6 +20,14 @@ function sandwich_mailchimp() {
 	if ( ! class_exists( 'MC4WP_Lite' ) &&  ! defined( 'MC4WP_VERSION' ) ) {
 		return;
 	}
+	
+	// Include the required styles
+	if ( defined( 'MC4WP_LITE_PLUGIN_URL' ) ) {
+		add_editor_style( MC4WP_LITE_PLUGIN_URL . 'assets/css/form.min.css' );
+	}
+	if ( defined( 'MC4WP_PLUGIN_URL' ) ) {
+		add_editor_style( MC4WP_PLUGIN_URL . 'assets/css/form.min.css' );
+	}
 		
 	// Register Shortcake UI for MailChimp Form
 	shortcode_ui_register_for_shortcode(

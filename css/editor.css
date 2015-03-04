@@ -391,6 +391,12 @@ body#tinymce.wp-editor .sandwich .widget_facebook_likebox iframe {
   width: 100% !important; }
 
 /**
+ * Hide mailchimp secret input field
+ */
+body#tinymce.wp-editor [name="_mc4wp_required_but_not_really"] {
+  display: none; }
+
+/**
  * Styles for the main page builder core
  */
 /**
