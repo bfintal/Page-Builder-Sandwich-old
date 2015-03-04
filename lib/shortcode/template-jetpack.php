@@ -18,6 +18,11 @@ function sandwich_myshortcode() {
 		return;
 	}
 	
+	// Only create the UI when in the admin
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
 		'myshortcode',

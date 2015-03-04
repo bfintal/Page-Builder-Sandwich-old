@@ -16,6 +16,10 @@ function sandwich_wordpress_seo() {
 		return;
 	}
 
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	// Check if WordPress SEO is active. Exit if not.
 	if ( ! defined( 'WPSEO_VERSION' ) ) {
 		return;

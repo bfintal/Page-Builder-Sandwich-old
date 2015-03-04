@@ -14,6 +14,10 @@ function sandwich_jetpack_rss_links_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	$displaysOptions = array(
 		'posts' => __( 'Posts', 'jetpack' ),

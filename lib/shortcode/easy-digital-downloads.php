@@ -16,6 +16,10 @@ function sandwich_easy_digital_downloads() {
 		return;
 	}
 
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	// Check if Easy Digital Downloads exist. Terminate if not.
 	if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
 		return;

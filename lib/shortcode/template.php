@@ -29,6 +29,10 @@ function sandwich_myshortcode() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	// TODO: If creating a Shortcake for a particular plugin, find its class and use it as basis of activation.
 	// This module must terminate the moment it determines that the dependency is not established.
 	// Calling undefined classes and functions will result in errors, so this must be handled.

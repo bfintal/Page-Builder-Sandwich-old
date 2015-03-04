@@ -20,6 +20,10 @@ function sandwich_mailchimp() {
 	if ( ! class_exists( 'MC4WP_Lite' ) &&  ! defined( 'MC4WP_VERSION' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	// Include the required styles
 	if ( defined( 'MC4WP_LITE_PLUGIN_URL' ) ) {
