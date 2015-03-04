@@ -63,6 +63,31 @@ function sandwich_bbpress_term_list( $taxonomyName ) {
 	return $output;
 }
 
+
+/**
+ * Adds the default bbPress styles into the editor
+ *
+ * @see bbp_default_styles filter
+ * @see BBP_Default->enqueue_styles()
+ */
+add_filter( 'bbp_default_styles', 'sandwich_bbpress_enqueue_editor_styles' );
+function sandwich_bbpress_enqueue_editor_styles( $styles ) {
+	
+	if ( ! is_admin() ) {
+		return $styles;
+	}
+	
+	foreach ( $styles as $handle => $attributes ) {
+		
+		$styleUrl = bbp_enqueue_style( $handle, $attributes['file'], $attributes['dependencies'], bbp_get_version(), 'screen' );
+		add_editor_style( $styleUrl );
+		
+	}
+	
+	return $styles;
+}
+
+
 /**
  * Create our shortcode for BBPress 
  */
@@ -77,6 +102,12 @@ function sandwich_bbp_shortcodes() {
 	// Check if bbPress is active. Terminate if not.
 	if ( ! class_exists( 'bbPress' ) ) {
 		return;
+	}
+	
+	// We need to trigger the addition of styles so that our preview would work correctly
+	if ( is_admin() ) {
+		$o = new BBP_Default();
+		$o->enqueue_styles();
 	}
 
 	// Register Shortcake UI for BBPress Forum Index
