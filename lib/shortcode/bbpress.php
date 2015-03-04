@@ -45,16 +45,21 @@ function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
 }
 
 function sandwich_bbpress_term_list( $taxonomyName ) {
-	$terms = get_terms( $taxonomyName, array('parent' => 0) );
+	$terms = get_terms( $taxonomyName, array( 'parent' => 0 ) );
 	$output[0] = sprintf( '— %s —', __( 'Select', 'pbsandwich' ) );
-	foreach($terms as $term) {
-		$output[$term->slug] = $term->name;
-    	$term_children = get_term_children($term->term_id,$taxonomyName);
-    	foreach($term_children as $term_child_id) {
-        	$term_child = get_term_by('id',$term_child_id,$taxonomyName);
-			$output[$term_child->slug] = "-" . $term_child->name;
+	
+	foreach( $terms as $term ) {
+		
+		$output[ $term->slug ] = $term->name;
+    	$term_children = get_term_children( $term->term_id, $taxonomyName );
+		
+    	foreach( $term_children as $term_child_id ) {
+        	$term_child = get_term_by( 'id', $term_child_id, $taxonomyName );
+			$output[ $term_child->slug ] = "-" . $term_child->name;
     	}
+		
 	}
+	
 	return $output;
 }
 
