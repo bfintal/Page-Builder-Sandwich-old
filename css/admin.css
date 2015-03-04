@@ -65,6 +65,9 @@
   -o-transform: scaleX(-1);
   transform: scaleX(-1); }
 
+.download-count::before {
+  content: "\f316"; }
+
 /**
  * Jetpack Contact Form
  */

@@ -15,6 +15,11 @@ function sandwich_wordpress_seo() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	// Check if WordPress SEO is active. Exit if not.
+	if ( ! defined( 'WPSEO_VERSION' ) ) {
+		return;
+	}
 	
 	// Register Shortcake UI for WordPress SEO Breadcrumbs
 	shortcode_ui_register_for_shortcode(

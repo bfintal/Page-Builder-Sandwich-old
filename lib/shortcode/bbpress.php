@@ -26,7 +26,7 @@ function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
  		);
  	$loop = new WP_Query( $args );
  	if ( $loop->have_posts() ) {
-		$output[0] = __( 'Make your selection', 'pbsandwich' );
+		$output[0] = sprintf( '— %s —', __( 'Select', 'pbsandwich' ) );
  		while ( $loop->have_posts() ) : $loop->the_post();
  			$fieldout = get_the_title();
 			if ( $id != "false" ) {
@@ -44,7 +44,7 @@ function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
 
 function sandwich_bbpress_term_list( $taxonomyName ) {
 	$terms = get_terms( $taxonomyName, array('parent' => 0) );
-	$output[0] = __( 'Make your selection', 'pbsandwich' );
+	$output[0] = sprintf( '— %s —', __( 'Select', 'pbsandwich' ) );
 	foreach($terms as $term) {
 		$output[$term->slug] = $term->name;
     	$term_children = get_term_children($term->term_id,$taxonomyName);
@@ -64,6 +64,11 @@ function sandwich_bbp_shortcodes() {
 
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+		return;
+	}
+
+	// Check if bbPress is active. Terminate if not.
+	if ( ! class_exists( 'bbPress' ) ) {
 		return;
 	}
 

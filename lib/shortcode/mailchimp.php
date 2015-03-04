@@ -16,6 +16,11 @@ function sandwich_mailchimp() {
 		return;
 	}
 	
+	// Check if MailChimp is active. Either Lite or Pro. Terminate if neither exists.
+	if ( ! class_exists( 'MC4WP_Lite' ) &&  ! defined( 'MC4WP_VERSION' ) ) {
+		return;
+	}
+		
 	// Register Shortcake UI for MailChimp Form
 	shortcode_ui_register_for_shortcode(
 		'mc4wp_form',
