@@ -142,3 +142,31 @@ function sandwich_easy_digital_downloads() {
 		) 
 	);
 }
+
+
+
+/**
+ * Adds EDD styles into the preview
+ */
+add_action( 'init', 'sandwich_edd_add_editor_styles', 10 );
+function sandwich_edd_add_editor_styles() {
+
+	if ( ! is_admin() ) {
+		return;
+	}
+	
+	// Enqueue EDD Styles
+	if ( function_exists( 'edd_register_styles' ) ) {
+		
+		// Force EDD to register frontend styles
+		edd_register_styles();
+		
+		// Get those styles and add them in the editor for our previews
+		global $wp_styles;
+		if ( ! empty( $wp_styles->registered['edd-styles'] ) ) {
+			add_editor_style( $wp_styles->registered['edd-styles']->src );
+		}
+
+	}
+	
+}
