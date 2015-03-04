@@ -105,7 +105,12 @@ function sandwich_bbp_shortcodes() {
 	}
 	
 	// We need to trigger the addition of styles so that our preview would work correctly
-	if ( is_admin() ) {
+	if ( ! is_admin() ) {
+		return;
+	}
+	
+	// Force bbPress to enqueue styles so we can add them in the editor
+	if ( class_exists( 'BBP_Default' ) ) {
 		$o = new BBP_Default();
 		$o->enqueue_styles();
 	}
@@ -269,6 +274,7 @@ function sandwich_bbp_shortcodes() {
 	);
 
 	// Register Shortcake UI for BBPress Login Form	
+	sandwich_add_logged_out_shortcode( 'bbp-login' );
 	shortcode_ui_register_for_shortcode( 'bbp-login', 
 		array(
 			'label' => __( 'BBPress Login Form', 'pbsandwich' ),
@@ -277,6 +283,7 @@ function sandwich_bbp_shortcodes() {
 	);
 
 	// Register Shortcake UI for BBPress Register Form	
+	sandwich_add_logged_out_shortcode( 'bbp-register' );
 	shortcode_ui_register_for_shortcode( 'bbp-register', 
 		array(
 			'label' => __( 'BBPress Registration Screen', 'pbsandwich' ),
@@ -285,6 +292,7 @@ function sandwich_bbp_shortcodes() {
 	);
 
 	// Register Shortcake UI for BBPress Lost Password Form	
+	sandwich_add_logged_out_shortcode( 'bbp-lost-pass' );
 	shortcode_ui_register_for_shortcode( 'bbp-lost-pass', 
 		array(
 			'label' => __( 'BBPress Lost Password Form', 'pbsandwich' ),
