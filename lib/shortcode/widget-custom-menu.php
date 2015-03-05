@@ -14,6 +14,10 @@ function sandwich_custom_menu_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	$options = array(
 		'0' => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) ),

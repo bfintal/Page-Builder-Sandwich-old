@@ -15,6 +15,10 @@ function sandwich_jetpack_gravatar_profile_widget() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	$options = array(
 		'-1' => __( 'Custom', 'jetpack' )
 	);

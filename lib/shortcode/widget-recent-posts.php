@@ -14,6 +14,10 @@ function sandwich_recent_posts_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	shortcode_ui_register_for_shortcode(
         'pbs_recent_posts_widget',

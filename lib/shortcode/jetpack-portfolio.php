@@ -4,6 +4,15 @@ add_action( 'init', 'sandwich_jetpack_portfolio', 11 );
 
 function sandwich_jetpack_portfolio() {
 
+	// Check if Shortcake exists
+	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+		return;
+	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	$numberOfColumns = array();
 	for ( $i = 1; $i <= 6; $i++ ) {
 		$numberOfColumns[ $i ] = $i;
@@ -16,11 +25,6 @@ function sandwich_jetpack_portfolio() {
 
 	$displayDir['ASC'] = __( 'Ascending', 'pbsandwich' );
 	$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
-
-	// Check if Shortcake exists
-	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
-		return;
-	}
 	
 	shortcode_ui_register_for_shortcode(
 		'portfolio',

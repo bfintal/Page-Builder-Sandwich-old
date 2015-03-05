@@ -15,6 +15,10 @@ function sandwich_jetpack_facebook_like_box_widget() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	$numberOfPosts = array();
 	for ( $i = 1; $i <= 10; $i++ ) {
 		$numberOfPosts[ $i ] = $i;

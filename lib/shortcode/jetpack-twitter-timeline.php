@@ -15,6 +15,10 @@ function sandwich_jetpack_twitter_timeline() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
