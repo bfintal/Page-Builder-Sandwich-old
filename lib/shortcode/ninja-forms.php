@@ -56,3 +56,20 @@ function sandwich_ninjaforms() {
 	);
 	
 }
+
+
+/**
+ * Adds Ninja Forms styles into the preview
+ */
+add_action( 'init', 'sandwich_ninjaforms_add_editor_styles', 10 );
+function sandwich_ninjaforms_add_editor_styles() {
+
+	if ( ! is_admin() ) {
+		return;
+	}
+	
+	if ( defined( 'NINJA_FORMS_URL' ) ) {
+		add_editor_style( NINJA_FORMS_URL . 'css/ninja-forms-display.css' );
+	}
+	
+}
