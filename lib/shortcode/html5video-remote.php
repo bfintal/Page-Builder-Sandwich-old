@@ -19,6 +19,10 @@ function sandwich_external_html5video() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
 		'pbs_external_html5video',

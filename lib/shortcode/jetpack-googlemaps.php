@@ -12,6 +12,12 @@ function sandwich_jetpack_googlemaps() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+    add_shortcode( 'pbs_googlemaps', 'sandwich_googlemaps' ); 
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	shortcode_ui_register_for_shortcode(
         'googlemaps',
@@ -27,8 +33,6 @@ function sandwich_jetpack_googlemaps() {
 			),
         )
     );
-
-    add_shortcode( 'pbs_googlemaps', 'sandwich_googlemaps' ); 
 
     shortcode_ui_register_for_shortcode(
         'pbs_googlemaps',

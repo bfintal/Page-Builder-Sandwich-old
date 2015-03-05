@@ -18,6 +18,10 @@ function sandwich_html5video() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(

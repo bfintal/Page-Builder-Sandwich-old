@@ -11,6 +11,10 @@ function sandwich_contact_form_7() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	if ( ! class_exists( 'WPCF7_ContactForm' ) ) {
 		return;
 	}

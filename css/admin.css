@@ -1,3 +1,6 @@
+.shortcode-list-item .dashicons-bbpress-logo:before {
+  content: "\f477"; }
+
 /**
  * Our columns icon
  */
@@ -61,6 +64,9 @@
   -ms-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   transform: scaleX(-1); }
+
+.download-count::before {
+  content: "\f316"; }
 
 /**
  * Jetpack Contact Form

@@ -9,6 +9,10 @@ function sandwich_embed_media() {
 		return;
 	}
 	
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	shortcode_ui_register_for_shortcode(
 		'embed',
 		array(

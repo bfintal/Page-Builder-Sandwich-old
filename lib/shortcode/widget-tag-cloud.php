@@ -14,6 +14,10 @@ function sandwich_tag_cloud_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	$options = array();
 	foreach ( get_taxonomies() as $taxonomy ) {

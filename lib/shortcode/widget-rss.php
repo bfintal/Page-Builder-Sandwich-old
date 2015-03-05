@@ -14,6 +14,10 @@ function sandwich_rss_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	shortcode_ui_register_for_shortcode(
         'pbs_rss_widget',

@@ -17,6 +17,7 @@ defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.9.1' );
 // Used for file includes
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
 
+require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
 // require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
@@ -43,6 +44,10 @@ require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-gravatar-profile.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-rss-links.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-subscriptions.php' );
 require_once( PBS_PATH . 'lib/shortcode/contact-form-7.php' );
+require_once( PBS_PATH . 'lib/shortcode/bbpress.php' );
+require_once( PBS_PATH . 'lib/shortcode/wordpress-seo.php' );
+require_once( PBS_PATH . 'lib/shortcode/mailchimp.php' );
+require_once( PBS_PATH . 'lib/shortcode/easy-digital-downloads.php' );
 
 
 /**
