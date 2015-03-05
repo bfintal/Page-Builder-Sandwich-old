@@ -20,6 +20,11 @@ function sandwich_hello_dolly() {
 		return;
 	}
 	
+	// Only create the UI when in the admin
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	// Create our UI
 	shortcode_ui_register_for_shortcode(
         'pbs_hello_dolly',

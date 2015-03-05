@@ -12,6 +12,10 @@ function sandwich_jetpack_contact_form() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	shortcode_ui_register_for_shortcode(
         'contact-form',

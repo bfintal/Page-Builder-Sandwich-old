@@ -14,6 +14,10 @@ function sandwich_jetpack_subscriptions_widget() {
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 		return;
 	}
+
+	if ( ! is_admin() ) {
+		return;
+	}
 	
 	$numberOfPosts = array();
 	for ( $i = 1; $i <= 10; $i++ ) {
