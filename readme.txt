@@ -89,7 +89,6 @@ Third-party shortcodes - these show up when the necessary plugin is activated
 * Jetpack
 * MailChimp for WP
 * Ninja Forms
-* WordPress SEO by Yoast
 * *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
