@@ -20,28 +20,28 @@ function sandwich_bbpress_display_view () {
  */
 
 function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
- 	$args = array(
- 		'post_type' => $type,
- 		'posts_per_page' => '-1'
- 		);
- 	$loop = new WP_Query( $args );
+	$args = array(
+		'post_type' => $type,
+		'posts_per_page' => '-1'
+	);
+	$loop = new WP_Query( $args );
 	
 	$output = array(
 		0 => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) )
 	);
 	
- 	if ( $loop->have_posts() ) {
- 		while ( $loop->have_posts() ) : $loop->the_post();
- 			$fieldout = get_the_title();
+	if ( $loop->have_posts() ) {
+		while ( $loop->have_posts() ) : $loop->the_post();
+			$fieldout = get_the_title();
 			if ( $id != "false" ) {
 				$fieldout .= " (" . get_the_ID() . ")";
 			}
-			$output[get_the_ID()] = $fieldout;
- 		endwhile;
- 	}
- 	wp_reset_postdata();
+			$output[ get_the_ID() ] = $fieldout;
+		endwhile;
+	}
+	wp_reset_postdata();
 
- 	return $output;
+	return $output;
 }
 
 function sandwich_bbpress_term_list( $taxonomyName ) {
@@ -51,12 +51,12 @@ function sandwich_bbpress_term_list( $taxonomyName ) {
 	foreach( $terms as $term ) {
 		
 		$output[ $term->slug ] = $term->name;
-    	$term_children = get_term_children( $term->term_id, $taxonomyName );
+		$term_children = get_term_children( $term->term_id, $taxonomyName );
 		
-    	foreach( $term_children as $term_child_id ) {
-        	$term_child = get_term_by( 'id', $term_child_id, $taxonomyName );
+		foreach( $term_children as $term_child_id ) {
+			$term_child = get_term_by( 'id', $term_child_id, $taxonomyName );
 			$output[ $term_child->slug ] = "-" . $term_child->name;
-    	}
+		}
 		
 	}
 	
@@ -190,7 +190,7 @@ function sandwich_bbp_shortcodes() {
 		)
 	);
 
-	// Register Shortcake UI for BBPress Reply Form	
+	// Register Shortcake UI for BBPress Reply Form 
 	shortcode_ui_register_for_shortcode( 'bbp-reply-form', 
 		array(
 			'label' => __( 'BBPress Reply Form', 'pbsandwich' ),
@@ -215,7 +215,7 @@ function sandwich_bbp_shortcodes() {
 		)
 	);
 
-	// Register Shortcake UI for BBPress Topic Tags	
+	// Register Shortcake UI for BBPress Topic Tags 
 	shortcode_ui_register_for_shortcode( 'bbp-topic-tags', 
 		array(
 			'label' => __( 'BBPress Topic Tags', 'pbsandwich' ),
@@ -273,7 +273,7 @@ function sandwich_bbp_shortcodes() {
 		) 
 	);
 
-	// Register Shortcake UI for BBPress Login Form	
+	// Register Shortcake UI for BBPress Login Form 
 	sandwich_add_logged_out_shortcode( 'bbp-login' );
 	shortcode_ui_register_for_shortcode( 'bbp-login', 
 		array(
@@ -291,7 +291,7 @@ function sandwich_bbp_shortcodes() {
 		) 
 	);
 
-	// Register Shortcake UI for BBPress Lost Password Form	
+	// Register Shortcake UI for BBPress Lost Password Form 
 	sandwich_add_logged_out_shortcode( 'bbp-lost-pass' );
 	shortcode_ui_register_for_shortcode( 'bbp-lost-pass', 
 		array(
@@ -300,7 +300,7 @@ function sandwich_bbp_shortcodes() {
 		) 
 	);
 	
-	// Register Shortcake UI for BBPress Statistics	
+	// Register Shortcake UI for BBPress Statistics 
 	shortcode_ui_register_for_shortcode( 'bbp-stats', 
 		array(
 			'label' => __( 'BBPress Statistics', 'pbsandwich' ),
