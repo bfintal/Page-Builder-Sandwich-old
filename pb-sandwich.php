@@ -43,7 +43,7 @@ require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-gravatar-profile.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-rss-links.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-jetpack-subscriptions.php' );
 require_once( PBS_PATH . 'lib/shortcode/contact-form-7.php' );
-
+require_once( PBS_PATH . 'lib/shortcode/wordpress-seo.php' );
 
 /**
  * PB Sandwich Class
