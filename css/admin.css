@@ -1,3 +1,6 @@
+.shortcode-list-item .dashicons-bbpress-logo:before {
+  content: "\f477"; }
+
 /**
  * Our columns icon
  */
