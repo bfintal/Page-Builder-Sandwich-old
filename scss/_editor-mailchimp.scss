@@ -1,0 +1,6 @@
+/**
+ * Hide mailchimp secret input field
+ */
+body#tinymce.wp-editor [name="_mc4wp_required_but_not_really"] {
+	display: none;
+}
