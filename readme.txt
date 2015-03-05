@@ -14,26 +14,19 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 = Call it PB Sandwich for short =
 
-One of the most frustrating things when creating content is layouting and writing them inside the visual editor.
+= The page builder that: =
 
-Sure you can use **shortcodes columns**, but are not user friendly with all those distracting square brackets. Not to mention that column shortcodes are just displayed as a single column in the visual editor.
-
-Existing **Page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows. Page builders have a ton of code in them for creating brand new interfaces, but more code means more stuff which can go wrong in the future.
+* let's you preview your rendered content and shortcodes from your backend,
+* adds page builder capabilities without hijacking your visual editor,
+* gives you a nice interface to edit your favorite shortcodes: Jetpack, bbPress, BuddyPress, and plenty more;
+* allows you to visually create columns that actually look like columns,
+* looks & feels native to WordPress,
+* just works without any set ups and hassles, and
+* you'll forget that you have it turned on since it blends so well with WordPress
 
 *Check out the screenshots to see how PB Sandwich works.*
 
 **Requires PHP 5.3+**
-
-= What it does =
-
-Extends your visual editor to include page builder capabilities and new shortcodes
-
-= The Goal =
-
-The goal is to create a page builder that:
-
-* Feels and acts *native* and part of WordPress
-* Lazy, no settings pages specific for the plugin
 
 = What can you do with it =
 
@@ -45,9 +38,15 @@ The goal is to create a page builder that:
 * Create different shortcodes
 * Working undo
 
-= Shortcodes =
+= TLDR Intro =
 
-Shortcodes are added by clicking on **Add Media > Insert Post Element**.
+One of the most frustrating things when creating content is layouting and writing them inside the visual editor.
+
+Sure you can use **shortcodes columns**, but are not user friendly with all those distracting square brackets. Not to mention that column shortcodes are just displayed as a single column in the visual editor.
+
+Existing **Page builders** are also great, but we didn't want to hijack the content editor and we wanted to find a way to do it using the existing visual editor that everyone knows. Page builders have a ton of code in them for creating brand new interfaces, but more code means more stuff which can go wrong in the future.
+
+= Shortcodes =
 
 We support the following shortcodes, widgets & elements:
 
@@ -85,7 +84,11 @@ We support the following shortcodes, widgets & elements:
 
 Third-party shortcodes - these show up when the necessary plugin is activated
 
+* bbPress
 * Contact Form 7
+* Jetpack
+* MailChimp for WP
+* WordPress SEO by Yoast
 * *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Contributions are welcome at the [Github repository](https://github.com/gambitph/Page-Builder-Sandwich/)*
@@ -99,11 +102,12 @@ Report bugs and help out in the code from the [Github repository](https://github
 == Installation ==
 
 1. Head over to Plugins > Add New in the admin
-2. Search for "PB Sandwich"
+2. Search for "Sandwich"
 3. Install & activate the plugin
 4. Create your content:
 	* Click the "Columns" button while editing your posts and pages to insert your columns, or
-	* Click on the "Add Media" button, then "Insert Post Element" to insert shortcodes
+	* Click on "Add Post Element" to insert shortcodes
+	* Some third-party plugin shortcodes are supported, they will appear if we detect that the plugin is activated
 5. Click, drap, drop, edit away on your visual editor
 
 == Screenshots ==
@@ -162,6 +166,13 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.10 =
+
+* Added new shortcodes:
+	* bbPress
+	* MailChimp for WP
+	* WordPress SEO by Yoast
 
 = 0.9.1 =
 
