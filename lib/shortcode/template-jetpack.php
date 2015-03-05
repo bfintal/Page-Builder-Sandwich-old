@@ -18,6 +18,11 @@ function sandwich_myshortcode() {
 		return;
 	}
 	
+	// Only create the UI when in the admin
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	// Register Shortcake UI
 	shortcode_ui_register_for_shortcode(
 		'myshortcode',
@@ -44,6 +49,10 @@ function sandwich_myshortcode() {
 			),
 		)
 	);
+	
+	// TODO: If the rendered shortcode in the editor NEEDS to be previewed in a logged out state (e.g. login forms)
+	// uncomment this and add in your shortcode here.
+	// sandwich_add_logged_out_shortcode( 'myshortcode' );
 	
 	// Make sure Jetpack is activated
 	if ( ! class_exists( 'Jetpack' ) ) {
