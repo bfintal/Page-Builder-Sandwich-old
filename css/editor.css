@@ -278,6 +278,9 @@ body#tinymce.wp-editor .sandwich .panel-danger {
   body#tinymce.wp-editor .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
 
+.shortcode-list-item .dashicons-bbpress-logo:before {
+  content: "\f477"; }
+
 /**
  * Editor only div-like styling
  */
