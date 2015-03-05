@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Shortcode Template File for WordPress SEO
+ * Shortcode for WordPress SEO
  */
 
 
