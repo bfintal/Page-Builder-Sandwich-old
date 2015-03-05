@@ -116,6 +116,7 @@ Report bugs and help out in the code from the [Github repository](https://github
 2. You can do this while editing posts and pages
 3. You then get these columns as your output
 4. Shortcodes
+5. Creating a registration/login page for bbPress
 
 == Frequently Asked Questions ==
 

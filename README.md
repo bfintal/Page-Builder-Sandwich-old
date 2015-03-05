@@ -81,6 +81,9 @@ Why did we do it this way? Because table editing is handled pretty well by TinyM
 Shortcodes & widgets
 ![Shortcodes & Widgets](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/shortcodes.jpg)
 
+Creating a registration/login page for bbPress
+![Creating a registration/login page for bbPress](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/bbpress.jpg)
+
 Drag and drop stuff
 ![Drag and Drop](https://raw.githubusercontent.com/gambitph/Page-Builder-Sandwich/master/preview/drag-and-drop.jpg)
 
