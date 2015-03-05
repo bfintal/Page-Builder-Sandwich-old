@@ -63,7 +63,12 @@ We support the following shortcodes, widgets & elements:
 
 Third-party shortcodes - these show up when the necessary plugin is activated
 
+* bbPress
 * Contact Form 7
+* Jetpack
+* MailChimp for WP
+* Ninja Forms
+* WordPress SEO by Yoast
 * *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
 *Shortcode contributions are welcome, we have docs on how to [create them](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Creating-a-Shortcode).

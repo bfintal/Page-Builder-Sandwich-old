@@ -88,6 +88,7 @@ Third-party shortcodes - these show up when the necessary plugin is activated
 * Contact Form 7
 * Jetpack
 * MailChimp for WP
+* Ninja Forms
 * WordPress SEO by Yoast
 * *Have a plugin suggestion? [Let us know here](https://github.com/gambitph/Page-Builder-Sandwich/issues/new)*
 
@@ -173,6 +174,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Added new shortcodes:
 	* bbPress
 	* MailChimp for WP
+	* Ninja Forms
 	* WordPress SEO by Yoast
 
 = 0.9.1 =
