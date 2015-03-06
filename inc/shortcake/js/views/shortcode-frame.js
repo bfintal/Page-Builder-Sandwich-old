@@ -16,6 +16,7 @@ wp.media.view.MediaFrame.Post = shortcodeFrame.extend({
 
 		var opts = {
 			id      : id,
+			search  : true,
 			router  : false,
 			toolbar : id + '-toolbar',
 			menu    : 'default',
@@ -29,7 +30,7 @@ wp.media.view.MediaFrame.Post = shortcodeFrame.extend({
 			opts.title = shortcodeUIData.strings.media_frame_menu_update_label;
 		}
 
-		var controller = new MediaController( opts );
+		var controller = new sui.controllers.MediaController( opts );
 
 		if ( 'currentShortcode' in this.options ) {
 			controller.props.set( 'currentShortcode', arguments[0].currentShortcode );

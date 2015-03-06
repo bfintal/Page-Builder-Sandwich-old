@@ -170,12 +170,14 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 
 = 0.10 =
 
+* New installation welcome screen
 * Added new shortcodes (accessible if these plugins are activated):
-	* bbPress shortcodes
-	* MailChimp for WP shortcode
-	* Ninja Forms shortcode
+	* bbPress
+	* MailChimp for WP
+	* Ninja Forms
+	* WordPress SEO by Yoast
 * Minor speed enhancements
-* Welcome screen
+* Updated Shortcake to include a new shortcode search box
 
 = 0.9.1 =
 
