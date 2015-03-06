@@ -15,56 +15,6 @@ function sandwich_bbpress_display_view () {
 }
 
 /**
- * Encodes the list of products into an array variable.
- * Choose between array, comma-separated string or slug.
- */
-
-function sandwich_bbpress_posttype_list ( $type = "forum", $id = "false" ) {
-	$args = array(
-		'post_type' => $type,
-		'posts_per_page' => '-1'
-	);
-	$loop = new WP_Query( $args );
-	
-	$output = array(
-		0 => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) )
-	);
-	
-	if ( $loop->have_posts() ) {
-		while ( $loop->have_posts() ) : $loop->the_post();
-			$fieldout = get_the_title();
-			if ( $id != "false" ) {
-				$fieldout .= " (" . get_the_ID() . ")";
-			}
-			$output[ get_the_ID() ] = $fieldout;
-		endwhile;
-	}
-	wp_reset_postdata();
-
-	return $output;
-}
-
-function sandwich_bbpress_term_list( $taxonomyName ) {
-	$terms = get_terms( $taxonomyName, array( 'parent' => 0 ) );
-	$output[0] = sprintf( '— %s —', __( 'Select', 'pbsandwich' ) );
-	
-	foreach( $terms as $term ) {
-		
-		$output[ $term->slug ] = $term->name;
-		$term_children = get_term_children( $term->term_id, $taxonomyName );
-		
-		foreach( $term_children as $term_child_id ) {
-			$term_child = get_term_by( 'id', $term_child_id, $taxonomyName );
-			$output[ $term_child->slug ] = "-" . $term_child->name;
-		}
-		
-	}
-	
-	return $output;
-}
-
-
-/**
  * Adds the default bbPress styles into the editor
  *
  * @see bbp_default_styles filter
@@ -142,7 +92,7 @@ function sandwich_bbp_shortcodes() {
 					'label' => __( 'Select Forum to display', 'pbsandwich' ),
 					'attr' => 'id',
 					'type' => 'select',
-					'options' => sandwich_bbpress_posttype_list( 'forum' ),
+					'options' => sandwich_functions_posttype_list( 'forum' ),
 				),
 			),
 		)
@@ -167,7 +117,7 @@ function sandwich_bbp_shortcodes() {
 					'label' => __( 'Select Forum to display the New Topic form in', 'pbsandwich' ),
 					'attr' => 'forum_id',
 					'type' => 'select',
-					'options' => sandwich_bbpress_posttype_list( 'forum' ),
+					'options' => sandwich_functions_posttype_list( 'forum' ),
 				),
 			),
 		)
@@ -184,7 +134,7 @@ function sandwich_bbp_shortcodes() {
 					'label' => __( 'Select the Topic to display', 'pbsandwich' ),
 					'attr' => 'id',
 					'type' => 'select',
-					'options' => sandwich_bbpress_posttype_list( 'topic' ),
+					'options' => sandwich_functions_posttype_list( 'topic' ),
 				),
 			),
 		)
@@ -209,7 +159,7 @@ function sandwich_bbp_shortcodes() {
 					'label' => __( 'Select the Reply to display', 'pbsandwich' ),
 					'attr' => 'id',
 					'type' => 'select',
-					'options' => sandwich_bbpress_posttype_list( 'reply' ),
+					'options' => sandwich_functions_posttype_list( 'reply' ),
 				),
 			),
 		)
@@ -234,7 +184,7 @@ function sandwich_bbp_shortcodes() {
 					'label' => __( 'Select the Tag to display topics associated with it', 'pbsandwich' ),
 					'attr' => 'id',
 					'type' => 'select',
-					'options' => sandwich_bbpress_term_list( 'topic-tag' ),
+					'options' => sandwich_functions_term_list( 'topic-tag' ),
 				),
 			),
 		)

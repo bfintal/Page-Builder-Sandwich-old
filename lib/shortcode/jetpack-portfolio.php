@@ -12,19 +12,6 @@ function sandwich_jetpack_portfolio() {
 	if ( ! is_admin() ) {
 		return;
 	}
-
-	$numberOfColumns = array();
-	for ( $i = 1; $i <= 6; $i++ ) {
-		$numberOfColumns[ $i ] = $i;
-	}
-
-	$displayOrder['author'] = __( 'Author', 'pbsandwich' );
-	$displayOrder['date'] = __( 'Post Date', 'pbsandwich' );
-	$displayOrder['title'] = __( 'Post Title', 'pbsandwich' );
-	$displayOrder['rand'] = __( 'Randomized', 'pbsandwich' );
-
-	$displayDir['ASC'] = __( 'Ascending', 'pbsandwich' );
-	$displayDir['DESC'] = __( 'Descending', 'pbsandwich' );
 	
 	shortcode_ui_register_for_shortcode(
 		'portfolio',
@@ -65,7 +52,7 @@ function sandwich_jetpack_portfolio() {
 					'attr' => 'columns',
 					'type' => 'select',
 					'description' => __( 'Select the number of columns to use to display entries.', 'pbsandwich' ),
-					'options' => $numberOfColumns,
+					'options' => sandwich_functions_number_count( '1', '6' ),
 					'value' => '2',
 				),
 				array(
@@ -80,7 +67,7 @@ function sandwich_jetpack_portfolio() {
 					'attr' => 'order',
 					'type' => 'select',
 					'description' => __( 'Choose sorting direction. Ascending displays your oldest post first, while Descending displays your latest post first.', 'pbsandwich' ),
-					'options' => $displayDir,
+					'options' => sandwich_functions_display_dir(),
 					'value' => 'DESC',
 				),
 				array(
@@ -88,7 +75,7 @@ function sandwich_jetpack_portfolio() {
 					'attr' => 'orderby',
 					'type' => 'select',
 					'description' => __( 'Choose the criteria of entries to be sorted by.', 'pbsandwich' ),
-					'options' => $displayOrder,
+					'options' => sandwich_functions_display_order(),
 					'value' => 'date',
 				),
 			),

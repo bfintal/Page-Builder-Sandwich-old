@@ -19,15 +19,6 @@ function sandwich_tag_cloud_widget() {
 		return;
 	}
 	
-	$options = array();
-	foreach ( get_taxonomies() as $taxonomy ) {
-		$tax = get_taxonomy( $taxonomy );
-		if ( ! $tax->show_tagcloud || empty( $tax->labels->name ) ) {
-			continue;
-		}
-		$options[ esc_attr( $taxonomy ) ] = esc_attr( $tax->labels->name );
-	}
-	
 	shortcode_ui_register_for_shortcode(
         'pbs_tag_cloud_widget',
         array(
@@ -46,12 +37,11 @@ function sandwich_tag_cloud_widget() {
                     'attr' => 'taxonomy',
                     'type' => 'select',
 					'value' => '',
-					'options' => $options,
+					'options' => sandwich_functions_taxonomy_list ( 'tag' ),
                 ),
 			),
         )
     );
-	
 }
 
 function sandwich_tag_cloud_widget_shortcode( $attr, $content ) {
