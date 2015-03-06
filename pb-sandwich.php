@@ -11,12 +11,18 @@
 * Domain Path: /languages
 */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Used for tracking the version used
 defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.9.1' );
 
 // Used for file includes
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
+defined( 'PBS_URL' ) or define( 'PBS_URL', plugin_dir_url( __FILE__ ) );
+defined( 'PBS_FILE' ) or define( 'PBS_FILE', __FILE__ );
 
+require_once( PBS_PATH . 'lib/welcome.php' );
 require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
