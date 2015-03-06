@@ -3,6 +3,9 @@
  * Stuff that modify the behavior of Shortcake
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Triggers the shortcode preview to be rendered in a logged out state
