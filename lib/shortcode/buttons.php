@@ -27,18 +27,28 @@ function sandwich_buttons() {
             'attrs' => array(
                 array(
                     'label' => __( 'Button Type', 'pbsandwich' ),
-                    'attr'  => 'select',
+                    'attr'  => 'type',
                     'type'  => 'text',
                 ),
                 array(
                     'label' => __( 'Button Style', 'pbsandwich' ),
-                    'attr'  => 'select',
-                    'type'  => 'text',
+                    'attr'  => 'bstyle',
+                    'type'  => 'select',
                 ),
                 array(
                     'label' => __( 'Button Caption', 'pbsandwich' ),
                     'attr'  => 'content',
                     'type'  => 'textarea',
+                ),
+                array(
+                    'label' => __( 'Custom Button Color', 'pbsandwich' ),
+                    'attr'  => 'cbuttoncolor',
+                    'type'  => 'color',
+                ),
+                array(
+                    'label' => __( 'Custom Button Border', 'pbsandwich' ),
+                    'attr'  => 'cbuttonborder',
+                    'type'  => 'text',
                 ),
 			),
         )
