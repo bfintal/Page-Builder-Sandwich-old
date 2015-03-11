@@ -12,7 +12,6 @@ function sandwich_buttons_style_selection() {
 	$output['btn-info'] = "Informational";
 	$output['btn-warning'] = "Warning";
 	$output['btn-danger'] = "Danger";
-	$output['custom'] = "Customized";	
 	return $output;
 }
 
@@ -26,6 +25,17 @@ function sandwich_buttons_size_selection() {
 	$output['btn-xs'] = "Extra Small";
 	$output['btn-sm'] = "Small";
 	$output['btn-lg'] = "Large";
+	return $output;
+}
+
+/**
+ * Selections for button sizes
+ */
+
+function sandwich_buttons_button_type() {
+	$output = array();
+	$output['normal'] = "Normal";
+	$output['ghost'] = "Ghost";
 	return $output;
 }
 
@@ -53,21 +63,40 @@ function sandwich_buttons() {
         array(
             'label' => __( 'Buttons', 'pbsandwich' ),
             'listItemImage' => 'dashicons-plus',
-            'attrs' => array(			
+            'attrs' => array(
                 array(
-                    'label' => __( 'Button Style', 'pbsandwich' ),
+                    'label' => __( 'Button Design', 'pbsandwich' ),
+                    'attr' => 'design',
+                    'type' => 'select',
+					'options' => sandwich_buttons_button_type(),
+					'description' => __( 'Choose the type of button to use. Ghost type makes the button translucent.', 'pbsandwich' ),
+                ),						
+                array(
+                    'label' => __( 'Button Label', 'pbsandwich' ),
+                    'attr' => 'caption',
+                    'type' => 'text',
+					'value' => 'Click Here',
+					'description' => __( 'Enter the text to apply to the button.', 'pbsandwich' ),
+                ),
+                array(
+                    'label' => __( 'Button Color', 'pbsandwich' ),
                     'attr' => 'bstyle',
                     'type' => 'select',
 					'options' => sandwich_buttons_style_selection(),
 					'description' => __( 'Choose the styling of buttons to use.', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => __( 'Button Caption', 'pbsandwich' ),
-                    'attr' => 'caption',
-                    'type' => 'text',
-					'value' => 'Click Here',
-					'description' => __( 'Enter the text to apply to the button.', 'pbsandwich' ),
-                ),
+                    'label' => __( 'Button Text Color', 'pbsandwich' ),
+                    'attr' => 'textcolor',
+                    'type' => 'color',
+					'value' => '#000000',
+					'description' => __( 'Choose the text color of the button.', 'pbsandwich' ),
+                ),				
+                array(
+                    'label' => __( 'Custom Button Background / Border Color', 'pbsandwich' ),
+                    'attr' => 'cbuttoncolor',
+                    'type' => 'color',
+                ),				
                 array(
                     'label' => __( 'Button Size', 'pbsandwich' ),
                     'attr' => 'size',
@@ -76,38 +105,59 @@ function sandwich_buttons() {
 					'description' => __( 'Choose the size to render the button.', 'pbsandwich' ),
                 ),
                 array(
+                    'label' => __( 'Custom Button Border', 'pbsandwich' ),
+                    'attr' => 'cbuttonborder',
+                    'type' => 'text',
+					'value' => '2',
+					'description' => __( 'Enter a numerical value, in pixels, to define the thickness of the button border.', 'pbsandwich' ),					
+                ),
+                array(
+                    'label' => __( 'Custom Button Border Radius', 'pbsandwich' ),
+                    'attr' => 'cbuttonradius',
+                    'type' => 'text',
+					'value' => '6',
+					'description' => __( 'Enter a numerical value, in pixels, to define the radius or roundness of the button.', 'pbsandwich' ),					
+                ),		
+                array(
+                    'label' => __( 'URL to link to', 'pbsandwich' ),
+                    'attr' => 'url',
+                    'type' => 'url',
+					'value' => '#',
+					'description' => __( 'To use the button as a link, enter the URL where the button should go to when clicked.', 'pbsandwich' ),
+                ),
+                array(
+                    'label' => __( 'Open link in new windows', 'pbsandwich' ),
+                    'attr' => 'target',
+                    'type' => 'checkbox',
+					'value' => 'true',
+					'description' => __( 'Check this box to open hyperlinks in a new window.', 'pbsandwich' ),
+                ),			
+                array(
                     'label' => __( 'Full-width Buttons', 'pbsandwich' ),
                     'attr' => 'blocklevel',
                     'type' => 'checkbox',
 					'value' => 'false',
 					'description' => __( 'Check this box to expand the buttons into full width.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Custom Button Color', 'pbsandwich' ),
-                    'attr' => 'cbuttoncolor',
-                    'type' => 'color',
-                ),
-                array(
-                    'label' => __( 'Custom Button Border', 'pbsandwich' ),
-                    'attr' => 'cbuttonborder',
-                    'type' => 'text',
-					'value' => '6px',
-                ),
+                ),				
 			),
         )
     );
-	
 }
 
 function sandwich_buttons_shortcode( $attr, $content ) {
 		
-	$attr = wp_parse_args( $attr, array(	
-        'bstyle' => 'btn-default',
+	$attr = wp_parse_args( $attr, array(
+        'design' => 'normal',		
         'caption' => 'Click Here',
-        'size' => 'btn-md',
-        'blocklevel' => 'false',
+        'bstyle' => 'btn-default',
+        'textcolor' => '#000000',
         'cbuttoncolor' => '#ffffff',
-        'cbuttonborder' => '6px',													
+        'size' => 'btn-md',
+        'cbuttonborder' => '2',
+        'cbuttonradius' => '6',		
+        'url' => '#',
+        'target' => 'true',		
+        'blocklevel' => 'false',		
     ) );
 	
 	global $_sandwich_buttons_id;
@@ -126,15 +176,20 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$btnclass .= ' btn-block';
 	}
 
+	$appendices = ' href="' . esc_attr( $attr['url'] ) . '"';
+	if ( $attr['target'] == 'true' ) {
+		$appendices .= ' target="_blank"';
+	}
+
 	ob_start();
 	
 	?>
 	
 	<div class="sandwich">
 
-		<?php echo '<button id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '">'; 
+		<?php echo '<a id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $appendices . '>'; 
 			echo esc_attr( $attr['caption'] );
-			echo '</button>';			
+			echo '</a>';			
 		 ?>
 
 	</div>
