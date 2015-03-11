@@ -1,30 +1,6 @@
 <?php
 
 /**
- * Selections unique to the Bootstrap Buttons
- */
-
-function sandwich_buttons_type_selection() {
-	$output = array();
-	$output['button'] = "Button Element";
-	$output['input'] = "Form Input Element";
-	$output['hyperlink'] = "Anchor Hyperlink";
-	return $output;
-}
-
-/**
- * Selections for button function
- */
-
-function sandwich_buttons_function_selection() {
-	$output = array();
-	$output['button'] = "Simple Button";
-	$output['submit'] = "Submit Button";
-	$output['reset'] = "Reset Button";
-	return $output;
-}
-
-/**
  * Selections for button styles
  */
 
@@ -77,22 +53,7 @@ function sandwich_buttons() {
         array(
             'label' => __( 'Buttons', 'pbsandwich' ),
             'listItemImage' => 'dashicons-plus',
-            'attrs' => array(
-                array(
-                    'label' => __( 'Button Type', 'pbsandwich' ),
-                    'attr' => 'type',
-                    'type' => 'select',
-					'options' => sandwich_buttons_type_selection(),
-					'description' => __( 'Choose the HTML type of buttons to render. It is generally recommended to use the dedicated button form element for the best compatibility.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Button Function', 'pbsandwich' ),
-                    'attr' => 'role',
-                    'type' => 'select',
-					'options' => sandwich_buttons_function_selection(),
-					'value' => 'button',
-					'description' => __( 'Choose the role of the button to use.', 'pbsandwich' ),
-                ),				
+            'attrs' => array(			
                 array(
                     'label' => __( 'Button Style', 'pbsandwich' ),
                     'attr' => 'bstyle',
@@ -118,22 +79,8 @@ function sandwich_buttons() {
                     'label' => __( 'Full-width Buttons', 'pbsandwich' ),
                     'attr' => 'blocklevel',
                     'type' => 'checkbox',
-					'value' => 'true',
+					'value' => 'false',
 					'description' => __( 'Check this box to expand the buttons into full width.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Render Button in Active state', 'pbsandwich' ),
-                    'attr' => 'active',
-                    'type' => 'checkbox',
-					'value' => 'true',
-					'description' => __( 'Check this box to render the buttons in an active state, ie. clicked.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Render Button in Disabled state', 'pbsandwich' ),
-                    'attr' => 'disabled',
-                    'type' => 'checkbox',
-					'value' => 'true',
-					'description' => __( 'Check this box to render the buttons in a disabled state.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Custom Button Color', 'pbsandwich' ),
@@ -154,15 +101,11 @@ function sandwich_buttons() {
 
 function sandwich_buttons_shortcode( $attr, $content ) {
 		
-	$attr = wp_parse_args( $attr, array(
-        'type' => 'button',
-        'role' => 'button',		
+	$attr = wp_parse_args( $attr, array(	
         'bstyle' => 'btn-default',
         'caption' => 'Click Here',
         'size' => 'btn-md',
         'blocklevel' => 'false',
-        'active' => 'false',
-        'disabled' => 'false',
         'cbuttoncolor' => '#ffffff',
         'cbuttonborder' => '6px',													
     ) );
@@ -173,38 +116,11 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$_sandwich_buttons_id = 1;
 	}
 	
-	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['type'] ) ) ) . '-' . $_sandwich_buttons_id++;
+	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['bstyle'] ) ) ) . '-' . $_sandwich_buttons_id++;
 	
 	$btype = "button";
-	$addition = '';
-	
-	switch ( $attr['type'] ) {
-		case 'input' :
-			$btype = "input";
-			$addition = ' type="' . $attr['role'] . '" value="' . esc_attr( $attr['caption'] ) . '"';
-			if ( $attr['disabled'] == 'true' ) {
-				$addition .= ' disabled="disabled"';
-			}
-		break;
-		case 'hyperlink' :
-			$btype = "a";
-			$addition = ' href="#" role="' . $attr['role'] . '"';
-		break;
-		case 'button' :
-		default :
-			$btype = "button";
-			$addition = ' type="' . $attr['role'] . '"';
-			if ( $attr['disabled'] == 'true' ) {
-				$addition .= ' disabled="disabled"';
-			}
-		break;
-	}
 
-	$btnclass = " " . esc_attr( $attr['bstyle'] ) . " " . esc_attr( $attr['size'] ) . " " . esc_attr( $attr['active'] );
-
-	if ( $attr['disabled'] == 'true' ) {
-		$btnclass .= ' disabled';
-	}
+	$btnclass = " " . esc_attr( $attr['bstyle'] ) . " " . esc_attr( $attr['size'] );
 
 	if ( $attr['blocklevel'] == 'true' ) {
 		$btnclass .= ' btn-block';
@@ -216,11 +132,10 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	
 	<div class="sandwich">
 
-		<?php echo '<' . $btype . ' id="buttons-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $addition . '>'; 			
-		if ( $btype == 'button' || $btype == 'a' ) {
+		<?php echo '<button id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '">'; 
 			echo esc_attr( $attr['caption'] );
-			echo '</' . $btype . '>';			
-		} ?>
+			echo '</button>';			
+		 ?>
 
 	</div>
 	
