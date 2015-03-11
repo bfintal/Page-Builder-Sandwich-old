@@ -52,7 +52,7 @@ function sandwich_jetpack_portfolio() {
 					'attr' => 'columns',
 					'type' => 'select',
 					'description' => __( 'Select the number of columns to use to display entries.', 'pbsandwich' ),
-					'options' => sandwich_functions_number_count( '1', '6' ),
+					'options' => array( 1, 2, 3, 4, 5, 6 ),
 					'value' => '2',
 				),
 				array(

@@ -44,7 +44,7 @@ function sandwich_jetpack_display_wordpress_posts_widget() {
 					'attr' => 'number_of_posts',
 					'type' => 'select',
 					'value' => '5',
-					'options' => sandwich_functions_number_count(),
+					'options' => array( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
 				),
 				array(
 					'label' => __( 'Show Featured Image', 'pbsandwich' ),

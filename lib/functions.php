@@ -6,26 +6,6 @@
  */
 
 /**
- * Number generator that outputs as an array. Starting and Ending numbers can be defined.
- * Has provisions for ascending numbers, descending numbers, and randomized (not yet implemented)
- */
-
-function sandwich_functions_number_count ($start = '1', $finish = '10', $order = 'asc') {
-	$output = array();
-	
-	if ( $order == 'asc' ) {
-		for ( $i = $start; $i <= $finish; $i++ ) {
-			$output[ $i ] = $i;
-		}
-	} elseif ( $order == 'desc' ) {
-		for ( $i = $finish; $i >= $start; $i-- ) {
-			$output[ $i ] = $i;
-		}
-	}
-	return $output;
-}
-
-/**
  * Commonly-used variables stored here for better management.
  */
 
