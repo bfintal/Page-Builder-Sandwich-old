@@ -89,13 +89,14 @@ function sandwich_buttons() {
                     'label' => __( 'Button Text Color', 'pbsandwich' ),
                     'attr' => 'textcolor',
                     'type' => 'color',
-					'value' => '#000000',
+					'value' => '',
 					'description' => __( 'Choose the text color of the button.', 'pbsandwich' ),
                 ),				
                 array(
                     'label' => __( 'Custom Button Background / Border Color', 'pbsandwich' ),
                     'attr' => 'cbuttoncolor',
                     'type' => 'color',
+					'description' => __( 'Choose the background color of the button.', 'pbsandwich' ),
                 ),				
                 array(
                     'label' => __( 'Button Size', 'pbsandwich' ),
@@ -150,8 +151,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'design' => 'normal',		
         'caption' => 'Click Here',
         'bstyle' => 'btn-default',
-        'textcolor' => '#000000',
-        'cbuttoncolor' => '#ffffff',
+        'textcolor' => '',
+        'cbuttoncolor' => '',
         'size' => 'btn-md',
         'cbuttonborder' => '2',
         'cbuttonradius' => '6',		
@@ -181,13 +182,33 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$appendices .= ' target="_blank"';
 	}
 
+	$styling = ' styles="';
+
+	if ( $attr['design'] == 'ghost' ) {
+		$styling .= 'opacity: 0.5';
+	}
+	if ( $attr['textcolor'] != '' ) {
+		$styling .= 'color: ' . $attr['textcolor'].'; ';
+	}
+	if ( $attr['cbuttoncolor'] != '' ) {
+		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
+	}
+	if ( $attr['cbuttonborder'] != '' ) {
+		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid black; ';
+	}
+	if ( $attr['cbuttonradius'] != '' ) {
+		$styling .= 'border-radius: ' . $attr['cbuttonradius'].'px; ';
+	}	
+	
+	$styling = '"';
+
 	ob_start();
 	
 	?>
 	
 	<div class="sandwich">
 
-		<?php echo '<a id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $appendices . '>'; 
+		<?php echo '<a id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $appendices . $styling . '>'; 
 			echo esc_attr( $attr['caption'] );
 			echo '</a>';			
 		 ?>
