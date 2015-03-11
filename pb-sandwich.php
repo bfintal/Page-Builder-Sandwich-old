@@ -22,14 +22,19 @@ defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ 
 defined( 'PBS_URL' ) or define( 'PBS_URL', plugin_dir_url( __FILE__ ) );
 defined( 'PBS_FILE' ) or define( 'PBS_FILE', __FILE__ );
 
+// General list of essential files for the plugin itself or used by all shortcakes.
 require_once( PBS_PATH . 'lib/welcome.php' );
 require_once( PBS_PATH . 'lib/shortcake.php' );
+require_once( PBS_PATH . 'lib/functions.php' );
+
+// General list of shortcakes available to PB Sandwich. They include integrations from 3rd party plugins.
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
 // require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-portfolio.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-twitter-timeline.php' );
 require_once( PBS_PATH . 'lib/shortcode/toggle.php' );
+require_once( PBS_PATH . 'lib/shortcode/buttons.php' );
 require_once( PBS_PATH . 'lib/shortcode/embed.php' );
 require_once( PBS_PATH . 'lib/shortcode/html5video.php');
 require_once( PBS_PATH . 'lib/shortcode/html5video-remote.php');
