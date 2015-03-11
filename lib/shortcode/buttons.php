@@ -49,7 +49,7 @@ function sandwich_buttons_size_selection() {
 	$output['btn-md'] = "Default";
 	$output['btn-xs'] = "Extra Small";
 	$output['btn-sm'] = "Small";
-	$output['btn-lg'] = "large";
+	$output['btn-lg'] = "Large";
 	return $output;
 }
 
@@ -181,20 +181,34 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	switch ( $attr['type'] ) {
 		case 'input' :
 			$btype = "input";
-			$addition = ' type="' . $role . '" value="' . esc_attr( $caption ) . '"';			
+			$addition = ' type="' . $attr['role'] . '" value="' . esc_attr( $attr['caption'] ) . '"';
+			if ( $attr['disabled'] == 'true' ) {
+				$addition .= ' disabled="disabled"';
+			}
 		break;
 		case 'hyperlink' :
 			$btype = "a";
-			$addition = ' href="#" role="' . $role . '"';
+			$addition = ' href="#" role="' . $attr['role'] . '"';
 		break;
 		case 'button' :
 		default :
 			$btype = "button";
-			$addition = ' type="' . $role . '"';
+			$addition = ' type="' . $attr['role'] . '"';
+			if ( $attr['disabled'] == 'true' ) {
+				$addition .= ' disabled="disabled"';
+			}
 		break;
 	}
 
-	$btnclass = " " . esc_attr( $bstyle ) . " " . esc_attr( $size );
+	$btnclass = " " . esc_attr( $attr['bstyle'] ) . " " . esc_attr( $attr['size'] ) . " " . esc_attr( $attr['active'] );
+
+	if ( $attr['disabled'] == 'true' ) {
+		$btnclass .= ' disabled';
+	}
+
+	if ( $attr['blocklevel'] == 'true' ) {
+		$btnclass .= ' btn-block';
+	}
 
 	ob_start();
 	
@@ -204,8 +218,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 		<?php echo '<' . $btype . ' id="buttons-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $addition . '>'; 			
 		if ( $btype == 'button' || $btype == 'a' ) {
-			echo esc_attr( $caption );
-			echo '</' . $btype . '>'			
+			echo esc_attr( $attr['caption'] );
+			echo '</' . $btype . '>';			
 		} ?>
 
 	</div>
