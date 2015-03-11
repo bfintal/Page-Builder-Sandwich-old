@@ -216,7 +216,12 @@ class GambitPBSandwich {
 				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'default' ) ) ?>',
 				use_custom: '<?php echo addslashes( __( 'Use custom', 'default' ) ) ?>',
 				custom: '<?php echo addslashes( __( 'Custom', 'default' ) ) ?>',
-				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>'
+				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>',
+				clone_row: '<?php echo addslashes( __( 'Clone Row', 'default' ) ) ?>',
+				delete_row: '<?php echo addslashes( __( 'Delete Row', 'default' ) ) ?>',
+				edit_area: '<?php echo addslashes( __( 'Edit Area', 'default' ) ) ?>',
+				clone_area: '<?php echo addslashes( __( 'Clone Area', 'default' ) ) ?>',
+				delete_area: '<?php echo addslashes( __( 'Delete Area', 'default' ) ) ?>'
 	        };
 	        </script>
 			<?php

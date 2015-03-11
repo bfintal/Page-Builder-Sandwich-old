@@ -326,11 +326,21 @@ function _pbsandwich_addToolbar( editor, node ) {
 		return;
 	}
 
-	// Only add the toolbar for columns
+	// Only add the toolbar for sandwich columns
+	if ( $(node).parents('table:eq(0)').length === 0 ) {
+		return;
+	}
+	if ( ! $(node).parents('table:eq(0)').is('.pbsandwich_column') ) {
+		return;
+	}
 	if ( $(node).parents('.pbsandwich_column:eq(0)').length === 0 ) {
 		return;
 	}
-	node = $(node).parents('.pbsandwich_column:eq(0)')[0];
+	
+	// Get the column selected
+	if ( ! $(node).is('td') ) {
+		node = $(node).parents('td:eq(0)')[0];
+	}
 
 	// Remember the column that has the toolbar
 	$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
@@ -338,10 +348,13 @@ function _pbsandwich_addToolbar( editor, node ) {
 
 	// Create the toolbar
 	toolbarHtml = 
-		// '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit + '"></div>' +
+		'<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
+		'<div class="sep" data-mce-bogus="1"></div>' +
 		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete + '"></div>';
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
 
 	toolbar = dom.create( 'div', {
 		'id': 'wp-column-toolbar',
