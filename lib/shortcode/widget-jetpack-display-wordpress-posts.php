@@ -19,11 +19,6 @@ function sandwich_jetpack_display_wordpress_posts_widget() {
 		return;
 	}
 	
-	$numberOfPosts = array();
-	for ( $i = 1; $i <= 10; $i++ ) {
-		$numberOfPosts[ $i ] = $i;
-	}
-	
 	shortcode_ui_register_for_shortcode(
         'pbs_jetpack_display_wordpress_posts_widget',
         array(
@@ -49,7 +44,7 @@ function sandwich_jetpack_display_wordpress_posts_widget() {
 					'attr' => 'number_of_posts',
 					'type' => 'select',
 					'value' => '5',
-					'options' => $numberOfPosts,
+					'options' => array( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
 				),
 				array(
 					'label' => __( 'Show Featured Image', 'pbsandwich' ),

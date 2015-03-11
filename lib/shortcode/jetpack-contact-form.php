@@ -13,6 +13,7 @@ function sandwich_jetpack_contact_form() {
 		return;
 	}
 
+	// Will not run if not in administration page.
 	if ( ! is_admin() ) {
 		return;
 	}
