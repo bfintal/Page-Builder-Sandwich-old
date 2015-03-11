@@ -200,7 +200,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$styling .= 'border-radius: ' . $attr['cbuttonradius'].'px; ';
 	}	
 	
-	$styling = '"';
+	$styling .= '"';
 
 	ob_start();
 	
