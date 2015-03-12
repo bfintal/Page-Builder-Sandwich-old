@@ -280,37 +280,6 @@ function fixTableParagraphs( editor ) {
 
 
 /**
- * Perform a toolbar action
- */
-function _pbsandwich_do_action( editor, node, action ) {
-	var $ = jQuery;
-	
-	if ( action === 'remove' ) {
-		preUpdateSortable( editor );
-		$(editor.getBody()).find('[data-wp-columnselect]').remove();
-		updateSortable( editor );
-		
-	} else if ( action === 'clone' ) {
-		preUpdateSortable( editor );
-		var newElement = $(editor.getBody()).find('[data-wp-columnselect]').clone();
-		newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
-		updateSortable( editor );
-		
-		// Cleanup to make views with iframes display again
-		if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
-			editor.execCommand( 'mceCleanup' );
-		}
-		
-	} else if ( action === 'edit' ) {
-		// TODO
-
-	}
-
-	_pbsandwich_removeColumnToolbar( editor );
-}
-
-
-/**
  * Sortable / drag and drop initializer
  */
 editor.on('mousemove', function(e) {

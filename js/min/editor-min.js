@@ -2,6 +2,7 @@
 // @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-columns.js";
+// @codekit-append "_editor-column-actions.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
 
@@ -310,37 +311,6 @@ function fixTableParagraphs( editor ) {
 
 
 /**
- * Perform a toolbar action
- */
-function _pbsandwich_do_action( editor, node, action ) {
-	var $ = jQuery;
-	
-	if ( action === 'remove' ) {
-		preUpdateSortable( editor );
-		$(editor.getBody()).find('[data-wp-columnselect]').remove();
-		updateSortable( editor );
-		
-	} else if ( action === 'clone' ) {
-		preUpdateSortable( editor );
-		var newElement = $(editor.getBody()).find('[data-wp-columnselect]').clone();
-		newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
-		updateSortable( editor );
-		
-		// Cleanup to make views with iframes display again
-		if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
-			editor.execCommand( 'mceCleanup' );
-		}
-		
-	} else if ( action === 'edit' ) {
-		// TODO
-
-	}
-
-	_pbsandwich_removeColumnToolbar( editor );
-}
-
-
-/**
  * Sortable / drag and drop initializer
  */
 editor.on('mousemove', function(e) {
@@ -496,14 +466,14 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	// Create the toolbar
 	toolbarHtml = 
 		'<span class="toolbar-label">' + pbsandwich_column.column + '</span>' + 
-		'<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
+		'<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
 		'<div class="sep" data-mce-bogus="1"></div>' +
 		'<span class="toolbar-label">' + pbsandwich_column.row + '</span>' + 
 		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
 
 	var editorWidth = $(editor.getDoc()).width();
 		
@@ -681,7 +651,7 @@ editor.on('mousedown', function(e) {
 
 
 /**
- * Show the toolbar
+ * Show & bind or hide the column toolbar
  */
 editor.on('mouseup', function(e) {
 	var $ = jQuery;
@@ -689,36 +659,13 @@ editor.on('mouseup', function(e) {
 		
 		var action = $(e.target).attr('data-column-action');
 		
-		if ( action === 'columns' ) {
+		editor.fire( 'toolbar-column-' + action, {
+			'action': action,
+			'editor': editor,
+			'target': e.target
+		} );
 
-		    var colModal = editor.windowManager.open( {
-		        title: pbsandwich_column.change_column,
-				buttons: [{
-	                text: pbsandwich_column.cancel,
-	                onclick: 'close'
-	            }],
-		        body: [{
-					type: 'container',
-					html: '<div id="pbsandwich_column_change_modal"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
-						'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
-						'<hr>' +
-						'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
-				}],
-		        onsubmit: function( e ) {
-					preUpdateSortable( editor );
-	                editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
-					updateSortable( editor );
-		        }
-		    });
-			
-		} else {
-			_pbsandwich_do_action( editor, e.target, action );
-		}
+		_pbsandwich_removeColumnToolbar( editor );
 		
 		return;
 	}
@@ -850,6 +797,62 @@ editor.on('wp-body-class-change change', function(e) {
 		
 		$(this).attr('height', w * ratio).addClass('resized');
 	});
+});
+
+/**
+ * Column change toolbar button
+ */
+editor.on('toolbar-column-columns', function(e) {
+    var colModal = editor.windowManager.open( {
+        title: pbsandwich_column.change_column,
+		buttons: [{
+            text: pbsandwich_column.cancel,
+            onclick: 'close'
+        }],
+        body: [{
+			type: 'container',
+			html: '<div id="pbsandwich_column_change_modal"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
+				'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
+				'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
+				'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
+				'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
+				'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
+				'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
+				'<hr>' +
+				'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
+		}],
+        onsubmit: function( e ) {
+			preUpdateSortable( editor );
+            editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
+			updateSortable( editor );
+        }
+    });
+});
+
+
+/**
+ * Column remove area/column toolbar button
+ */
+editor.on('toolbar-column-remove-area', function(e) {
+	preUpdateSortable( editor );
+	$(editor.getBody()).find('[data-wp-columnselect]').remove();
+	updateSortable( editor );
+});
+
+
+/**
+ * Column clone area/column toolbar button
+ */
+editor.on('toolbar-column-clone-area', function(e) {
+	preUpdateSortable( editor );
+	var newElement = $(editor.getBody()).find('[data-wp-columnselect]').clone();
+	newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
+	updateSortable( editor );
+	
+	// Cleanup to make views with iframes display again
+	if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
+		editor.execCommand( 'mceCleanup' );
+	}
 });
 
 /**
