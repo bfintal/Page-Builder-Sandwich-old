@@ -277,6 +277,33 @@ body#tinymce.wp-editor .sandwich .panel-danger {
       background-color: #a94442; }
   body#tinymce.wp-editor .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
+body#tinymce.wp-editor .sandwich .jumbotron {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eeeeee; }
+  body#tinymce.wp-editor .sandwich .jumbotron h1,
+  body#tinymce.wp-editor .sandwich .jumbotron .h1 {
+    color: inherit; }
+  body#tinymce.wp-editor .sandwich .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200; }
+  body#tinymce.wp-editor .sandwich .jumbotron > hr {
+    border-top-color: #d5d5d5; }
+  .container body#tinymce.wp-editor .sandwich .jumbotron, .container-fluid body#tinymce.wp-editor .sandwich .jumbotron {
+    border-radius: 6px; }
+  body#tinymce.wp-editor .sandwich .jumbotron .container {
+    max-width: 100%; }
+  @media screen and (min-width: 768px) {
+    body#tinymce.wp-editor .sandwich .jumbotron {
+      padding: 48px 0; }
+      .container body#tinymce.wp-editor .sandwich .jumbotron, .container-fluid body#tinymce.wp-editor .sandwich .jumbotron {
+        padding-left: 60px;
+        padding-right: 60px; }
+      body#tinymce.wp-editor .sandwich .jumbotron h1,
+      body#tinymce.wp-editor .sandwich .jumbotron .h1 {
+        font-size: 63px; } }
 
 /**
  * Editor only div-like styling
