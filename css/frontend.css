@@ -940,6 +940,33 @@
       background-color: #a94442; }
   .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
+.sandwich .jumbotron {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eeeeee; }
+  .sandwich .jumbotron h1,
+  .sandwich .jumbotron .h1 {
+    color: inherit; }
+  .sandwich .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200; }
+  .sandwich .jumbotron > hr {
+    border-top-color: #d5d5d5; }
+  .container .sandwich .jumbotron, .container-fluid .sandwich .jumbotron {
+    border-radius: 6px; }
+  .sandwich .jumbotron .container {
+    max-width: 100%; }
+  @media screen and (min-width: 768px) {
+    .sandwich .jumbotron {
+      padding: 48px 0; }
+      .container .sandwich .jumbotron, .container-fluid .sandwich .jumbotron {
+        padding-left: 60px;
+        padding-right: 60px; }
+      .sandwich .jumbotron h1,
+      .sandwich .jumbotron .h1 {
+        font-size: 63px; } }
 
 /**
  * These are our own css
