@@ -277,6 +277,62 @@ body#tinymce.wp-editor .sandwich .panel-danger {
       background-color: #a94442; }
   body#tinymce.wp-editor .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
+body#tinymce.wp-editor .sandwich .alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px; }
+  body#tinymce.wp-editor .sandwich .alert h4 {
+    margin-top: 0;
+    color: inherit; }
+  body#tinymce.wp-editor .sandwich .alert .alert-link {
+    font-weight: bold; }
+  body#tinymce.wp-editor .sandwich .alert > p,
+  body#tinymce.wp-editor .sandwich .alert > ul {
+    margin-bottom: 0; }
+  body#tinymce.wp-editor .sandwich .alert > p + p {
+    margin-top: 5px; }
+body#tinymce.wp-editor .sandwich .alert-dismissable,
+body#tinymce.wp-editor .sandwich .alert-dismissible {
+  padding-right: 35px; }
+  body#tinymce.wp-editor .sandwich .alert-dismissable .close,
+  body#tinymce.wp-editor .sandwich .alert-dismissible .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit; }
+body#tinymce.wp-editor .sandwich .alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d; }
+  body#tinymce.wp-editor .sandwich .alert-success hr {
+    border-top-color: #c9e2b3; }
+  body#tinymce.wp-editor .sandwich .alert-success .alert-link {
+    color: #2b542c; }
+body#tinymce.wp-editor .sandwich .alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f; }
+  body#tinymce.wp-editor .sandwich .alert-info hr {
+    border-top-color: #a6e1ec; }
+  body#tinymce.wp-editor .sandwich .alert-info .alert-link {
+    color: #245269; }
+body#tinymce.wp-editor .sandwich .alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b; }
+  body#tinymce.wp-editor .sandwich .alert-warning hr {
+    border-top-color: #f7e1b5; }
+  body#tinymce.wp-editor .sandwich .alert-warning .alert-link {
+    color: #66512c; }
+body#tinymce.wp-editor .sandwich .alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442; }
+  body#tinymce.wp-editor .sandwich .alert-danger hr {
+    border-top-color: #e4b9c0; }
+  body#tinymce.wp-editor .sandwich .alert-danger .alert-link {
+    color: #843534; }
 
 /**
  * Editor only div-like styling
