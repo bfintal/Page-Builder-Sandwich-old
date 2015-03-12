@@ -10,6 +10,8 @@ body#tinymce.wp-editor .sandwich {
 	// Used by toggle shortcode
 	@import "bootstrap/panels";
 	
+	// Used by alerts shortcode
+	@import "bootstrap/alerts";
 }
 
 @import "_editor-*";
