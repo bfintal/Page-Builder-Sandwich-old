@@ -109,14 +109,14 @@ function sandwich_buttons() {
                     'label' => __( 'Custom Button Border', 'pbsandwich' ),
                     'attr' => 'cbuttonborder',
                     'type' => 'text',
-					'value' => '2',
+					'value' => '',
 					'description' => __( 'Enter a numerical value, in pixels, to define the thickness of the button border.', 'pbsandwich' ),					
                 ),
                 array(
                     'label' => __( 'Custom Button Border Radius', 'pbsandwich' ),
                     'attr' => 'cbuttonradius',
                     'type' => 'text',
-					'value' => '6',
+					'value' => '',
 					'description' => __( 'Enter a numerical value, in pixels, to define the radius or roundness of the button.', 'pbsandwich' ),					
                 ),		
                 array(
@@ -154,8 +154,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'textcolor' => '',
         'cbuttoncolor' => '',
         'size' => 'btn-md',
-        'cbuttonborder' => '2',
-        'cbuttonradius' => '6',		
+        'cbuttonborder' => '',
+        'cbuttonradius' => '',		
         'url' => '#',
         'target' => 'true',		
         'blocklevel' => 'false',		
@@ -185,7 +185,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	$styling = ' style="';
 
 	if ( $attr['design'] == 'ghost' ) {
-		$styling .= 'opacity: 0.5';
+		$styling .= 'opacity: 0.5;';
 	}
 	if ( $attr['textcolor'] != '' ) {
 		$styling .= 'color: ' . $attr['textcolor'].'; ';
