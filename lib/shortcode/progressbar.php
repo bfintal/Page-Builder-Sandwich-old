@@ -26,14 +26,25 @@ function sandwich_progressbar() {
             'listItemImage' => 'dashicons-plus',
             'attrs' => array(
                 array(
-                    'label' => __( 'Title', 'pbsandwich' ),
-                    'attr'  => 'title',
-                    'type'  => 'text',
+                    'label' => __( 'Current Percentage', 'pbsandwich' ),
+                    'attr' => 'percentage',
+                    'type' => 'text',
+					'value' => '50',
+                    'description' => __( 'Enter the initial percentage of the progress bar.', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => __( 'Toggled Content', 'pbsandwich' ),
-                    'attr'  => 'content',
-                    'type'  => 'textarea',
+                    'label' => __( 'Maximum Percentage', 'pbsandwich' ),
+                    'attr' => 'max-percentage',
+                    'type' => 'text',
+					'value' => '100',
+                    'description' => __( 'Enter the initial percentage of the progress bar.', 'pbsandwich' ),
+                ),
+                array(
+                    'label' => __( 'Percentage suffix', 'pbsandwich' ),
+                    'attr'  => 'suffix',
+                    'type'  => 'text',
+					'value' => 'Completed',
+                    'description' => __( 'Enter text to go along beside the progress bar percentage.', 'pbsandwich' ),
                 ),
 			),
         )

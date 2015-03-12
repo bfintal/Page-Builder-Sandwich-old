@@ -34,6 +34,7 @@ require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-portfolio.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-twitter-timeline.php' );
 require_once( PBS_PATH . 'lib/shortcode/toggle.php' );
+require_once( PBS_PATH . 'lib/shortcode/progressbar.php' );
 require_once( PBS_PATH . 'lib/shortcode/embed.php' );
 require_once( PBS_PATH . 'lib/shortcode/html5video.php');
 require_once( PBS_PATH . 'lib/shortcode/html5video-remote.php');
