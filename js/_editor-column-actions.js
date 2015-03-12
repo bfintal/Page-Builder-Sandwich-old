@@ -30,6 +30,51 @@ editor.on('toolbar-column-columns', function(e) {
 
 
 /**
+ * Change columns modal action handler. When a change column button is clicked
+ */
+jQuery('body').on('click', '#pbsandwich_column_change_modal button', function() {
+	var $ = jQuery;
+	
+	// Get the column composition
+	var columns = $(this).attr('data-columns');
+	if ( typeof columns === 'undefined' ) {
+		columns = $(this).parents('#pbsandwich_column_change_modal').find('input.custom_column').val();
+	}
+	
+	// The column container will have the attribute data-wp-columnselect
+	var selectedColumn = $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]')[0];
+	var columnIndexPrev = $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]').index();
+	tinyMCE.activeEditor.selection.select( $(selectedColumn).parents('.pbsandwich_column:eq(0)')[0] );
+
+	// Change the column
+	preUpdateSortable( tinyMCE.activeEditor );
+    tinyMCE.activeEditor.insertContent( _pbsandwich_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
+	updateSortable( tinyMCE.activeEditor );
+	
+	// Find out what column was previously selected
+	var columnContainer = tinyMCE.activeEditor.selection.getSelectedBlocks();
+	var columnToSelect = false;
+	if ( typeof columnContainer !== 'undefined' ) {
+		if ( $(columnContainer).parents('.pbsandwich_column:eq(0)').find('> tbody > tr > td').length - 1 >= columnIndexPrev ) {
+			columnToSelect = $(columnContainer).parents('.pbsandwich_column:eq(0)').find('> tbody > tr > td:eq(' + columnIndexPrev + ')');
+		} else {
+			columnToSelect = $(columnContainer).parents('.pbsandwich_column > tbody > tr > td:eq(-1)');
+		}
+		
+	}
+	// Fix paragraphs
+	fixTableParagraphs( tinyMCE.activeEditor );
+	// Put the cursor in the new table
+	if ( columnToSelect !== false ) {
+		tinyMCE.activeEditor.selection.setCursorLocation(columnToSelect[0]);
+	}
+	
+	// Close our modal window
+	tinyMCE.activeEditor.windowManager.getWindows()[0].close();
+});
+
+
+/**
  * Column remove area/column toolbar button
  */
 editor.on('toolbar-column-remove-area', function(e) {

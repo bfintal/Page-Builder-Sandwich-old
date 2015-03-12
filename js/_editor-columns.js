@@ -36,12 +36,12 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 
 	// Create the toolbar
 	toolbarHtml = 
-		'<span class="toolbar-label">' + pbsandwich_column.column + '</span>' + 
+		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.column + '</span>' + 
 		'<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
 		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
 		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
 		'<div class="sep" data-mce-bogus="1"></div>' +
-		'<span class="toolbar-label">' + pbsandwich_column.row + '</span>' + 
+		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.row + '</span>' + 
 		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
 		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
 		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
@@ -118,7 +118,10 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 	
 	$content.find('table.pbsandwich_column td').each( function( i, e ) {
 		if ( i >= numColumns ) {
-			contents[ contents.length - 1] += '<p>' + $(e).html() + '</p>';
+			var content = $(e).html();
+			if ( ! /^<p\s[^>]+>(\s|&nbsp;)*<\/p>$/.test( content ) ) {
+				contents[ contents.length - 1] += '<p>' + content + '</p>';
+			}
 		} else {
 			contents.push( $(e).html() );
 		}
@@ -146,7 +149,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 			if ( i >= columnContents.length ) {
 				columnContent = '&nbsp;';
 			} else {
-				columnContent = columnContents[ i ]
+				columnContent = columnContents[ i ];
 			}
 		} else if ( typeof columnContents === 'string' ) {
 			if ( content.trim() !== '' ) {
@@ -171,31 +174,6 @@ function _pbsandwich_columns_formTable( columns, content ) {
 	
 	return table;
 }
-
-
-/**
- * Change columns modal action handler. When a change column button is clicked
- */
-jQuery('body').on('click', '#pbsandwich_column_change_modal button', function() {
-	var $ = jQuery;
-	
-	// Get the column composition
-	var columns = $(this).attr('data-columns');
-	if ( typeof columns === 'undefined' ) {
-		columns = $(this).parents('#pbsandwich_column_change_modal').find('input.custom_column').val();
-	}
-	
-	// The column container will have the attribute data-wp-columnselect
-	tinyMCE.activeEditor.selection.select( $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]')[0] );
-	
-	// Change the column
-	preUpdateSortable( tinyMCE.activeEditor );
-    tinyMCE.activeEditor.insertContent( _pbsandwich_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
-	updateSortable( tinyMCE.activeEditor );
-	
-	// Close our modal window
-	tinyMCE.activeEditor.windowManager.getWindows()[0].close();
-});
 
 
 /**
