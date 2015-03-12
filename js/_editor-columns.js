@@ -1,4 +1,80 @@
 /**
+ * Adds the toolbar
+ * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+ */
+function _pbsandwich_addColumnToolbar( editor, node ) {
+	var $ = jQuery;
+	var rectangle, toolbarHtml, toolbar, left,
+	dom = editor.dom;
+
+	_pbsandwich_removeColumnToolbar( editor );
+	
+	// Don't create the toolbar if the column was just dragged
+	if ( $(editor.getBody()).hasClass('pbsandwich_just_dragged') ) {
+		return;
+	}
+
+	// Only add the toolbar for sandwich columns
+	if ( $(node).parents('table:eq(0)').length === 0 ) {
+		return;
+	}
+	if ( ! $(node).parents('table:eq(0)').is('.pbsandwich_column') ) {
+		return;
+	}
+	if ( $(node).parents('.pbsandwich_column:eq(0)').length === 0 ) {
+		return;
+	}
+	
+	// Get the column selected
+	if ( ! $(node).is('td') ) {
+		node = $(node).parents('td:eq(0)')[0];
+	}
+
+	// Remember the column that has the toolbar
+	$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
+	dom.setAttrib( node, 'data-wp-columnselect', 1 );
+
+	// Create the toolbar
+	toolbarHtml = 
+		'<span class="toolbar-label">' + pbsandwich_column.column + '</span>' + 
+		'<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
+		'<div class="sep" data-mce-bogus="1"></div>' +
+		'<span class="toolbar-label">' + pbsandwich_column.row + '</span>' + 
+		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
+
+	toolbar = dom.create( 'div', {
+		'id': 'wp-column-toolbar',
+		'data-mce-bogus': '1',
+		'contenteditable': false
+	}, toolbarHtml );
+
+	editor.getBody().appendChild( toolbar );
+	rectangle = dom.getRect( node );
+	dom.setStyles( toolbar, {
+		top: rectangle.y,
+		left: rectangle.x + rectangle.w / 2
+	});
+}
+
+
+/**
+ * Remove the toolbar
+ * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+ */
+function _pbsandwich_removeColumnToolbar( editor ) {
+	var toolbar = editor.dom.get( 'wp-column-toolbar' );
+
+	if ( toolbar ) {
+		editor.dom.remove( toolbar );
+	}
+}
+
+
+/**
  * Forms the column labels for TinyMCE
  */
 function _pbsandwich_columns_sprintf( format, etc ) {
@@ -126,7 +202,7 @@ editor.on('mousedown', function(e) {
 	} else {
 		$(editor.getBody()).removeClass('pbsandwich_column_selected');
 	}
-	_pbsandwich_removeToolbar( editor );
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
@@ -172,7 +248,7 @@ editor.on('mouseup', function(e) {
 		
 		return;
 	}
-	_pbsandwich_addToolbar( editor, e.target );
+	_pbsandwich_addColumnToolbar( editor, e.target );
 });
 
 
@@ -190,7 +266,7 @@ editor.on('init', function(e) {
 			return;
 		}
 	
-		_pbsandwich_removeToolbar( editor );
+		_pbsandwich_removeColumnToolbar( editor );
 	});
 });
 

@@ -476,6 +476,19 @@ body#tinymce.wp-editor .toolbar .dashicons {
   position: relative;
   cursor: pointer !important; }
 
+body#tinymce.wp-editor .toolbar-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  vertical-align: middle;
+  opacity: .8;
+  padding: 2px 5px 2px 10px;
+  display: inline-block;
+  line-height: 20px;
+  margin: 2px; }
+
+body#tinymce.wp-editor .sep + .toolbar-label {
+  padding-left: 5px; }
+
 body#tinymce.wp-editor {
   /**
    * Toggle shortcode
