@@ -46,6 +46,8 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
 		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
 
+	var editorWidth = $(editor.getDoc()).width();
+		
 	toolbar = dom.create( 'div', {
 		'id': 'wp-column-toolbar',
 		'data-mce-bogus': '1',
@@ -54,9 +56,22 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );
+	
+	var left = rectangle.x + rectangle.w / 2;
+		
+	// Adjust the location if the toolbar goes past the right side
+	if ( left + $(toolbar).width() - $(toolbar).width() / 2 > editorWidth ) {
+		left -= ( left + $(toolbar).width() - $(toolbar).width() / 2 ) - editorWidth + 6;
+		
+	// Adjust the location if the toolbar goes past the left side
+	} else if ( left - $(toolbar).width() / 2 < 0 ) {
+		left += - ( left - $(toolbar).width() / 2 ) + 6;
+	}
+	
+	// Position the column toolbar
 	dom.setStyles( toolbar, {
-		top: rectangle.y,
-		left: rectangle.x + rectangle.w / 2
+		top: rectangle.y - 6,
+		left: left
 	});
 }
 

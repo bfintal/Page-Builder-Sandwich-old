@@ -467,7 +467,8 @@ body#tinymce.wp-editor #wp-column-toolbar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  white-space: nowrap; }
 
 /**
  * Clone buttons added to toolbars cannot be hovered on properly. This fixes the buttons
@@ -476,6 +477,9 @@ body#tinymce.wp-editor .toolbar .dashicons {
   position: relative;
   cursor: pointer !important; }
 
+/**
+ * Toolbar labels & separators
+ */
 body#tinymce.wp-editor .toolbar-label {
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
