@@ -854,9 +854,44 @@ jQuery('body').on('click', '#pbsandwich_column_change_modal button', function() 
 
 
 /**
+ * Column remove entire row toolbar button
+ */
+editor.on('toolbar-column-remove-row', function(e) {
+	var $ = jQuery;
+	preUpdateSortable( editor );
+	$(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)').remove();
+	updateSortable( editor );
+	
+	_pbsandwich_removeColumnToolbar( editor );
+});
+
+
+/**
+ * Column clone entire row toolbar button
+ */
+editor.on('toolbar-column-clone-row', function(e) {
+	var $ = jQuery;
+
+	preUpdateSortable( editor );
+	var newElement = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)').clone();
+	newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)') );
+	updateSortable( editor );
+	
+	// Cleanup to make views with iframes display again
+	if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
+		editor.execCommand( 'mceCleanup' );
+	}
+	
+	_pbsandwich_removeColumnToolbar( editor );
+});
+
+
+/**
  * Column remove area/column toolbar button
  */
 editor.on('toolbar-column-remove-area', function(e) {
+	var $ = jQuery;
+	
 	preUpdateSortable( editor );
 	$(editor.getBody()).find('[data-wp-columnselect]').remove();
 	updateSortable( editor );
