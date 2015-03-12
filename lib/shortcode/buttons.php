@@ -182,7 +182,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$appendices .= ' target="_blank"';
 	}
 
-	$styling = ' styles="';
+	$styling = ' style="';
 
 	if ( $attr['design'] == 'ghost' ) {
 		$styling .= 'opacity: 0.5';
