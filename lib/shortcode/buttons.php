@@ -12,6 +12,7 @@ function sandwich_buttons_style_selection() {
 	$output['btn-info'] = "Informational";
 	$output['btn-warning'] = "Warning";
 	$output['btn-danger'] = "Danger";
+	$output['btn-link'] = "Classic Link";
 	return $output;
 }
 
@@ -185,12 +186,12 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	$styling = ' style="';
 
 	if ( $attr['design'] == 'ghost' ) {
-		$styling .= 'opacity: 0.5;';
+		$styling .= 'background-color: transparent;';
 	}
 	if ( $attr['textcolor'] != '' ) {
 		$styling .= 'color: ' . $attr['textcolor'].'; ';
 	}
-	if ( $attr['cbuttoncolor'] != '' ) {
+	if ( $attr['cbuttoncolor'] != '' && $attr['design'] != 'ghost' ) {
 		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
 	}
 	if ( $attr['cbuttonborder'] != '' ) {
