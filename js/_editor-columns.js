@@ -37,7 +37,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	// Create the toolbar
 	toolbarHtml = 
 		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.column + '</span>' + 
-		'<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div>' +
+		'<!--div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div-->' +
 		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
 		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
 		'<div class="sep" data-mce-bogus="1"></div>' +
