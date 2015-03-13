@@ -206,6 +206,7 @@ class GambitPBSandwich {
 				modal_title: '<?php echo addslashes( __( 'Columns', 'pbsandwich' ) ) ?>',
 	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ) ) ?>',
 				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'pbsandwich' ) ) ?>',
+				s_column: '<?php echo addslashes( __( '%s Column', 'pbsandwich' ) ) ?>',
 				columns: '<?php echo addslashes( __( '%s Columns', 'pbsandwich' ) ) ?>',
 				delete: '<?php echo addslashes( __( 'Delete', 'pbsandwich' ) ) ?>',
 				edit: '<?php echo addslashes( __( 'Edit', 'pbsandwich' ) ) ?>',
