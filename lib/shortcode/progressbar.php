@@ -99,8 +99,6 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 	if ( ! isset( $_sandwich_progressbar_id ) ) {
 		$_sandwich_progressbar_id = 1;
 	}
-	
-	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['type'] ) ) ) . '-' . $_sandwich_progressbar_id++;
 
 	$additions = " " . esc_html( $attr['type'] );
 	if ( $attr['stripe'] == 'true' ) {
@@ -121,7 +119,7 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 	
 	<div class="sandwich">
 		<div class="progress">
-			<div id="progressbar-<?php echo esc_attr( $id ) ?>" class="progress-bar<?php echo esc_attr( $additions ) ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_attr( $attr['percentage'] ) ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo $styling ?>">
+			<div id="progressbar-<?php echo esc_attr( $_sandwich_progressbar_id++ ) ?>" class="progress-bar<?php echo esc_attr( $additions ) ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_attr( $attr['percentage'] ) ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo $styling ?>">
 				<span><?php echo esc_html( $attr['label'] ) ?></span>
 			</div>
 		</div>
