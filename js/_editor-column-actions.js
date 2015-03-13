@@ -297,11 +297,9 @@ editor.on('toolbar-column-clone-area', function(e) {
 	var i;
 	if ( allColumnsEven ) {
 		var newWidth = 12 / columnWidths.length;
-		console.log(columnWidths, newWidth, parseInt( newWidth ) !== newWidth);
 		for ( i = 0; i < columnWidths.length; i++ ) {
 			columnWidths[ i ] = parseInt( newWidth );
 		}
-		console.log(columnWidths, newWidth, parseInt( newWidth ) !== newWidth);
 		// If there're some stray column width, add them to make the row uneven
 		if ( parseInt( newWidth ) !== newWidth ) {
 			columnWidths[ columnIndex ] += 12 - parseInt( newWidth ) * columnWidths.length;
