@@ -6,13 +6,13 @@
 
 function sandwich_buttons_style_selection() {
 	$output = array();
-	$output['btn-default'] = "Default";
-	$output['btn-primary'] = "Primary";
-	$output['btn-success'] = "Success";
-	$output['btn-info'] = "Informational";
-	$output['btn-warning'] = "Warning";
-	$output['btn-danger'] = "Danger";
-	$output['btn-link'] = "Classic Link";
+	$output['btn-default'] = __( "Default", 'pbsandwich' );
+	$output['btn-primary'] = __( "Primary", 'pbsandwich' );
+	$output['btn-success'] = __( "Success", 'pbsandwich' );
+	$output['btn-info'] = __( "Informational", 'pbsandwich' );
+	$output['btn-warning'] = __( "Warning", 'pbsandwich' );
+	$output['btn-danger'] = __( "Danger", 'pbsandwich' );
+	$output['btn-link'] = __( "Classic Link", 'pbsandwich' );
 	return $output;
 }
 
@@ -22,10 +22,10 @@ function sandwich_buttons_style_selection() {
 
 function sandwich_buttons_size_selection() {
 	$output = array();
-	$output['btn-md'] = "Default";
-	$output['btn-xs'] = "Extra Small";
-	$output['btn-sm'] = "Small";
-	$output['btn-lg'] = "Large";
+	$output['btn-md'] = __( "Default", 'pbsandwich' );
+	$output['btn-xs'] = __( "Extra Small", 'pbsandwich' );
+	$output['btn-sm'] = __( "Small", 'pbsandwich' );
+	$output['btn-lg'] = __( "Large", 'pbsandwich' );
 	return $output;
 }
 
@@ -35,8 +35,8 @@ function sandwich_buttons_size_selection() {
 
 function sandwich_buttons_button_type() {
 	$output = array();
-	$output['normal'] = "Normal";
-	$output['ghost'] = "Ghost";
+	$output['normal'] = __( "Normal", 'pbsandwich' );
+	$output['ghost'] = __( "Ghost", 'pbsandwich' );
 	return $output;
 }
 
@@ -62,14 +62,14 @@ function sandwich_buttons() {
 	shortcode_ui_register_for_shortcode(
         'pbs_button',
         array(
-            'label' => __( 'Buttons', 'pbsandwich' ),
+            'label' => __( 'Button', 'pbsandwich' ),
             'listItemImage' => 'dashicons-plus',
             'attrs' => array(
                 array(
                     'label' => __( 'Button Label', 'pbsandwich' ),
-                    'attr' => 'caption',
+                    'attr' => 'label',
                     'type' => 'text',
-					'value' => 'Click Here',
+					'value' => __( 'Click Here', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Button Design', 'pbsandwich' ),
@@ -80,45 +80,45 @@ function sandwich_buttons() {
                 ),
                 array(
                     'label' => __( 'Button Color Scheme', 'pbsandwich' ),
-                    'attr' => 'bstyle',
+                    'attr' => 'style',
                     'type' => 'select',
 					'options' => sandwich_buttons_style_selection(),
 					'description' => __( 'Choose the color scheme of the button.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Custom Button Background Color', 'pbsandwich' ),
-                    'attr' => 'cbuttoncolor',
+                    'attr' => 'button_color',
                     'type' => 'color',
 					'description' => __( 'You can override the button color here. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Custom Button Border Color', 'pbsandwich' ),
-                    'attr' => 'cbordercolor',
+                    'attr' => 'border_color',
                     'type' => 'color',
 					'description' => __( 'You can override the button border color here. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
                 ),				
                 array(
                     'label' => __( 'Text Color', 'pbsandwich' ),
-                    'attr' => 'textcolor',
+                    'attr' => 'text_color',
                     'type' => 'color',
 					'value' => '',
 					'description' => __( 'The color of the label of the button. Leave this blank to use the default color', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Button Hover Color', 'pbsandwich' ),
-                    'attr' => 'cbuttonhovercolor',
+                    'attr' => 'button_hover_color',
                     'type' => 'color',
 					'description' => __( 'The color of the button when hovered over by the mouse cursor. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Button Border Hover Color', 'pbsandwich' ),
-                    'attr' => 'cborderhovercolor',
+                    'attr' => 'border_hover_color',
                     'type' => 'color',
 					'description' => __( 'The color of the border when hovered over by the mouse cursor. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
                 ),				
                 array(
                     'label' => __( 'Text Hover Color', 'pbsandwich' ),
-                    'attr' => 'texthovercolor',
+                    'attr' => 'text_hover_color',
                     'type' => 'color',
 					'value' => '',
 					'description' => __( 'The color of the label of the button when hovered over by the mouse cursor. Leave this blank to use the default color', 'pbsandwich' ),
@@ -132,14 +132,14 @@ function sandwich_buttons() {
                 ),
                 array(
                     'label' => __( 'Border Thickness', 'pbsandwich' ),
-                    'attr' => 'cbuttonborder',
+                    'attr' => 'border',
                     'type' => 'text',
 					'value' => '',
 					'description' => __( 'Enter a number in pixels. Borders are only applicable for ghost buttons.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Border Radius', 'pbsandwich' ),
-                    'attr' => 'cbuttonradius',
+                    'attr' => 'radius',
                     'type' => 'text',
 					'value' => '',
 					'description' => __( 'Enter a number in pixels.', 'pbsandwich' ),
@@ -158,7 +158,7 @@ function sandwich_buttons() {
                 ),
                 array(
                     'label' => __( 'Full-width Button', 'pbsandwich' ),
-                    'attr' => 'blocklevel',
+                    'attr' => 'full_width',
                     'type' => 'checkbox',
 					'value' => 'false',
                 ),
@@ -171,20 +171,20 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	$attr = wp_parse_args( $attr, array(
         'design' => 'normal',
-        'caption' => 'Click Here',
-        'bstyle' => 'btn-default',
-        'textcolor' => '',
-        'cbuttoncolor' => '',
-        'cbordercolor' => '',
-        'texthovercolor' => '',
-        'cbuttonhovercolor' => '',
-        'cborderhovercolor' => '',			
+        'label' => __( 'Click Here', 'pbsandwich' ),
+        'style' => 'btn-default',
+        'text_color' => '',
+        'button_color' => '',
+        'border_color' => '',
+        'text_hover_color' => '',
+        'button_hover_color' => '',
+        'border_hover_color' => '',			
         'size' => 'btn-md',
-        'cbuttonborder' => '',
-        'cbuttonradius' => '',
+        'border' => '',
+        'radius' => '',
         'url' => '#',
         'target' => 'true',
-        'blocklevel' => 'false',
+        'full_width' => 'false',
     ) );
 
 	global $_sandwich_buttons_id;
@@ -193,9 +193,9 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$_sandwich_buttons_id = 1;
 	}
 
-	$btnclass = " " . esc_attr( $attr['bstyle'] ) . " " . esc_attr( $attr['size'] );
+	$btnclass = " " . esc_attr( $attr['style'] ) . " " . esc_attr( $attr['size'] );
 
-	if ( $attr['blocklevel'] == 'true' ) {
+	if ( $attr['full_width'] == 'true' ) {
 		$btnclass .= ' btn-block';
 	}
 
@@ -211,35 +211,35 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$styling .= 'border-style: solid;';
 		
 	} else {
-		if ( $attr['cbuttoncolor'] != '' ) {
-			$styling .= 'background-color: ' . $attr['cbuttoncolor'] . '; ';
+		if ( $attr['button_color'] != '' ) {
+			$styling .= 'background-color: ' . $attr['button_color'] . '; ';
 		}
 	}
-	if ( $attr['cbordercolor'] != '' ) {
-		$styling .= 'border-color: ' . $attr['cbordercolor'] . '; ';
+	if ( $attr['border_color'] != '' ) {
+		$styling .= 'border-color: ' . $attr['border_color'] . '; ';
 	}
-	if ( $attr['textcolor'] != '' ) {
-		$styling .= 'color: ' . $attr['textcolor'] . '; ';
+	if ( $attr['text_color'] != '' ) {
+		$styling .= 'color: ' . $attr['text_color'] . '; ';
 	}
-	if ( $attr['cbuttonborder'] != '' ) {
-		$styling .= 'border-width: ' . $attr['cbuttonborder'] . 'px; ';
+	if ( $attr['border'] != '' ) {
+		$styling .= 'border-width: ' . $attr['border'] . 'px; ';
 	}
-	if ( $attr['cbuttonradius'] != '' ) {
-		$styling .= 'border-radius: ' . $attr['cbuttonradius'] . 'px; ';
+	if ( $attr['radius'] != '' ) {
+		$styling .= 'border-radius: ' . $attr['radius'] . 'px; ';
 	}
 
 	$styling .= '"';
 
 	$customstyle = '';
 	
-	if ( $attr['texthovercolor'] != '' ) {
-		$customstyle .= 'color: ' . $attr['texthovercolor'] . ' !important; ';
+	if ( $attr['text_hover_color'] != '' ) {
+		$customstyle .= 'color: ' . $attr['text_hover_color'] . ' !important; ';
 	}
-	if ( $attr['cbuttonhovercolor'] != '' && $attr['design'] != 'ghost' ) {
-		$customstyle .= 'background-color: ' . $attr['cbuttonhovercolor'] . ' !important; ';
+	if ( $attr['button_hover_color'] != '' && $attr['design'] != 'ghost' ) {
+		$customstyle .= 'background-color: ' . $attr['button_hover_color'] . ' !important; ';
 	}
-	if ( $attr['cborderhovercolor'] != '' ) {
-		$customstyle .= 'border-color: ' . $attr['cborderhovercolor'] . ' !important; ';
+	if ( $attr['border_hover_color'] != '' ) {
+		$customstyle .= 'border-color: ' . $attr['border_hover_color'] . ' !important; ';
 	}
 
 	ob_start();
@@ -257,8 +257,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	?>
 
 	<div class="sandwich">
-		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
-			<?php echo esc_attr( $attr['caption'] ) ?>
+		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="pbs_button btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
+			<?php echo esc_attr( $attr['label'] ) ?>
 		</a>
 	</div>
 
