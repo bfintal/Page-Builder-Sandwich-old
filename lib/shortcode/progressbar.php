@@ -103,7 +103,7 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 		$_sandwich_progressbar_id = 1;
 	}
 	
-	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['title'] ) ) ) . '-' . $_sandwich_progressbar_id++;
+	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['type'] ) ) ) . '-' . $_sandwich_progressbar_id++;
 
 	$additions = " " . esc_html( $attr['type'] );
 	if ( $attr['stripe'] == 'true' ) {
