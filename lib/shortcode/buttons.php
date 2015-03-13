@@ -191,7 +191,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
 	}
 	if ( $attr['cbuttonborder'] != '' && $attr['design'] == 'ghost' ) {
-		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid black; ';
+		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cbuttoncolor'] . '; ';
 	}
 	if ( $attr['cbuttonradius'] != '' ) {
 		$styling .= 'border-radius: ' . $attr['cbuttonradius'].'px; ';
