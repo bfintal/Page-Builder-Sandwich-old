@@ -6,10 +6,10 @@
 
 function sandwich_alerts_type_selection() {
 	$output = array();
-	$output['alert-info'] = "Informational";
-	$output['alert-success'] = "Success";
-	$output['alert-warning'] = "Warning";
-	$output['alert-danger'] = "Danger";
+	$output['alert-info'] = __( 'Informational', 'pbsandwich' );
+	$output['alert-success'] = __( 'Success', 'pbsandwich' );
+	$output['alert-warning'] = __( 'Warning', 'pbsandwich' );
+	$output['alert-danger'] = __( 'Danger', 'pbsandwich' );
 	return $output;
 }
 
