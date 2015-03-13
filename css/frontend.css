@@ -1012,6 +1012,12 @@
  * These are our own css
  */
 /**
+ * Button shortcode
+ */
+.sandwich .pbs_button {
+  margin-bottom: 20px; }
+
+/**
  * Fix box-sizing widths
  */
 .pbsandwich_column,
