@@ -453,6 +453,9 @@ body#tinymce.wp-editor .sandwich .panel-danger {
   body#tinymce.wp-editor .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
 
+.btn {
+  box-sizing: border-box; }
+
 /**
  * Editor only div-like styling
  */

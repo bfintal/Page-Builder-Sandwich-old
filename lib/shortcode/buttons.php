@@ -76,7 +76,7 @@ function sandwich_buttons() {
                     'attr' => 'design',
                     'type' => 'select',
 					'options' => sandwich_buttons_button_type(),
-					'description' => __( 'Choose the design to use. Ghost type makes the button translucent with a colored border.', 'pbsandwich' ),
+					'description' => __( 'Choose the design to use. Ghost type renders the background color of the button transparent with a colored border.', 'pbsandwich' ),
                 ),
                 array(
                     'label' => __( 'Button Color Scheme', 'pbsandwich' ),
@@ -190,7 +190,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	if ( $attr['cbuttoncolor'] != '' && $attr['design'] != 'ghost' ) {
 		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
 	}
-	if ( $attr['cbuttonborder'] != '' ) {
+	if ( $attr['cbuttonborder'] != '' && $attr['design'] == 'ghost' ) {
 		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid black; ';
 	}
 	if ( $attr['cbuttonradius'] != '' ) {
