@@ -86,11 +86,17 @@ function sandwich_buttons() {
 					'description' => __( 'Choose the color scheme of the button.', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => __( 'Custom Button Background / Border Color', 'pbsandwich' ),
+                    'label' => __( 'Custom Button Background Color', 'pbsandwich' ),
                     'attr' => 'cbuttoncolor',
                     'type' => 'color',
 					'description' => __( 'You can override the button color here. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
                 ),
+                array(
+                    'label' => __( 'Custom Button Border Color', 'pbsandwich' ),
+                    'attr' => 'cbordercolor',
+                    'type' => 'color',
+					'description' => __( 'You can override the button border color here. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
+                ),				
                 array(
                     'label' => __( 'Text Color', 'pbsandwich' ),
                     'attr' => 'textcolor',
@@ -98,6 +104,25 @@ function sandwich_buttons() {
 					'value' => '',
 					'description' => __( 'The color of the label of the button. Leave this blank to use the default color', 'pbsandwich' ),
                 ),
+                array(
+                    'label' => __( 'Button Hover Color', 'pbsandwich' ),
+                    'attr' => 'cbuttonhovercolor',
+                    'type' => 'color',
+					'description' => __( 'The color of the button when hovered over by the mouse cursor. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
+                ),
+                array(
+                    'label' => __( 'Button Border Hover Color', 'pbsandwich' ),
+                    'attr' => 'cborderhovercolor',
+                    'type' => 'color',
+					'description' => __( 'The color of the border when hovered over by the mouse cursor. Leave this blank to use the default color scheme above.', 'pbsandwich' ),
+                ),				
+                array(
+                    'label' => __( 'Text Hover Color', 'pbsandwich' ),
+                    'attr' => 'texthovercolor',
+                    'type' => 'color',
+					'value' => '',
+					'description' => __( 'The color of the label of the button when hovered over by the mouse cursor. Leave this blank to use the default color', 'pbsandwich' ),
+                ),				
                 array(
                     'label' => __( 'Button Size', 'pbsandwich' ),
                     'attr' => 'size',
@@ -150,6 +175,10 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'bstyle' => 'btn-default',
         'textcolor' => '',
         'cbuttoncolor' => '',
+        'cbordercolor' => '',
+        'texthovercolor' => '',
+        'cbuttonhovercolor' => '',
+        'cborderhovercolor' => '',			
         'size' => 'btn-md',
         'cbuttonborder' => '',
         'cbuttonradius' => '',
@@ -190,8 +219,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	if ( $attr['cbuttoncolor'] != '' && $attr['design'] != 'ghost' ) {
 		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
 	}
-	if ( $attr['cbuttonborder'] != '' && $attr['design'] == 'ghost' ) {
-		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cbuttoncolor'] . '; ';
+	if ( $attr['cbuttonborder'] != '' ) {
+		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cbordercolor'] . '; ';
 	}
 	if ( $attr['cbuttonradius'] != '' ) {
 		$styling .= 'border-radius: ' . $attr['cbuttonradius'].'px; ';
@@ -199,7 +228,27 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	$styling .= '"';
 
+	$customstyle = '';
+	
+	if ( $attr['texthovercolor'] != '' ) {
+		$customstyle .= 'color: ' . $attr['texthovercolor'].' !important; ';
+	}
+	if ( $attr['cbuttonhovercolor'] != '' && $attr['design'] != 'ghost' ) {
+		$customstyle .= 'background-color: ' . $attr['cbuttonhovercolor'].' !important; ';
+	}
+	if ( $attr['cborderhovercolor'] != '' ) {
+		$customstyle .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cborderhovercolor'] . ' !important; ';
+	}	
+
+	if ( ! empty ($customstyle) ) {
+		$customstyling = '<style> #button-' . esc_attr( $id ) . ':hover {' . $customstyle . '} </style>';
+	}
+
 	ob_start();
+
+	if ( ! empty ($customstyle) ) {
+		echo $customstyling;
+	}
 
 	?>
 
