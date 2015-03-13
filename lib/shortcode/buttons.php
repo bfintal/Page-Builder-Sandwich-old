@@ -193,17 +193,13 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$_sandwich_buttons_id = 1;
 	}
 
-	$id = strtolower( str_replace( ' ', '-', preg_replace( '/[^a-zA-Z0-9 ]/', '', $attr['bstyle'] ) ) ) . '-' . $_sandwich_buttons_id++;
-
-	$btype = "button";
-
 	$btnclass = " " . esc_attr( $attr['bstyle'] ) . " " . esc_attr( $attr['size'] );
 
 	if ( $attr['blocklevel'] == 'true' ) {
 		$btnclass .= ' btn-block';
 	}
 
-	$appendices = ' href="' . esc_attr( $attr['url'] ) . '"';
+	$appendices = ' href="' . esc_url( $attr['url'] ) . '"';
 	if ( $attr['target'] == 'true' ) {
 		$appendices .= ' target="_blank"';
 	}
@@ -213,19 +209,23 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	if ( $attr['design'] == 'ghost' ) {
 		$styling .= 'background-color: transparent;';
 		$styling .= 'border-style: solid;';
+		
+	} else {
+		if ( $attr['cbuttoncolor'] != '' ) {
+			$styling .= 'background-color: ' . $attr['cbuttoncolor'] . '; ';
+		}
+	}
+	if ( $attr['cbordercolor'] != '' ) {
 		$styling .= 'border-color: ' . $attr['cbordercolor'] . '; ';
 	}
 	if ( $attr['textcolor'] != '' ) {
-		$styling .= 'color: ' . $attr['textcolor'].'; ';
-	}
-	if ( $attr['cbuttoncolor'] != '' && $attr['design'] != 'ghost' ) {
-		$styling .= 'background-color: ' . $attr['cbuttoncolor'].'; ';
+		$styling .= 'color: ' . $attr['textcolor'] . '; ';
 	}
 	if ( $attr['cbuttonborder'] != '' ) {
-		$styling .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cbordercolor'] . '; ';
+		$styling .= 'border-width: ' . $attr['cbuttonborder'] . 'px; ';
 	}
 	if ( $attr['cbuttonradius'] != '' ) {
-		$styling .= 'border-radius: ' . $attr['cbuttonradius'].'px; ';
+		$styling .= 'border-radius: ' . $attr['cbuttonradius'] . 'px; ';
 	}
 
 	$styling .= '"';
@@ -233,37 +233,38 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	$customstyle = '';
 	
 	if ( $attr['texthovercolor'] != '' ) {
-		$customstyle .= 'color: ' . $attr['texthovercolor'].' !important; ';
+		$customstyle .= 'color: ' . $attr['texthovercolor'] . ' !important; ';
 	}
 	if ( $attr['cbuttonhovercolor'] != '' && $attr['design'] != 'ghost' ) {
-		$customstyle .= 'background-color: ' . $attr['cbuttonhovercolor'].' !important; ';
+		$customstyle .= 'background-color: ' . $attr['cbuttonhovercolor'] . ' !important; ';
 	}
 	if ( $attr['cborderhovercolor'] != '' ) {
 		$customstyle .= 'border-color: ' . $attr['cborderhovercolor'] . ' !important; ';
-	}	
-
-	if ( ! empty ($customstyle) ) {
-		$customstyling = '<style> #button-' . esc_attr( $id ) . ':hover {' . $customstyle . '} </style>';
 	}
 
 	ob_start();
 
-	if ( ! empty ($customstyle) ) {
-		echo $customstyling;
+	if ( ! empty ( $customstyle ) ) {
+		?>
+		<style>
+		#pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>:hover {
+			<?php echo $customstyle ?>
+		}
+		</style>
+		<?php
 	}
 
 	?>
 
 	<div class="sandwich">
-
-		<?php echo '<a id="button-' . esc_attr( $id ) . '" class="btn' . $btnclass . '"' . $appendices . $styling . '>';
-			echo esc_attr( $attr['caption'] );
-			echo '</a>';
-		 ?>
-
+		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
+			<?php echo esc_attr( $attr['caption'] ) ?>
+		</a>
 	</div>
 
 	<?php
+	
+	$_sandwich_buttons_id++;
 
 	return ob_get_clean();
 }
