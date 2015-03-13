@@ -1,4 +1,95 @@
 /**
+ * Adds the toolbar
+ * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+ */
+function _pbsandwich_addColumnToolbar( editor, node ) {
+	var $ = jQuery;
+	var rectangle, toolbarHtml, toolbar, left,
+	dom = editor.dom;
+
+	_pbsandwich_removeColumnToolbar( editor );
+	
+	// Don't create the toolbar if the column was just dragged
+	if ( $(editor.getBody()).hasClass('pbsandwich_just_dragged') ) {
+		return;
+	}
+
+	// Only add the toolbar for sandwich columns
+	if ( $(node).parents('table:eq(0)').length === 0 ) {
+		return;
+	}
+	if ( ! $(node).parents('table:eq(0)').is('.pbsandwich_column') ) {
+		return;
+	}
+	if ( $(node).parents('.pbsandwich_column:eq(0)').length === 0 ) {
+		return;
+	}
+	
+	// Get the column selected
+	if ( ! $(node).is('td') ) {
+		node = $(node).parents('td:eq(0)')[0];
+	}
+
+	// Remember the column that has the toolbar
+	$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
+	dom.setAttrib( node, 'data-wp-columnselect', 1 );
+
+	// Create the toolbar
+	toolbarHtml = 
+		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.column + '</span>' + 
+		'<!--div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div-->' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
+		'<div class="sep" data-mce-bogus="1"></div>' +
+		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.row + '</span>' + 
+		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
+
+	var editorWidth = $(editor.getDoc()).width();
+		
+	toolbar = dom.create( 'div', {
+		'id': 'wp-column-toolbar',
+		'data-mce-bogus': '1',
+		'contenteditable': false
+	}, toolbarHtml );
+
+	editor.getBody().appendChild( toolbar );
+	rectangle = dom.getRect( node );
+	
+	var left = rectangle.x + rectangle.w / 2;
+		
+	// Adjust the location if the toolbar goes past the right side
+	if ( left + $(toolbar).width() - $(toolbar).width() / 2 > editorWidth ) {
+		left -= ( left + $(toolbar).width() - $(toolbar).width() / 2 ) - editorWidth + 6;
+		
+	// Adjust the location if the toolbar goes past the left side
+	} else if ( left - $(toolbar).width() / 2 < 0 ) {
+		left += - ( left - $(toolbar).width() / 2 ) + 6;
+	}
+	
+	// Position the column toolbar
+	dom.setStyles( toolbar, {
+		top: rectangle.y - 6,
+		left: left
+	});
+}
+
+
+/**
+ * Remove the toolbar
+ * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
+ */
+function _pbsandwich_removeColumnToolbar( editor ) {
+	var toolbar = editor.dom.get( 'wp-column-toolbar' );
+
+	if ( toolbar ) {
+		editor.dom.remove( toolbar );
+	}
+}
+
+
+/**
  * Forms the column labels for TinyMCE
  */
 function _pbsandwich_columns_sprintf( format, etc ) {
@@ -27,7 +118,10 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 	
 	$content.find('table.pbsandwich_column td').each( function( i, e ) {
 		if ( i >= numColumns ) {
-			contents[ contents.length - 1] += '<p>' + $(e).html() + '</p>';
+			var content = $(e).html();
+			if ( ! /^<p\s[^>]+>(\s|&nbsp;)*<\/p>$/.test( content ) ) {
+				contents[ contents.length - 1] += '<p>' + content + '</p>';
+			}
 		} else {
 			contents.push( $(e).html() );
 		}
@@ -55,7 +149,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 			if ( i >= columnContents.length ) {
 				columnContent = '&nbsp;';
 			} else {
-				columnContent = columnContents[ i ]
+				columnContent = columnContents[ i ];
 			}
 		} else if ( typeof columnContents === 'string' ) {
 			if ( content.trim() !== '' ) {
@@ -83,31 +177,6 @@ function _pbsandwich_columns_formTable( columns, content ) {
 
 
 /**
- * Change columns modal action handler. When a change column button is clicked
- */
-jQuery('body').on('click', '#pbsandwich_column_change_modal button', function() {
-	var $ = jQuery;
-	
-	// Get the column composition
-	var columns = $(this).attr('data-columns');
-	if ( typeof columns === 'undefined' ) {
-		columns = $(this).parents('#pbsandwich_column_change_modal').find('input.custom_column').val();
-	}
-	
-	// The column container will have the attribute data-wp-columnselect
-	tinyMCE.activeEditor.selection.select( $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]')[0] );
-	
-	// Change the column
-	preUpdateSortable( tinyMCE.activeEditor );
-    tinyMCE.activeEditor.insertContent( _pbsandwich_columns_formTable( columns, tinyMCE.activeEditor.selection.getContent() ) );
-	updateSortable( tinyMCE.activeEditor );
-	
-	// Close our modal window
-	tinyMCE.activeEditor.windowManager.getWindows()[0].close();
-});
-
-
-/**
  * Paragraph tags are being removed inside tables. Fix it
  * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
  */
@@ -126,12 +195,12 @@ editor.on('mousedown', function(e) {
 	} else {
 		$(editor.getBody()).removeClass('pbsandwich_column_selected');
 	}
-	_pbsandwich_removeToolbar( editor );
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
 /**
- * Show the toolbar
+ * Show & bind or hide the column toolbar
  */
 editor.on('mouseup', function(e) {
 	var $ = jQuery;
@@ -139,40 +208,17 @@ editor.on('mouseup', function(e) {
 		
 		var action = $(e.target).attr('data-column-action');
 		
-		if ( action === 'columns' ) {
+		editor.fire( 'toolbar-column-' + action, {
+			'action': action,
+			'editor': editor,
+			'target': e.target
+		} );
 
-		    var colModal = editor.windowManager.open( {
-		        title: pbsandwich_column.change_column,
-				buttons: [{
-	                text: pbsandwich_column.cancel,
-	                onclick: 'close'
-	            }],
-		        body: [{
-					type: 'container',
-					html: '<div id="pbsandwich_column_change_modal"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
-						'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
-						'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
-						'<hr>' +
-						'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
-				}],
-		        onsubmit: function( e ) {
-					preUpdateSortable( editor );
-	                editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
-					updateSortable( editor );
-		        }
-		    });
-			
-		} else {
-			_pbsandwich_do_action( editor, e.target, action );
-		}
+		_pbsandwich_removeColumnToolbar( editor );
 		
 		return;
 	}
-	_pbsandwich_addToolbar( editor, e.target );
+	_pbsandwich_addColumnToolbar( editor, e.target );
 });
 
 
@@ -190,7 +236,7 @@ editor.on('init', function(e) {
 			return;
 		}
 	
-		_pbsandwich_removeToolbar( editor );
+		_pbsandwich_removeColumnToolbar( editor );
 	});
 });
 

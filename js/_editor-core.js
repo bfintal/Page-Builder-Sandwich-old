@@ -31,7 +31,7 @@ function cancelSortable( editor ) {
 function sortStartHandler( editor ) {
 	var editorBody = jQuery( editor.getBody() );
 	editorBody.addClass('pbsandwich_just_dragged');
-	_pbsandwich_removeToolbar( editor );
+	_pbsandwich_removeColumnToolbar( editor );
 	
 	// Views with iframes (e.g. audio & video embeds) get very slow when dragging, hide them
 	if ( editorBody.find('.wpview-wrap[data-mce-selected="1"] iframe').length > 0 ) {
@@ -276,98 +276,6 @@ function fixTableParagraphs( editor ) {
 		}
 		
 	});
-}
-
-
-/**
- * Perform a toolbar action
- */
-function _pbsandwich_do_action( editor, node, action ) {
-	var $ = jQuery;
-	
-	if ( action === 'remove' ) {
-		preUpdateSortable( editor );
-		$(editor.getBody()).find('[data-wp-columnselect]').remove();
-		updateSortable( editor );
-		
-	} else if ( action === 'clone' ) {
-		preUpdateSortable( editor );
-		var newElement = $(editor.getBody()).find('[data-wp-columnselect]').clone();
-		newElement.insertAfter( $(editor.getBody()).find('[data-wp-columnselect]') );
-		updateSortable( editor );
-		
-		// Cleanup to make views with iframes display again
-		if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
-			editor.execCommand( 'mceCleanup' );
-		}
-		
-	} else if ( action === 'edit' ) {
-		// TODO
-
-	}
-
-	_pbsandwich_removeToolbar( editor );
-}
-
-
-/**
- * Adds the toolbar
- * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
- */
-function _pbsandwich_addToolbar( editor, node ) {
-	var $ = jQuery;
-	var rectangle, toolbarHtml, toolbar, left,
-	dom = editor.dom;
-
-	_pbsandwich_removeToolbar( editor );
-	
-	// Don't create the toolbar if the column was just dragged
-	if ( $(editor.getBody()).hasClass('pbsandwich_just_dragged') ) {
-		return;
-	}
-
-	// Only add the toolbar for columns
-	if ( $(node).parents('.pbsandwich_column:eq(0)').length === 0 ) {
-		return;
-	}
-	node = $(node).parents('.pbsandwich_column:eq(0)')[0];
-
-	// Remember the column that has the toolbar
-	$(editor.getBody()).find( '[data-wp-columnselect]' ).removeAttr( 'data-wp-columnselect' );
-	dom.setAttrib( node, 'data-wp-columnselect', 1 );
-
-	// Create the toolbar
-	toolbarHtml = 
-		// '<div class="dashicons dashicons-edit" data-column-action="edit" data-mce-bogus="1" title="' + pbsandwich_column.edit + '"></div>' +
-		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone" data-mce-bogus="1" title="' + pbsandwich_column.clone + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove" data-mce-bogus="1" title="' + pbsandwich_column.delete + '"></div>';
-
-	toolbar = dom.create( 'div', {
-		'id': 'wp-column-toolbar',
-		'data-mce-bogus': '1',
-		'contenteditable': false
-	}, toolbarHtml );
-
-	editor.getBody().appendChild( toolbar );
-	rectangle = dom.getRect( node );
-	dom.setStyles( toolbar, {
-		top: rectangle.y,
-		left: rectangle.x + rectangle.w / 2
-	});
-}
-
-
-/**
- * Remove the toolbar
- * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
- */
-function _pbsandwich_removeToolbar( editor ) {
-	var toolbar = editor.dom.get( 'wp-column-toolbar' );
-
-	if ( toolbar ) {
-		editor.dom.remove( toolbar );
-	}
 }
 
 

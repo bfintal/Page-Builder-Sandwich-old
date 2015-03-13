@@ -278,40 +278,46 @@ body#tinymce.wp-editor .sandwich .panel-danger {
   body#tinymce.wp-editor .sandwich .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1; }
 
-/**
- * Editor only div-like styling
- */
-body#tinymce.wp-editor .pbsandwich_column td {
-  vertical-align: top;
-  padding: 0 10px;
-  border: 1px dashed #ccc;
-  border-left: none; }
-
-body#tinymce.wp-editor .pbsandwich_column td:first-of-type {
-  border-left: 1px dashed #ccc; }
-
-/**
- * Aesthetic margins
- */
-body#tinymce.wp-editor .pbsandwich_column {
-  margin: 1em 0; }
-
-/**
- * Don't show drag handlers for our tables
- */
-body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle,
-body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
-  display: none !important; }
-
-/**
- * Move cursor for our columns
- */
-body#tinymce.wp-editor .pbsandwich_column td:hover,
-body#tinymce.wp-editor .pbsandwich_column td td:hover {
-  cursor: move; }
-
-body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
-  cursor: text; }
+body#tinymce.wp-editor {
+  /**
+   * Editor only div-like styling
+   */
+  /**
+   * Aesthetic margins
+   */
+  /**
+   * Don't show drag handlers for our tables
+   */
+  /**
+   * Move cursor for our columns
+   */
+  /**
+   * Toolbar separator
+   */ }
+  body#tinymce.wp-editor .pbsandwich_column td {
+    vertical-align: top;
+    padding: 0 10px;
+    border: 1px dashed #ccc;
+    border-left: none; }
+  body#tinymce.wp-editor .pbsandwich_column td:first-of-type {
+    border-left: 1px dashed #ccc; }
+  body#tinymce.wp-editor .pbsandwich_column {
+    margin: 1em 0; }
+  body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
+    display: none !important; }
+  body#tinymce.wp-editor .pbsandwich_column td:hover,
+  body#tinymce.wp-editor .pbsandwich_column td td:hover {
+    cursor: move; }
+  body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
+    cursor: text; }
+  body#tinymce.wp-editor #wp-column-toolbar .sep {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    margin: 5px;
+    padding: 2px 0;
+    vertical-align: top;
+    background: #ccc; }
 
 body#tinymce.wp-editor {
   /**
@@ -461,7 +467,8 @@ body#tinymce.wp-editor #wp-column-toolbar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  white-space: nowrap; }
 
 /**
  * Clone buttons added to toolbars cannot be hovered on properly. This fixes the buttons
@@ -469,6 +476,22 @@ body#tinymce.wp-editor #wp-column-toolbar {
 body#tinymce.wp-editor .toolbar .dashicons {
   position: relative;
   cursor: pointer !important; }
+
+/**
+ * Toolbar labels & separators
+ */
+body#tinymce.wp-editor .toolbar-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  vertical-align: middle;
+  opacity: .8;
+  padding: 2px 5px 2px 10px;
+  display: inline-block;
+  line-height: 20px;
+  margin: 2px; }
+
+body#tinymce.wp-editor .sep + .toolbar-label {
+  padding-left: 5px; }
 
 body#tinymce.wp-editor {
   /**

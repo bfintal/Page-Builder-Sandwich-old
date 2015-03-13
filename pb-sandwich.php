@@ -201,22 +201,29 @@ class GambitPBSandwich {
 			?>
 			<script type="text/javascript">
 	        var pbsandwich_column = {
-				dummy_content: '<?php echo addslashes( __( 'Column text', 'default' ) ) ?>',
-				modal_title: '<?php echo addslashes( __( 'Columns', 'default' ) ) ?>',
-	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'default' ) ) ?>',
-				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'default' ) ) ?>',
-				columns: '<?php echo addslashes( __( '%s Columns', 'default' ) ) ?>',
-				delete: '<?php echo addslashes( __( 'Delete', 'default' ) ) ?>',
-				edit: '<?php echo addslashes( __( 'Edit', 'default' ) ) ?>',
-				change_column: '<?php echo addslashes( __( 'Change Column', 'default' ) ) ?>',
-				clone: '<?php echo addslashes( __( 'Clone', 'default' ) ) ?>',
-				change_columns: '<?php echo addslashes( __( 'Change Columns', 'default' ) ) ?>',
-				cancel: '<?php echo addslashes( __( 'Cancel', 'default' ) ) ?>',
-				preset: '<?php echo addslashes( __( 'Preset', 'default' ) ) ?>',
-				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'default' ) ) ?>',
-				use_custom: '<?php echo addslashes( __( 'Use custom', 'default' ) ) ?>',
-				custom: '<?php echo addslashes( __( 'Custom', 'default' ) ) ?>',
-				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>'
+				dummy_content: '<?php echo addslashes( __( 'Column text', 'pbsandwich' ) ) ?>',
+				modal_title: '<?php echo addslashes( __( 'Columns', 'pbsandwich' ) ) ?>',
+	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ) ) ?>',
+				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'pbsandwich' ) ) ?>',
+				columns: '<?php echo addslashes( __( '%s Columns', 'pbsandwich' ) ) ?>',
+				delete: '<?php echo addslashes( __( 'Delete', 'pbsandwich' ) ) ?>',
+				edit: '<?php echo addslashes( __( 'Edit', 'pbsandwich' ) ) ?>',
+				change_column: '<?php echo addslashes( __( 'Change Column', 'pbsandwich' ) ) ?>',
+				clone: '<?php echo addslashes( __( 'Clone', 'pbsandwich' ) ) ?>',
+				change_columns: '<?php echo addslashes( __( 'Change Columns', 'pbsandwich' ) ) ?>',
+				cancel: '<?php echo addslashes( __( 'Cancel', 'pbsandwich' ) ) ?>',
+				preset: '<?php echo addslashes( __( 'Preset', 'pbsandwich' ) ) ?>',
+				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'pbsandwich' ) ) ?>',
+				use_custom: '<?php echo addslashes( __( 'Use custom', 'pbsandwich' ) ) ?>',
+				custom: '<?php echo addslashes( __( 'Custom', 'pbsandwich' ) ) ?>',
+				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>',
+				clone_row: '<?php echo addslashes( __( 'Clone Row', 'pbsandwich' ) ) ?>',
+				delete_row: '<?php echo addslashes( __( 'Delete Row', 'pbsandwich' ) ) ?>',
+				edit_area: '<?php echo addslashes( __( 'Edit Area', 'pbsandwich' ) ) ?>',
+				clone_area: '<?php echo addslashes( __( 'Clone Area', 'pbsandwich' ) ) ?>',
+				delete_area: '<?php echo addslashes( __( 'Delete Area', 'pbsandwich' ) ) ?>',
+				column: '<?php echo addslashes( __( 'Column', 'pbsandwich' ) ) ?>',
+				row: '<?php echo addslashes( __( 'Row', 'pbsandwich' ) ) ?>'
 	        };
 	        </script>
 			<?php

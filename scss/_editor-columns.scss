@@ -1,41 +1,57 @@
-/**
- * Editor only div-like styling
- */
-body#tinymce.wp-editor .pbsandwich_column td {
-	vertical-align: top;
-	padding: 0 10px;
-	border: 1px dashed #ccc;
-	border-left: none;
-}
-body#tinymce.wp-editor .pbsandwich_column td:first-of-type {
-	border-left: 1px dashed #ccc;
-}
+body#tinymce.wp-editor {
+	/**
+	 * Editor only div-like styling
+	 */
+	.pbsandwich_column td {
+		vertical-align: top;
+		padding: 0 10px;
+		border: 1px dashed #ccc;
+		border-left: none;
+	}
+	.pbsandwich_column td:first-of-type {
+		border-left: 1px dashed #ccc;
+	}
 
 
-/**
- * Aesthetic margins
- */
-body#tinymce.wp-editor .pbsandwich_column {
-	margin: 1em 0;
-}
+	/**
+	 * Aesthetic margins
+	 */
+	.pbsandwich_column {
+		margin: 1em 0;
+	}
 
 
-/**
- * Don't show drag handlers for our tables
- */
-body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle,
-body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
-	display: none !important;
-}
+	/**
+	 * Don't show drag handlers for our tables
+	 */
+	.pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle,
+	&.pbsandwich_column_selected .mce-resizehandle {
+		display: none !important;
+	}
 
 
-/**
- * Move cursor for our columns
- */
-body#tinymce.wp-editor .pbsandwich_column td:hover,
-body#tinymce.wp-editor .pbsandwich_column td td:hover {
-	cursor: move;
-}
-body#tinymce.wp-editor .pbsandwich_column td *:not(.wpview-wrap) {
-	cursor: text;
+	/**
+	 * Move cursor for our columns
+	 */
+	.pbsandwich_column td:hover,
+	.pbsandwich_column td td:hover {
+		cursor: move;
+	}
+	.pbsandwich_column td *:not(.wpview-wrap) {
+		cursor: text;
+	}
+
+
+	/**
+	 * Toolbar separator
+	 */
+	#wp-column-toolbar .sep {
+	    display: inline-block;
+	    width: 1px;
+	    height: 16px;
+	    margin: 5px;
+	    padding: 2px 0;
+	    vertical-align: top;
+	    background: #ccc;
+	}
 }
