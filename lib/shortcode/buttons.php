@@ -48,7 +48,7 @@ add_action( 'init', 'sandwich_buttons', 11 );
 
 function sandwich_buttons() {
 
-	add_shortcode( 'pbs_buttons', 'sandwich_buttons_shortcode' );
+	add_shortcode( 'pbs_button', 'sandwich_buttons_shortcode' );
 
 	// Check if Shortcake exists
 	if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
@@ -60,7 +60,7 @@ function sandwich_buttons() {
 	}
 
 	shortcode_ui_register_for_shortcode(
-        'pbs_buttons',
+        'pbs_button',
         array(
             'label' => __( 'Buttons', 'pbsandwich' ),
             'listItemImage' => 'dashicons-plus',
