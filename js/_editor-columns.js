@@ -36,15 +36,17 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 
 	// Create the toolbar
 	toolbarHtml = 
-		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.column + '</span>' + 
-		'<!--div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area + '"></div-->' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area + '"></div>' +
+		'<style>.toolbar-label.column:before { content: "' + pbsandwich_column.column.replace( /"/g, '\\"' ) + '"; }</style>' +
+		'<div class="toolbar-label column" data-mce-bogus="1"></div>' + 
+		// '<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area.replace( /"/g, '\\"' ) + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area.replace( /"/g, '\\"' ) + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area.replace( /"/g, '\\"' ) + '"></div>' +
 		'<div class="sep" data-mce-bogus="1"></div>' +
-		'<span class="toolbar-label" data-mce-bogus="1">' + pbsandwich_column.row + '</span>' + 
-		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row + '"></div>';
+		'<style>.toolbar-label.row:before { content: "' + pbsandwich_column.row.replace( /"/g, '\\"' ) + '"; }</style>' +
+		'<div class="toolbar-label row" data-mce-bogus="1"></div>' + 
+		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns.replace( /"/g, '\\"' ) + '"></div>' +
+		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row.replace( /"/g, '\\"' ) + '"></div>' +
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row.replace( /"/g, '\\"' ) + '"></div>';
 
 	var editorWidth = $(editor.getDoc()).width();
 		
@@ -250,6 +252,15 @@ editor.addButton( 'pbsandwich_column', {
 	type: 'menubutton',
 	menu: [
 		{
+            text: _pbsandwich_columns_sprintf( pbsandwich_column.s_column, '1' ),
+            value: '1/1',
+            onclick: function() {
+				preUpdateSortable( editor );
+                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
+				updateSortable( editor );
+				fixTableParagraphs( editor );
+            }
+		}, {
             text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ),
             value: '1/2+1/2',
             onclick: function() {
