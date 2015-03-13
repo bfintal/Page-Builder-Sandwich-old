@@ -46,6 +46,12 @@ function sandwich_progressbar() {
 					'description' => __( 'Choose the type of Progress Bar to use.', 'pbsandwich' ),
                 ),
                 array(
+                    'label' => __( 'Progress Bar Color', 'pbsandwich' ),
+                    'attr' => 'color',
+                    'type' => 'color',
+					'value' => '',
+                ),
+                array(
                     'label' => __( 'Striped Progress Bar', 'pbsandwich' ),
                     'attr' => 'stripe',
                     'type' => 'checkbox',
@@ -81,6 +87,7 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 		
 	$attr = wp_parse_args( $attr, array(
         'type' => 'progress-bar-info',
+        'color' => '',
         'stripe' => 'false',
         'animated' => 'false',
         'percentage' => '50',
@@ -102,14 +109,19 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 	if ( $attr['animated'] == 'true' ) {
 		$additions .= ' active';
 	}
-			
+	
+	$styling = 'width: ' . esc_attr( $attr['percentage'] ) . '%; ';	
+	if ( $attr['color'] != '' ) {
+		$styling .= 'background-color: ' . esc_attr( $attr['color'] ) . '; ';
+	}	
+	
 	ob_start();
 	
 	?>
 	
 	<div class="sandwich">
 		<div class="progress">
-			<div id="progressbar-<?php echo esc_attr( $id ) ?>" class="progress-bar<?php echo esc_attr( $additions ) ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_attr( $attr['percentage'] ) ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo esc_attr( $attr['percentage'] ) ?>%">
+			<div id="progressbar-<?php echo esc_attr( $id ) ?>" class="progress-bar<?php echo esc_attr( $additions ) ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_attr( $attr['percentage'] ) ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo $styling ?>">
 				<span><?php echo esc_html( $attr['label'] ) ?></span>
 			</div>
 		</div>
