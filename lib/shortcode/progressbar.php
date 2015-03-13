@@ -50,32 +50,23 @@ function sandwich_progressbar() {
                     'attr' => 'stripe',
                     'type' => 'checkbox',
 					'value' => 'false',
-					'description' => __( 'Check this box to include stripes in the Progress Bar.', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => __( 'Animated Progress Bar', 'pbsandwich' ),
+                    'label' => __( 'Animated Stripes', 'pbsandwich' ),
                     'attr' => 'animated',
                     'type' => 'checkbox',
 					'value' => 'false',
-					'description' => __( 'Check this box to animate the Progress Bar.', 'pbsandwich' ),
                 ),					
                 array(
-                    'label' => __( 'Current Percentage', 'pbsandwich' ),
+                    'label' => __( 'Percentage', 'pbsandwich' ),
                     'attr' => 'percentage',
                     'type' => 'text',
 					'value' => '50',
-                    'description' => __( 'Enter the initial percentage of the progress bar.', 'pbsandwich' ),
+                    'description' => __( 'Enter the percentage filled in the progress bar. Value should be from 0 to 100.', 'pbsandwich' ),
                 ),
                 array(
-                    'label' => __( 'Maximum Percentage', 'pbsandwich' ),
-                    'attr' => 'max-percentage',
-                    'type' => 'text',
-					'value' => '100',
-                    'description' => __( 'Enter the maximum percentage of the progress bar.', 'pbsandwich' ),
-                ),
-                array(
-                    'label' => __( 'Percentage suffix', 'pbsandwich' ),
-                    'attr'  => 'suffix',
+                    'label' => __( 'Label', 'pbsandwich' ),
+                    'attr'  => 'label',
                     'type'  => 'text',
 					'value' => '',
                     'description' => __( 'Enter text to go along beside the progress bar percentage.', 'pbsandwich' ),
@@ -93,8 +84,7 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
         'stripe' => 'false',
         'animated' => 'false',
         'percentage' => '50',
-        'max-percentage' => '100',				
-        'suffix' => '',					
+        'label' => '',					
     ) );
 	
 	global $_sandwich_progressbar_id;
@@ -119,8 +109,8 @@ function sandwich_progressbar_shortcode( $attr, $content ) {
 	
 	<div class="sandwich">
 		<div class="progress">
-			<div id="progressbar-<?php echo esc_attr( $id ) ?>" class="progress-bar<?php echo $additions ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_html( $attr['percentage'] ) ?>" aria-valuemax="<?php echo esc_html( $attr['max-percentage'] ) ?>" style="width: <?php echo esc_html( $attr['percentage'] ) ?>%">
-				<span><?php echo esc_html( $attr['percentage'] ) . "% " . esc_html( $attr['suffix'] ); ?></span>
+			<div id="progressbar-<?php echo esc_attr( $id ) ?>" class="progress-bar<?php echo esc_attr( $additions ) ?>" role="progressbar" aria-valuemin="0" aria-valuenow="<?php echo esc_attr( $attr['percentage'] ) ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo esc_attr( $attr['percentage'] ) ?>%">
+				<span><?php echo esc_html( $attr['label'] ) ?></span>
 			</div>
 		</div>
 	</div>
