@@ -212,6 +212,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	if ( $attr['design'] == 'ghost' ) {
 		$styling .= 'background-color: transparent;';
+		$styling .= 'border-style: solid;';
+		$styling .= 'border-color: ' . $attr['cbordercolor'] . '; ';
 	}
 	if ( $attr['textcolor'] != '' ) {
 		$styling .= 'color: ' . $attr['textcolor'].'; ';
@@ -237,7 +239,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 		$customstyle .= 'background-color: ' . $attr['cbuttonhovercolor'].' !important; ';
 	}
 	if ( $attr['cborderhovercolor'] != '' ) {
-		$customstyle .= 'border: ' . $attr['cbuttonborder'].'px solid ' . $attr['cborderhovercolor'] . ' !important; ';
+		$customstyle .= 'border-color: ' . $attr['cborderhovercolor'] . ' !important; ';
 	}	
 
 	if ( ! empty ($customstyle) ) {
