@@ -5,6 +5,9 @@
  * These files are reusable and are used by many shortcake modules.
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Commonly-used variables stored here for better management.
  */
