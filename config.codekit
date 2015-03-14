@@ -717,6 +717,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/lib\/shortcode\/button.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/shortcode\/button.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/lib\/shortcode\/contact-form-7.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -812,6 +821,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lib\/shortcode\/ninja-forms.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/shortcode\/progressbar.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/shortcode\/progressbar.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -996,15 +1014,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/pb-sandwich.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/pb-sandwich.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/preview\/bbpress.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1145,15 +1154,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/scss\/_editor-buttons.scss": {
+	"\/scss\/_editor-button.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/scss\/_editor-buttons.scss",
-		"outputAbbreviatedPath": "\/css\/_editor-buttons.css",
+		"inputAbbreviatedPath": "\/scss\/_editor-button.scss",
+		"outputAbbreviatedPath": "\/css\/_editor-button.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1266,6 +1275,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scss\/_editor-widget.scss",
 		"outputAbbreviatedPath": "\/css\/_editor-widget.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/scss\/_frontend-button.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/_frontend-button.scss",
+		"outputAbbreviatedPath": "\/css\/_frontend-button.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,

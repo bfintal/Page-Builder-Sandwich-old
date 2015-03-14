@@ -464,20 +464,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 	// Create the toolbar
-	toolbarHtml = 
-		pbsandwich_column.column_toolbar_pre +
-		'<style>.toolbar-label.column:before { content: "' + pbsandwich_column.column.replace( /"/g, '\\"' ) + '"; }</style>' +
-		'<div class="toolbar-label column" data-mce-bogus="1"></div>' + 
-		// '<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone-area" data-mce-bogus="1" title="' + pbsandwich_column.clone_area.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove-area" data-mce-bogus="1" title="' + pbsandwich_column.delete_area.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="sep" data-mce-bogus="1"></div>' +
-		'<style>.toolbar-label.row:before { content: "' + pbsandwich_column.row.replace( /"/g, '\\"' ) + '"; }</style>' +
-		'<div class="toolbar-label row" data-mce-bogus="1"></div>' + 
-		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row.replace( /"/g, '\\"' ) + '"></div>' +
-		pbsandwich_column.column_toolbar_post;
+	toolbarHtml = wp.template( 'pbs-column-toolbar' );
 
 	var editorWidth = $(editor.getDoc()).width();
 		
@@ -485,7 +472,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		'id': 'wp-column-toolbar',
 		'data-mce-bogus': '1',
 		'contenteditable': false
-	}, toolbarHtml );
+	}, toolbarHtml( pbsandwich_column ) );
 
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );
@@ -683,7 +670,7 @@ editor.addButton( 'pbsandwich_column', {
 	type: 'menubutton',
 	menu: [
 		{
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.s_column, '1' ),
+            text: pbsandwich_column.column_1,
             value: '1/1',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -692,7 +679,7 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ),
+            text: pbsandwich_column.column_2,
             value: '1/2+1/2',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -701,7 +688,7 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ),
+            text: pbsandwich_column.column_3,
             value: '1/3+1/3+1/3',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -710,7 +697,7 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ),
+            text: pbsandwich_column.column_4,
             value: '1/4+1/4+1/4+1/4',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -719,7 +706,7 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ),
+            text: pbsandwich_column.column_1323,
             value: '1/3+2/3',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -728,7 +715,7 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ),
+            text: pbsandwich_column.column_2313,
             value: '2/3+1/3',
             onclick: function() {
 				preUpdateSortable( editor );
@@ -737,8 +724,8 @@ editor.addButton( 'pbsandwich_column', {
 				fixTableParagraphs( editor );
             }
 		}, {
-            text: _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 1/2 + 1/4' ),
-            value: '1/4+2/4+1/4',
+            text: pbsandwich_column.column_141214,
+            value: '1/4+1/2+1/4',
             onclick: function() {
 				preUpdateSortable( editor );
                 editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
@@ -758,7 +745,7 @@ editor.addButton( 'pbsandwich_column', {
 			        },
 					{
 						type: 'container',
-						html: '<p style="line-height: 1.6em;">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p>'
+						html: wp.template( 'pbs-column-custom-modal-description' )( pbsandwich_column )
 					}],
 			        onsubmit: function( e ) {
 						preUpdateSortable( editor );
@@ -802,16 +789,7 @@ editor.on('toolbar-column-columns', function(e) {
         }],
         body: [{
 			type: 'container',
-			html: '<div id="pbsandwich_column_change_modal"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
-				'<p class="mce-btn"><button data-columns="1/1">' + _pbsandwich_columns_sprintf( pbsandwich_column.s_column, '1' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
-				'<hr>' +
-				'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
+			html: wp.template( 'pbs-column-change-modal' )( pbsandwich_column )
 		}],
         onsubmit: function( e ) {
 			preUpdateSortable( editor );
@@ -912,15 +890,7 @@ editor.on('toolbar-column-edit-area', function(e) {
 		//         }],
         body: [{
 			type: 'container',
-			html: '<div id="dsadsa"><h4>' + pbsandwich_column.preset + '</h4><p class="desc">' + pbsandwich_column.preset_desc + '</p>' +
-				'<p class="mce-btn"><button data-columns="1/2+1/2">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/3+1/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/4+1/4+1/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '4' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/3+2/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/3 + 2/3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="2/3+1/3">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '2/3 + 1/3' ) + '</button></p> ' + 
-				'<p class="mce-btn"><button data-columns="1/4+2/4+1/4">' + _pbsandwich_columns_sprintf( pbsandwich_column.columns, '1/4 + 2/4 + 1/4' ) + '</button></p> ' + 
-				'<hr>' +
-				'<h4>' + pbsandwich_column.custom + '</h4><input type="text" class="mce-textbox custom_column" value="1/2+1/2"><p class="mce-btn"><button>' + pbsandwich_column.use_custom + '</button></p><p class="desc">' + pbsandwich_column.modal_description + '<code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/2+1/2</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/3+1/3+1/3</code> <code style="font-family: monospace; background: #eee; padding: 0 .4em; line-height: 1.6em; display: inline-block; border: 1px solid #ddd; border-radius: 4px;">1/4+2/4+1/4</code></p></div>'
+			html: ''
 		}],
         onsubmit: function( e ) {
 			console.log('OK');
@@ -1014,8 +984,8 @@ editor.on('toolbar-column-remove-area', function(e) {
 	// Apply new widths
 	table.find('> tbody > tr > td').each(function(i, e) {
 		$(this).addClass('col-sm-' + columnWidths[ i ])
-		.attr('style', $(this).attr('style').replace( /width:\s?\d+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
-		.attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?\d+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
+		.attr('style', $(this).attr('style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
+		.attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
 	});
 });
 
@@ -1141,8 +1111,8 @@ editor.on('toolbar-column-clone-area', function(e) {
 	// Apply new widths
 	table.find('> tbody > tr > td').each(function(i, e) {
 		$(this).addClass('col-sm-' + columnWidths[ i ])
-		.attr('style', $(this).attr('style').replace( /width:\s?\d+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
-		.attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?\d+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
+		.attr('style', $(this).attr('style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
+		.attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
 	});
 
 	updateSortable( editor );

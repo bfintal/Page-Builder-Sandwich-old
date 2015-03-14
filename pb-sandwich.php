@@ -85,6 +85,7 @@ class GambitPBSandwich {
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendScripts' ) );
 		add_action( 'init', array( $this, 'loadShortcake' ), 1 );
 		add_action( 'media_buttons', array( $this, 'addShortcodeButton' ), 100 );
+		add_action( 'admin_footer', array( $this, 'addColumnTemplates' ) );
 	}
 
 	
@@ -188,7 +189,6 @@ class GambitPBSandwich {
 	 * @return	void
 	 */
 	public function addColumnButton() {
-	    global $typenow;
 	
 	    // check user permissions
 	    if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
@@ -207,8 +207,13 @@ class GambitPBSandwich {
 				modal_title: '<?php echo addslashes( __( 'Columns', 'pbsandwich' ) ) ?>',
 	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ) ) ?>',
 				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'pbsandwich' ) ) ?>',
-				s_column: '<?php echo addslashes( __( '%s Column', 'pbsandwich' ) ) ?>',
-				columns: '<?php echo addslashes( __( '%s Columns', 'pbsandwich' ) ) ?>',
+				column_1: '<?php echo addslashes( sprintf( __( '%s Column', 'pbsandwich' ), 1 ) ) ?>',
+				column_2: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 2 ) ) ?>',
+				column_3: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 3 ) ) ?>',
+				column_4: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 4 ) ) ?>',
+				column_1323: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '1/3 + 2/3' ) ) ?>',
+				column_2313: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '2/3 + 1/3' ) ) ?>',
+				column_141214: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '1/4 + 1/2 + 1/4' ) ) ?>',
 				delete: '<?php echo addslashes( __( 'Delete', 'pbsandwich' ) ) ?>',
 				edit: '<?php echo addslashes( __( 'Edit', 'pbsandwich' ) ) ?>',
 				change_column: '<?php echo addslashes( __( 'Change Column', 'pbsandwich' ) ) ?>',
@@ -457,6 +462,22 @@ class GambitPBSandwich {
 	
 	public function addShortcodeButton() {
 		echo '<a href="#" class="button sandwich-add-shortcode"><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span> ' . __( 'Add Post Element', 'pbsandwich' ) . '</a>';
+	}
+	
+	public function addColumnTemplates() {
+	    // check user permissions
+	    if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+		    return;
+	    }
+	
+	    // check if WYSIWYG is enabled
+	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
+			
+			include_once PBS_PATH . "/lib/templates/column-toolbar.php";
+			include_once PBS_PATH . "/lib/templates/column-change-modal.php";
+			include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
+			
+		}
 	}
 	
 }
