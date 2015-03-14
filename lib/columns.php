@@ -19,7 +19,7 @@ class GambitPBSandwichColumns {
 	 * @return	void
 	 */
 	function __construct() {
-		add_action( 'the_content', array( $this, 'cleanOutput' ) );
+		add_action( 'the_content', array( $this, 'cleanColumnOutput' ) );
 		add_action( 'admin_head', array( $this, 'addColumnButton' ) );
 		add_action( 'save_post', array( $this, 'rememberColumnStyles' ), 10, 3 );
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
@@ -34,7 +34,7 @@ class GambitPBSandwichColumns {
 	 * @param	$content string The content being outputted in the frontend
 	 * @return	string The modified content
 	 */
-	public function cleanOutput( $content ) {
+	public function cleanColumnOutput( $content ) {
 		$parsed = $this->parseColumnContent( $content );
 		return $parsed[ 'content' ];
 	}
@@ -86,58 +86,56 @@ class GambitPBSandwichColumns {
 	    }
 	
 	    // check if WYSIWYG is enabled
-	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
-	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
-			
-			$columnVars = array(
-				'dummy_content' => __( 'Column text', 'pbsandwich' ),
-				'modal_title' => __( 'Columns', 'pbsandwich' ),
-	        	'modal_description' => __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ),
-				'custom_columns' => __( 'Custom Columns', 'pbsandwich' ),
-				'column_1' => sprintf( __( '%s Column', 'pbsandwich' ), 1 ),
-				'column_2' => sprintf( __( '%s Columns', 'pbsandwich' ), 2 ),
-				'column_3' => sprintf( __( '%s Columns', 'pbsandwich' ), 3 ),
-				'column_4' => sprintf( __( '%s Columns', 'pbsandwich' ), 4 ),
-				'column_1323' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/3 + 2/3' ),
-				'column_2313' => sprintf( __( '%s Columns', 'pbsandwich' ), '2/3 + 1/3' ),
-				'column_141214' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/4 + 1/2 + 1/4' ),
-				'delete' => __( 'Delete', 'pbsandwich' ),
-				'edit' => __( 'Edit', 'pbsandwich' ),
-				'change_column' => __( 'Change Column', 'pbsandwich' ),
-				'clone' => __( 'Clone', 'pbsandwich' ),
-				'change_columns' => __( 'Change Columns', 'pbsandwich' ),
-				'cancel' => __( 'Cancel', 'pbsandwich' ),
-				'preset' => __( 'Preset', 'pbsandwich' ),
-				'preset_desc' => __( 'You can change the number of columns below:', 'pbsandwich' ),
-				'use_custom' => __( 'Use custom', 'pbsandwich' ),
-				'custom' => __( 'Custom', 'pbsandwich' ),
-				'non_sortable_elements' => $this->formNonSortableElements(),
-				'clone_row' => __( 'Clone Row', 'pbsandwich' ),
-				'delete_row' => __( 'Delete Row', 'pbsandwich' ),
-				'edit_area' => __( 'Edit Area', 'pbsandwich' ),
-				'clone_area' => __( 'Clone Area', 'pbsandwich' ),
-				'delete_area' => __( 'Delete Area', 'pbsandwich' ),
-				'column' => __( 'Column', 'pbsandwich' ),
-				'row' => __( 'Row', 'pbsandwich' ),	
-			);
-			$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
-			
-			// Print out our variables
-			?>
-			<script type="text/javascript">
-	        var pbsandwich_column = {
-				<?php
-				$varString = '';
-				foreach ( $columnVars as $key => $value ) {
-					$varString .= empty( $varString ) ? '' : ',';
-					$varString .= "$key: '" . addslashes( $value ) . "'";
-				}
-				echo $varString;
-				?>
-	        };
-	        </script>
+        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
+		
+		$columnVars = array(
+			'dummy_content' => __( 'Column text', 'pbsandwich' ),
+			'modal_title' => __( 'Columns', 'pbsandwich' ),
+        	'modal_description' => __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ),
+			'custom_columns' => __( 'Custom Columns', 'pbsandwich' ),
+			'column_1' => sprintf( __( '%s Column', 'pbsandwich' ), 1 ),
+			'column_2' => sprintf( __( '%s Columns', 'pbsandwich' ), 2 ),
+			'column_3' => sprintf( __( '%s Columns', 'pbsandwich' ), 3 ),
+			'column_4' => sprintf( __( '%s Columns', 'pbsandwich' ), 4 ),
+			'column_1323' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/3 + 2/3' ),
+			'column_2313' => sprintf( __( '%s Columns', 'pbsandwich' ), '2/3 + 1/3' ),
+			'column_141214' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/4 + 1/2 + 1/4' ),
+			'delete' => __( 'Delete', 'pbsandwich' ),
+			'edit' => __( 'Edit', 'pbsandwich' ),
+			'change_column' => __( 'Change Column', 'pbsandwich' ),
+			'clone' => __( 'Clone', 'pbsandwich' ),
+			'change_columns' => __( 'Change Columns', 'pbsandwich' ),
+			'cancel' => __( 'Cancel', 'pbsandwich' ),
+			'preset' => __( 'Preset', 'pbsandwich' ),
+			'preset_desc' => __( 'You can change the number of columns below:', 'pbsandwich' ),
+			'use_custom' => __( 'Use custom', 'pbsandwich' ),
+			'custom' => __( 'Custom', 'pbsandwich' ),
+			'non_sortable_elements' => $this->formNonSortableElements(),
+			'clone_row' => __( 'Clone Row', 'pbsandwich' ),
+			'delete_row' => __( 'Delete Row', 'pbsandwich' ),
+			'edit_area' => __( 'Edit Area', 'pbsandwich' ),
+			'clone_area' => __( 'Clone Area', 'pbsandwich' ),
+			'delete_area' => __( 'Delete Area', 'pbsandwich' ),
+			'column' => __( 'Column', 'pbsandwich' ),
+			'row' => __( 'Row', 'pbsandwich' ),	
+		);
+		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
+		
+		// Print out our variables
+		?>
+		<script type="text/javascript">
+        var pbsandwich_column = {
 			<?php
-	    }
+			$varString = '';
+			foreach ( $columnVars as $key => $value ) {
+				$varString .= empty( $varString ) ? '' : ',';
+				$varString .= "$key: '" . addslashes( $value ) . "'";
+			}
+			echo $varString;
+			?>
+        };
+        </script>
+		<?php
 	}
 	
 	
@@ -192,14 +190,10 @@ class GambitPBSandwichColumns {
 		    return;
 	    }
 	
-	    // check if WYSIWYG is enabled
-	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
-			
-			include_once PBS_PATH . "/lib/templates/column-toolbar.php";
-			include_once PBS_PATH . "/lib/templates/column-change-modal.php";
-			include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
-			
-		}
+		include_once PBS_PATH . "/lib/templates/column-toolbar.php";
+		include_once PBS_PATH . "/lib/templates/column-change-modal.php";
+		include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
+		
 	}
 	
 	
@@ -249,7 +243,7 @@ class GambitPBSandwichColumns {
 		}
 		
 		if ( ! function_exists( 'file_get_html' ) ) {
-			require_once( PBS_PATH . '/inc/simple_html_dom.php' );
+			require_once( PBS_PATH . 'inc/simple_html_dom.php' );
 		}
 		wp_enqueue_style( 'pbsandwich-frontend', plugins_url( 'css/frontend.css', __FILE__ ) );
 		

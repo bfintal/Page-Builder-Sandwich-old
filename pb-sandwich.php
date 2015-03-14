@@ -74,12 +74,11 @@ class GambitPBSandwich {
 	 * @return	void
 	 */
 	function __construct() {
-		add_action( 'admin_init', array( $this, 'addEditorColumnStyles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'columnButtonIcon' ) );
 		add_action( 'plugins_loaded', array( $this, 'loadTextDomain' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'loadjQuerySortable' ) );
-		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
+		add_action( 'admin_init', array( $this, 'addEditorStyles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'loadAdminScripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadFrontendScripts' ) );
+		add_filter( 'tiny_mce_before_init', array( $this, 'addSandwichBootstrap' ) );
 		add_action( 'init', array( $this, 'loadShortcake' ), 1 );
 		add_action( 'media_buttons', array( $this, 'addShortcodeButton' ), 100 );
 		add_action( 'admin_head', array( $this, 'addSandwichPlugin' ) );
@@ -101,7 +100,7 @@ class GambitPBSandwich {
 	 *
 	 * @return	void
 	 */
-	public function addEditorColumnStyles() {
+	public function addEditorStyles() {
 	    add_editor_style( plugins_url( 'css/editor.css', __FILE__ ) );
 	}
 	
@@ -117,8 +116,10 @@ class GambitPBSandwich {
 	 *
 	 * @return	void
 	 */
-	public function columnButtonIcon() {
+	public function loadAdminScripts() {
 	    wp_enqueue_style( 'pbsandwich-admin', plugins_url( 'css/admin.css', __FILE__ ) );
+		
+		wp_enqueue_script( 'jquery-ui-sortable' );
 	    wp_enqueue_script( 'pbsandwich-admin', plugins_url( 'js/min/admin-min.js', __FILE__ ), array( 'jquery' ), PBS_VERSION );
 	}
 	
@@ -135,10 +136,7 @@ class GambitPBSandwich {
 		    return;
 	    }
 	
-	    // check if WYSIWYG is enabled
-	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
-	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
-		}
+		add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	}
 	
 	
@@ -151,16 +149,6 @@ class GambitPBSandwich {
 	public function addTinyMCEPlugin( $pluginArray ) {
 	    $pluginArray['pbsandwich'] = plugins_url( 'js/min/editor-min.js', __FILE__ );
 	    return $pluginArray;
-	}
-	
-	
-	/**
-	 * Enqueues jQuery sortable
-	 *
-	 * @return	void
-	 */
-	public function loadjQuerySortable() {
-		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
 	
 	
