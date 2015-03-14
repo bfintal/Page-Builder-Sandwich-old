@@ -1,6 +1,6 @@
 <script type="text/html" id="tmpl-pbs-column-toolbar">
 	
-	{{{ data.column_toolbar_pre }}}
+	<?php do_action( 'pbs_column_toolbar_pre' ) ?>
 	
 	<style>
 	.toolbar-label.column:before {
@@ -23,7 +23,7 @@
 	<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="{{ data.change_columns }}"></div>
 	<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="{{ data.clone_row }}"></div>
 	<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="{{ data.delete_row }}"></div>
-	
-	{{{ data.column_toolbar_post }}}
+
+	<?php do_action( 'pbs_column_toolbar_post' ) ?>
 	
 </script>

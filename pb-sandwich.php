@@ -200,42 +200,51 @@ class GambitPBSandwich {
 	        add_filter( 'mce_external_plugins', array( $this, 'addTinyMCEPlugin' ) );
 	        add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
 			
+			$columnVars = array(
+				'dummy_content' => __( 'Column text', 'pbsandwich' ),
+				'modal_title' => __( 'Columns', 'pbsandwich' ),
+	        	'modal_description' => __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ),
+				'custom_columns' => __( 'Custom Columns', 'pbsandwich' ),
+				'column_1' => sprintf( __( '%s Column', 'pbsandwich' ), 1 ),
+				'column_2' => sprintf( __( '%s Columns', 'pbsandwich' ), 2 ),
+				'column_3' => sprintf( __( '%s Columns', 'pbsandwich' ), 3 ),
+				'column_4' => sprintf( __( '%s Columns', 'pbsandwich' ), 4 ),
+				'column_1323' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/3 + 2/3' ),
+				'column_2313' => sprintf( __( '%s Columns', 'pbsandwich' ), '2/3 + 1/3' ),
+				'column_141214' => sprintf( __( '%s Columns', 'pbsandwich' ), '1/4 + 1/2 + 1/4' ),
+				'delete' => __( 'Delete', 'pbsandwich' ),
+				'edit' => __( 'Edit', 'pbsandwich' ),
+				'change_column' => __( 'Change Column', 'pbsandwich' ),
+				'clone' => __( 'Clone', 'pbsandwich' ),
+				'change_columns' => __( 'Change Columns', 'pbsandwich' ),
+				'cancel' => __( 'Cancel', 'pbsandwich' ),
+				'preset' => __( 'Preset', 'pbsandwich' ),
+				'preset_desc' => __( 'You can change the number of columns below:', 'pbsandwich' ),
+				'use_custom' => __( 'Use custom', 'pbsandwich' ),
+				'custom' => __( 'Custom', 'pbsandwich' ),
+				'non_sortable_elements' => $this->formNonSortableElements(),
+				'clone_row' => __( 'Clone Row', 'pbsandwich' ),
+				'delete_row' => __( 'Delete Row', 'pbsandwich' ),
+				'edit_area' => __( 'Edit Area', 'pbsandwich' ),
+				'clone_area' => __( 'Clone Area', 'pbsandwich' ),
+				'delete_area' => __( 'Delete Area', 'pbsandwich' ),
+				'column' => __( 'Column', 'pbsandwich' ),
+				'row' => __( 'Row', 'pbsandwich' ),	
+			);
+			$columnVars = apply_filters( 'pbs_column_toolbar_vars', $columnVars );
+			
+			// Print out our variables
 			?>
 			<script type="text/javascript">
 	        var pbsandwich_column = {
-				dummy_content: '<?php echo addslashes( __( 'Column text', 'pbsandwich' ) ) ?>',
-				modal_title: '<?php echo addslashes( __( 'Columns', 'pbsandwich' ) ) ?>',
-	        	modal_description: '<?php echo addslashes( __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ) ) ?>',
-				custom_columns: '<?php echo addslashes( __( 'Custom Columns', 'pbsandwich' ) ) ?>',
-				column_1: '<?php echo addslashes( sprintf( __( '%s Column', 'pbsandwich' ), 1 ) ) ?>',
-				column_2: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 2 ) ) ?>',
-				column_3: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 3 ) ) ?>',
-				column_4: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), 4 ) ) ?>',
-				column_1323: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '1/3 + 2/3' ) ) ?>',
-				column_2313: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '2/3 + 1/3' ) ) ?>',
-				column_141214: '<?php echo addslashes( sprintf( __( '%s Columns', 'pbsandwich' ), '1/4 + 1/2 + 1/4' ) ) ?>',
-				delete: '<?php echo addslashes( __( 'Delete', 'pbsandwich' ) ) ?>',
-				edit: '<?php echo addslashes( __( 'Edit', 'pbsandwich' ) ) ?>',
-				change_column: '<?php echo addslashes( __( 'Change Column', 'pbsandwich' ) ) ?>',
-				clone: '<?php echo addslashes( __( 'Clone', 'pbsandwich' ) ) ?>',
-				change_columns: '<?php echo addslashes( __( 'Change Columns', 'pbsandwich' ) ) ?>',
-				cancel: '<?php echo addslashes( __( 'Cancel', 'pbsandwich' ) ) ?>',
-				preset: '<?php echo addslashes( __( 'Preset', 'pbsandwich' ) ) ?>',
-				preset_desc: '<?php echo addslashes( __( 'You can change the number of columns below:', 'pbsandwich' ) ) ?>',
-				use_custom: '<?php echo addslashes( __( 'Use custom', 'pbsandwich' ) ) ?>',
-				custom: '<?php echo addslashes( __( 'Custom', 'pbsandwich' ) ) ?>',
-				non_sortable_elements: '<?php echo addslashes( $this->formNonSortableElements() ) ?>',
-				clone_row: '<?php echo addslashes( __( 'Clone Row', 'pbsandwich' ) ) ?>',
-				delete_row: '<?php echo addslashes( __( 'Delete Row', 'pbsandwich' ) ) ?>',
-				edit_area: '<?php echo addslashes( __( 'Edit Area', 'pbsandwich' ) ) ?>',
-				clone_area: '<?php echo addslashes( __( 'Clone Area', 'pbsandwich' ) ) ?>',
-				delete_area: '<?php echo addslashes( __( 'Delete Area', 'pbsandwich' ) ) ?>',
-				column: '<?php echo addslashes( __( 'Column', 'pbsandwich' ) ) ?>',
-				row: '<?php echo addslashes( __( 'Row', 'pbsandwich' ) ) ?>',
-				
-				<?php // These are hooks to add buttons in the column toolbar ?>
-				column_toolbar_pre: '<?php echo addslashes( apply_filters( 'pbs_column_toolbar_pre', '' ) ) ?>',
-				column_toolbar_post: '<?php echo addslashes( apply_filters( 'pbs_column_toolbar_post', '' ) ) ?>'
+				<?php
+				$varString = '';
+				foreach ( $columnVars as $key => $value ) {
+					$varString .= empty( $varString ) ? '' : ',';
+					$varString .= "$key: '" . addslashes( $value ) . "'";
+				}
+				echo $varString;
+				?>
 	        };
 	        </script>
 			<?php
