@@ -36,6 +36,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 
 	// Create the toolbar
 	toolbarHtml = 
+		pbsandwich_column.column_toolbar_pre +
 		'<style>.toolbar-label.column:before { content: "' + pbsandwich_column.column.replace( /"/g, '\\"' ) + '"; }</style>' +
 		'<div class="toolbar-label column" data-mce-bogus="1"></div>' + 
 		// '<div class="dashicons dashicons-edit" data-column-action="edit-area" data-mce-bogus="1" title="' + pbsandwich_column.edit_area.replace( /"/g, '\\"' ) + '"></div>' +
@@ -46,7 +47,8 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		'<div class="toolbar-label row" data-mce-bogus="1"></div>' + 
 		'<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="' + pbsandwich_column.change_columns.replace( /"/g, '\\"' ) + '"></div>' +
 		'<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="' + pbsandwich_column.clone_row.replace( /"/g, '\\"' ) + '"></div>' +
-		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row.replace( /"/g, '\\"' ) + '"></div>';
+		'<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="' + pbsandwich_column.delete_row.replace( /"/g, '\\"' ) + '"></div>' +
+		pbsandwich_column.column_toolbar_post;
 
 	var editorWidth = $(editor.getDoc()).width();
 		

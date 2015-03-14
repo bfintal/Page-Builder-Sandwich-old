@@ -226,7 +226,11 @@ class GambitPBSandwich {
 				clone_area: '<?php echo addslashes( __( 'Clone Area', 'pbsandwich' ) ) ?>',
 				delete_area: '<?php echo addslashes( __( 'Delete Area', 'pbsandwich' ) ) ?>',
 				column: '<?php echo addslashes( __( 'Column', 'pbsandwich' ) ) ?>',
-				row: '<?php echo addslashes( __( 'Row', 'pbsandwich' ) ) ?>'
+				row: '<?php echo addslashes( __( 'Row', 'pbsandwich' ) ) ?>',
+				
+				<?php // These are hooks to add buttons in the column toolbar ?>
+				column_toolbar_pre: '<?php echo addslashes( apply_filters( 'pbs_column_toolbar_pre', '' ) ) ?>',
+				column_toolbar_post: '<?php echo addslashes( apply_filters( 'pbs_column_toolbar_post', '' ) ) ?>'
 	        };
 	        </script>
 			<?php
