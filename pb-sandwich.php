@@ -231,7 +231,7 @@ class GambitPBSandwich {
 				'column' => __( 'Column', 'pbsandwich' ),
 				'row' => __( 'Row', 'pbsandwich' ),	
 			);
-			$columnVars = apply_filters( 'pbs_column_toolbar_vars', $columnVars );
+			$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
 			
 			// Print out our variables
 			?>
