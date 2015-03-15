@@ -18,4 +18,10 @@ body#tinymce.wp-editor .sandwich {
 	
 }
 
-@import "_editor-*";
+@import "editor-columns";
+@import "editor-html5video";
+@import "editor-jetpack";
+@import "editor-mailchimp";
+@import "editor-sandwich";
+@import "editor-toggle";
+@import "editor-widget";

@@ -113,6 +113,7 @@ class GambitPBSandwichColumns {
 			'non_sortable_elements' => $this->formNonSortableElements(),
 			'clone_row' => __( 'Clone Row', 'pbsandwich' ),
 			'delete_row' => __( 'Delete Row', 'pbsandwich' ),
+			'edit_row' => __( 'Edit Row', 'pbsandwich' ),
 			'edit_area' => __( 'Edit Area', 'pbsandwich' ),
 			'clone_area' => __( 'Clone Area', 'pbsandwich' ),
 			'delete_area' => __( 'Delete Area', 'pbsandwich' ),
@@ -193,6 +194,7 @@ class GambitPBSandwichColumns {
 		include_once PBS_PATH . "/lib/templates/column-toolbar.php";
 		include_once PBS_PATH . "/lib/templates/column-change-modal.php";
 		include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
+		include_once PBS_PATH . "/lib/templates/column-area-edit-modal.php";
 		
 	}
 	
@@ -245,7 +247,7 @@ class GambitPBSandwichColumns {
 		if ( ! function_exists( 'file_get_html' ) ) {
 			require_once( PBS_PATH . 'inc/simple_html_dom.php' );
 		}
-		wp_enqueue_style( 'pbsandwich-frontend', plugins_url( 'css/frontend.css', __FILE__ ) );
+		wp_enqueue_style( 'pbsandwich-frontend', PBS_URL . 'css/frontend.css' );
 		
 		$columnStyles = '';
 	
@@ -274,9 +276,12 @@ class GambitPBSandwichColumns {
 					$innerHTML = '<p>' . $td->innertext . '</p>';
 				}
 				
+				// Remove the widths since we are using classes for those:
+				$columnStyle = trim( preg_replace( '/(^|\s)width:[^;]+;\s?/', '', $td->style ) );
+				
 				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
-				if ( empty( $td->class ) ) {
-					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $td->style ) . ' }';
+				if ( ! empty( $columnStyle ) ) {
+					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $columnStyle ) . ' }';
 				}
 				$styleDump .= esc_attr( $td->style );
 			
@@ -288,8 +293,8 @@ class GambitPBSandwichColumns {
 			$hashes[] = $hash;
 			
 			// This is our converted <table>
-			$customClass = empty( $columnStyles ) ? 'sandwich' : 'pbsandwich_column_' . $hash; // Backward compatibility
-			$newDivs = '<div class="pbsandwich_column ' . $customClass . '"><div class="row">' . $newDivs . '</div></div>';
+			$customClass = empty( $columnStyles ) ? '' : 'pbsandwich_column_' . $hash; // Backward compatibility
+			$newDivs = '<div class="pbsandwich_column sandwich ' . $customClass . '"><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
