@@ -281,7 +281,7 @@ class GambitPBSandwichColumns {
 				
 				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
 				if ( ! empty( $columnStyle ) ) {
-					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . esc_attr( $columnStyle ) . ' }';
+					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . wp_kses( $columnStyle, array(), array() ). ' }';
 				}
 				$styleDump .= esc_attr( $td->style );
 			
