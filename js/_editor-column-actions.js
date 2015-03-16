@@ -18,6 +18,8 @@ editor.on('toolbar-column-columns', function(e) {
 			updateSortable( editor );
 		}
 	});
+	
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
@@ -198,6 +200,8 @@ editor.on('toolbar-column-edit-area', function(e) {
 	});
 	
 	$('#pbsandwich_column_area_edit').find('#border_color, #background_color').wpColorPicker();
+	
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 /**
@@ -365,6 +369,8 @@ editor.on('toolbar-column-remove-area', function(e) {
 		.attr('style', $(this).attr('style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
 		.attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
 	});
+	
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
@@ -499,6 +505,8 @@ editor.on('toolbar-column-clone-area', function(e) {
 	if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
 		editor.execCommand( 'mceCleanup' );
 	}
+	
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
@@ -515,7 +523,6 @@ editor.on('toolbar-column-edit-row', function(e) {
 	if ( bgImageURL === 'none' ) {
 		bgImageURL = '';
 	}
-	console.log($selectedRow.css('borderColor'));
 
 	pbsandwich_column.fields = {
 		padding_top: parseInt( $selectedRow.css('paddingTop') ),
@@ -615,8 +622,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
 		}
 	});
-	//
+
 	$('#pbsandwich_column_row_edit').find('#border_color, #background_color').wpColorPicker();
+	
+	_pbsandwich_removeColumnToolbar( editor );
 });
 
 
