@@ -50,8 +50,8 @@
 				{{ data.style }}
 				<select id="border_style" name="border_style" value="{{ data.fields.border_style }}">
 					<option value="none"  <# if ( data.fields.border_style === 'none' ) { #> selected="selected" <# } #>>{{ data.none }}</option>
-					<option value="dotted"  <# if ( data.fields.border_style === 'dotted' ) { #> selected="selected" <# } #>>{{ data.dotted }}</option>
-					<option value="dashed"  <# if ( data.fields.border_style === 'dashed' ) { #> selected="selected" <# } #>>{{ data.dashed }}</option>
+					<option value="dotted"	<# if ( data.fields.border_style === 'dotted' ) { #> selected="selected" <# } #>>{{ data.dotted }}</option>
+					<option value="dashed"	<# if ( data.fields.border_style === 'dashed' ) { #> selected="selected" <# } #>>{{ data.dashed }}</option>
 					<option value="solid" <# if ( data.fields.border_style === 'solid' ) { #> selected="selected" <# } #>>{{ data.solid }}</option>
 					<option value="double" <# if ( data.fields.border_style === 'double' ) { #> selected="selected" <# } #>>{{ data.double }}</option>
 					<option value="groove" <# if ( data.fields.border_style === 'groove' ) { #> selected="selected" <# } #>>{{ data.groove }}</option>
@@ -77,16 +77,16 @@
 			<label for="background_size">
 				{{ data.size }}
 				<select id="background_size" name="background_size" value="{{ data.fields.background_size }}">
-					<option value="inherit"  <# if ( data.fields.background_size === 'inherit' ) { #> selected="selected" <# } #>>{{ data.inherit }}</option>
+					<option value="inherit"	 <# if ( data.fields.background_size === 'inherit' ) { #> selected="selected" <# } #>>{{ data.inherit }}</option>
 					<option value="cover"  <# if ( data.fields.background_size === 'cover' ) { #> selected="selected" <# } #>>{{ data.cover }}</option>
-					<option value="contain"  <# if ( data.fields.background_size === 'contain' ) { #> selected="selected" <# } #>>{{ data.contain }}</option>
+					<option value="contain"	 <# if ( data.fields.background_size === 'contain' ) { #> selected="selected" <# } #>>{{ data.contain }}</option>
 				</select>
 			</label>
 			<label for="background_repeat">
 				{{ data.repeat }}
 				<select id="background_repeat" name="background_repeat" value="{{ data.fields.background_repeat }}">
-					<option value="inherit"  <# if ( data.fields.background_repeat === 'inherit' ) { #> selected="selected" <# } #>>{{ data.inherit }}</option>
-					<option value="repeat"  <# if ( data.fields.background_repeat === 'repeat' ) { #> selected="selected" <# } #>>{{ data.repeat }}</option>
+					<option value="inherit"	 <# if ( data.fields.background_repeat === 'inherit' ) { #> selected="selected" <# } #>>{{ data.inherit }}</option>
+					<option value="repeat"	<# if ( data.fields.background_repeat === 'repeat' ) { #> selected="selected" <# } #>>{{ data.repeat }}</option>
 					<option value="repeat-x"  <# if ( data.fields.background_repeat === 'repeat-x' ) { #> selected="selected" <# } #>>{{ data.repeatx }}</option>
 					<option value="repeat-y"  <# if ( data.fields.background_repeat === 'repeat-y' ) { #> selected="selected" <# } #>>{{ data.repeaty }}</option>
 					<option value="no-repeat"  <# if ( data.fields.background_repeat === 'no-repeat' ) { #> selected="selected" <# } #>>{{ data.norepeat }}</option>
