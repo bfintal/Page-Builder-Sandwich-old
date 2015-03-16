@@ -497,7 +497,8 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	// Dispatch toolbar show event
 	editor.fire( 'show-toolbar-column', {
 		'editor': editor,
-		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0]
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
+		'toolbar': toolbar
 	} );
 }
 
