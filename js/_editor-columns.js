@@ -64,6 +64,12 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		top: rectangle.y - 6,
 		left: left
 	});
+	
+	// Dispatch toolbar show event
+	editor.fire( 'show-toolbar-column', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0]
+	} );
 }
 
 
