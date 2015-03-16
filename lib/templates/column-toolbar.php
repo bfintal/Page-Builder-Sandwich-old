@@ -20,7 +20,7 @@
 	}
 	</style>
 	<div class="toolbar-label row" data-mce-bogus="1"></div>
-	<div class="dashicons dashicons-edit" data-column-action="edit-row" data-mce-bogus="1" title="{{ data.edit_row }}"></div>
+	<!-- <div class="dashicons dashicons-edit" data-column-action="edit-row" data-mce-bogus="1" title="{{ data.edit_row }}"></div> -->
 	<div class="dashicons dashicons-tagcloud" data-column-action="columns" data-mce-bogus="1" title="{{ data.change_columns }}"></div>
 	<div class="dashicons dashicons-images-alt" data-column-action="clone-row" data-mce-bogus="1" title="{{ data.clone_row }}"></div>
 	<div class="dashicons dashicons-no-alt" data-column-action="remove-row" data-mce-bogus="1" title="{{ data.delete_row }}"></div>
