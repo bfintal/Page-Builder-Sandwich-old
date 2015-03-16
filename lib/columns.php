@@ -365,6 +365,11 @@ class GambitPBSandwichColumns {
 			$tables = $html->find( 'table.pbsandwich_column' );
 		}
 		
+		// Sanitize the output for security
+		$columnStyles = wp_kses( $columnStyles, array(), array() );
+		// Make sure our html entities are correct to make our rules work properly
+		$columnStyles = html_entity_decode( $columnStyles );
+		
 		// Insert the hashes
 		foreach ( $hashes as $key => $hash ) {
 			$columnStyles = str_replace( '%' . ( $key + 1 ) . '$s', $hash, $columnStyles );
