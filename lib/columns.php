@@ -119,6 +119,38 @@ class GambitPBSandwichColumns {
 			'delete_area' => __( 'Delete Area', 'pbsandwich' ),
 			'column' => __( 'Column', 'pbsandwich' ),
 			'row' => __( 'Row', 'pbsandwich' ),	
+			
+			// Column edit modal
+			'column_settings' => __( 'Column Settings', 'pbsandwich' ),
+			'styles' => __( 'Styles', 'pbsandwich' ),
+			'style' => __( 'Style', 'pbsandwich' ),
+			'border' => __( 'Border', 'pbsandwich' ),
+			'padding' => __( 'Padding', 'pbsandwich' ),
+			'none' => __( 'None', 'pbsandwich' ),
+			'dotted' => __( 'Dotted', 'pbsandwich' ),
+			'dashed' => __( 'Dashed', 'pbsandwich' ),
+			'solid' => __( 'Solid', 'pbsandwich' ),
+			'double' => __( 'Double', 'pbsandwich' ),
+			'groove' => __( 'Groove', 'pbsandwich' ),
+			'ridge' => __( 'Ridge', 'pbsandwich' ),
+			'inset' => __( 'Inset', 'pbsandwich' ),
+			'outset' => __( 'Outset', 'pbsandwich' ),
+			'color' => __( 'Color', 'pbsandwich' ),
+			'radius' => __( 'Radius', 'pbsandwich' ),
+			'background' => __( 'Background', 'pbsandwich' ),
+			'image' => __( 'Image', 'pbsandwich' ),
+			'size' => __( 'Size', 'pbsandwich' ),
+			'inherit' => __( 'Inherit', 'pbsandwich' ),
+			'cover' => __( 'Cover', 'pbsandwich' ),
+			'contain' => __( 'Contain', 'pbsandwich' ),
+			'repeat' => __( 'Repeat', 'pbsandwich' ),
+			'repeatx' => __( 'Repeat-x', 'pbsandwich' ),
+			'repeaty' => __( 'Repeat-y', 'pbsandwich' ),
+			'norepeat' => __( 'No-repeat', 'pbsandwich' ),
+			'round' => __( 'Round', 'pbsandwich' ),
+			'space' => __( 'Space', 'pbsandwich' ),
+			'position' => __( 'Position', 'pbsandwich' ),
+			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
 		

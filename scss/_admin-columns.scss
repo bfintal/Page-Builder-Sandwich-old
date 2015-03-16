@@ -54,10 +54,9 @@
 
 
 /**
- * Edit column modal window
+ * Modal windows
  */
-#pbsandwich_column_area_edit {
-	min-height: 450px;
+.sandwich_modal {
 	h4 {
 		margin-bottom: 20px;
 		font-weight: bold;
@@ -75,8 +74,11 @@
 		    outline: 0;
 		    -webkit-transition: .05s border-color ease-in-out;
 		    transition: .05s border-color ease-in-out;
-			line-height: 28px;
-			height: 28px;
+			line-height: 1em;
+			margin-right: 5px;
+		}
+		input[type=text] {
+			padding: 3px 5px;
 		}
 		> * {
 			margin-left: 10px;
@@ -208,9 +210,28 @@
 	label[for="background_image"] {
 		cursor: pointer;
 	}
-}
-
-.sandwich_modal {
+	.remove_image {
+	    background: #eee;
+	    width: 20px;
+	    text-align: center;
+	    line-height: 20px;
+	    height: 20px;
+	    margin: 0;
+		cursor: pointer;
+		display: inline-block;
+	}
+	.image_preview[src=""] {
+		display: none;
+	}
+	.image_preview[src=""] + .remove_image {
+		margin-left: 10px;
+	}
+	.image_preview[src=""] + .remove_image:before {
+		content: "\f132";
+	}
+	.dashicons:before {
+		font-family: "dashicons";
+	}
 	.image_preview {
 		max-width: 150px;
 		max-height: 150px;
@@ -221,7 +242,15 @@
 		position: relative !important;
 	}
 }
-
 .mce-container-body {
 	overflow: auto;
+}
+
+
+/**
+ * Edit column modal window
+ */
+#pbsandwich_column_area_edit {
+	max-height: 400px;
+	overflow: scroll;
 }

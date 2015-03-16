@@ -100,15 +100,18 @@ editor.on('toolbar-column-clone-row', function(e) {
 
 
 /**
- * TODO:
- * * Remove image
- * * clean up code
- * * background position
+ * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-area', function(e) {
 	var $selectedColumn = $(editor.getBody()).find('[data-wp-columnselect="1"]');
 	
 	var $innerColumn = $selectedColumn.find('> .inner-column:eq(0)');
+	
+	var bgImageURL = $selectedColumn.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
+	
+	if ( bgImageURL === 'none' ) {
+		bgImageURL = '';
+	}
 	
 	pbsandwich_column.fields = {
 		padding_top: parseInt( $selectedColumn.css('paddingTop') ),
@@ -121,33 +124,25 @@ editor.on('toolbar-column-edit-area', function(e) {
 		border_left: parseInt( $selectedColumn.css('borderLeftWidth') ),
 		border_style: $selectedColumn.css('borderStyle'),
 		border_color: $selectedColumn.css('borderColor') === 'rgba(0, 0, 0, 0)' ? '' : $selectedColumn.css('borderColor'),
+		border_radius: parseInt( $selectedColumn.css('borderRadius') ),
 		background_color: $selectedColumn.css('backgroundColor') === 'rgba(0, 0, 0, 0)' ? '' : $selectedColumn.css('backgroundColor'),
 		background_image: $selectedColumn.attr('data-background-image'),
-		background_image_preview: $selectedColumn.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' ),
-		background_image_url: $selectedColumn.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' ),
+		background_image_preview: bgImageURL,
+		background_image_url: bgImageURL,
 		background_size: $selectedColumn.css('backgroundSize'),
-		background_repeat: $selectedColumn.css('backgroundRepeat')
-		// padding_right: $innerColumn.length > 0 ? parseInt( $innerColumn.css('marginLeft') ) : 0
+		background_repeat: $selectedColumn.css('backgroundRepeat'),
+		background_position: $selectedColumn.css('backgroundPosition')
 	};
 	
-	// Default
-	// if ( ( $selectedColumn.css('borderStyle') === "dashed dashed dashed none" ) || $selectedColumn.css('borderStyle') === "dashed" ) &&
-		// ( $selectedColumn.css('borderColor') === "rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(51, 51, 51)" || $selectedColumn.css('borderColor') === "rgb(204, 204, 204)" ) {
-		// pbsandwich_column.fields.border_
-	// }
-	// rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(51, 51, 51)
-	// rgb(204, 204, 204)
-	
     var colModal = editor.windowManager.open( {
-        title: pbsandwich_column.change_column,
-		// buttons: [{
-		//             text: pbsandwich_column.cancel,
-		//             onclick: 'close'
-		//         }],
+        title: pbsandwich_column.column_settings,
         body: [{
 			type: 'container',
 			html: wp.template( 'pbs-column-area-edit-modal' )( pbsandwich_column )
 		}],
+		/**
+		 * Apply all our new styles on submit
+		 */
         onsubmit: function( e ) {
 			var $ = jQuery;
 			
@@ -156,42 +151,79 @@ editor.on('toolbar-column-edit-area', function(e) {
 			// The column container will have the attribute data-wp-columnselect
 			var $selectedColumn = $(tinyMCE.activeEditor.getBody()).find('[data-wp-columnselect="1"]');
 			
-			$selectedColumn.css('paddingTop', form.find('[name="padding_top"]').val() + 'px');
-			$selectedColumn.css('paddingRight', form.find('[name="padding_right"]').val() + 'px');
-			$selectedColumn.css('paddingBottom', form.find('[name="padding_bottom"]').val() + 'px');
-			$selectedColumn.css('paddingLeft', form.find('[name="padding_left"]').val() + 'px');
+			// Styles that need the suffix 'px'
+			var styles = {
+				paddingTop: 'padding_top',
+				paddingRight: 'padding_right',
+				paddingBottom: 'padding_bottom',
+				paddingLeft: 'padding_left',
+				borderTopWidth: 'border_top',
+				borderRightWidth: 'border_right',
+				borderBottomWidth: 'border_bottom',
+				borderLeftWidth: 'border_left',
+				borderRadius: 'border_radius'
+			};
+			$.each(styles, function( style, name ) {
+				var num = form.find('[name="' + name + '"]').val();
+				if ( num.trim() !== '' ) {
+					num += 'px';
+				}
+				$selectedColumn.css( style, num );
+			});
 			
-			$selectedColumn.css('borderTopWidth', form.find('[name="border_top"]').val() + 'px');
-			$selectedColumn.css('borderRightWidth', form.find('[name="border_right"]').val() + 'px');
-			$selectedColumn.css('borderBottomWidth', form.find('[name="border_bottom"]').val() + 'px');
-			$selectedColumn.css('borderLeftWidth', form.find('[name="border_left"]').val() + 'px');
+			// Styles that just need the direct value
+			styles = {
+				borderStyle: 'border_style',
+				borderColor: 'border_color',
+				backgroundColor: 'background_color',
+				backgroundSize: 'background_size',
+				backgroundRepeat: 'background_repeat',
+				backgroundPosition: 'background_position'
+			};
+			$.each(styles, function( style, name ) {
+				$selectedColumn.css( style, form.find('[name="' + name + '"]').val() );
+			});
 			
-			$selectedColumn.css('borderStyle', form.find('[name="border_style"]').val());
-			$selectedColumn.css('borderColor', form.find('[name="border_color"]').val());
+			// Other styles
+			var img = form.find('[name="background_image_url"]').val();
+			if ( img.trim() !== '' ) {
+				img = 'url(' + img.trim() + ')';
+			}
+			$selectedColumn.css('backgroundImage', img);
+			$selectedColumn.attr('data-background-image', form.find('[name="background_image"]').val() );
 			
-			$selectedColumn.css('backgroundColor', form.find('[name="background_color"]').val());
-			$selectedColumn.css('backgroundImage', 'url(' + form.find('[name="background_image_url"]').val() + ')');
-			$selectedColumn.attr( form.find('[name="background_image"]').val() );
-
-			$selectedColumn.css('backgroundSize', form.find('[name="background_size"]').val());
-			$selectedColumn.css('backgroundRepeat', form.find('[name="background_repeat"]').val());
-			
+			// Make the styles permanent
 			$selectedColumn.attr('data-mce-style', $selectedColumn.attr('style'));
-			// .attr('style', $(this).attr('style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) )
-			// .attr('data-mce-style', $(this).attr('data-mce-style').replace( /width:\s?[\d.]+\%/, 'width: ' + ( columnWidths[ i ] / 12 * 100 ) + '%' ) );
-			// console.log($('#pbsandwich_column_area_edit [name="test"]').val())
-			// console.log($selectedColumn, form.find('[name="test"]').val());
-			console.log('OK', e);
-			// preUpdateSortable( editor );
-            // editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
-			// updateSortable( editor );
         }
     });
 	
 	$('#pbsandwich_column_area_edit').find('#border_color, #background_color').wpColorPicker();
 });
 
+/**
+ * Remove the image when the X button is clicked
+ */
+jQuery('body').on('click', '#pbsandwich_column_area_edit [src!=""] + .remove_image', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
 
+	var $ = jQuery;
+	$('#background_image_preview').attr('src', '');
+	$('#background_image_url').val( '' );
+	$('#background_image').val( '' );
+});
+
+/**
+ * Select the whole field when the style area inputs are clicked
+ */
+jQuery('body').on('focus', '#pbsandwich_column_area_edit .style_area input', function(e) {
+	e.preventDefault();
+	jQuery(this).select();
+});
+
+/**
+ * Open the media manager when the background image field is clicked
+ */
 jQuery('body').on('click', '#pbsandwich_column_area_edit label[for="background_image"]', function(e) {
 	e.preventDefault();
 	e.stopPropagation();
@@ -218,43 +250,19 @@ jQuery('body').on('click', '#pbsandwich_column_area_edit label[for="background_i
 	frame.on('select', function() {
 		var selection = frame.state().get('selection');
 		selection.each(function(attachment) {
-			// if ( _input.length > 0 ) {
-			// 	_input.val(attachment.id);
-			// }
-			//
-			// if ( _preview.length > 0 ) {
-			// 	// remove current preview
-			// 	if ( _preview.find('img').length > 0 ) {
-			// 		_preview.find('img').remove();
-			// 	}
-			// 	if ( _preview.find('i.remove').length > 0 ) {
-			// 		_preview.find('i.remove').remove();
-			// 	}
+		
+			// Get the preview image
+			var image = attachment.attributes.sizes.full;
+			if ( typeof attachment.attributes.sizes.thumbnail != 'undefined' ) {
+				image = attachment.attributes.sizes.thumbnail;
+			}
+			var url = image.url;
 
-				// Get the preview image
-				var image = attachment.attributes.sizes.full;
-				if ( typeof attachment.attributes.sizes.thumbnail != 'undefined' ) {
-					image = attachment.attributes.sizes.thumbnail;
-				}
-				var url = image.url;
-				// var marginTop = ( _preview.height() - image.height ) / 2;
-				// var marginLeft = ( _preview.width() - image.width ) / 2;
-
-				var $ = jQuery;
-				$('#background_image_preview').attr('src', image.url);
-				$('#background_image_url').val( attachment.attributes.url );
-				$('#background_image').val( attachment.id );
-				// $("<img src='" + url + "'/>")
-				// 	.css('marginTop', marginTop)
-				// 	.css('marginLeft', marginLeft)
-				// 	.appendTo(_preview);
-				// $("<i class='dashicons dashicons-no-alt remove'></i>").prependTo(_preview);
-			// }
-			// we need to trigger a change so that WP would detect that we changed the value
-			// or else the save button won't be enabled
-			// _input.trigger('change');
-			//
-			// _remove.show();
+			var $ = jQuery;
+			$('#background_image_preview').attr('src', image.url);
+			$('#background_image_url').val( attachment.attributes.url );
+			$('#background_image').val( attachment.id );
+			
 		});
 		frame.off('select');
 	});
