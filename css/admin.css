@@ -52,6 +52,175 @@
   margin: 1px 5px 0;
   box-sizing: border-box; }
 
+/**
+ * Modal windows
+ */
+.sandwich_modal h4 {
+  margin-bottom: 20px;
+  font-weight: bold; }
+.sandwich_modal label {
+  display: block;
+  margin-bottom: 1.5em;
+  vertical-align: middle; }
+  .sandwich_modal label input[type=text], .sandwich_modal label input[type=checkbox], .sandwich_modal label input[type=color], .sandwich_modal label input[type=date], .sandwich_modal label input[type=datetime-local], .sandwich_modal label input[type=datetime], .sandwich_modal label input[type=email], .sandwich_modal label input[type=month], .sandwich_modal label input[type=number], .sandwich_modal label input[type=password], .sandwich_modal label input[type=radio], .sandwich_modal label input[type=search], .sandwich_modal label input[type=tel], .sandwich_modal label input[type=text], .sandwich_modal label input[type=time], .sandwich_modal label input[type=url], .sandwich_modal label input[type=week], .sandwich_modal label select, .sandwich_modal label textarea {
+    border: 1px solid #ddd;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    color: #333;
+    outline: 0;
+    -webkit-transition: .05s border-color ease-in-out;
+    transition: .05s border-color ease-in-out;
+    line-height: 1em;
+    margin-right: 5px; }
+  .sandwich_modal label input[type=text] {
+    padding: 3px 5px; }
+  .sandwich_modal label > * {
+    margin-left: 10px; }
+.sandwich_modal select {
+  padding: 2px;
+  line-height: 28px;
+  height: 28px;
+  vertical-align: middle; }
+.sandwich_modal .style_area input {
+  font-size: .8em;
+  text-align: center;
+  width: 36px;
+  padding: 4px; }
+.sandwich_modal .padding_area {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: block;
+  box-sizing: content-box;
+  border: 54px solid #F2F1EF;
+  background: #EEEEEE;
+  box-shadow: 0 0 0 1px #D2D7D3, inset 0 0 0 1px #D2D7D3; }
+  .sandwich_modal .padding_area:before {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    font-size: 10px; }
+  .sandwich_modal .padding_area #padding_top {
+    position: absolute;
+    top: -39px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .sandwich_modal .padding_area #padding_right {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .sandwich_modal .padding_area #padding_bottom {
+    position: absolute;
+    bottom: -39px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .sandwich_modal .padding_area #padding_left {
+    position: absolute;
+    top: 50%;
+    padding: 4px;
+    left: -50px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+.sandwich_modal .border_area {
+  position: relative;
+  padding: 54px;
+  background: #f2f1ef;
+  box-shadow: inset 0 0 0 1px #D2D7D3; }
+  .sandwich_modal .border_area:before {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 10px; }
+  .sandwich_modal .border_area #border_top {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .sandwich_modal .border_area #border_right {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .sandwich_modal .border_area #border_bottom {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .sandwich_modal .border_area #border_left {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+.sandwich_modal label[for="background_image"] {
+  cursor: pointer; }
+.sandwich_modal .remove_image {
+  background: #eee;
+  width: 20px;
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block; }
+.sandwich_modal .image_preview[src=""] {
+  display: none; }
+.sandwich_modal .image_preview[src=""] + .remove_image {
+  margin-left: 10px; }
+.sandwich_modal .image_preview[src=""] + .remove_image:before {
+  content: "\f132"; }
+.sandwich_modal .dashicons:before {
+  font-family: "dashicons"; }
+.sandwich_modal .image_preview {
+  max-width: 150px;
+  max-height: 150px; }
+.sandwich_modal .iris-picker {
+  z-index: 9;
+  background: #fff;
+  position: relative !important; }
+
+.mce-container-body {
+  overflow: auto; }
+
+/**
+ * Edit column modal window
+ */
+#pbsandwich_column_area_edit {
+  max-height: 400px;
+  overflow: scroll; }
+
 .wp-media-buttons .sandwich-add-shortcode span.wp-media-buttons-icon:nth-of-type(1) {
   overflow: hidden;
   width: 6px; }

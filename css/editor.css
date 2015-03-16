@@ -520,9 +520,6 @@ body#tinymce.wp-editor .sandwich .progress-bar-danger {
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
-.sandwich .pbs_button {
-  box-sizing: border-box; }
-
 body#tinymce.wp-editor {
   /**
    * Editor only div-like styling
@@ -542,10 +539,9 @@ body#tinymce.wp-editor {
   body#tinymce.wp-editor .pbsandwich_column td {
     vertical-align: top;
     padding: 0 10px;
-    border: 1px dashed #ccc;
-    border-left: none; }
-  body#tinymce.wp-editor .pbsandwich_column td:first-of-type {
-    border-left: 1px dashed #ccc; }
+    border: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
   body#tinymce.wp-editor .pbsandwich_column {
     margin: 1em 0; }
   body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
