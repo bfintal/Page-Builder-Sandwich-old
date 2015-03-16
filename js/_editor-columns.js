@@ -132,6 +132,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 	var table = '<table class="pbsandwich_column" style="width: 100%; height: auto; border: none;" border="0"><tbody class="row"><tr>';
 	var columnContents = _pbsandwich_columns_formContent( content, cols.length );
 	var columnContent = pbsandwich_column.dummy_content;
+	var newTd;
 	
 	$.each( cols, function( i, e ) {
 		
@@ -156,9 +157,25 @@ function _pbsandwich_columns_formTable( columns, content ) {
 		var fraction = e.split('/');
 		var width = parseInt( fraction[0] ) / parseInt( fraction[1] ) * 100;
 		var col = parseInt( parseInt( fraction[0] ) / parseInt( fraction[1] ) * 12 );
+
+		// Create the new column
+		newTd = $('<td></td>');
 		
-		// the style: width is only used in the backend since the table WON'T allow us to FIX it's width
-		table += '<td class="col-sm-' + col + '" style="width: ' + width + '%;"><p>' + columnContent + '</p></td>';
+		// Retain current column styles
+		if ( $(content).is('table') ) {
+			var oldColumn = $(content).find('> tbody > tr > td:eq(' + i + ')');
+			if ( oldColumn.length > 0 ) {
+				newTd.attr('style', oldColumn.attr('style') );
+				newTd.attr('data-mce-style', oldColumn.attr('data-mce-style') );
+			}
+		}
+		
+		// Add the new contents and attributes
+		newTd.addClass('col-sm-' + col)
+		.html('<p>' + columnContent + '</p>')
+		.css('width', width + '%');
+		
+		table += newTd[0].outerHTML;
 	} );
 	
 	table += '</tr></tbody></table>';
