@@ -150,6 +150,8 @@ class GambitPBSandwichColumns {
 			'round' => __( 'Round', 'pbsandwich' ),
 			'space' => __( 'Space', 'pbsandwich' ),
 			'position' => __( 'Position', 'pbsandwich' ),
+			'margin' => __( 'Margin', 'pbsandwich' ),
+			'row_settings' => __( 'Row Settings', 'pbsandwich' ),
 			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
@@ -227,6 +229,7 @@ class GambitPBSandwichColumns {
 		include_once PBS_PATH . "/lib/templates/column-change-modal.php";
 		include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
 		include_once PBS_PATH . "/lib/templates/column-area-edit-modal.php";
+		include_once PBS_PATH . "/lib/templates/column-row-edit-modal.php";
 		
 	}
 	
@@ -295,6 +298,22 @@ class GambitPBSandwichColumns {
 			
 			$newDivs = '';
 			$styleDump = '';
+
+			// Gather table styles			
+			$tableStyles = $html->find( 'table.pbsandwich_column', 0 )->style;
+			
+			// Remove the default editor styles that do not have any effects:
+			
+			// width: 100%; height: auto; border: none;			
+			$tableStyles = trim( preg_replace( '/(^|\s)width:[^;]+;?\s?/', '', $tableStyles ) );
+			$tableStyles = trim( preg_replace( '/(^|\s)height:[^;]+;?\s?/', '', $tableStyles ) );
+			$tableStyles = trim( preg_replace( '/(^|\s)border:\s?none;?\s?/', '', $tableStyles ) );
+			
+			// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
+			if ( ! empty( $tableStyles ) ) {
+				$columnStyles .= '.sandwich.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s { ' . wp_kses( $tableStyles, array(), array() ). ' }';
+			}
+			$styleDump .= esc_attr( $tableStyles );
 			
 			foreach ( $tr->children() as $key => $td ) {
 				if ( $td->tag != 'td' ) {
@@ -313,7 +332,7 @@ class GambitPBSandwichColumns {
 				
 				// Gather the column styles, use placeholders for the ID since we have yet to generate the unique ID
 				if ( ! empty( $columnStyle ) ) {
-					$columnStyles .= '.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . wp_kses( $columnStyle, array(), array() ). ' }';
+					$columnStyles .= '.sandwich.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . wp_kses( $columnStyle, array(), array() ). ' }';
 				}
 				$styleDump .= esc_attr( $td->style );
 			

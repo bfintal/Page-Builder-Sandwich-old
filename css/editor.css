@@ -525,7 +525,7 @@ body#tinymce.wp-editor {
    * Editor only div-like styling
    */
   /**
-   * Aesthetic margins
+   * Default styles
    */
   /**
    * Don't show drag handlers for our tables
@@ -543,7 +543,7 @@ body#tinymce.wp-editor {
     border-color: transparent;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
   body#tinymce.wp-editor .pbsandwich_column {
-    margin: 1em 0; }
+    margin: 0 0 20px; }
   body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
     display: none !important; }
   body#tinymce.wp-editor .pbsandwich_column td:hover,
