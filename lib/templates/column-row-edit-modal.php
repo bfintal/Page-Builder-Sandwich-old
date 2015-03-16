@@ -1,32 +1,46 @@
-<script type="text/html" id="tmpl-pbs-column-area-edit-modal">
+<script type="text/html" id="tmpl-pbs-column-row-edit-modal">
 		
-	<div id="pbsandwich_column_area_edit" class="sandwich_modal">
+	<div id="pbsandwich_column_row_edit" class="sandwich_modal">
 		
 		<div class="style_area" style="display: inline-block; margin-right: 20px">
 			<h4>{{ data.styles }}</h4>
 
-			<div class="border_area">
+			<div class="margin_area">
 				<style>
-				.border_area:before {
-					content: "{{ data.border }}";
+				.margin_area:before {
+					content: "{{ data.margin }}";
 				}
 				</style>
 				
-				<input type="number" id="border_top" name="border_top" value="{{ data.fields.border_top }}" min="0" max="999" step="1" placeholder="0"/>
-				<input type="number" id="border_right" name="border_right" value="{{ data.fields.border_right }}" min="0" max="999" step="1" placeholder="0"/>
-				<input type="number" id="border_bottom" name="border_bottom" value="{{ data.fields.border_bottom }}" min="0" max="999" step="1" placeholder="0"/>
-				<input type="number" id="border_left" name="border_left" value="{{ data.fields.border_left }}" min="0" max="999" step="1" placeholder="0"/>
+				<input type="number" id="margin_top" name="margin_top" value="{{ data.fields.margin_top }}" min="0" max="999" step="1" placeholder="0"/>
+				<input type="number" id="margin_right" name="margin_right" value="{{ data.fields.margin_right }}" min="0" max="999" step="1" placeholder="0"/>
+				<input type="number" id="margin_bottom" name="margin_bottom" value="{{ data.fields.margin_bottom }}" min="0" max="999" step="1" placeholder="0"/>
+				<input type="number" id="margin_left" name="margin_left" value="{{ data.fields.margin_left }}" min="0" max="999" step="1" placeholder="0"/>
+
+
+				<div class="border_area">
+					<style>
+					.border_area:before {
+						content: "{{ data.border }}";
+					}
+					</style>
 				
-				<style>
-				.padding_area:before {
-					content: "{{ data.padding }}";
-				}
-				</style>
-				<div class="padding_area">
-					<input type="number" id="padding_top" name="padding_top" value="{{ data.fields.padding_top }}" min="0" max="999" step="1" placeholder="0"/>
-					<input type="number" id="padding_right" name="padding_right" value="{{ data.fields.padding_right }}" min="0" max="999" step="1" placeholder="0"/>
-					<input type="number" id="padding_bottom" name="padding_bottom" value="{{ data.fields.padding_bottom }}" min="0" max="999" step="1" placeholder="0"/>
-					<input type="number" id="padding_left" name="padding_left" value="{{ data.fields.padding_left }}" min="0" max="999" step="1" placeholder="0"/>
+					<input type="number" id="border_top" name="border_top" value="{{ data.fields.border_top }}" min="0" max="999" step="1" placeholder="0"/>
+					<input type="number" id="border_right" name="border_right" value="{{ data.fields.border_right }}" min="0" max="999" step="1" placeholder="0"/>
+					<input type="number" id="border_bottom" name="border_bottom" value="{{ data.fields.border_bottom }}" min="0" max="999" step="1" placeholder="0"/>
+					<input type="number" id="border_left" name="border_left" value="{{ data.fields.border_left }}" min="0" max="999" step="1" placeholder="0"/>
+				
+					<style>
+					.padding_area:before {
+						content: "{{ data.padding }}";
+					}
+					</style>
+					<div class="padding_area">
+						<input type="number" id="padding_top" name="padding_top" value="{{ data.fields.padding_top }}" min="0" max="999" step="1" placeholder="0"/>
+						<input type="number" id="padding_right" name="padding_right" value="{{ data.fields.padding_right }}" min="0" max="999" step="1" placeholder="0"/>
+						<input type="number" id="padding_bottom" name="padding_bottom" value="{{ data.fields.padding_bottom }}" min="0" max="999" step="1" placeholder="0"/>
+						<input type="number" id="padding_left" name="padding_left" value="{{ data.fields.padding_left }}" min="0" max="999" step="1" placeholder="0"/>
+					</div>
 				</div>
 			</div>
 		</div>

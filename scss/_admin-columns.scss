@@ -98,66 +98,62 @@
 		    padding: 4px;
 		}
 	}
+	#padding_top, #padding_bottom, #border_top, #border_bottom, #margin_top, #margin_bottom {
+	    -webkit-transform: translateX(-50%);
+	    -moz-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	    -o-transform: translateX(-50%);
+	    transform: translateX(-50%);
+	}
+	#padding_left, #padding_right, #border_left, #border_right, #margin_left, #margin_right {
+	    -webkit-transform: translateY(-50%);
+	    -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	    -o-transform: translateY(-50%);
+	    transform: translateY(-50%);
+	}
 	.padding_area {
 	    position: relative;
 	    width: 52px;
-	    height: 52px;
+	    height: 29px;
 	    display: block;
 	    box-sizing: content-box;
 	    border: 54px solid #F2F1EF;
+	    border-top-width: 38px;
+	    border-bottom-width: 38px;
 	    background: #EEEEEE;
 	    box-shadow: 0 0 0 1px #D2D7D3, inset 0 0 0 1px #D2D7D3;
 		&:before {
 		    position: absolute;
-			top: -50px;
-			left: -50px;
+		    top: -33px;
+		    left: -48px;
 		    font-size: 10px;
 		}
 		#padding_top {
 		    position: absolute;
-		    top: -39px;
+			top: -31px;
 		    left: 50%;
-		    -webkit-transform: translateX(-50%);
-		    -moz-transform: translateX(-50%);
-		    -ms-transform: translateX(-50%);
-		    -o-transform: translateX(-50%);
-		    transform: translateX(-50%);
 		}
 		#padding_right {
 		    position: absolute;
 		    top: 50%;
 		    right: -50px;
-		    -webkit-transform: translateY(-50%);
-		    -moz-transform: translateY(-50%);
-		    -ms-transform: translateY(-50%);
-		    -o-transform: translateY(-50%);
-		    transform: translateY(-50%);
 		}
 		#padding_bottom {
 		    position: absolute;
-		    bottom: -39px;
+		    bottom: -31px;
 		    left: 50%;
-		    -webkit-transform: translateX(-50%);
-		    -moz-transform: translateX(-50%);
-		    -ms-transform: translateX(-50%);
-		    -o-transform: translateX(-50%);
-		    transform: translateX(-50%);
 		}
 		#padding_left {
 		    position: absolute;
 		    top: 50%;
 		    padding: 4px;
 		    left: -50px;
-		    -webkit-transform: translateY(-50%);
-		    -moz-transform: translateY(-50%);
-		    -ms-transform: translateY(-50%);
-		    -o-transform: translateY(-50%);
-		    transform: translateY(-50%);
 		}
 	}
-	.border_area {
+	.border_area, .margin_area {
 		position: relative;
-		padding: 54px;
+		padding: 38px 54px;
 		background: #f2f1ef;
 	    box-shadow: inset 0 0 0 1px #D2D7D3;
 		&:before {
@@ -166,45 +162,25 @@
 			left: 5px;
 		    font-size: 10px;
 		}
-		#border_top {
+		#border_top, #margin_top {
 		    position: absolute;
-		    top: 14px;
+		    top: 7px;
 		    left: 50%;
-		    -webkit-transform: translateX(-50%);
-		    -moz-transform: translateX(-50%);
-		    -ms-transform: translateX(-50%);
-		    -o-transform: translateX(-50%);
-		    transform: translateX(-50%);
 		}
-		#border_right {
+		#border_right, #margin_right {
 		    position: absolute;
 		    top: 50%;
 		    right: 4px;
-		    -webkit-transform: translateY(-50%);
-		    -moz-transform: translateY(-50%);
-		    -ms-transform: translateY(-50%);
-		    -o-transform: translateY(-50%);
-		    transform: translateY(-50%);
 		}
-		#border_bottom {
+		#border_bottom, #margin_bottom {
 		    position: absolute;
-		    bottom: 14px;
+		    bottom: 7px;
 		    left: 50%;
-		    -webkit-transform: translateX(-50%);
-		    -moz-transform: translateX(-50%);
-		    -ms-transform: translateX(-50%);
-		    -o-transform: translateX(-50%);
-		    transform: translateX(-50%);
 		}
-		#border_left {
+		#border_left, #margin_left {
 		    position: absolute;
 		    top: 50%;
 		    left: 4px;
-		    -webkit-transform: translateY(-50%);
-		    -moz-transform: translateY(-50%);
-		    -ms-transform: translateY(-50%);
-		    -o-transform: translateY(-50%);
-		    transform: translateY(-50%);
 		}
 	}
 	label[for="background_image"] {

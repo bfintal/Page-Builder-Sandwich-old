@@ -201,32 +201,41 @@ editor.on('toolbar-column-edit-area', function(e) {
 });
 
 /**
- * Remove the image when the X button is clicked
- */
-jQuery('body').on('click', '#pbsandwich_column_area_edit [src!=""] + .remove_image', function(e) {
-	e.preventDefault();
-	e.stopPropagation();
-
-	var $ = jQuery;
-	$('#background_image_preview').attr('src', '');
-	$('#background_image_url').val( '' );
-	$('#background_image').val( '' );
-});
-
-/**
  * Select the whole field when the style area inputs are clicked
  */
-jQuery('body').on('focus', '#pbsandwich_column_area_edit .style_area input', function(e) {
+jQuery('body').on('focus', '.sandwich_modal .style_area input', function(e) {
 	e.preventDefault();
 	jQuery(this).select();
 });
 
 /**
- * Open the media manager when the background image field is clicked
+ * Remove the image when the X button is clicked
  */
-jQuery('body').on('click', '#pbsandwich_column_area_edit label[for="background_image"]', function(e) {
+jQuery('body').on('click', '.sandwich_modal .image_type [src!=""] + .remove_image', function(e) {
 	e.preventDefault();
 	e.stopPropagation();
+
+	var $ = jQuery;
+	var imageContainer = $(this).parents('.image_type:eq(0)');
+	
+	imageContainer.find('[id="background_image_preview"]').attr('src', '');
+	imageContainer.find('[id="background_image_url"]').val( '' );
+	imageContainer.find('[id="background_image"]').val( '' );
+});
+
+/**
+ * Open the media manager when the background image field is clicked
+ */
+jQuery('body').on('click', '.sandwich_modal .image_type', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	
+	var $ = jQuery;
+	
+	var imageContainer = $(this);
+	if ( ! imageContainer.is('.image_type') ) {
+		imageContainer = $(this).parents('.image_type:eq(0)');
+	}
 	
 	// uploader frame properties
 	var frame = wp.media({
@@ -238,7 +247,7 @@ jQuery('body').on('click', '#pbsandwich_column_area_edit label[for="background_i
 	
 	frame.on('open',function() {
 		var selection = frame.state().get('selection');
-		ids = jQuery('#background_image').val().split(',');
+		ids = imageContainer.find('[id="background_image"]').val().split(',');
 		ids.forEach(function(id) {
 			attachment = wp.media.attachment(id);
 			attachment.fetch();
@@ -259,9 +268,9 @@ jQuery('body').on('click', '#pbsandwich_column_area_edit label[for="background_i
 			var url = image.url;
 
 			var $ = jQuery;
-			$('#background_image_preview').attr('src', image.url);
-			$('#background_image_url').val( attachment.attributes.url );
-			$('#background_image').val( attachment.id );
+			imageContainer.find('[id="background_image_preview"]').attr('src', image.url);
+			imageContainer.find('[id="background_image_url"]').val( attachment.attributes.url );
+			imageContainer.find('[id="background_image"]').val( attachment.id );
 			
 		});
 		frame.off('select');
@@ -489,5 +498,135 @@ editor.on('toolbar-column-clone-area', function(e) {
 	// Cleanup to make views with iframes display again
 	if ( ( newElement.find('.wpview-wrap iframe').length > 0 ) ) {
 		editor.execCommand( 'mceCleanup' );
+	}
+});
+
+
+
+
+/**
+ * Renders the edit column modal
+ */
+editor.on('toolbar-column-edit-row', function(e) {	
+	var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
+
+	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
+
+	if ( bgImageURL === 'none' ) {
+		bgImageURL = '';
+	}
+	console.log($selectedRow.css('borderColor'));
+
+	pbsandwich_column.fields = {
+		padding_top: parseInt( $selectedRow.css('paddingTop') ),
+		padding_right: parseInt( $selectedRow.css('paddingRight') ),
+		padding_bottom: parseInt( $selectedRow.css('paddingBottom') ),
+		padding_left: parseInt( $selectedRow.css('paddingLeft') ),
+		border_top: parseInt( $selectedRow.css('borderTopWidth') ),
+		border_right: parseInt( $selectedRow.css('borderRightWidth') ),
+		border_bottom: parseInt( $selectedRow.css('borderBottomWidth') ),
+		border_left: parseInt( $selectedRow.css('borderLeftWidth') ),
+		border_style: $selectedRow.css('borderStyle'),
+		border_color: $selectedRow.css('borderColor') === 'rgba(0, 0, 0, 0)' ? '' : $selectedRow.css('borderColor'),
+		border_radius: parseInt( $selectedRow.css('borderRadius') ),
+		margin_top: parseInt( $selectedRow.css('marginTop') ),
+		margin_right: parseInt( $selectedRow.css('marginRight') ),
+		margin_bottom: parseInt( $selectedRow.css('marginBottom') ),
+		margin_left: parseInt( $selectedRow.css('marginLeft') ),
+		background_color: $selectedRow.css('backgroundColor') === 'rgba(0, 0, 0, 0)' ? '' : $selectedRow.css('backgroundColor'),
+		background_image: $selectedRow.attr('data-background-image'),
+		background_image_preview: bgImageURL,
+		background_image_url: bgImageURL,
+		background_size: $selectedRow.css('backgroundSize'),
+		background_repeat: $selectedRow.css('backgroundRepeat'),
+		background_position: $selectedRow.css('backgroundPosition')
+	};
+	//
+    var colModal = editor.windowManager.open( {
+	        title: pbsandwich_column.row_settings,
+	        body: [{
+			type: 'container',
+			html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
+		}],
+		/**
+		 * Apply all our new styles on submit
+		 */
+        onsubmit: function( e ) {
+			var $ = jQuery;
+
+			var form = $('#pbsandwich_column_row_edit');
+			
+			// The column container will have the attribute data-wp-columnselect
+			var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
+
+			// Styles that need the suffix 'px'
+			var styles = {
+				paddingTop: 'padding_top',
+				paddingRight: 'padding_right',
+				paddingBottom: 'padding_bottom',
+				paddingLeft: 'padding_left',
+				borderTopWidth: 'border_top',
+				borderRightWidth: 'border_right',
+				borderBottomWidth: 'border_bottom',
+				borderLeftWidth: 'border_left',
+				borderRadius: 'border_radius',
+				marginTop: 'margin_top',
+				marginRight: 'margin_right',
+				marginBottom: 'margin_bottom',
+				marginLeft: 'margin_left'
+			};
+			var calcWidth = 0;
+			$.each(styles, function( style, name ) {
+				var num = form.find('[name="' + name + '"]').val();
+				if ( num.trim() !== '' ) {
+
+					if ( style === 'marginLeft' || style === 'marginRight' ) {
+						calcWidth += parseInt( num );
+					}
+					
+					num += 'px';
+				}
+				$selectedRow.css( style, num );
+			});
+			$selectedRow.css('width', 'calc( 100% - ' + calcWidth + 'px )');
+
+			// Styles that just need the direct value
+			styles = {
+				borderStyle: 'border_style',
+				borderColor: 'border_color',
+				backgroundColor: 'background_color',
+				backgroundSize: 'background_size',
+				backgroundRepeat: 'background_repeat',
+				backgroundPosition: 'background_position'
+			};
+			$.each(styles, function( style, name ) {
+				$selectedRow.css( style, form.find('[name="' + name + '"]').val() );
+			});
+
+			// Other styles
+			var img = form.find('[name="background_image_url"]').val();
+			if ( img.trim() !== '' ) {
+				img = 'url(' + img.trim() + ')';
+			}
+			$selectedRow.css('backgroundImage', img);
+			$selectedRow.attr('data-background-image', form.find('[name="background_image"]').val() );
+
+			// Make the styles permanent
+			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
+        }
+    });
+	//
+	$('#pbsandwich_column_row_edit').find('#border_color, #background_color').wpColorPicker();
+});
+
+
+
+/**
+ * Close the modal window when the enter key is pressed
+ */
+jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', function(e) {
+	if ( e.which === 13 ) {
+		var $ = jQuery;
+		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
 });

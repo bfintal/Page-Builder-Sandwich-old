@@ -1046,6 +1046,12 @@
   display: block; }
 
 /**
+ * Default margin
+ */
+.pbsandwich_column {
+  margin-bottom: 20px; }
+
+/**
  * Responsive columns, shrink to a single column
  */
 @media (max-width: 768px) {
