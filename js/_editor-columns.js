@@ -68,8 +68,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	// Dispatch toolbar show event
 	editor.fire( 'show-toolbar-column', {
 		'editor': editor,
-		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
-		'toolbar': toolbar
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0]
 	} );
 }
 
@@ -229,7 +228,7 @@ editor.on('mouseup', function(e) {
 			'target': e.target
 		} );
 
-		_pbsandwich_removeColumnToolbar( editor );
+		// _pbsandwich_removeColumnToolbar( editor );
 		
 		return;
 	}
