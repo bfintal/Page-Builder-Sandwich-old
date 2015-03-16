@@ -324,9 +324,19 @@ class GambitPBSandwichColumns {
 			$hash = crc32( $styleDump );
 			$hashes[] = $hash;
 			
-			// This is our converted <table>
-			$customClass = empty( $columnStyles ) ? '' : 'pbsandwich_column_' . $hash; // Backward compatibility
-			$newDivs = '<div class="pbsandwich_column sandwich ' . $customClass . '"><div class="row">' . $newDivs . '</div></div>';
+			
+			/**
+			 * Build our converted <table>
+			 */
+			// Our main class
+			$tableClasses = array( 'sandwich' );
+			// Carry over custom classes
+			$tableClasses[] = $html->find( 'table.pbsandwich_column', 0 )->class;
+			// Custom styles class
+			if ( ! empty( $columnStyles ) ) {
+				$tableClasses[] = 'pbsandwich_column_' . $hash;
+			}
+			$newDivs = '<div class="' . esc_attr( join( ' ', $tableClasses ) ) . '"><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
