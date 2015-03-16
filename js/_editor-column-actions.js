@@ -523,7 +523,6 @@ editor.on('toolbar-column-edit-row', function(e) {
 	if ( bgImageURL === 'none' ) {
 		bgImageURL = '';
 	}
-	console.log($selectedRow.css('borderColor'));
 
 	pbsandwich_column.fields = {
 		padding_top: parseInt( $selectedRow.css('paddingTop') ),
