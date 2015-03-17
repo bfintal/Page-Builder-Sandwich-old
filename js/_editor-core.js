@@ -61,6 +61,69 @@ function sortEndHandler( editor ) {
 
 
 /**
+ * jQuery Sortable doesn't perform well while inside TinyMCE,
+ * this is our custom sorting function that makes the dragging
+ * experience a million times better.
+ */
+function enhancedSortableSort( event, ui ) {
+	
+	var that = ui.item,
+		closestDist = 9999999,
+		closestElement = null,
+		insertBefore = true,
+		dist, dist2,
+		// The current mouse position
+		pointerTop = event.pageY,
+		pointerLeft = event.pageX;
+	
+	// Find out the closest element from the one being dragged
+	ui.item.parents('body:eq(0)').find('.ui-sortable-handle:not(.ui-sortable-helper)').each(function() {
+		
+		// Don't include the current one being dragged
+		if ( $(this).parents('.ui-sortable-helper').length > 0 ) {
+			return;
+		}
+		
+		var childTop = $(this).offset().top,
+			childHeight = $(this).outerHeight(),
+			childBottom = childTop + childHeight,
+			childLeft = $(this).offset().left,
+			childWidth = $(this).outerWidth(),
+			childRight = childLeft + childWidth;
+			
+		if ( childLeft <= pointerLeft && pointerLeft <= childRight ) {
+			
+			dist = Math.abs( childTop - pointerTop );
+			dist2 = Math.abs( childBottom - pointerTop );
+			if ( dist > dist2 ) {
+				dist = dist2;
+			}
+			
+			if ( closestDist > dist ) {
+				closestDist = dist;
+				closestElement = $(this);
+				
+				// If the mouse is > halfway through the element, insert it after
+				insertBefore = true;
+				if ( pointerTop > childTop + childHeight / 2 ) {
+					insertBefore = false;
+				}
+			}
+		}
+	});
+	
+	// Move the placeholder to the correct location
+	if ( closestElement !== null ) {
+		var placeholder = that.parents('body:eq(0)').find('.sortable-placeholder');
+		if ( insertBefore ) {
+			placeholder.insertBefore(closestElement);
+		} else {
+			placeholder.insertAfter(closestElement);
+		}
+	}
+}
+
+/**
  * Create sortables
  */
 function updateSortable( editor ) {
@@ -82,7 +145,9 @@ function updateSortable( editor ) {
 		},
 		start: function() {
 			sortStartHandler( editor );
-		}
+		},
+		// Makes sortable better at collision detection.
+		sort: enhancedSortableSort
 	});
 	$(editor.getBody()).find('.pbsandwich_column td').sortable({ 
 		scroll: false, 
@@ -100,7 +165,9 @@ function updateSortable( editor ) {
 		},
 		start: function() {
 			sortStartHandler( editor );
-		}
+		},
+		// Makes sortable better at collision detection.
+		sort: enhancedSortableSort
 	});
 }
 

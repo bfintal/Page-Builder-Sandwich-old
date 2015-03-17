@@ -7,10 +7,26 @@
  */
 body#tinymce.wp-editor .sortable-placeholder {
 	display: block;
-	height: 50px;
+	height: 30px;
 	width: auto;
-	background: #f1f1f1;
-	border-radius: 5px;
+	background: rgba(108, 122, 137, .25);
+	border-radius: 3px;
+	position: relative;
+}
+body#tinymce.wp-editor .sortable-placeholder:before {
+	position: absolute;
+	content: "\f346";
+	font-size: 10px;
+	font-family: dashicons;
+	color: rgba(108, 122, 137, 1);
+	display: block;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
 }
 
 /**
