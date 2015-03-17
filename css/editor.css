@@ -538,12 +538,16 @@ body#tinymce.wp-editor {
    */ }
   body#tinymce.wp-editor .pbsandwich_column td {
     vertical-align: top;
-    padding: 0 10px;
+    padding: 10px 10px;
     border: none;
     border-color: transparent;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); }
+    body#tinymce.wp-editor .pbsandwich_column td .pbsandwich_column td {
+      box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.1); }
+      body#tinymce.wp-editor .pbsandwich_column td .pbsandwich_column td .pbsandwich_column td {
+        box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.1); }
   body#tinymce.wp-editor .pbsandwich_column {
-    margin: 0 0 20px; }
+    margin: 10px 0 20px; }
   body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
     display: none !important; }
   body#tinymce.wp-editor .pbsandwich_column td:hover,
@@ -655,12 +659,13 @@ body#tinymce.wp-editor .sortable-placeholder {
   width: auto;
   background: rgba(108, 122, 137, 0.25);
   border-radius: 3px;
-  position: relative; }
+  position: relative;
+  margin: 10px 0; }
 
 body#tinymce.wp-editor .sortable-placeholder:before {
   position: absolute;
-  content: "\f346";
-  font-size: 10px;
+  content: "\f316";
+  font-size: 20px;
   font-family: dashicons;
   color: #6c7a89;
   display: block;
