@@ -12,11 +12,12 @@ body#tinymce.wp-editor .sortable-placeholder {
 	background: rgba(108, 122, 137, .25);
 	border-radius: 3px;
 	position: relative;
+	margin: 10px 0;
 }
 body#tinymce.wp-editor .sortable-placeholder:before {
 	position: absolute;
-	content: "\f346";
-	font-size: 10px;
+	content: "\f316";
+	font-size: 20px;
 	font-family: dashicons;
 	color: rgba(108, 122, 137, 1);
 	display: block;

@@ -92,11 +92,38 @@ function sortEndHandler( editor ) {
 
 
 /**
+ * jQuery Sortable doesn't scroll well while inside TinyMCE,
+ * this is our custom scrolling function that makes the scrolling correct
+ */
+function enhancedSortableScroll( event, ui ) {
+	
+	var $ = jQuery;
+	var editorTop = $('#wp-content-editor-tools').height() + parseInt($('#wp-content-editor-tools').css('paddingTop')) + parseInt($('.mce-edit-area').css('paddingTop')) + $('#wpadminbar').height();
+	var editorBottom = $(window).height() - $('.mce-statusbar').height() - $('#post-status-info').height();
+
+	var mouseTop = $('.mce-edit-area').offset().top + parseInt($('.mce-edit-area').css('paddingTop')) - $(window).scrollTop() + event.pageY;
+
+	// Scroll up
+	if ( mouseTop - editorTop < 60 ) {
+		$(window).scrollTop( $(window).scrollTop() - 10 );
+	}
+	// Scroll down
+	if ( editorBottom - mouseTop < 60 ) {
+		$(window).scrollTop( $(window).scrollTop() + 10 );
+	}
+	
+}
+
+
+/**
  * jQuery Sortable doesn't perform well while inside TinyMCE,
  * this is our custom sorting function that makes the dragging
  * experience a million times better.
  */
 function enhancedSortableSort( event, ui ) {
+	
+	// Also perform an enhanced scroll
+	enhancedSortableScroll( event, ui );
 	
 	var that = ui.item,
 		closestDist = 9999999,
@@ -165,7 +192,7 @@ function updateSortable( editor ) {
 		connectWith: jQuery(editor.getBody()).find('.pbsandwich_column td'), 
 		placeholder: "sortable-placeholder",
 		cancel: pbsandwich_column.non_sortable_elements,
-		opacity: 0.7,
+		opacity: 0.15,
 		forceHelperSize: true, // This is to help dragging
 		tolerance: 'pointer',
 		stop: function() {
@@ -185,7 +212,7 @@ function updateSortable( editor ) {
 		connectWith: jQuery(editor.getBody()).find('.pbsandwich_column td').add(jQuery(editor.getBody())), 
 		placeholder: "sortable-placeholder",
 		cancel: pbsandwich_column.non_sortable_elements,
-		opacity: 0.7,
+		opacity: 0.1,
 		forceHelperSize: true, // This is to help dragging
 		tolerance: 'pointer',
 		stop: function() {
@@ -555,9 +582,15 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		left += - ( left - $(toolbar).width() / 2 ) + 6;
 	}
 	
+	// Adjust the location if the toolbar goes past the top of the editor
+	var top = rectangle.y - 6;
+	if ( top - $(toolbar).height() / 2 < 6 ) {
+		top = rectangle.y;
+	}
+	
 	// Position the column toolbar
 	dom.setStyles( toolbar, {
-		top: rectangle.y - 6,
+		top: top,
 		left: left
 	});
 	
