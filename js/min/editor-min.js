@@ -582,9 +582,15 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		left += - ( left - $(toolbar).width() / 2 ) + 6;
 	}
 	
+	// Adjust the location if the toolbar goes past the top of the editor
+	var top = rectangle.y - 6;
+	if ( top - $(toolbar).height() / 2 < 6 ) {
+		top = rectangle.y;
+	}
+	
 	// Position the column toolbar
 	dom.setStyles( toolbar, {
-		top: rectangle.y - 6,
+		top: top,
 		left: left
 	});
 	
