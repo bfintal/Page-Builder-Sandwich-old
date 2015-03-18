@@ -5,6 +5,20 @@
  */
 
 /**
+ * Selection array for listing modes.
+ */
+
+function sandwich_events_manager_mode_selection() {
+	$output = array();
+	$output['daily'] = "Daily";
+	$output['weekly'] = "Weekly";
+	$output['monthly'] = "Monthly";
+	$output['yearly'] = "Yearly";
+	return $output;
+}
+
+
+/**
  * Create our shortcode for Events Manager
  */
 add_action( 'init', 'sandwich_events_manager', 11 );
@@ -29,7 +43,7 @@ function sandwich_events_manager() {
 	shortcode_ui_register_for_shortcode(
 		'events_list',
 		array(
-			'label' => __( 'Events Manager - Events List', 'pbsandwich' ),
+			'label' => __( 'Events Manager Events List', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
@@ -50,26 +64,26 @@ function sandwich_events_manager() {
 		)
 	);
 
-	// Register Shortcake UI for Events Manager Events List
+	// Register Shortcake UI for Events Manager Grouped Events List
 	shortcode_ui_register_for_shortcode(
-		'events_list',
+		'events_list_grouped',
 		array(
-			'label' => __( 'Events Manager - Events List', 'pbsandwich' ),
+			'label' => __( 'Events Manager Grouped Events List', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
-					'label' => __( 'Event List caption', 'pbsandwich' ),
+					'label' => __( 'Grouped Event List caption', 'pbsandwich' ),
 					'attr' => 'content',
 					'type' => 'textarea',
 					'value' => '',
-					'description' => __( 'The Event List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTNAME<br />#_EVENTLINK<br />#_LOCATIONLINK<br />#_EVENTDATES<br />#_EVENTTIMES', 'pbsandwich' ),
+					'description' => __( 'The Grouped Events List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTDATES<br />#_EVENTLINK<br />#_EVENTTIMES', 'pbsandwich' ),
 				),
 				array(
-					'label' => __( 'Event listing limit', 'pbsandwich' ),
-					'attr' => 'limit',
-					'type' => 'text',
-					'value' => '10',
-					'description' => __( 'Show up to the specified amount of events.', 'pbsandwich' ),
+					'label' => __( 'Event listing mode', 'pbsandwich' ),
+					'attr' => 'mode',
+					'type' => 'select',
+					'options' => sandwich_events_manager_mode_selection(),
+					'description' => __( 'Show events by these selections.', 'pbsandwich' ),
 				),
 			),
 		)
@@ -79,7 +93,7 @@ function sandwich_events_manager() {
 	shortcode_ui_register_for_shortcode(
 		'event',
 		array(
-			'label' => __( 'Events Manager - Event Display', 'pbsandwich' ),
+			'label' => __( 'Events Manager Event Display', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
@@ -87,7 +101,7 @@ function sandwich_events_manager() {
 					'attr' => 'content',
 					'type' => 'textarea',
 					'value' => '#_EVENTNAME',
-					'description' => __( 'The Event display can be customized to include customized description. The #_EVENTNAME  variable will be replaced with the actual link.', 'pbsandwich' ),
+					'description' => __( 'The Event display can be customized to include elements like description. The #_EVENTNAME  variable will be replaced with the actual content.', 'pbsandwich' ),
 				),
 				array(
 					'label' => __( 'Show Event', 'pbsandwich' ),
@@ -103,7 +117,7 @@ function sandwich_events_manager() {
 	shortcode_ui_register_for_shortcode(
 		'event_form',
 		array(
-			'label' => __( 'Events Manager - Event Submission Form', 'pbsandwich' ),
+			'label' => __( 'Events Manager Event Submission Form', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(),
 		)
@@ -113,7 +127,7 @@ function sandwich_events_manager() {
 	shortcode_ui_register_for_shortcode(
 		'event_search_form',
 		array(
-			'label' => __( 'Events Manager - Event Search Form', 'pbsandwich' ),
+			'label' => __( 'Events Manager Event Search Form', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(),
 		)
@@ -123,7 +137,7 @@ function sandwich_events_manager() {
 	shortcode_ui_register_for_shortcode(
 		'events_calendar',
 		array(
-			'label' => __( 'Events Manager - Events Calendar', 'pbsandwich' ),
+			'label' => __( 'Events Manager Events Calendar', 'pbsandwich' ),
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
@@ -164,6 +178,10 @@ function sandwich_events_manager_add_editor_styles() {
 	if ( ! class_exists( 'EM_Scripts_and_Styles' ) ) {
 		return;
 	} 
+
+	if ( ! defined( 'EM_DIR_URI' ) ) {
+		return;
+	}
 	
 	add_editor_style( EM_DIR_URI . 'includes/css/events_manager.css' );
 }
