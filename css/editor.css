@@ -758,3 +758,15 @@ body#tinymce.wp-editor {
    */ }
   body#tinymce.wp-editor .sandwich.hide_title .widgettitle {
     display: none; }
+
+.dashicons-calendar:before {
+  font-family: 'em_dashicons' !important;
+  content: '\e600'; }
+
+form#event-form h3, form#event-form .inside {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
