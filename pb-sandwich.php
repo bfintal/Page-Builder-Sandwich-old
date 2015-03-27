@@ -60,7 +60,7 @@ require_once( PBS_PATH . 'lib/shortcode/contact-form-7.php' );
 require_once( PBS_PATH . 'lib/shortcode/mailchimp.php' );
 require_once( PBS_PATH . 'lib/shortcode/ninja-forms.php' );
 require_once( PBS_PATH . 'lib/shortcode/bbpress.php' );
-
+require_once( PBS_PATH . 'lib/shortcode/events-manager.php' );
 
 /**
  * PB Sandwich Class
