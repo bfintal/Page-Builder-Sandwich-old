@@ -11,3 +11,10 @@
 	-o-transform: scaleX(-1);
 	transform: scaleX(-1);
 }
+// The color option styles get overridden by Titan Framework
+.mce-container .wp-picker-container .wp-color-result {
+	border: 1px solid #ccc;
+	padding-left: 30px;
+	margin: 0 6px 6px 0;
+}
+
