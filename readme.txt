@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 4.1
 Tested up to: 4.1.1
-Stable tag: 0.10
+Stable tag: 0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,10 +16,11 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 = The page builder that: =
 
-* let's you preview your rendered content and shortcodes from your backend,
+* allows you to visually create columns that actually look like columns,
+* enables you to edit margins, paddings, borders and background colors and images of columns and whole rows,
+* lets you preview your rendered content and shortcodes from your backend,
 * adds page builder capabilities without hijacking your visual editor,
 * gives you a nice interface to edit your favorite shortcodes: Jetpack, bbPress, BuddyPress, and plenty more;
-* allows you to visually create columns that actually look like columns,
 * looks & feels native to WordPress,
 * just works without any set ups and hassles, and
 * you'll forget that you have it turned on since it blends so well with WordPress
@@ -53,6 +54,7 @@ We support the following shortcodes, widgets & elements:
 * Archives (Widget)
 * Audio (Add Media)
 * Audio Playlists (Add Media)
+* Button
 * Calendar (Widget)
 * Categories (Widget)
 * Contact Form (Jetpack)
@@ -70,6 +72,7 @@ We support the following shortcodes, widgets & elements:
 * Meta (Widget)
 * Pages (Widget)
 * Portfolio (Jetpack)
+* Progress bar
 * Recent Comments (Widget)
 * Recent Posts (Widget)
 * RSS (Widget)
@@ -86,6 +89,7 @@ Third-party shortcodes - these show up when the necessary plugin is activated
 
 * bbPress
 * Contact Form 7
+* Events Manager
 * Jetpack
 * MailChimp for WP
 * Ninja Forms
@@ -167,6 +171,16 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.11 =
+
+* Added column & row style editing capabilities!
+* Significantly enhanced page builder dragging experience
+* Introduced more stability in the page builder
+* Added Events Manager shortcodes
+* New column toolbar
+* New progress bar shortcode
+* New button shortcode
 
 = 0.10 =
 
