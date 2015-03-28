@@ -376,3 +376,34 @@ editor.on('wp-body-class-change change', function(e) {
 		$(this).attr('height', w * ratio).addClass('resized');
 	});
 });
+
+
+/**
+ * If the column is clicked, move the cursor location to before/after
+ * the column so content can be added
+ */
+editor.on('mousedown', function(e) {
+	if ( ! $(e.target).is('.pbsandwich_column td') ) {
+		return;
+	}
+	
+	editor.focus();
+	
+	// Get whether the location is near the left or right of the row
+	// We need to add a placeholder when doing this since it doesn't work right
+	// @see http://blog.squadedit.com/tinymce-and-cursor-position/
+	var table = $(e.target).parents('.pbsandwich_column:eq(0)');
+	if ( (e.pageX - table.offset().left ) / table.width() > 0.5 ) {
+		$(e.target).parents('.pbsandwich_column:eq(0)').after('<span data-mce-bogus="1" id="dummy_column_selector"></span>');
+	} else {
+		$(e.target).parents('.pbsandwich_column:eq(0)').before('<span data-mce-bogus="1" id="dummy_column_selector"></span>');		
+	}
+	
+	// Move the cursor
+	editor.selection.setCursorLocation( $(editor.getBody()).find('#dummy_column_selector')[0] );
+	$(editor.getBody()).find('#dummy_column_selector').remove();
+	
+});
+editor.on('keyup', function(e) {
+	_pbsandwich_removeColumnToolbar( editor );
+});
