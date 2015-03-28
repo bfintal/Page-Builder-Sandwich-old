@@ -369,14 +369,17 @@ function fixTableParagraphs( editor ) {
 		
 		// @see http://stackoverflow.com/questions/20183324/javascript-wrapping-unwrapped-plain-text
 		var elemCount = $(this).contents().length;
-		$(this).contents().filter( function() {
+		var content = $(this).contents().filter( function() {
 		    return this.nodeType === 3;
 		} ).each( function() {
 		    this.nodeValue = $.trim( this.nodeValue );
 			if ( elemCount === 0 || ( this.nodeValue === '' && elemCount === 1 ) ) {
 				this.nodeValue = '\u00a0';
 			}
-		} ).wrap( '<p></p>' );
+		} );
+		if ( ! content.is('p') ) {
+			content.wrap('<p></p>');
+		}
 
 		// Remove blank paragraphs in columns which have other contents
 		if ( $(this).children().length > 1 ) {
