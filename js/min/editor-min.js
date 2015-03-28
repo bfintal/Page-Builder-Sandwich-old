@@ -646,7 +646,25 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 		if ( i >= numColumns ) {
 			var content = $(e).html();
 			if ( ! /^<p\s[^>]+>(\s|&nbsp;)*<\/p>$/.test( content ) ) {
-				contents[ contents.length - 1] += '<p>' + content + '</p>';
+
+				// Wrap the contents in paragraphs so we can edit the contents
+				var innerHTML = '';
+				try {
+					if ( $(content).is('p') ) {
+						innerHTML = content;
+					} else {
+						innerHTML = $('<p></p>').html(content);
+					}
+				} catch (e) {
+					innerHTML = $('<p></p>').html(content);
+				}
+				
+				// Don't add empty contents
+				if ( $(innerHTML).text().trim() === '' ) {
+					innerHTML = '';
+				}
+				
+				contents[ contents.length - 1] += innerHTML;
 			}
 		} else {
 			contents.push( $(e).html() );
@@ -674,7 +692,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 		// Get what content we will use
 		if ( typeof columnContents === 'object' ) {
 			if ( i >= columnContents.length ) {
-				columnContent = '&nbsp;';
+				columnContent = '';
 			} else {
 				columnContent = columnContents[ i ];
 			}
@@ -683,7 +701,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 				if ( i === 0 ) {
 					columnContent = content;
 				} else {
-					columnContent = '&nbsp;';
+					columnContent = '';
 				}
 			}
 		}
@@ -705,9 +723,21 @@ function _pbsandwich_columns_formTable( columns, content ) {
 			}
 		}
 		
+		// Wrap the contents in paragraphs so it can be edited
+		var innerHTML = '';
+		try {
+			if ( $(columnContent).is('p') ) {
+				innerHTML = columnContent;
+			} else {
+				innerHTML = $('<p></p>').html(columnContent);
+			}
+		} catch (e) {
+			innerHTML = $('<p></p>').html(columnContent);
+		}
+		
 		// Add the new contents and attributes
 		newTd.addClass('col-sm-' + col)
-		.html('<p>' + columnContent + '</p>')
+		.html(innerHTML)
 		.css('width', width + '%');
 		
 		table += newTd[0].outerHTML;
