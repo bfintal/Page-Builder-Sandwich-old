@@ -177,7 +177,22 @@ class GambitPBSandwichWelcome {
 				<!--div class="about-overview">
 					<iframe width="640" height="360" src="//www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
 				</div-->
-				<p class="about-description"><?php _e( 'Say hello to brand new shortcodes', 'pbsandwich' );?></p>
+				<p class="about-description"><?php _e( 'Things just got more awesome', 'pbsandwich' );?></p>
+
+				<div class="feature-section col two-col">
+
+					<div class="col-1">
+						<h4><?php _e( 'Row & Column Settings', 'pbsandwich' );?></h4>
+						<p><?php _e( 'New settings have been added to columns. Now you can edit margins, paddings, borders as well as add a background color or background image to them.', 'pbsandwich' ) ?></p>
+					</div>
+
+					<div class="col-2 last-feature">
+						<img src="<?php echo PBS_URL . 'images/welcome-rows.jpg'; ?>">
+					</div>
+
+				</div>
+
+				<hr />
 
 				<div class="feature-section col two-col">
 
@@ -203,21 +218,6 @@ class GambitPBSandwichWelcome {
 
 					<div class="col-2 last-feature">
 						<img src="<?php echo PBS_URL . 'images/welcome-add-post-element.jpg'; ?>">
-					</div>
-
-				</div>
-
-				<hr />
-
-				<div class="feature-section col two-col">
-
-					<div class="col-1">
-						<h4><?php _e( 'Visual Column Editing', 'pbsandwich' );?></h4>
-						<p><?php _e( 'Forget those column shortcodes, now you can add columns that really look like columns.', 'pbsandwich' ) ?></p>
-					</div>
-
-					<div class="col-2 last-feature">
-						<img src="<?php echo PBS_URL . 'images/welcome-columns.jpg'; ?>">
 					</div>
 
 				</div>
