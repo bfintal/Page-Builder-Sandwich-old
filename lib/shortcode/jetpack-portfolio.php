@@ -1,5 +1,8 @@
 <?php
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'sandwich_jetpack_portfolio', 11 );
 
 function sandwich_jetpack_portfolio() {

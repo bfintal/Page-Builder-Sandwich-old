@@ -4,6 +4,9 @@
  * Shortcode Jetpack Template File (not just for Jetpack, but for others that have dependencies as well)
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Create our shortcode

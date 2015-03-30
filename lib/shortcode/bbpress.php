@@ -4,6 +4,9 @@
  * Shortcode Template File for BBPress
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Commonly-used variables stored here for better management.
  */

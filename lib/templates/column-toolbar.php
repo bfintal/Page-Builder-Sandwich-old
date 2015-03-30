@@ -1,3 +1,7 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
 <script type="text/html" id="tmpl-pbs-column-toolbar">
 	
 	<?php do_action( 'pbs_column_toolbar_pre' ) ?>

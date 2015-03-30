@@ -3,6 +3,10 @@
 /**
  * Create our Contact Form 7 shortcode
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'sandwich_contact_form_7', 11 );
 function sandwich_contact_form_7() {
 

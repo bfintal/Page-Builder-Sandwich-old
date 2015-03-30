@@ -8,6 +8,9 @@
  * Shortcode Template File for <FRIENDLY_PLUGIN_NAME>
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Create our shortcode for <FRIENDLY_PLUGIN_NAME>

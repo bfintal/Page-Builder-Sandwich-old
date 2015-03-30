@@ -4,6 +4,9 @@
  * Shortcode Template File for Events Manager
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Selection array for listing modes.
  */

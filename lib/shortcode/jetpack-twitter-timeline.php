@@ -4,6 +4,9 @@
  * Shortcode Template File for Twitter Timeline
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Create our shortcode

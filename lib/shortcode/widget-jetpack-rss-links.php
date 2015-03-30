@@ -4,6 +4,9 @@
  * Creates the view for the archives widget
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'sandwich_jetpack_rss_links_widget', 11 );
 
 function sandwich_jetpack_rss_links_widget() {

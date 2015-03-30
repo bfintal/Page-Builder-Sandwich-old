@@ -4,6 +4,9 @@
  * Selections for button styles
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function sandwich_progressbar_style_selection() {
 	$output = array();
 	$output['progress-bar-info'] = "Informational";

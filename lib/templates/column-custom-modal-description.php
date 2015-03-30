@@ -1,3 +1,7 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
 <script type="text/html" id="tmpl-pbs-column-custom-modal-description">
 	
 	<p style="line-height: 1.6em;">

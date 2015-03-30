@@ -4,6 +4,9 @@
  * Shortcode Template File for MailChimp
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Create our shortcode

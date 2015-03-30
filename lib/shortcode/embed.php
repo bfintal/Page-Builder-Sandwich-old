@@ -1,5 +1,8 @@
 <?php
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'sandwich_embed_media', 11 );
 
 function sandwich_embed_media() {

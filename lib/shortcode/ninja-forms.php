@@ -4,6 +4,9 @@
  * Ninja Forms Shortcode
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 
 /**
  * Create our shortcode

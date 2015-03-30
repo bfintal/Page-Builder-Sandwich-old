@@ -4,6 +4,9 @@
  * Hello Dolly Shortcode
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // For demo purposes only
 if ( ! WP_DEBUG ) {
 	return;

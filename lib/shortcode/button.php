@@ -4,6 +4,9 @@
  * Selections for button styles
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function sandwich_buttons_style_selection() {
 	$output = array();
 	$output['btn-default'] = __( "Default", 'pbsandwich' );

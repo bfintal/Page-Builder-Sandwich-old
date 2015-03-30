@@ -4,6 +4,9 @@
  * Creates the view for Jetpack's contact form
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action( 'init', 'sandwich_toggle', 11 );
 
 function sandwich_toggle() {

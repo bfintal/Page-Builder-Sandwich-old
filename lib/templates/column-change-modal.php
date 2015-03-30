@@ -1,3 +1,7 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
 <script type="text/html" id="tmpl-pbs-column-change-modal">
 	
 	<div id="pbsandwich_column_change_modal">

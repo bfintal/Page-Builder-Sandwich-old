@@ -1,4 +1,8 @@
 <?php
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Plugin Name: Shortcode UI
  * Version: v0.2.0-dev
