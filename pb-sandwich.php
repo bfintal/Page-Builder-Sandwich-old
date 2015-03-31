@@ -24,6 +24,7 @@ defined( 'PBS_FILE' ) or define( 'PBS_FILE', __FILE__ );
 
 // General list of essential files for the plugin itself or used by all shortcakes.
 require_once( PBS_PATH . 'lib/columns.php' );
+require_once( PBS_PATH . 'lib/alignment.php' );
 require_once( PBS_PATH . 'lib/welcome.php' );
 require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/functions.php' );

@@ -1094,3 +1094,17 @@
  */
 .sandwich.hide_title .widgettitle {
   display: none; }
+
+.pbs-alignleft {
+  float: left;
+  text-align: left;
+  width: initial; }
+
+.pbs-aligncenter {
+  text-align: center;
+  width: 100%; }
+
+.pbs-alignright {
+  float: right;
+  text-align: right;
+  width: initial; }

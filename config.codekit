@@ -106,6 +106,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/welcome-rows.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 35893,
+		"inputAbbreviatedPath": "\/images\/welcome-rows.jpg",
+		"outputAbbreviatedPath": "\/images\/welcome-rows.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/welcome-shortcodes.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -514,6 +525,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/_editor-alignment.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/_editor-alignment.js",
+		"outputAbbreviatedPath": "\/js\/min\/_editor-alignment-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/_editor-column-actions.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -689,6 +711,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/lib\/alignment.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/alignment.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/lib\/columns.php": {
 		"fileType": 8192,
@@ -1313,6 +1344,22 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/scss\/_editor-sandwich.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/_editor-sandwich.scss",
+		"outputAbbreviatedPath": "\/css\/_editor-sandwich.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/scss\/_editor-toggle.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -1338,6 +1385,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/scss\/_editor-widget.scss",
 		"outputAbbreviatedPath": "\/css\/_editor-widget.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/scss\/_frontend-alignment.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/_frontend-alignment.scss",
+		"outputAbbreviatedPath": "\/css\/_frontend-alignment.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
