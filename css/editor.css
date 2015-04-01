@@ -760,6 +760,12 @@ body#tinymce.wp-editor .toolbar-label {
 body#tinymce.wp-editor .sep + .toolbar-label {
   padding-left: 5px; }
 
+/**
+ * Hide the toolbars when dragging
+ */
+body#tinymce.wp-editor .ui-sortable-helper .toolbar {
+  display: none !important; }
+
 body#tinymce.wp-editor {
   /**
    * Toggle shortcode

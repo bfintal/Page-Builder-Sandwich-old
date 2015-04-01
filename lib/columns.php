@@ -155,20 +155,12 @@ class GambitPBSandwichColumns {
 			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
+		$columnVars = apply_filters( 'pbs_js_vars', $columnVars );
 		
 		// Print out our variables
 		?>
 		<script type="text/javascript">
-        var pbsandwich_column = {
-			<?php
-			$varString = '';
-			foreach ( $columnVars as $key => $value ) {
-				$varString .= empty( $varString ) ? '' : ',';
-				$varString .= "$key: '" . addslashes( $value ) . "'";
-			}
-			echo $varString;
-			?>
-        };
+		var pbsandwich_column = <?php echo json_encode( $columnVars ) ?>;
         </script>
 		<?php
 	}

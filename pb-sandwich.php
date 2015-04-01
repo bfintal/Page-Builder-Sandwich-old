@@ -27,6 +27,7 @@ require_once( PBS_PATH . 'lib/columns.php' );
 require_once( PBS_PATH . 'lib/welcome.php' );
 require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/functions.php' );
+require_once( PBS_PATH . 'lib/toolbar.php' );
 
 // General list of shortcakes available to PB Sandwich. They include integrations from 3rd party plugins.
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
