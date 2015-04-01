@@ -181,7 +181,8 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'border_color' => '',
         'text_hover_color' => '',
         'button_hover_color' => '',
-        'border_hover_color' => '',			
+        'border_hover_color' => '',	
+        'alignment' => 'left',		
         'size' => 'btn-md',
         'border' => '',
         'radius' => '',
@@ -259,7 +260,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	?>
 
-	<div class="sandwich pbs_button_element">
+	<div class="sandwich pbs_button_element<?php echo esc_attr( $attr['alignment'] ) ?>">
 		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="pbs_button btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
 			<?php echo esc_attr( $attr['label'] ) ?>
 		</a>

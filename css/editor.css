@@ -806,23 +806,9 @@ form#event-form h3, form#event-form .inside {
   width: auto;
   display: inline-block; }
 
-.pbs-colalignleft {
-  float: left;
-  text-align: left;
-  width: initial; }
-
-.pbs-colaligncenter {
-  text-align: center;
-  width: 100%; }
-
-.pbs-colalignright {
-  float: right;
-  text-align: right;
-  width: initial; }
-
 .pbs-alignleft {
   float: left;
-  width: initial;
+  width: auto;
   display: inline-block;
   clear: none; }
 
@@ -833,6 +819,6 @@ form#event-form h3, form#event-form .inside {
 
 .pbs-alignright {
   float: right;
-  width: initial;
+  width: auto;
   display: inline-block;
   clear: none; }
