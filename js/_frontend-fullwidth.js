@@ -1,7 +1,7 @@
+/*
+ * Break out the sides of the row, retain the content placement
+ */
 jQuery(document).ready(function($) {
-	/*
-	 * Break out the sides of the row, retain the content placement
-	 */
 	var applyBreakOut = function() {
 		"use strict";
 		var $ = jQuery;
