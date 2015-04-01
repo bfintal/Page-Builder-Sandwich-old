@@ -259,7 +259,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	?>
 
-	<div class="sandwich">
+	<div class="sandwich pbs_button_element">
 		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="pbs_button btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
 			<?php echo esc_attr( $attr['label'] ) ?>
 		</a>

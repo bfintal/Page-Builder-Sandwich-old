@@ -1,9 +1,9 @@
 // @codekit-append "_editor-add-post-element.js";
-// @codekit-append "_editor-alignment.js";
 // @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
+// @codekit-append "_editor-alignment.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
 
@@ -16,63 +16,6 @@ jQuery(document).ready(function($) {
 		$('.media-menu .media-menu-item:contains("' + shortcodeUIData.strings.media_frame_menu_insert_label + '")').click();
 		return false;
 	});
-});
-
-/**
- * Aligns objects to the left.
- */
-editor.on('toolbar-column-align-left', function(e) {
-	var $ = jQuery;
-	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
-	now.removeClass('pbs-aligncenter');
-	now.removeClass('pbs-alignright');
-	now.addClass('pbsp-alignleft');
-	$(editor.getBody()).find('#pbs-align-center').css('opacity', '1');
-	$(editor.getBody()).find('#pbs-align-right').css('opacity', '1');	
-	$(editor.getBody()).find('#pbs-align-left').css('opacity', '0.5');	
-});
-
-/**
- * Aligns objects to the center.
- */
-editor.on('toolbar-column-align-center', function(e) {
-	var $ = jQuery;
-	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
-	now.removeClass('pbs-alignleft');
-	now.removeClass('pbs-alignright');
-	now.addClass('pbsp-aligncenter');
-	$(editor.getBody()).find('#pbs-align-left').css('opacity', '1');
-	$(editor.getBody()).find('#pbs-align-right').css('opacity', '1');	
-	$(editor.getBody()).find('#pbs-align-center').css('opacity', '0.5');	
-});
-
-/**
- * Aligns objects to the right.
- */
-editor.on('toolbar-column-align-right', function(e) {
-	var $ = jQuery;
-	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
-	now.removeClass('pbs-alignleft');
-	now.removeClass('pbs-aligncenter');
-	now.addClass('pbsp-alignright');
-	$(editor.getBody()).find('#pbs-align-left').css('opacity', '1');
-	$(editor.getBody()).find('#pbs-align-center').css('opacity', '1');	
-	$(editor.getBody()).find('#pbs-align-right').css('opacity', '0.5');	
-});
-
-
-editor.on( 'show-toolbar-column', function(e) { 
-	var $ = jQuery;
-	var now = $(e.target).parents('.pbsandwich_column:eq(0)');
-	if ( now.hasClass('pbs-align-left') ) {
-		$(editor.getBody()).find('#pbs-alignleft').css('opacity', '0.5');
-	}
-	if ( now.hasClass('pbs-align-center') ) {
-		$(editor.getBody()).find('#pbs-aligncenter').css('opacity', '0.5');
-	}
-	if ( now.hasClass('pbs-align-right') ) {
-		$(editor.getBody()).find('#pbs-alignright').css('opacity', '0.5');
-	}	
 });
 
 
@@ -495,9 +438,48 @@ editor.on('init', function(e) {
 		if ( wrapper === null ) {
 			return;
 		}
+
+		if ( wrapper.find('.pbs-align-left').length === 0 ) {
+			$('<div class="dashicons dashicons-align-left pbs-align-left" data-mce-bogus="1" title="Align left"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( wrapper.find('.pbs-align-center').length === 0 ) {
+			$('<div class="dashicons dashicons-align-center pbs-align-center" data-mce-bogus="1" title="Align center"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( wrapper.find('.pbs-align-right').length === 0 ) {
+			$('<div class="dashicons dashicons-align-right pbs-align-right" data-mce-bogus="1" title="Align right"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
 		
 		if ( wrapper.find('.clone').length === 0 ) {
 			$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( $(e.target).is('.dashicons.dashicons-align-left') ) {
+			wrapper.addClass('pbs-alignleft');
+			wrapper.removeClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').addClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
+		}
+		
+		if ( $(e.target).is('.dashicons.dashicons-align-center') ) {
+			wrapper.addClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignleft');
+			wrapper.removeClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').addClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
+		}
+		
+		if ( $(e.target).is('.dashicons.dashicons-align-right') ) {
+			wrapper.addClass('pbs-alignright');
+			wrapper.removeClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').addClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
 		}
 		
 		if ( $(e.target).is('.dashicons.clone') ) {
@@ -512,7 +494,6 @@ editor.on('init', function(e) {
 				editor.execCommand( 'mceCleanup' );
 			}
 		}
-		
 		
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
@@ -1662,6 +1643,63 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
 		var $ = jQuery;
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
+});
+
+/**
+ * Aligns objects to the left.
+ */
+editor.on('toolbar-column-align-left', function(e) {
+	var $ = jQuery;
+	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
+	now.removeClass('pbs-aligncenter');
+	now.removeClass('pbs-alignright');
+	now.addClass('pbs-alignleft');
+	$(editor.getBody()).find('#pbs-align-center').css('opacity', '1');
+	$(editor.getBody()).find('#pbs-align-right').css('opacity', '1');	
+	$(editor.getBody()).find('#pbs-align-left').css('opacity', '0.5');	
+});
+
+/**
+ * Aligns objects to the center.
+ */
+editor.on('toolbar-column-align-center', function(e) {
+	var $ = jQuery;
+	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
+	now.removeClass('pbs-alignleft');
+	now.removeClass('pbs-alignright');
+	now.addClass('pbs-aligncenter');
+	$(editor.getBody()).find('#pbs-align-left').css('opacity', '1');
+	$(editor.getBody()).find('#pbs-align-right').css('opacity', '1');	
+	$(editor.getBody()).find('#pbs-align-center').css('opacity', '0.5');	
+});
+
+/**
+ * Aligns objects to the right.
+ */
+editor.on('toolbar-column-align-right', function(e) {
+	var $ = jQuery;
+	var now = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
+	now.removeClass('pbs-alignleft');
+	now.removeClass('pbs-aligncenter');
+	now.addClass('pbs-alignright');
+	$(editor.getBody()).find('#pbs-align-left').css('opacity', '1');
+	$(editor.getBody()).find('#pbs-align-center').css('opacity', '1');	
+	$(editor.getBody()).find('#pbs-align-right').css('opacity', '0.5');	
+});
+
+
+editor.on( 'show-toolbar-column', function(e) { 
+	var $ = jQuery;
+	var now = $(e.target).parents('.pbsandwich_column:eq(0)');
+	if ( now.hasClass('pbs-alignleft') ) {
+		$(editor.getBody()).find('#pbs-align-left').css('opacity', '0.5');
+	}
+	if ( now.hasClass('pbs-aligncenter') ) {
+		$(editor.getBody()).find('#pbs-align-center').css('opacity', '0.5');
+	}
+	if ( now.hasClass('pbs-alignright') ) {
+		$(editor.getBody()).find('#pbs-align-right').css('opacity', '0.5');
+	}	
 });
 
 /**

@@ -406,9 +406,48 @@ editor.on('init', function(e) {
 		if ( wrapper === null ) {
 			return;
 		}
+
+		if ( wrapper.find('.pbs-align-left').length === 0 ) {
+			$('<div class="dashicons dashicons-align-left pbs-align-left" data-mce-bogus="1" title="Align left"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( wrapper.find('.pbs-align-center').length === 0 ) {
+			$('<div class="dashicons dashicons-align-center pbs-align-center" data-mce-bogus="1" title="Align center"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( wrapper.find('.pbs-align-right').length === 0 ) {
+			$('<div class="dashicons dashicons-align-right pbs-align-right" data-mce-bogus="1" title="Align right"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
 		
 		if ( wrapper.find('.clone').length === 0 ) {
 			$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
+		}
+
+		if ( $(e.target).is('.dashicons.dashicons-align-left') ) {
+			wrapper.addClass('pbs-alignleft');
+			wrapper.removeClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').addClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
+		}
+		
+		if ( $(e.target).is('.dashicons.dashicons-align-center') ) {
+			wrapper.addClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignleft');
+			wrapper.removeClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').addClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
+		}
+		
+		if ( $(e.target).is('.dashicons.dashicons-align-right') ) {
+			wrapper.addClass('pbs-alignright');
+			wrapper.removeClass('pbs-aligncenter');
+			wrapper.removeClass('pbs-alignleft');
+			wrapper.find('.pbs_button_element').addClass('pbs-alignright');
+			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
+			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
 		}
 		
 		if ( $(e.target).is('.dashicons.clone') ) {
@@ -423,7 +462,6 @@ editor.on('init', function(e) {
 				editor.execCommand( 'mceCleanup' );
 			}
 		}
-		
 		
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it

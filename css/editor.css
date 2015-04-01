@@ -791,3 +791,48 @@ form#event-form h3, form#event-form .inside {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+.wpview-wrap.pbs-alignleft, .wpview-wrap.pbs-alignleft .wpview-body, .wpview-wrap.pbs-alignleft .wpview-overlay {
+  width: auto;
+  display: inline-block;
+  float: left; }
+
+.wpview-wrap.pbs-alignright, .wpview-wrap.pbs-alignright .wpview-body, .wpview-wrap.pbs-alignright .wpview-overlay {
+  width: auto;
+  display: inline-block;
+  float: right; }
+
+.wpview-type-pbs_button, .wpview-type-pbs_button > .sandwich, .pbs_button_element {
+  width: auto;
+  display: inline-block; }
+
+.pbs-colalignleft {
+  float: left;
+  text-align: left;
+  width: initial; }
+
+.pbs-colaligncenter {
+  text-align: center;
+  width: 100%; }
+
+.pbs-colalignright {
+  float: right;
+  text-align: right;
+  width: initial; }
+
+.pbs-alignleft {
+  float: left;
+  width: initial;
+  display: inline-block;
+  clear: none; }
+
+.pbs-aligncenter {
+  float: initial;
+  width: initial;
+  display: block; }
+
+.pbs-alignright {
+  float: right;
+  width: initial;
+  display: inline-block;
+  clear: none; }
