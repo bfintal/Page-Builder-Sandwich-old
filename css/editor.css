@@ -535,6 +535,9 @@ body#tinymce.wp-editor {
    */
   /**
    * Toolbar separator
+   */
+  /**
+   * Make sure images don't make the columns wider
    */ }
   body#tinymce.wp-editor .pbsandwich_column td {
     vertical-align: top;
@@ -563,6 +566,8 @@ body#tinymce.wp-editor {
     padding: 2px 0;
     vertical-align: top;
     background: #ccc; }
+  body#tinymce.wp-editor .pbsandwich_column td img {
+    max-width: 100%; }
 
 body#tinymce.wp-editor {
   /**

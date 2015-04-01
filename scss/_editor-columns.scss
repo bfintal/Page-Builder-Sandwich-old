@@ -58,4 +58,12 @@ body#tinymce.wp-editor {
 	    vertical-align: top;
 	    background: #ccc;
 	}
+	
+	
+	/**
+	 * Make sure images don't make the columns wider
+	 */
+	.pbsandwich_column td img {
+		max-width: 100%;
+	}
 }
