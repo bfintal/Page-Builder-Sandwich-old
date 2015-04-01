@@ -268,6 +268,12 @@ editor.on('mouseup', function(e) {
 		
 		return;
 	}
+
+	// If an image is clicked, then don't show the column toolbar
+	if ( $(e.target).is('img.alignleft, img.alignright, img.aligncenter, img.alignnone') ) {
+		return;
+	}
+	
 	_pbsandwich_addColumnToolbar( editor, e.target );
 });
 
