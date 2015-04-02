@@ -703,7 +703,7 @@ body#tinymce.wp-editor #wp-column-toolbar {
   transform: translateX(-50%) translateY(-50%); }
 
 body#tinymce.wp-editor #wp-column-toolbar .dashicons {
-  margin: 2px;
+  margin: 2px 0;
   padding: 2px 3px;
   width: 20px;
   height: 20px;
@@ -744,6 +744,9 @@ body#tinymce.wp-editor .toolbar .dashicons {
   position: relative;
   cursor: pointer !important; }
 
+body#tinymce.wp-editor .toolbar {
+  white-space: nowrap; }
+
 /**
  * Toolbar labels & separators
  */
@@ -759,6 +762,15 @@ body#tinymce.wp-editor .toolbar-label {
 
 body#tinymce.wp-editor .sep + .toolbar-label {
   padding-left: 5px; }
+
+body#tinymce.wp-editor .wpview-wrap .toolbar .dashicons.sep {
+  width: 1px;
+  background: #ccc;
+  border-radius: 0;
+  padding: 0;
+  border: 0;
+  margin: 5px;
+  pointer-events: none; }
 
 /**
  * Hide the toolbars when dragging

@@ -222,6 +222,17 @@
   padding-left: 30px;
   margin: 0 6px 6px 0; }
 
+.mce-container .mce-widget.mce-btn.sep {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  margin: 5px;
+  padding: 2px 0;
+  vertical-align: top;
+  background: #ccc;
+  border: 0;
+  pointer-events: none; }
+
 /**
  * Jetpack Contact Form
  */
