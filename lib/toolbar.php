@@ -14,8 +14,8 @@ class GambitPBSandwichToolbar {
 	
 	/**
 	 * action - the name of the action, a javascript event will fire when the button is clicked
-	 * icon	- dashicon icon classes, or put '|' to make it into a separator (no triggers)
-	 * tooltip - a label to show when the button is hovered on
+	 * icon	- dashicon icon classes
+	 * label - a label to show when the button is hovered on, or '|' to make it into a separator (no triggers)
 	 * shortcode - the shortcode which this toolbar should appear, leave blank to apply to ALL shortcodes.
 	 *             columns & rows are now included when left blank
 	 * priority - the location of the button, defaults to 10.
@@ -28,9 +28,9 @@ class GambitPBSandwichToolbar {
 		return array(
 			'action' => empty( $args['action'] ) ? '' : $args['action'],
 			'icon' => empty( $args['icon'] ) ? '' : $args['icon'],
-			'tooltip' => empty( $args['tooltip'] ) ? '' : $args['tooltip'],
+			'label' => empty( $args['label'] ) ? '' : $args['label'],
 			'shortcode' => empty( $args['shortcode'] ) ? '' : $args['shortcode'],
-			'priority' => empty( $args['priority'] ) ? 10 : $args['priority'],
+			'priority' => empty( $args['priority'] ) && (int) $args['priority'] != 0 ? 10 : $args['priority'],
 			'hash' => substr( md5( microtime() ), 0, 8 ),
 		);
 	}
@@ -42,14 +42,80 @@ class GambitPBSandwichToolbar {
 		$toolbarButtons[] = array(
 			'action' => 'clone',
 			'icon' => 'dashicons dashicons-images-alt',
-			'tooltip' => __( 'Clone', 'pbsandwich' ),
+			'label' => __( 'Clone', 'pbsandwich' ),
 			'priority' => 0,
 		);
 		// $toolbarButtons[] = array(
-		// 	'icon' => '|',
+		// 	'label' => '|',
 		// 	'shortcode' => '',
 		// 	'priority' => -10,
 		// );
+		
+		$toolbarButtons[] = array(
+			'label' => __( 'Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1001,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-edit-area',
+			'icon' => 'dashicons dashicons-edit',
+			'label' => __( 'Edit Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1002,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-clone-area',
+			'icon' => 'dashicons dashicons-images-alt',
+			'label' => __( 'Clone Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1003,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-remove-area',
+			'icon' => 'dashicons dashicons-no-alt',
+			'label' => __( 'Delete Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1004,
+		);
+		$toolbarButtons[] = array(
+			'label' => '|',
+			'shortcode' => 'column',
+			'priority' => 1005,
+		);
+		
+		$toolbarButtons[] = array(
+			'label' => __( 'Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1100,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-edit-row',
+			'icon' => 'dashicons dashicons-edit',
+			'label' => __( 'Edit Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1101,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-columns',
+			'icon' => 'dashicons dashicons-tagcloud',
+			'label' => __( 'Change Columns', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1102,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-clone-row',
+			'icon' => 'dashicons dashicons-images-alt',
+			'label' => __( 'Change Columns', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1103,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-remove-row',
+			'icon' => 'dashicons dashicons-no-alt',
+			'label' => __( 'Delete Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1104,
+		);
 		// $toolbarButtons[] = array(
 		// 	'action' => 'test',
 		// 	'icon' => 'dashicons dashicons-cloud',

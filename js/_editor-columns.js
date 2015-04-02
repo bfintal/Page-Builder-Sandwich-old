@@ -35,15 +35,13 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 	// Create the toolbar
-	toolbarHtml = wp.template( 'pbs-column-toolbar' );
-
 	var editorWidth = $(editor.getDoc()).width();
 		
 	toolbar = dom.create( 'div', {
 		'id': 'wp-column-toolbar',
 		'data-mce-bogus': '1',
 		'contenteditable': false
-	}, toolbarHtml( pbsandwich_column ) );
+	});
 
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );

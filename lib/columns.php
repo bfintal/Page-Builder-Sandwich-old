@@ -217,7 +217,6 @@ class GambitPBSandwichColumns {
 		    return;
 	    }
 	
-		include_once PBS_PATH . "/lib/templates/column-toolbar.php";
 		include_once PBS_PATH . "/lib/templates/column-change-modal.php";
 		include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
 		include_once PBS_PATH . "/lib/templates/column-area-edit-modal.php";

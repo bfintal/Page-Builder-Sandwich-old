@@ -41,7 +41,7 @@ editor.on('init', function(e) {
 				// Add the actual button, don't add it if it already exists
 				if ( wrapper.find('[data-hash="' + button.hash + '"]').length === 0 ) {
 					
-					if ( button.icon === '|' ) {
+					if ( button.label === '|' ) {
 						newButton = $('<div class="dashicons sep"></div>');
 						
 					} else {
@@ -97,7 +97,7 @@ editor.on('init', function(e) {
 				if ( $('.mce-wp-image-toolbar .mce-btn-group.mce-container [data-hash="' + button.hash + '"]').length === 0 ) {
 
 					var newButton;
-					if ( button.icon === '|' ) {
+					if ( button.label === '|' ) {
 						newButton = $('<div class="mce-widget mce-btn sep"></div>');
 						
 					} else {
@@ -153,8 +153,11 @@ editor.on('show-toolbar-column', function(e) {
 			}
 
 			// Create a button or a separator
-			var newButton;			
-			if ( button.icon === '|' ) {
+			var newButton;
+			if ( button.action === '' ) {
+				newButton = $('<div class="toolbar-label" data-mce-bogus="1"></div>').text( button.label );
+				
+			} else if ( button.label === '|' ) {
 				newButton = $('<div class="sep" data-mce-bogus="1"></div>');
 				
 			} else {
@@ -172,12 +175,14 @@ editor.on('show-toolbar-column', function(e) {
 			
 				// Sort the buttons via priority
 				newButton.attr('data-shortcode', 'column');
-				if ( button.priority >= 100 ) { // Before the edit button
-					newButton.clone().insertBefore( toolbar.find('[data-column-action="edit-area"]') );
+				if ( button.priority >= 1000 ) {
+					newButton.clone().prependTo( toolbar );
+				} else if ( button.priority >= 100 ) { // Before the edit button
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="edit-area"]') );
 				} else if ( button.priority >= 0 ) { // Between the edit/clone button and the remove button
-					newButton.clone().insertBefore( toolbar.find('[data-column-action="remove-area"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="remove-area"]') );
 				} else { // After the remove button
-					newButton.clone().insertAfter( toolbar.find('[data-column-action="remove-area"]') );
+					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="remove-area"]') );
 				}
 				
 			}
@@ -185,12 +190,14 @@ editor.on('show-toolbar-column', function(e) {
 			
 				// Sort the buttons via priority
 				newButton.attr('data-shortcode', 'row');
-				if ( button.priority >= 100 ) { // Before the edit button
-					newButton.clone().insertBefore( toolbar.find('[data-column-action="edit-row"]') );
+				if ( button.priority >= 1000 ) {
+					newButton.clone().prependTo( toolbar );
+				} else if ( button.priority >= 100 ) { // Before the edit button
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="edit-row"]') );
 				} else if ( button.priority >= 0 ) { // Between the edit/clone button and the remove button
-					newButton.clone().insertBefore( toolbar.find('[data-column-action="remove-row"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="remove-row"]') );
 				} else { // After the remove button
-					newButton.clone().insertAfter( toolbar.find('[data-column-action="remove-row"]') );
+					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="remove-row"]') );
 				}
 				
 			}
