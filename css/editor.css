@@ -758,7 +758,10 @@ body#tinymce.wp-editor .toolbar-label {
   padding: 2px 5px;
   display: inline-block;
   line-height: 20px;
-  margin: 2px; }
+  margin: 2px;
+  pointer-events: none;
+  width: auto;
+  color: #333; }
 
 body#tinymce.wp-editor .sep + .toolbar-label {
   padding-left: 5px; }

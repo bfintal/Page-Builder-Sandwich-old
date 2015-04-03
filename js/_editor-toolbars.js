@@ -41,9 +41,11 @@ editor.on('init', function(e) {
 				// Add the actual button, don't add it if it already exists
 				if ( wrapper.find('[data-hash="' + button.hash + '"]').length === 0 ) {
 
-					// TODO implement no action, label only
 					if ( button.label === '|' ) {
 						newButton = $('<div class="dashicons sep"></div>');
+						
+					} else if ( button.action === '' ) {
+						newButton = $('<div class="toolbar-label"></div>').text( button.label );
 						
 					} else {
 						newButton = $('<div class="' + button.icon + '" data-toolbar-action="' + button.action + '"></div>')
@@ -98,9 +100,11 @@ editor.on('init', function(e) {
 				if ( $('.mce-wp-image-toolbar .mce-btn-group.mce-container [data-hash="' + button.hash + '"]').length === 0 ) {
 
 					var newButton;
-					// TODO implement no action, label only
 					if ( button.label === '|' ) {
 						newButton = $('<div class="mce-widget mce-btn sep"></div>');
+						
+					} else if ( button.action === '' ) {
+						newButton = $('<div class="mce-widget mce-btn toolbar-label"></div>').text( button.label );
 						
 					} else {
 						newButton = $('<div class="mce-widget mce-btn sandwich-toolbar-button" tabindex="-1" role="button" aria-pressed="false"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-dashicon ' + button.icon + '" data-toolbar-action="' + button.action + '"></i></button></div>')

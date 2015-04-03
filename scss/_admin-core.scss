@@ -30,3 +30,14 @@
     border: 0;
     pointer-events: none;
 }
+.mce-container .mce-widget.mce-btn.toolbar-label {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px;
+	vertical-align: middle;
+	opacity: .8;
+	padding: 2px 5px;
+	display: inline-block;
+	line-height: 20px;
+	margin: 2px;
+	pointer-events: none;
+}
