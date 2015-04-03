@@ -550,7 +550,8 @@ editor.on('init', function(e) {
 				
 				// Add the actual button, don't add it if it already exists
 				if ( wrapper.find('[data-hash="' + button.hash + '"]').length === 0 ) {
-					
+
+					// TODO implement no action, label only
 					if ( button.label === '|' ) {
 						newButton = $('<div class="dashicons sep"></div>');
 						
@@ -607,6 +608,7 @@ editor.on('init', function(e) {
 				if ( $('.mce-wp-image-toolbar .mce-btn-group.mce-container [data-hash="' + button.hash + '"]').length === 0 ) {
 
 					var newButton;
+					// TODO implement no action, label only
 					if ( button.label === '|' ) {
 						newButton = $('<div class="mce-widget mce-btn sep"></div>');
 						
@@ -664,11 +666,12 @@ editor.on('show-toolbar-column', function(e) {
 
 			// Create a button or a separator
 			var newButton;
-			if ( button.action === '' ) {
+			if ( button.label === '|' ) {
+				newButton = $('<div class="sep" data-mce-bogus="1"></div>');
+				
+			} else if ( button.action === '' ) {
 				newButton = $('<div class="toolbar-label" data-mce-bogus="1"></div>').text( button.label );
 				
-			} else if ( button.label === '|' ) {
-				newButton = $('<div class="sep" data-mce-bogus="1"></div>');
 				
 			} else {
 
