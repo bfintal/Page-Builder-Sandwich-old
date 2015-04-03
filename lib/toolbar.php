@@ -9,10 +9,13 @@ class GambitPBSandwichToolbar {
 	
 	function __construct() {
 		add_filter( 'pbs_js_vars', array( $this, 'addToolbars' ) );
+		add_filter( 'pbs_toolbar_buttons', array( $this, 'addCoreToolbarButtons' ), 1 );
 	}
 	
 	
 	/**
+	 * Filter: pbs_toolbar_buttons
+	 *
 	 * action - the name of the action, a javascript event will fire when the button is clicked
 	 * icon	- dashicon icon classes
 	 * label - a label to show when the button is hovered on, or '|' to make it into a separator (no triggers)
@@ -38,15 +41,6 @@ class GambitPBSandwichToolbar {
 	public function addToolbars( $columnVars ) {
 		$toolbarButtons = array();
 		
-		// TODO: move core toolbar buttons
-		// Our core toolbar buttons
-		$toolbarButtons[] = array(
-			'action' => 'clone',
-			'icon' => 'dashicons dashicons-images-alt',
-			'label' => __( 'Clone', 'pbsandwich' ),
-			'priority' => 0,
-		);
-		
 		// Allow others to add toolbar buttons
 		$toolbarButtons = apply_filters( 'pbs_toolbar_buttons', $toolbarButtons );
 			
@@ -63,6 +57,21 @@ class GambitPBSandwichToolbar {
 		$columnVars['toolbar_buttons'] = $toolbarButtons;
 		
 		return $columnVars;
+	}
+	
+	
+	/**
+	 * Add core toolbar buttons
+	 */
+	public function addCoreToolbarButtons( $toolbarButtons ) {
+		$toolbarButtons[] = array(
+			'action' => 'clone',
+			'icon' => 'dashicons dashicons-images-alt',
+			'label' => __( 'Clone', 'pbsandwich' ),
+			'priority' => 0,
+		);
+		
+		return $toolbarButtons;
 	}
 	
 }
