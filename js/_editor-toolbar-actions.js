@@ -14,17 +14,18 @@ editor.on('toolbar-clone', function(e) {
 	}
 });
 
+
+/**
+ * Image shape buttons
+ */
 editor.on('toolbar-image-circle', function(e) {
 	var $ = jQuery;
-	console.log($(e.target));
 	$(e.target).css('borderRadius', '100%');
 });
-
 editor.on('toolbar-image-rounded', function(e) {
 	var $ = jQuery;
 	$(e.target).css('borderRadius', '5px');
 });
-
 editor.on('toolbar-image-rectangle', function(e) {
 	var $ = jQuery;
 	$(e.target).css('borderRadius', '0px');

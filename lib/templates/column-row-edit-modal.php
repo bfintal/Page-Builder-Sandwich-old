@@ -47,6 +47,23 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 					</div>
 				</div>
 			</div>
+			<label for="full_width">
+				{{ data.full_width }}
+				<select id="full_width" name="full_width" value="{{ data.fields.full_width }}">
+					<option value=""  <# if ( data.fields.full_width === '' ) { #> selected="selected" <# } #>>{{ data.full_width_normal }}</option>
+					<option value="1" <# if ( data.fields.full_width === '1' ) { #> selected="selected" <# } #>>{{ data.full_width_1 }}</option>
+					<option value="2" <# if ( data.fields.full_width === '2' ) { #> selected="selected" <# } #>>{{ data.full_width_2 }}</option>
+					<option value="3" <# if ( data.fields.full_width === '3' ) { #> selected="selected" <# } #>>{{ data.full_width_3 }}</option>
+					<option value="4" <# if ( data.fields.full_width === '4' ) { #> selected="selected" <# } #>>{{ data.full_width_4 }}</option>
+					<option value="5" <# if ( data.fields.full_width === '5' ) { #> selected="selected" <# } #>>{{ data.full_width_5 }}</option>
+					<option value="6" <# if ( data.fields.full_width === '6' ) { #> selected="selected" <# } #>>{{ data.full_width_6 }}</option>
+					<option value="7" <# if ( data.fields.full_width === '7' ) { #> selected="selected" <# } #>>{{ data.full_width_7 }}</option>
+					<option value="8" <# if ( data.fields.full_width === '8' ) { #> selected="selected" <# } #>>{{ data.full_width_8 }}</option>
+					<option value="9" <# if ( data.fields.full_width === '9' ) { #> selected="selected" <# } #>>{{ data.full_width_9 }}</option>
+					<option value="99" <# if ( data.fields.full_width === '99' ) { #> selected="selected" <# } #>>{{ data.full_width_99 }}</option>
+				</select>
+			</label>
+			<p class="description">{{ data.full_width_desc }}</p>
 		</div>
 		<div style="display: inline-block; width: 350px">
 			<h4>{{ data.border }}</h4>
