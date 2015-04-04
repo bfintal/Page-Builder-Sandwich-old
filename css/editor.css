@@ -550,7 +550,9 @@ body#tinymce.wp-editor {
       body#tinymce.wp-editor .pbsandwich_column td .pbsandwich_column td .pbsandwich_column td {
         box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.1); }
   body#tinymce.wp-editor .pbsandwich_column {
-    margin: 10px 0 20px; }
+    margin: 10px 0 20px;
+    table-layout: fixed;
+    width: 100%; }
   body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
     display: none !important; }
   body#tinymce.wp-editor .pbsandwich_column td:hover,

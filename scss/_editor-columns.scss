@@ -22,6 +22,8 @@ body#tinymce.wp-editor {
 	 */
 	.pbsandwich_column {
 		margin: 10px 0 20px;
+		table-layout: fixed;
+        width: 100%;
 	}
 
 
