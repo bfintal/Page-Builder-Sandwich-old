@@ -30,7 +30,7 @@ class GambitPBSandwichToolbar {
 	protected function clearToolbarButtonArgs( $args ) {
 		return array(
 			'action' => empty( $args['action'] ) ? '' : $args['action'],
-			'icon' => empty( $args['icon'] ) ? '' : $args['icon'],
+			'icon' => empty( $args['icon'] ) ? 'dashicons dashicons-edit' : $args['icon'],
 			'label' => empty( $args['label'] ) ? '' : $args['label'],
 			'shortcode' => empty( $args['shortcode'] ) ? '' : $args['shortcode'],
 			'priority' => empty( $args['priority'] ) && (int) $args['priority'] != 0 ? 10 : $args['priority'],
