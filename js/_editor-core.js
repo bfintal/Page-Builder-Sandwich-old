@@ -407,23 +407,6 @@ editor.on('init', function(e) {
 			return;
 		}
 		
-		if ( wrapper.find('.clone').length === 0 ) {
-			$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
-		}
-		
-		if ( $(e.target).is('.dashicons.clone') ) {
-			// cancelSortable( editor );
-			preUpdateSortable( editor );
-			var newElement = wrapper.clone();
-			newElement.insertAfter( wrapper ).trigger('click');
-			updateSortable( editor );
-
-			// Cleanup to make views with iframes display again
-			if ( newElement.find('iframe').length > 0 ) {
-				editor.execCommand( 'mceCleanup' );
-			}
-		}
-		
 		
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it

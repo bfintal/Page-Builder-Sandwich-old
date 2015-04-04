@@ -222,6 +222,46 @@
   padding-left: 30px;
   margin: 0 6px 6px 0; }
 
+.mce-container .mce-widget.mce-btn.sep {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  margin: 5px;
+  padding: 2px 0;
+  vertical-align: top;
+  background: #ccc;
+  border: 0;
+  pointer-events: none; }
+
+.mce-container .mce-widget.mce-btn.toolbar-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  vertical-align: middle;
+  opacity: .8;
+  padding: 2px 5px;
+  display: inline-block;
+  line-height: 20px;
+  margin: 2px;
+  pointer-events: none; }
+
+.mce-container .mce-widget.mce-btn .sandwich-circle,
+.mce-container .mce-widget.mce-btn .sandwich-rounded,
+.mce-container .mce-widget.mce-btn .sandwich-square,
+.mce-container .mce-widget.mce-btn .sandwich-rectangle {
+  background: transparent;
+  border: 2px solid #777;
+  box-sizing: border-box;
+  border-radius: 100%;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7); }
+.mce-container .mce-widget.mce-btn .sandwich-rounded {
+  border-radius: 4px; }
+.mce-container .mce-widget.mce-btn .sandwich-square, .mce-container .mce-widget.mce-btn .sandwich-rectangle {
+  border-radius: 0; }
+
 /**
  * Jetpack Contact Form
  */

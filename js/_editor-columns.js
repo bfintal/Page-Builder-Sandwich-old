@@ -35,15 +35,13 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 	// Create the toolbar
-	toolbarHtml = wp.template( 'pbs-column-toolbar' );
-
 	var editorWidth = $(editor.getDoc()).width();
 		
 	toolbar = dom.create( 'div', {
 		'id': 'wp-column-toolbar',
 		'data-mce-bogus': '1',
 		'contenteditable': false
-	}, toolbarHtml( pbsandwich_column ) );
+	});
 
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );
@@ -74,7 +72,8 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	// Dispatch toolbar show event
 	editor.fire( 'show-toolbar-column', {
 		'editor': editor,
-		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0]
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
+		'toolbar': toolbar
 	} );
 }
 
@@ -245,6 +244,7 @@ editor.on('mousedown', function(e) {
 	} else {
 		$(editor.getBody()).removeClass('pbsandwich_column_selected');
 	}
+
 	_pbsandwich_removeColumnToolbar( editor );
 });
 
@@ -254,7 +254,7 @@ editor.on('mousedown', function(e) {
  */
 editor.on('mouseup', function(e) {
 	var $ = jQuery;
-	if ( $(e.target).is( '[data-column-action]' ) ) {
+	if ( $(e.target).parents('#wp-column-toolbar').length > 0 ) {
 		
 		var action = $(e.target).attr('data-column-action');
 		
@@ -287,11 +287,11 @@ editor.on('init', function(e) {
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
 		// Don't remove the toolbar when the toolbar is clicked
-		if ( $(e.target).is( '[data-column-action]' ) ) {
+		if ( $(e.target).parents('#wp-column-toolbar').length > 0 ) {
 			e.stopPropagation();
 			return;
 		}
-	
+		
 		_pbsandwich_removeColumnToolbar( editor );
 	});
 });
