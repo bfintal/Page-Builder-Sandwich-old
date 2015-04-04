@@ -546,8 +546,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 		background_image_url: bgImageURL,
 		background_size: $selectedRow.css('backgroundSize'),
 		background_repeat: $selectedRow.css('backgroundRepeat'),
-		background_position: $selectedRow.css('backgroundPosition')
+		background_position: $selectedRow.css('backgroundPosition'),
+		full_width: $selectedRow.attr('data-break-out')
 	};
+
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
@@ -617,6 +619,7 @@ editor.on('toolbar-column-edit-row', function(e) {
 			}
 			$selectedRow.css('backgroundImage', img);
 			$selectedRow.attr('data-background-image', form.find('[name="background_image"]').val() );
+			$selectedRow.attr('data-break-out', form.find('[name="full_width"]').val() );
 
 			// Make the styles permanent
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));

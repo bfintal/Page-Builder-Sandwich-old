@@ -154,6 +154,21 @@ class GambitPBSandwichColumns {
 			'margin' => __( 'Margin', 'pbsandwich' ),
 			'row_settings' => __( 'Row Settings', 'pbsandwich' ),
 			
+			// Full-width rows
+			'full_width' => __( 'Full-width', 'pbsandwich' ),
+			'full_width_normal' => __( 'Do not break out into full width', 'pbsandwich' ),
+			'full_width_1' => sprintf( __( 'Break out of %s container', 'pbsandwich' ), '1' ),
+			'full_width_2' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '2' ),
+			'full_width_3' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '3' ),
+			'full_width_4' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '4' ),
+			'full_width_5' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '5' ),
+			'full_width_6' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '6' ),
+			'full_width_7' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '7' ),
+			'full_width_8' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '8' ),
+			'full_width_9' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '9' ),
+			'full_width_99' => __( 'Break out of all containers', 'pbsandwich' ),
+			'full_width_desc' => 'Rows are restricted to the content areas defined by your theme. You can use this to break out of the constraint and turn your row into a full width row.',
+			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
 		$columnVars = apply_filters( 'pbs_js_vars', $columnVars );
@@ -327,8 +342,20 @@ class GambitPBSandwichColumns {
 					$columnStyles .= '.sandwich.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . wp_kses( $columnStyle, array(), array() ). ' }';
 				}
 				$styleDump .= esc_attr( $td->style );
+
+				// Gather all column data attributes
+				$dataAttributes = '';
+				foreach ( $td->getAllAttributes() as $key => $value ) {
+					if ( stripos( $key, 'data-' ) !== 0 || strlen( $value ) == '' ) {
+						continue;
+					}
+					if ( $key == 'data-wp-columnselect' ) { // This is a dummy attribute
+						continue;
+					}
+					$dataAttributes .= ' ' . $key . '="' . esc_attr( $value ) . '"';
+				}
 			
-				$newDivs .= '<div class="' . esc_attr( $td->class ) . '">' . $innerHTML . '</div>';
+				$newDivs .= '<div class="' . esc_attr( $td->class ) . '" ' . $dataAttributes . '>' . $innerHTML . '</div>';
 			}
 			
 			// Generate the unique ID of this column based on the margin rules it has. (crc32 is fast)
@@ -347,7 +374,18 @@ class GambitPBSandwichColumns {
 			if ( ! empty( $columnStyles ) ) {
 				$tableClasses[] = 'pbsandwich_column_' . $hash;
 			}
-			$newDivs = '<div class="' . esc_attr( join( ' ', $tableClasses ) ) . '"><div class="row">' . $newDivs . '</div></div>';
+
+			// Gather all row/table data attributes
+			$dataAttributes = '';
+			foreach ( $html->find( 'table.pbsandwich_column', 0 )->getAllAttributes() as $key => $value ) {
+				if ( stripos( $key, 'data-' ) !== 0 || strlen( $value ) == '' ) {
+					continue;
+				}
+				$dataAttributes .= ' ' . $key . '="' . esc_attr( $value ) . '"';
+			}
+
+			// Create the actual row div
+			$newDivs = '<div class="' . esc_attr( join( ' ', $tableClasses ) ) . '" ' . $dataAttributes . '><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			

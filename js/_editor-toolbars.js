@@ -233,7 +233,6 @@ $('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [dat
 	var action = $(e.target).attr('data-toolbar-action');
 	var target = $(editor.getBody()).find('[data-mce-selected="1"]:not(.pbsandwich_column)');
 	
-	console.log('toolbar-' + action);
 	editor.fire( 'toolbar-' + action, {
 		'action': action,
 		'editor': editor,

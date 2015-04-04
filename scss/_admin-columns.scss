@@ -74,8 +74,9 @@
 		    outline: 0;
 		    -webkit-transition: .05s border-color ease-in-out;
 		    transition: .05s border-color ease-in-out;
-			line-height: 1em;
 			margin-right: 5px;
+			line-height: 1.3;
+			padding: 3px 5px;
 		}
 		input[type=text] {
 			padding: 3px 5px;
@@ -183,6 +184,9 @@
 		    left: 4px;
 		}
 	}
+	.margin_area {
+		margin-bottom: 20px;
+	}
 	label[for="background_image"] {
 		cursor: pointer;
 	}
@@ -226,6 +230,11 @@
 		z-index: 9;
 		background: #fff;
 		position: relative !important;
+	}
+	.description {
+	    max-width: 350px;
+	    white-space: normal;
+		word-wrap: break-word;
 	}
 }
 .mce-container-body {

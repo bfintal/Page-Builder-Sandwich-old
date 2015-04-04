@@ -744,7 +744,6 @@ $('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [dat
 	var action = $(e.target).attr('data-toolbar-action');
 	var target = $(editor.getBody()).find('[data-mce-selected="1"]:not(.pbsandwich_column)');
 	
-	console.log('toolbar-' + action);
 	editor.fire( 'toolbar-' + action, {
 		'action': action,
 		'editor': editor,
@@ -819,17 +818,18 @@ editor.on('toolbar-clone', function(e) {
 	}
 });
 
+
+/**
+ * Image shape buttons
+ */
 editor.on('toolbar-image-circle', function(e) {
 	var $ = jQuery;
-	console.log($(e.target));
 	$(e.target).css('borderRadius', '100%');
 });
-
 editor.on('toolbar-image-rounded', function(e) {
 	var $ = jQuery;
 	$(e.target).css('borderRadius', '5px');
 });
-
 editor.on('toolbar-image-rectangle', function(e) {
 	var $ = jQuery;
 	$(e.target).css('borderRadius', '0px');
@@ -1829,8 +1829,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 		background_image_url: bgImageURL,
 		background_size: $selectedRow.css('backgroundSize'),
 		background_repeat: $selectedRow.css('backgroundRepeat'),
-		background_position: $selectedRow.css('backgroundPosition')
+		background_position: $selectedRow.css('backgroundPosition'),
+		full_width: $selectedRow.attr('data-break-out')
 	};
+
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
@@ -1900,6 +1902,7 @@ editor.on('toolbar-column-edit-row', function(e) {
 			}
 			$selectedRow.css('backgroundImage', img);
 			$selectedRow.attr('data-background-image', form.find('[name="background_image"]').val() );
+			$selectedRow.attr('data-break-out', form.find('[name="full_width"]').val() );
 
 			// Make the styles permanent
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
