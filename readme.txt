@@ -175,6 +175,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 = 0.12 =
 
 * [New Toolbar API](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Adding-Toolbar-Buttons)
+* Added circle, rounded & rectangle shape toolbar buttons for images
 * Added clone toolbar button for images
 * Added a page break button in TinyMCE for convenience
 * Security fixes for CWE-200
