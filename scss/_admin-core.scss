@@ -17,27 +17,3 @@
 	padding-left: 30px;
 	margin: 0 6px 6px 0;
 }
-
-// Toolbar separators for the image toolbar
-.mce-container .mce-widget.mce-btn.sep {
-    display: inline-block;
-    width: 1px;
-    height: 16px;
-    margin: 5px;
-    padding: 2px 0;
-    vertical-align: top;
-    background: #ccc;
-    border: 0;
-    pointer-events: none;
-}
-.mce-container .mce-widget.mce-btn.toolbar-label {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 10px;
-	vertical-align: middle;
-	opacity: .8;
-	padding: 2px 5px;
-	display: inline-block;
-	line-height: 20px;
-	margin: 2px;
-	pointer-events: none;
-}

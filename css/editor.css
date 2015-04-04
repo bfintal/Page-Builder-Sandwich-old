@@ -781,6 +781,9 @@ body#tinymce.wp-editor .wpview-wrap .toolbar .dashicons.sep {
 body#tinymce.wp-editor .ui-sortable-helper .toolbar {
   display: none !important; }
 
+.mce-content-body img[data-mce-selected] {
+  outline: none !important; }
+
 body#tinymce.wp-editor {
   /**
    * Toggle shortcode

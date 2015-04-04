@@ -2,6 +2,7 @@
 // @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
 // @codekit-append "_editor-toolbars.js";
+// @codekit-append "_editor-toolbar-actions.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
 // @codekit-append "_editor-jetpack.js";
@@ -559,8 +560,8 @@ editor.on('init', function(e) {
 						
 					} else {
 						newButton = $('<div class="' + button.icon + '" data-toolbar-action="' + button.action + '"></div>')
-							.attr('aria-label', button.tooltip)
-							.attr('title', button.tooltip);
+							.attr('aria-label', button.label)
+							.attr('title', button.label);
 					}
 					newButton.attr('data-hash', button.hash);
 					
@@ -618,8 +619,8 @@ editor.on('init', function(e) {
 						
 					} else {
 						newButton = $('<div class="mce-widget mce-btn sandwich-toolbar-button" tabindex="-1" role="button" aria-pressed="false"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-dashicon ' + button.icon + '" data-toolbar-action="' + button.action + '"></i></button></div>')
-							.attr('aria-label', button.tooltip)
-							.attr('title', button.tooltip);
+							.attr('aria-label', button.label)
+							.attr('title', button.label);
 					}
 					newButton.attr('data-hash', button.hash);
 				
@@ -681,8 +682,8 @@ editor.on('show-toolbar-column', function(e) {
 
 				// Create the button
 				newButton = $('<div class="' + button.icon + '" data-toolbar-action="' + button.action + '" data-mce-bogus="1"></div>')
-					.attr('aria-label', button.tooltip)
-					.attr('title', button.tooltip);
+					.attr('aria-label', button.label)
+					.attr('title', button.label);
 			}
 			newButton.attr('data-hash', button.hash);
 			
@@ -728,16 +729,30 @@ editor.on('show-toolbar-column', function(e) {
 /**
  * Fire toolbar actions (for images only)
  */
-$('body').on('mousedown', '[data-toolbar-action]', function(e) {
+$('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [data-toolbar-action]', function(e) {
+	
+	e.preventDefault();
+	
+	// If the button (not the icon) was clicked
+	if ( $(e.target).is(':not([data-toolbar-action])') ) {
+		if ( $(e.target).find('[data-toolbar-action]').length === 0 ) {
+			return;
+		}
+		e.target = $(e.target).find('[data-toolbar-action]')[0];
+	}
+	
 	var action = $(e.target).attr('data-toolbar-action');
 	var target = $(editor.getBody()).find('[data-mce-selected="1"]:not(.pbsandwich_column)');
 	
+	console.log('toolbar-' + action);
 	editor.fire( 'toolbar-' + action, {
 		'action': action,
 		'editor': editor,
 		'shortcode': 'image',
 		'target': target
 	} );
+	
+	e.stopPropagation();
 });
 
 
@@ -746,6 +761,8 @@ $('body').on('mousedown', '[data-toolbar-action]', function(e) {
  */
 editor.on('init', function(e) {
 	$(editor.getBody()).on('mousedown', '[data-toolbar-action]', function(e) {
+		
+		e.preventDefault();
 		
 		var action = $(e.target).attr('data-toolbar-action');
 		var target = $(editor.getBody()).find('[data-mce-selected="1"]:not(.pbsandwich_column)');
@@ -781,9 +798,10 @@ editor.on('init', function(e) {
 			'target': target
 		} );
 		
+		e.stopPropagation();
+		
 	});
 });
-
 
 /**
  * Clone button action handler
@@ -799,6 +817,22 @@ editor.on('toolbar-clone', function(e) {
 	if ( newElement.find('iframe').length > 0 ) {
 		editor.execCommand( 'mceCleanup' );
 	}
+});
+
+editor.on('toolbar-image-circle', function(e) {
+	var $ = jQuery;
+	console.log($(e.target));
+	$(e.target).css('borderRadius', '100%');
+});
+
+editor.on('toolbar-image-rounded', function(e) {
+	var $ = jQuery;
+	$(e.target).css('borderRadius', '5px');
+});
+
+editor.on('toolbar-image-rectangle', function(e) {
+	var $ = jQuery;
+	$(e.target).css('borderRadius', '0px');
 });
 
 /**

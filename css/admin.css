@@ -244,6 +244,24 @@
   margin: 2px;
   pointer-events: none; }
 
+.mce-container .mce-widget.mce-btn .sandwich-circle,
+.mce-container .mce-widget.mce-btn .sandwich-rounded,
+.mce-container .mce-widget.mce-btn .sandwich-square,
+.mce-container .mce-widget.mce-btn .sandwich-rectangle {
+  background: transparent;
+  border: 2px solid #777;
+  box-sizing: border-box;
+  border-radius: 100%;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7); }
+.mce-container .mce-widget.mce-btn .sandwich-rounded {
+  border-radius: 4px; }
+.mce-container .mce-widget.mce-btn .sandwich-square, .mce-container .mce-widget.mce-btn .sandwich-rectangle {
+  border-radius: 0; }
+
 /**
  * Jetpack Contact Form
  */
