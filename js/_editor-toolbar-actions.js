@@ -2,6 +2,7 @@
  * Clone button action handler
  */
 editor.on('toolbar-clone', function(e) {
+	var $ = jQuery;
 
 	preUpdateSortable( editor );
 	var newElement = $(e.target).clone();

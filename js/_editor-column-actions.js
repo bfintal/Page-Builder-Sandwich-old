@@ -105,6 +105,8 @@ editor.on('toolbar-column-clone-row', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-area', function(e) {
+	var $ = jQuery;
+	
 	var $selectedColumn = $(editor.getBody()).find('[data-wp-columnselect="1"]');
 	
 	var $innerColumn = $selectedColumn.find('> .inner-column:eq(0)');
@@ -378,8 +380,9 @@ editor.on('toolbar-column-remove-area', function(e) {
  * Column clone area/column toolbar button
  */
 editor.on('toolbar-column-clone-area', function(e) {
+	var $ = jQuery;
+	
 	preUpdateSortable( editor );
-
 	
 	var table = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
 	
@@ -516,6 +519,8 @@ editor.on('toolbar-column-clone-area', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-row', function(e) {	
+	var $ = jQuery;
+	
 	var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
 
 	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
@@ -637,8 +642,8 @@ editor.on('toolbar-column-edit-row', function(e) {
  * Close the modal window when the enter key is pressed
  */
 jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', function(e) {
+	var $ = jQuery;
 	if ( e.which === 13 ) {
-		var $ = jQuery;
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
 });

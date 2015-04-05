@@ -419,6 +419,8 @@ editor.on('wp-body-class-change change', function(e) {
  * the column so content can be added
  */
 editor.on('mousedown', function(e) {
+	var $ = jQuery;
+	
 	if ( ! $(e.target).is('.pbsandwich_column td') ) {
 		return;
 	}

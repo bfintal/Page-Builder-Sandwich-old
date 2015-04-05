@@ -98,8 +98,8 @@ function sortEndHandler( editor ) {
  * this is our custom scrolling function that makes the scrolling correct
  */
 function enhancedSortableScroll( event, ui ) {
-	
 	var $ = jQuery;
+	
 	var editorTop = $('#wp-content-editor-tools').height() + parseInt($('#wp-content-editor-tools').css('paddingTop')) + parseInt($('.mce-edit-area').css('paddingTop')) + $('#wpadminbar').height();
 	var editorBottom = $(window).height() - $('.mce-statusbar').height() - $('#post-status-info').height();
 
@@ -123,6 +123,7 @@ function enhancedSortableScroll( event, ui ) {
  * experience a million times better.
  */
 function enhancedSortableSort( event, ui ) {
+	var $ = jQuery;
 	
 	// Also perform an enhanced scroll
 	enhancedSortableScroll( event, ui );
@@ -188,6 +189,7 @@ function enhancedSortableSort( event, ui ) {
  */
 function updateSortable( editor ) {
 	var $ = jQuery;
+	
 	// fixTableParagraphs( editor );
 	jQuery(editor.getBody()).sortable({
 		scroll: false, 
@@ -237,6 +239,7 @@ function updateSortable( editor ) {
  */
 jQuery('body').on('click', '[name="save"], #post-preview', function() { 
 	var $ = jQuery;
+	
 	try {
 		preUpdateSortable( tinyMCE.activeEditor );
 		$( tinyMCE.activeEditor.getBody() ).find('[class=""]').removeAttr('class');
@@ -276,7 +279,6 @@ function fixShortcakeDragging( editor ) {
 	// so that it can still be dragged around after moving the mouse around/outside the iframe.
 	$(editor.getBody())
 	.on('mousemove', '.wpview-wrap[data-mce-selected="1"] .toolbar', function(e) {
-		var $ = jQuery;
 
 		var parent = $(this).parents('.wpview-wrap:eq(0)');
 		if ( ! parent.is('[data-check-move="1"]') ) {
@@ -302,7 +304,6 @@ function fixShortcakeDragging( editor ) {
 		}
 	})
 	.on('mousemove', function(e) {
-		var $ = jQuery;
 		
 		var iframe = $(this).find('.wpview-wrap[data-mce-selected="1"] iframe');
 		if ( iframe.length === 0 ) {
@@ -427,6 +428,7 @@ editor.on('mousemove', function(e) {
  */
 editor.on('init', function(e) {
 	var $ = jQuery;
+	
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
 		var wrapper = null;
@@ -468,6 +470,7 @@ editor.on('init', function(e) {
 var numShortcakes = -1;
 editor.on('wp-body-class-change change', function(e) {
 	var $ = jQuery;
+	
 	// At the start, remember the number of shortcakes/views
 	if ( numShortcakes === -1 ) {
 		numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
@@ -647,7 +650,7 @@ editor.on('init', function(e) {
  * Add the toolbar in columns
  */
 editor.on('show-toolbar-column', function(e) {
-	
+	var $ = jQuery;
 	var toolbar = $(e.toolbar);
 	
 	// Add the toolbar buttons
@@ -729,7 +732,8 @@ editor.on('show-toolbar-column', function(e) {
 /**
  * Fire toolbar actions (for images only)
  */
-$('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [data-toolbar-action]', function(e) {
+jQuery('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [data-toolbar-action]', function(e) {
+	var $ = jQuery;
 	
 	e.preventDefault();
 	
@@ -759,6 +763,8 @@ $('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [dat
  * Fire toolbar actions (for views only & columns/rows)
  */
 editor.on('init', function(e) {
+	var $ = jQuery;
+	
 	$(editor.getBody()).on('mousedown', '[data-toolbar-action]', function(e) {
 		
 		e.preventDefault();
@@ -806,6 +812,7 @@ editor.on('init', function(e) {
  * Clone button action handler
  */
 editor.on('toolbar-clone', function(e) {
+	var $ = jQuery;
 
 	preUpdateSortable( editor );
 	var newElement = $(e.target).clone();
@@ -1256,6 +1263,8 @@ editor.on('wp-body-class-change change', function(e) {
  * the column so content can be added
  */
 editor.on('mousedown', function(e) {
+	var $ = jQuery;
+	
 	if ( ! $(e.target).is('.pbsandwich_column td') ) {
 		return;
 	}
@@ -1388,6 +1397,8 @@ editor.on('toolbar-column-clone-row', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-area', function(e) {
+	var $ = jQuery;
+	
 	var $selectedColumn = $(editor.getBody()).find('[data-wp-columnselect="1"]');
 	
 	var $innerColumn = $selectedColumn.find('> .inner-column:eq(0)');
@@ -1661,8 +1672,9 @@ editor.on('toolbar-column-remove-area', function(e) {
  * Column clone area/column toolbar button
  */
 editor.on('toolbar-column-clone-area', function(e) {
+	var $ = jQuery;
+	
 	preUpdateSortable( editor );
-
 	
 	var table = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
 	
@@ -1799,6 +1811,8 @@ editor.on('toolbar-column-clone-area', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-row', function(e) {	
+	var $ = jQuery;
+	
 	var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
 
 	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
@@ -1920,8 +1934,8 @@ editor.on('toolbar-column-edit-row', function(e) {
  * Close the modal window when the enter key is pressed
  */
 jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', function(e) {
+	var $ = jQuery;
 	if ( e.which === 13 ) {
-		var $ = jQuery;
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
 });

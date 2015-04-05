@@ -136,7 +136,7 @@ editor.on('init', function(e) {
  * Add the toolbar in columns
  */
 editor.on('show-toolbar-column', function(e) {
-	
+	var $ = jQuery;
 	var toolbar = $(e.toolbar);
 	
 	// Add the toolbar buttons
@@ -218,7 +218,8 @@ editor.on('show-toolbar-column', function(e) {
 /**
  * Fire toolbar actions (for images only)
  */
-$('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [data-toolbar-action]', function(e) {
+jQuery('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [data-toolbar-action]', function(e) {
+	var $ = jQuery;
 	
 	e.preventDefault();
 	
@@ -248,6 +249,8 @@ $('body').on('mousedown', '.mce-widget.mce-btn, .mce-widget.mce-btn button, [dat
  * Fire toolbar actions (for views only & columns/rows)
  */
 editor.on('init', function(e) {
+	var $ = jQuery;
+	
 	$(editor.getBody()).on('mousedown', '[data-toolbar-action]', function(e) {
 		
 		e.preventDefault();

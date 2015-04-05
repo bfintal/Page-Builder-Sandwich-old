@@ -65,8 +65,8 @@ function sortEndHandler( editor ) {
  * this is our custom scrolling function that makes the scrolling correct
  */
 function enhancedSortableScroll( event, ui ) {
-	
 	var $ = jQuery;
+	
 	var editorTop = $('#wp-content-editor-tools').height() + parseInt($('#wp-content-editor-tools').css('paddingTop')) + parseInt($('.mce-edit-area').css('paddingTop')) + $('#wpadminbar').height();
 	var editorBottom = $(window).height() - $('.mce-statusbar').height() - $('#post-status-info').height();
 
@@ -90,6 +90,7 @@ function enhancedSortableScroll( event, ui ) {
  * experience a million times better.
  */
 function enhancedSortableSort( event, ui ) {
+	var $ = jQuery;
 	
 	// Also perform an enhanced scroll
 	enhancedSortableScroll( event, ui );
@@ -155,6 +156,7 @@ function enhancedSortableSort( event, ui ) {
  */
 function updateSortable( editor ) {
 	var $ = jQuery;
+	
 	// fixTableParagraphs( editor );
 	jQuery(editor.getBody()).sortable({
 		scroll: false, 
@@ -204,6 +206,7 @@ function updateSortable( editor ) {
  */
 jQuery('body').on('click', '[name="save"], #post-preview', function() { 
 	var $ = jQuery;
+	
 	try {
 		preUpdateSortable( tinyMCE.activeEditor );
 		$( tinyMCE.activeEditor.getBody() ).find('[class=""]').removeAttr('class');
@@ -243,7 +246,6 @@ function fixShortcakeDragging( editor ) {
 	// so that it can still be dragged around after moving the mouse around/outside the iframe.
 	$(editor.getBody())
 	.on('mousemove', '.wpview-wrap[data-mce-selected="1"] .toolbar', function(e) {
-		var $ = jQuery;
 
 		var parent = $(this).parents('.wpview-wrap:eq(0)');
 		if ( ! parent.is('[data-check-move="1"]') ) {
@@ -269,7 +271,6 @@ function fixShortcakeDragging( editor ) {
 		}
 	})
 	.on('mousemove', function(e) {
-		var $ = jQuery;
 		
 		var iframe = $(this).find('.wpview-wrap[data-mce-selected="1"] iframe');
 		if ( iframe.length === 0 ) {
@@ -394,6 +395,7 @@ editor.on('mousemove', function(e) {
  */
 editor.on('init', function(e) {
 	var $ = jQuery;
+	
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
 		var wrapper = null;
@@ -435,6 +437,7 @@ editor.on('init', function(e) {
 var numShortcakes = -1;
 editor.on('wp-body-class-change change', function(e) {
 	var $ = jQuery;
+	
 	// At the start, remember the number of shortcakes/views
 	if ( numShortcakes === -1 ) {
 		numShortcakes = $(editor.getBody()).find('.wpview-wrap').length;
