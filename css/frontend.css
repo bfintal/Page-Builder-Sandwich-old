@@ -1073,6 +1073,14 @@
   width: 100% !important; }
 
 /**
+ * Jetpack Googlemaps
+ */
+.sandwich .googlemaps * {
+  display: none !important; }
+.sandwich .googlemaps iframe {
+  display: block !important; }
+
+/**
  * Toggle shortcode
  */
 .sandwich .toggle [data-toggle="collapse"] {

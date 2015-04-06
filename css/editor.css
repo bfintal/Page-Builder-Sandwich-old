@@ -649,6 +649,14 @@ body#tinymce.wp-editor .sandwich .widget_facebook_likebox iframe {
   width: 100% !important; }
 
 /**
+ * Jetpack Googlemaps
+ */
+body#tinymce.wp-editor .sandwich .googlemaps * {
+  display: none; }
+body#tinymce.wp-editor .sandwich .googlemaps iframe {
+  display: block; }
+
+/**
  * Hide mailchimp secret input field
  */
 body#tinymce.wp-editor [name="_mc4wp_required_but_not_really"] {

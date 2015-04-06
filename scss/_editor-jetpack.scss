@@ -34,3 +34,15 @@ body#tinymce.wp-editor .pbsandwich_column .pbsandwich_column .jetpack-video-wrap
 body#tinymce.wp-editor .sandwich .widget_facebook_likebox iframe {
 	width: 100% !important;
 }
+
+/**
+ * Jetpack Googlemaps
+ */
+body#tinymce.wp-editor .sandwich .googlemaps {
+	* {
+		display: none;
+	}
+	iframe {
+		display: block;
+	}
+}

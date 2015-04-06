@@ -4,3 +4,15 @@
 .sandwich .widget_facebook_likebox iframe {
 	width: 100% !important;
 }
+
+/**
+ * Jetpack Googlemaps
+ */
+.sandwich .googlemaps {
+	* {
+		display: none !important;
+	}
+	iframe {
+		display: block !important;
+	}
+}

@@ -32,7 +32,7 @@ require_once( PBS_PATH . 'lib/toolbar.php' );
 // General list of shortcakes available to PB Sandwich. They include integrations from 3rd party plugins.
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-contact-form.php' );
-// require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
+require_once( PBS_PATH . 'lib/shortcode/jetpack-googlemaps.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-portfolio.php' );
 require_once( PBS_PATH . 'lib/shortcode/jetpack-twitter-timeline.php' );
 require_once( PBS_PATH . 'lib/shortcode/toggle.php' );
