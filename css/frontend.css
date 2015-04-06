@@ -1060,6 +1060,14 @@
     float: none !important;
     width: auto !important; } }
 /**
+ * Column alignment
+ */
+.pbsandwich_column.pbs-align-left > .row > div, .pbsandwich_column.pbs-align-right > .row > div, .pbsandwich_column.pbs-align-center > .row > div {
+  width: auto; }
+.pbsandwich_column.pbs-align-right .row {
+  float: right; }
+
+/**
  * HTML5 Videos
  */
 .sandwich .html5video {

@@ -47,3 +47,17 @@
 		width: auto !important;
 	}
 }
+
+/**
+ * Column alignment
+ */
+.pbsandwich_column {
+	&.pbs-align-left, &.pbs-align-right, &.pbs-align-center {
+		> .row > div {
+			width: auto;
+		}
+	}
+	&.pbs-align-right .row {
+		float: right;
+	}
+}
