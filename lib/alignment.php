@@ -8,26 +8,40 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @return	void
  */
-add_filter( 'pbs_column_toolbar_post', 'pbs_alignment_buttons' );
-function pbs_alignment_buttons( $toolbarHtml ) {
-	echo '<div class="sep" data-mce-bogus="1"></div>';
-	echo '<div id="pbs-align-left" class="dashicons dashicons-align-left" data-column-action="align-left" data-mce-bogus="1" title="{{ data.align_left }}"></div>';
-	echo '<div id="pbs-align-center" class="dashicons dashicons-align-center" data-column-action="align-center" data-mce-bogus="1" title="{{ data.align_center }}"></div>';
-	echo '<div id="pbs-align-right" class="dashicons dashicons-align-right" data-column-action="align-right" data-mce-bogus="1" title="{{ data.align_right }}"></div>';
-}
+add_filter( 'pbs_toolbar_buttons', 'pbs_alignment_buttons' );
+function pbs_alignment_buttons( $toolbarButtons ) {
 
+    // Add separator
+    $toolbarButtons[] = array(
+        'label' => '|',
+		'shortcode' => 'pbs_button',
+    );
 
-/**
- * Add the strings associated with alignment toolbar.
- *
- * @return	void
- */
-add_filter( 'pbs_column_vars', 'pbs_alignment_strings' );
-function pbs_alignment_strings( $vars ) {
-    $vars['align_left'] = __( 'Align Left', 'pbsandwich' );
-    $vars['align_center'] = __( 'Align Center', 'pbsandwich' );
-    $vars['align_right'] = __( 'Align Right', 'pbsandwich' );
-    return $vars;
-}
+    // Add align left button
+    $toolbarButtons[] = array(
+        'action' => 'align-left',
+        'icon' => 'dashicons dashicons-align-left',
+        'label' => __( 'Align Left', 'pbsandwich' ),
+		'shortcode' => 'pbs_button',
+    );
+
+    // Add align center button
+    $toolbarButtons[] = array(
+        'action' => 'align-center',
+        'icon' => 'dashicons dashicons-align-center',
+        'label' => __( 'Align Center', 'pbsandwich' ),
+		'shortcode' => 'pbs_button',
+    );
 	
+    // Add align right button
+    $toolbarButtons[] = array(
+        'action' => 'align-right',
+        'icon' => 'dashicons dashicons-align-right',
+        'label' => __( 'Align Right', 'pbsandwich' ),
+		'shortcode' => 'pbs_button',		
+    );	
+
+    return $toolbarButtons;
+}
+
 ?>

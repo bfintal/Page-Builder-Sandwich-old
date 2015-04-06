@@ -44,6 +44,18 @@ function sandwich_buttons_button_type() {
 }
 
 /**
+ * Selections for button alignment
+ */
+
+function sandwich_buttons_alignment_type() {
+	$output = array();
+	$output['pbs-alignleft'] = __( "Left", 'pbsandwich' );
+	$output['pbs-aligncenter'] = __( "Center", 'pbsandwich' );
+	$output['pbs-alignright'] = __( "Right", 'pbsandwich' );	
+	return $output;
+}
+
+/**
  * Creates the view for Bootstrap Buttons
  */
 
@@ -81,6 +93,13 @@ function sandwich_buttons() {
 					'options' => sandwich_buttons_button_type(),
 					'description' => __( 'Choose the design to use. Ghost type renders the background color of the button transparent with a colored border.', 'pbsandwich' ),
                 ),
+                array(
+                    'label' => __( 'Button Alignment', 'pbsandwich' ),
+                    'attr' => 'alignment',
+                    'type' => 'select',
+					'options' => sandwich_buttons_alignment_type(),
+					'description' => __( 'Choose the alignment of the button.', 'pbsandwich' ),
+                ),				
                 array(
                     'label' => __( 'Button Color Scheme', 'pbsandwich' ),
                     'attr' => 'style',
@@ -182,7 +201,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'text_hover_color' => '',
         'button_hover_color' => '',
         'border_hover_color' => '',	
-        'alignment' => 'left',		
+        'alignment' => 'pbs-alignleft',		
         'size' => 'btn-md',
         'border' => '',
         'radius' => '',
@@ -260,7 +279,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	?>
 
-	<div class="sandwich pbs_button_element<?php echo esc_attr( $attr['alignment'] ) ?>">
+	<div class="sandwich pbs_button_element<?php echo ' ' . esc_attr( $attr['alignment'] ) ?>">
 		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="pbs_button btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
 			<?php echo esc_attr( $attr['label'] ) ?>
 		</a>

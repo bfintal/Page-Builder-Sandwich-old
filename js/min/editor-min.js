@@ -442,65 +442,6 @@ editor.on('init', function(e) {
 		if ( wrapper === null ) {
 			return;
 		}
-
-		if ( wrapper.find('.pbs-align-left').length === 0 ) {
-			$('<div class="dashicons dashicons-align-left pbs-align-left" data-mce-bogus="1" title="Align left"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
-		}
-
-		if ( wrapper.find('.pbs-align-center').length === 0 ) {
-			$('<div class="dashicons dashicons-align-center pbs-align-center" data-mce-bogus="1" title="Align center"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
-		}
-
-		if ( wrapper.find('.pbs-align-right').length === 0 ) {
-			$('<div class="dashicons dashicons-align-right pbs-align-right" data-mce-bogus="1" title="Align right"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
-		}
-		
-<<<<<<< HEAD
-		if ( wrapper.find('.clone').length === 0 ) {
-			$('<div class="dashicons dashicons-images-alt clone" title="Clone"></div>').insertBefore( wrapper.find('.toolbar > .dashicons:eq(-1)') );
-		}
-
-		if ( $(e.target).is('.dashicons.dashicons-align-left') ) {
-			wrapper.addClass('pbs-alignleft');
-			wrapper.removeClass('pbs-aligncenter');
-			wrapper.removeClass('pbs-alignright');
-			wrapper.find('.pbs_button_element').addClass('pbs-alignleft');
-			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
-			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
-		}
-		
-		if ( $(e.target).is('.dashicons.dashicons-align-center') ) {
-			wrapper.addClass('pbs-aligncenter');
-			wrapper.removeClass('pbs-alignleft');
-			wrapper.removeClass('pbs-alignright');
-			wrapper.find('.pbs_button_element').addClass('pbs-aligncenter');
-			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
-			wrapper.find('.pbs_button_element').removeClass('pbs-alignright');
-		}
-		
-		if ( $(e.target).is('.dashicons.dashicons-align-right') ) {
-			wrapper.addClass('pbs-alignright');
-			wrapper.removeClass('pbs-aligncenter');
-			wrapper.removeClass('pbs-alignleft');
-			wrapper.find('.pbs_button_element').addClass('pbs-alignright');
-			wrapper.find('.pbs_button_element').removeClass('pbs-aligncenter');
-			wrapper.find('.pbs_button_element').removeClass('pbs-alignleft');
-		}
-		
-		if ( $(e.target).is('.dashicons.clone') ) {
-			// cancelSortable( editor );
-			preUpdateSortable( editor );
-			var newElement = wrapper.clone();
-			newElement.insertAfter( wrapper ).trigger('click');
-			updateSortable( editor );
-
-			// Cleanup to make views with iframes display again
-			if ( newElement.find('iframe').length > 0 ) {
-				editor.execCommand( 'mceCleanup' );
-			}
-		}
-=======
->>>>>>> pbs-alignment-updated
 		
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
@@ -900,6 +841,53 @@ editor.on('toolbar-image-rectangle', function(e) {
 	var $ = jQuery;
 	$(e.target).css('borderRadius', '0px');
 });
+
+
+/**
+ * Content alignment buttons
+ */
+editor.on('toolbar-align-left', function(e) {
+	console.log('left');
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-aligncenter');
+	$(e.target).removeClass('pbs-alignright');
+	$(e.target).addClass('pbs-alignleft');
+	console.log(e.target);
+	//$(e.target).find([data-wpview-type="pbs_button"]).replaceAlignAttribute( 'pbs-button', 'pbs-alignleft' );
+});
+editor.on('toolbar-align-center', function(e) {
+	console.log('center');	
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-alignleft');
+	$(e.target).removeClass('pbs-alignright');
+	$(e.target).addClass('pbs-aligncenter');	
+	console.log(e.target);	
+});
+editor.on('toolbar-align-right', function(e) {
+	console.log('right');	
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-alignleft');
+	$(e.target).removeClass('pbs-aligncenter');
+	$(e.target).addClass('pbs-alignright');
+	console.log(e.target);	
+});
+
+function replaceAlignAttribute( shortcode, alignment ) {
+
+	var parts = shortcode.split( /%20align%3D%22(\w+)%22/i );
+	
+	// No alignment attribute yet
+	if ( parts.length === 1 ) {
+		parts = shortcode.split( /(%5D)/i );
+		
+		if ( parts.length > 1 ) {
+			return parts[0] + "%20align%3D%22" + alignment + "%22" + parts[1];
+		}
+	} else {
+		
+		return parts[0] + "%20align%3D%22" + alignment + "%22" + parts[2];
+	}
+}
 
 /**
  * Adds the toolbar
