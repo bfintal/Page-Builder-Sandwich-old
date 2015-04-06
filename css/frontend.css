@@ -1066,6 +1066,18 @@
   width: auto; }
 .pbsandwich_column.pbs-align-right .row {
   float: right; }
+.pbsandwich_column.pbs-align-center > .row {
+  display: inline-block;
+  left: 50%;
+  position: relative;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); }
+  .pbsandwich_column.pbs-align-center > .row:before, .pbsandwich_column.pbs-align-center > .row:after {
+    content: '';
+    display: none; }
 
 /**
  * HTML5 Videos
