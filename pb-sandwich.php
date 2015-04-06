@@ -3,7 +3,7 @@
 * Plugin Name: Page Builder Sandwich
 * Plugin URI: https://github.com/gambitph/Page-Builder-Sandwich
 * Description: The native visual editor page builder. Empower your visual editor with drag and drop & column capabilities.
-* Version: 0.11
+* Version: 0.12-dev
 * Author: Benjamin Intal - Gambit Technologies Inc
 * Author URI: http://gambit.ph
 * License: GPL2
@@ -15,7 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Used for tracking the version used
-defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.11' );
+defined( 'PBS_VERSION' ) or define( 'PBS_VERSION', '0.12-dev' );
 
 // Used for file includes
 defined( 'PBS_PATH' ) or define( 'PBS_PATH', trailingslashit( dirname( __FILE__ ) ) );
@@ -27,6 +27,7 @@ require_once( PBS_PATH . 'lib/columns.php' );
 require_once( PBS_PATH . 'lib/welcome.php' );
 require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/functions.php' );
+require_once( PBS_PATH . 'lib/toolbar.php' );
 
 // General list of shortcakes available to PB Sandwich. They include integrations from 3rd party plugins.
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );
@@ -82,6 +83,7 @@ class GambitPBSandwich {
 		add_action( 'init', array( $this, 'loadShortcake' ), 1 );
 		add_action( 'media_buttons', array( $this, 'addShortcodeButton' ), 100 );
 		add_action( 'admin_head', array( $this, 'addSandwichPlugin' ) );
+		add_filter( 'mce_buttons', array( $this, 'addPageBreakButton' ) );
 	}
 
 	
@@ -207,6 +209,33 @@ class GambitPBSandwich {
 	
 	public function addShortcodeButton() {
 		echo '<a href="#" class="button sandwich-add-shortcode"><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span> ' . __( 'Add Post Element', 'pbsandwich' ) . '</a>';
+	}
+	
+	
+	/**
+	 * Add a page break button. This is more of a friendly addition instead of a core feature, 
+	 * since it's lacking, might as well add it for convenience.
+	 *
+	 * @param $mceButtons array The existing TinyMCE buttons
+	 * @return An array of TinyMCE buttons
+	 * @see http://wpsites.net/wordpress-admin/how-to-add-next-page-links-in-posts-pages/3/
+	 */
+	public function addPageBreakButton( $mceButtons ) {
+		// Don't add it if it already exists
+		$pos = array_search( 'wp_page', $mceButtons, true );
+		if ( $pos !== false ) {
+			return;
+		}
+	
+		// Add the page break button
+		$pos = array_search( 'wp_more', $mceButtons, true );
+		if ( $pos !== false ) {
+			$tmpButtons = array_slice( $mceButtons, 0, $pos + 1 );
+			$tmpButtons[] = 'wp_page';
+			$mceButtons = array_merge( $tmpButtons, array_slice( $mceButtons, $pos + 1 ) );
+		}
+	
+		return $mceButtons;
 	}
 	
 }

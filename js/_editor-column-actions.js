@@ -105,6 +105,8 @@ editor.on('toolbar-column-clone-row', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-area', function(e) {
+	var $ = jQuery;
+	
 	var $selectedColumn = $(editor.getBody()).find('[data-wp-columnselect="1"]');
 	
 	var $innerColumn = $selectedColumn.find('> .inner-column:eq(0)');
@@ -378,8 +380,9 @@ editor.on('toolbar-column-remove-area', function(e) {
  * Column clone area/column toolbar button
  */
 editor.on('toolbar-column-clone-area', function(e) {
+	var $ = jQuery;
+	
 	preUpdateSortable( editor );
-
 	
 	var table = $(editor.getBody()).find('[data-wp-columnselect]').parents('.pbsandwich_column:eq(0)');
 	
@@ -516,6 +519,8 @@ editor.on('toolbar-column-clone-area', function(e) {
  * Renders the edit column modal
  */
 editor.on('toolbar-column-edit-row', function(e) {	
+	var $ = jQuery;
+	
 	var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
 
 	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
@@ -546,8 +551,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 		background_image_url: bgImageURL,
 		background_size: $selectedRow.css('backgroundSize'),
 		background_repeat: $selectedRow.css('backgroundRepeat'),
-		background_position: $selectedRow.css('backgroundPosition')
+		background_position: $selectedRow.css('backgroundPosition'),
+		full_width: $selectedRow.attr('data-break-out')
 	};
+
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
@@ -617,6 +624,7 @@ editor.on('toolbar-column-edit-row', function(e) {
 			}
 			$selectedRow.css('backgroundImage', img);
 			$selectedRow.attr('data-background-image', form.find('[name="background_image"]').val() );
+			$selectedRow.attr('data-break-out', form.find('[name="full_width"]').val() );
 
 			// Make the styles permanent
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
@@ -634,8 +642,8 @@ editor.on('toolbar-column-edit-row', function(e) {
  * Close the modal window when the enter key is pressed
  */
 jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', function(e) {
+	var $ = jQuery;
 	if ( e.which === 13 ) {
-		var $ = jQuery;
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
 });

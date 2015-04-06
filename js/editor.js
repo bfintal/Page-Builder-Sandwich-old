@@ -1,6 +1,8 @@
 // @codekit-append "_editor-add-post-element.js";
 // @codekit-append "_editor-start.js";
 // @codekit-append "_editor-core.js";
+// @codekit-append "_editor-toolbars.js";
+// @codekit-append "_editor-toolbar-actions.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
 

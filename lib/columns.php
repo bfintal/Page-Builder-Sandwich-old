@@ -24,6 +24,7 @@ class GambitPBSandwichColumns {
 		add_action( 'save_post', array( $this, 'rememberColumnStyles' ), 10, 3 );
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 		add_action( 'admin_footer', array( $this, 'addColumnTemplates' ) );
+		add_filter( 'pbs_toolbar_buttons', array( $this, 'addColumnToolbarButtons' ), 1 );
 	}
 	
 	
@@ -153,22 +154,29 @@ class GambitPBSandwichColumns {
 			'margin' => __( 'Margin', 'pbsandwich' ),
 			'row_settings' => __( 'Row Settings', 'pbsandwich' ),
 			
+			// Full-width rows
+			'full_width' => __( 'Full-width', 'pbsandwich' ),
+			'full_width_normal' => __( 'Do not break out into full width', 'pbsandwich' ),
+			'full_width_1' => sprintf( __( 'Break out of %s container', 'pbsandwich' ), '1' ),
+			'full_width_2' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '2' ),
+			'full_width_3' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '3' ),
+			'full_width_4' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '4' ),
+			'full_width_5' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '5' ),
+			'full_width_6' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '6' ),
+			'full_width_7' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '7' ),
+			'full_width_8' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '8' ),
+			'full_width_9' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '9' ),
+			'full_width_99' => __( 'Break out of all containers', 'pbsandwich' ),
+			'full_width_desc' => 'Rows are restricted to the content areas defined by your theme. You can use this to break out of the constraint and turn your row into a full width row.',
+			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
+		$columnVars = apply_filters( 'pbs_js_vars', $columnVars );
 		
 		// Print out our variables
 		?>
 		<script type="text/javascript">
-        var pbsandwich_column = {
-			<?php
-			$varString = '';
-			foreach ( $columnVars as $key => $value ) {
-				$varString .= empty( $varString ) ? '' : ',';
-				$varString .= "$key: '" . addslashes( $value ) . "'";
-			}
-			echo $varString;
-			?>
-        };
+		var pbsandwich_column = <?php echo json_encode( $columnVars ) ?>;
         </script>
 		<?php
 	}
@@ -225,7 +233,6 @@ class GambitPBSandwichColumns {
 		    return;
 	    }
 	
-		include_once PBS_PATH . "/lib/templates/column-toolbar.php";
 		include_once PBS_PATH . "/lib/templates/column-change-modal.php";
 		include_once PBS_PATH . "/lib/templates/column-custom-modal-description.php";
 		include_once PBS_PATH . "/lib/templates/column-area-edit-modal.php";
@@ -335,8 +342,20 @@ class GambitPBSandwichColumns {
 					$columnStyles .= '.sandwich.pbsandwich_column_%' . ( count( $hashes ) + 1 ) . '$s > div > div:nth-of-type(' . ( $key + 1 ) . ') { ' . wp_kses( $columnStyle, array(), array() ). ' }';
 				}
 				$styleDump .= esc_attr( $td->style );
+
+				// Gather all column data attributes
+				$dataAttributes = '';
+				foreach ( $td->getAllAttributes() as $key => $value ) {
+					if ( stripos( $key, 'data-' ) !== 0 || strlen( $value ) == '' ) {
+						continue;
+					}
+					if ( $key == 'data-wp-columnselect' ) { // This is a dummy attribute
+						continue;
+					}
+					$dataAttributes .= ' ' . $key . '="' . esc_attr( $value ) . '"';
+				}
 			
-				$newDivs .= '<div class="' . esc_attr( $td->class ) . '">' . $innerHTML . '</div>';
+				$newDivs .= '<div class="' . esc_attr( $td->class ) . '" ' . $dataAttributes . '>' . $innerHTML . '</div>';
 			}
 			
 			// Generate the unique ID of this column based on the margin rules it has. (crc32 is fast)
@@ -355,7 +374,18 @@ class GambitPBSandwichColumns {
 			if ( ! empty( $columnStyles ) ) {
 				$tableClasses[] = 'pbsandwich_column_' . $hash;
 			}
-			$newDivs = '<div class="' . esc_attr( join( ' ', $tableClasses ) ) . '"><div class="row">' . $newDivs . '</div></div>';
+
+			// Gather all row/table data attributes
+			$dataAttributes = '';
+			foreach ( $html->find( 'table.pbsandwich_column', 0 )->getAllAttributes() as $key => $value ) {
+				if ( stripos( $key, 'data-' ) !== 0 || strlen( $value ) == '' ) {
+					continue;
+				}
+				$dataAttributes .= ' ' . $key . '="' . esc_attr( $value ) . '"';
+			}
+
+			// Create the actual row div
+			$newDivs = '<div class="' . esc_attr( join( ' ', $tableClasses ) ) . '" ' . $dataAttributes . '><div class="row">' . $newDivs . '</div></div>';
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
@@ -379,6 +409,78 @@ class GambitPBSandwichColumns {
 			'content' => (string) $html,
 			'styles' => $columnStyles,
 		);
+	}
+	
+	
+	public function addColumnToolbarButtons( $toolbarButtons ) {
+		
+		$toolbarButtons[] = array(
+			'label' => __( 'Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1001,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-edit-area',
+			'icon' => 'dashicons dashicons-edit',
+			'label' => __( 'Edit Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1002,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-clone-area',
+			'icon' => 'dashicons dashicons-images-alt',
+			'label' => __( 'Clone Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1003,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-remove-area',
+			'icon' => 'dashicons dashicons-no-alt',
+			'label' => __( 'Delete Column', 'pbsandwich' ),
+			'shortcode' => 'column',
+			'priority' => 1004,
+		);
+		$toolbarButtons[] = array(
+			'label' => '|',
+			'shortcode' => 'column',
+			'priority' => 1005,
+		);
+		
+		$toolbarButtons[] = array(
+			'label' => __( 'Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1100,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-edit-row',
+			'icon' => 'dashicons dashicons-edit',
+			'label' => __( 'Edit Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1101,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-columns',
+			'icon' => 'dashicons dashicons-tagcloud',
+			'label' => __( 'Change Columns', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1102,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-clone-row',
+			'icon' => 'dashicons dashicons-images-alt',
+			'label' => __( 'Change Columns', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1103,
+		);
+		$toolbarButtons[] = array(
+			'action' => 'column-remove-row',
+			'icon' => 'dashicons dashicons-no-alt',
+			'label' => __( 'Delete Row', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1104,
+		);
+		
+		return $toolbarButtons;
 	}
 	
 }

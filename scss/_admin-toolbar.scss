@@ -1,0 +1,47 @@
+// Toolbar separators for the image toolbar
+.mce-container .mce-widget.mce-btn.sep {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    margin: 5px;
+    padding: 2px 0;
+    vertical-align: top;
+    background: #ccc;
+    border: 0;
+    pointer-events: none;
+}
+.mce-container .mce-widget.mce-btn.toolbar-label {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px;
+	vertical-align: middle;
+	opacity: .8;
+	padding: 2px 5px;
+	display: inline-block;
+	line-height: 20px;
+	margin: 2px;
+	pointer-events: none;
+}
+
+// Toolbar image shapes
+.mce-container .mce-widget.mce-btn {
+	.sandwich-circle,
+	.sandwich-rounded,
+	.sandwich-square,
+	.sandwich-rectangle {
+		background: transparent;
+		border: 2px solid #777;
+		box-sizing: border-box;
+	    border-radius: 100%;
+	    -webkit-transform: scale(.7);
+	    -moz-transform: scale(.7);
+	    -ms-transform: scale(.7);
+	    -o-transform: scale(.7);
+	    transform: scale(.7);
+	}
+	.sandwich-rounded {
+		border-radius: 4px;
+	}
+	.sandwich-square, .sandwich-rectangle {
+		border-radius: 0;
+	}
+}
