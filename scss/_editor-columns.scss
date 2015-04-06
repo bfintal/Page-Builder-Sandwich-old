@@ -25,6 +25,31 @@ body#tinymce.wp-editor {
 		table-layout: fixed;
         width: 100%;
 	}
+	
+	
+	/**
+	 * Row alignment
+	 */
+	.pbsandwich_column {
+		&.pbs-align-left {
+		    width: auto !important;
+		    margin-right: auto !important;
+		    margin-left: 0 !important;
+		}
+		&.pbs-align-right {
+		    width: auto !important;
+		    margin-right: 0 !important;
+		    margin-left: auto !important;
+		}
+		&.pbs-align-center {
+		    width: auto !important;
+		    margin-right: auto !important;
+		    margin-left: auto !important;
+		}
+		td {
+			min-width: 150px;
+		}
+	}
 
 
 	/**
