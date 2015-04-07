@@ -66,26 +66,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			<p class="description">{{ data.full_width_desc }}</p>
 		</div>
 		<div style="display: inline-block; width: 350px">
-			<h4>{{ data.border }}</h4>
-			<label for="border_style">
-				{{ data.style }}
-				<select id="border_style" name="border_style" value="{{ data.fields.border_style }}">
-					<option value="none"  <# if ( data.fields.border_style === 'none' ) { #> selected="selected" <# } #>>{{ data.none }}</option>
-					<option value="dotted"	<# if ( data.fields.border_style === 'dotted' ) { #> selected="selected" <# } #>>{{ data.dotted }}</option>
-					<option value="dashed"	<# if ( data.fields.border_style === 'dashed' ) { #> selected="selected" <# } #>>{{ data.dashed }}</option>
-					<option value="solid" <# if ( data.fields.border_style === 'solid' ) { #> selected="selected" <# } #>>{{ data.solid }}</option>
-					<option value="double" <# if ( data.fields.border_style === 'double' ) { #> selected="selected" <# } #>>{{ data.double }}</option>
-					<option value="groove" <# if ( data.fields.border_style === 'groove' ) { #> selected="selected" <# } #>>{{ data.groove }}</option>
-					<option value="ridge" <# if ( data.fields.border_style === 'ridge' ) { #> selected="selected" <# } #>>{{ data.ridge }}</option>
-					<option value="inset" <# if ( data.fields.border_style === 'inset' ) { #> selected="selected" <# } #>>{{ data.inset }}</option>
-					<option value="outset" <# if ( data.fields.border_style === 'outset' ) { #> selected="selected" <# } #>>{{ data.outset }}</option>
-				</select>
-			</label>
-			<label for="border_color">{{ data.color }} <input type="text" id="border_color" name="border_color" value="{{ data.fields.border_color }}"/></label>
-			<label for="border_radius">
-				{{ data.radius }}
-				<input type="number" id="border_radius" name="border_radius" value="{{ data.fields.border_radius }}" class="small-text" min="0" max="999" step="1"/>px
-			</label>
 			<h4>{{ data.background }}</h4>
 			<label for="background_color">{{ data.color }} <input type="text" id="background_color" name="background_color" value="{{ data.fields.background_color }}"/></label>
 			<label for="background_image" class="image_type">
@@ -118,6 +98,26 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			<label for="background_position">
 				{{ data.position }}
 				<input type="text" id="background_position" name="background_position" value="{{ data.fields.background_position }}"/>
+			</label>
+			<h4>{{ data.border }}</h4>
+			<label for="border_style">
+				{{ data.style }}
+				<select id="border_style" name="border_style" value="{{ data.fields.border_style }}">
+					<option value="none"  <# if ( data.fields.border_style === 'none' ) { #> selected="selected" <# } #>>{{ data.none }}</option>
+					<option value="dotted"	<# if ( data.fields.border_style === 'dotted' ) { #> selected="selected" <# } #>>{{ data.dotted }}</option>
+					<option value="dashed"	<# if ( data.fields.border_style === 'dashed' ) { #> selected="selected" <# } #>>{{ data.dashed }}</option>
+					<option value="solid" <# if ( data.fields.border_style === 'solid' ) { #> selected="selected" <# } #>>{{ data.solid }}</option>
+					<option value="double" <# if ( data.fields.border_style === 'double' ) { #> selected="selected" <# } #>>{{ data.double }}</option>
+					<option value="groove" <# if ( data.fields.border_style === 'groove' ) { #> selected="selected" <# } #>>{{ data.groove }}</option>
+					<option value="ridge" <# if ( data.fields.border_style === 'ridge' ) { #> selected="selected" <# } #>>{{ data.ridge }}</option>
+					<option value="inset" <# if ( data.fields.border_style === 'inset' ) { #> selected="selected" <# } #>>{{ data.inset }}</option>
+					<option value="outset" <# if ( data.fields.border_style === 'outset' ) { #> selected="selected" <# } #>>{{ data.outset }}</option>
+				</select>
+			</label>
+			<label for="border_color">{{ data.color }} <input type="text" id="border_color" name="border_color" value="{{ data.fields.border_color }}"/></label>
+			<label for="border_radius">
+				{{ data.radius }}
+				<input type="number" id="border_radius" name="border_radius" value="{{ data.fields.border_radius }}" class="small-text" min="0" max="999" step="1"/>px
 			</label>
 		</div>
 
