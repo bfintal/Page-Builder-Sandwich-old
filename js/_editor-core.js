@@ -408,7 +408,7 @@ editor.on('init', function(e) {
 		if ( wrapper === null ) {
 			return;
 		}
-		
+
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
 		 * always gets dragged
