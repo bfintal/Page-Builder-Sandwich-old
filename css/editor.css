@@ -840,16 +840,6 @@ form#event-form h3, form#event-form .inside {
   -ms-user-select: none;
   user-select: none; }
 
-.wpview-wrap.pbs-alignleft, .wpview-wrap.pbs-alignleft .wpview-body, .wpview-wrap.pbs-alignleft .wpview-overlay {
-  width: auto;
-  display: inline-block;
-  float: left; }
-
-.wpview-wrap.pbs-alignright, .wpview-wrap.pbs-alignright .wpview-body, .wpview-wrap.pbs-alignright .wpview-overlay {
-  width: auto;
-  display: inline-block;
-  float: right; }
-
 .wpview-type-pbs_button, .wpview-type-pbs_button > .sandwich, .pbs_button_element {
   width: auto;
   display: inline-block; }
