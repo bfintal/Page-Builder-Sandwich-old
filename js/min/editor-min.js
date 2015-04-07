@@ -418,8 +418,7 @@ editor.on('mousemove', function(e) {
 
 
 /**
- * Adds a clone button in shortcake/view toolbars.
- * Add a click handler & clone method for the new clone button.
+ * Bug fixers
  */
 editor.on('init', function(e) {
 	var $ = jQuery;
@@ -448,6 +447,31 @@ editor.on('init', function(e) {
 					$(this).trigger('mouseup');
 				}
 			}
+		}
+		
+	});
+	
+
+	/**
+	 * Fixes a bug where clicking views/elements in some areas for the first time initiates a drag
+	 */
+	$( editor.getBody() ).on('mouseup', function(e) {
+		
+		var wrapper = null;
+		if ( $(e.target).is('.wpview-wrap') ) {
+			wrapper = $(e.target);
+		} else if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
+			wrapper = $(e.target).parents('.wpview-wrap:eq(0)');
+		}
+		
+		if ( wrapper === null ) {
+			return;
+		}
+		
+		// Stop the drag
+		if ( $(e.target).is('[data-mce-selected]') === false ) {
+			e.stopPropagation();
+			$(this).trigger('mouseup');
 		}
 		
 	});
