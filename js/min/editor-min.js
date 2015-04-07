@@ -694,11 +694,11 @@ editor.on('show-toolbar-column', function(e) {
 				if ( button.priority >= 1000 ) {
 					newButton.clone().prependTo( toolbar );
 				} else if ( button.priority >= 100 ) { // Before the edit button
-					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="edit-area"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="column-edit-area"]') );
 				} else if ( button.priority >= 0 ) { // Between the edit/clone button and the remove button
-					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="remove-area"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="column-remove-area"]') );
 				} else { // After the remove button
-					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="remove-area"]') );
+					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="column-remove-area"]') );
 				}
 				
 			}
@@ -709,11 +709,11 @@ editor.on('show-toolbar-column', function(e) {
 				if ( button.priority >= 1000 ) {
 					newButton.clone().prependTo( toolbar );
 				} else if ( button.priority >= 100 ) { // Before the edit button
-					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="edit-row"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="column-edit-row"]') );
 				} else if ( button.priority >= 0 ) { // Between the edit/clone button and the remove button
-					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="remove-row"]') );
+					newButton.clone().insertBefore( toolbar.find('[data-toolbar-action="column-remove-row"]') );
 				} else { // After the remove button
-					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="remove-row"]') );
+					newButton.clone().insertAfter( toolbar.find('[data-toolbar-action="column-remove-row"]') );
 				}
 				
 			}
