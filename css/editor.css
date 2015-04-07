@@ -589,7 +589,8 @@ body#tinymce.wp-editor {
     vertical-align: top;
     background: #ccc; }
   body#tinymce.wp-editor .pbsandwich_column td img {
-    max-width: 100%; }
+    max-width: 100%;
+    height: auto; }
 
 body#tinymce.wp-editor {
   /**
