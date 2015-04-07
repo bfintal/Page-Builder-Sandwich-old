@@ -17,6 +17,7 @@ The goal is to create a page builder that
 
 # What you can do with it
 
+* Content areas with custom background images & colors
 * Create editable, nestable columns
 * Edit text and content using the TinyMCE visual editor like how you normally would
 * Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
@@ -32,6 +33,7 @@ We support the following shortcodes, widgets & elements:
 * Archives (Widget)
 * Audio (Add Media)
 * Audio Playlists (Add Media)
+* Button
 * Calendar (Widget)
 * Categories (Widget)
 * Contact Form (Jetpack)
@@ -42,6 +44,7 @@ We support the following shortcodes, widgets & elements:
 	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* Google Map (Jetpack)
 * HTML5 Video - Self-hosted
 * HTML5 Video - Remote-hosted
 * Images (Add Media)
@@ -49,6 +52,7 @@ We support the following shortcodes, widgets & elements:
 * Meta (Widget)
 * Pages (Widget)
 * Portfolio (Jetpack)
+* Progress bar
 * Recent Comments (Widget)
 * Recent Posts (Widget)
 * RSS (Widget)

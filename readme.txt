@@ -31,6 +31,7 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 = What can you do with it =
 
+* Content areas with custom background images & colors
 * Create editable, nestable columns
 * Edit text and content using the TinyMCE visual editor like how you normally would
 * Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
@@ -65,6 +66,7 @@ We support the following shortcodes, widgets & elements:
 	* If you have Jetpack's Shortcode Embeds module enabled, you can also embed Facebook, Github Gist, Google+, and Medium links
 * Facebook Like Box (Jetpack)
 * Gravatar Profile (Jetpack)
+* Google Map (Jetpack)
 * HTML5 Video - Self-hosted
 * HTML5 Video - Remote-hosted
 * Images (Add Media)
@@ -182,6 +184,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Added a page break button in TinyMCE for convenience
 * Security fixes for CWE-200
 * Images now won't make columns wider
+* Stability & bug fixes
 
 = 0.11 =
 
