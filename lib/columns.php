@@ -451,33 +451,70 @@ class GambitPBSandwichColumns {
 			'shortcode' => 'row',
 			'priority' => 1100,
 		);
+	    // Add align left button
+	    $toolbarButtons[] = array(
+	        'action' => 'row-align-left',
+	        'icon' => 'dashicons dashicons-align-left',
+	        'label' => __( 'Align Left', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1101,			
+	    );
+	    // Add align center button
+	    $toolbarButtons[] = array(
+	        'action' => 'row-align-center',
+	        'icon' => 'dashicons dashicons-align-center',
+	        'label' => __( 'Align Center', 'pbsandwich' ),
+			'shortcode' => 'row',
+			'priority' => 1102,			
+	    );
+	    // Add align right button
+	    $toolbarButtons[] = array(
+	        'action' => 'row-align-right',
+	        'icon' => 'dashicons dashicons-align-right',
+	        'label' => __( 'Align Right', 'pbsandwich' ),
+			'shortcode' => 'row',	
+			'priority' => 1103,			
+	    );
+	    // Add align none button
+	    $toolbarButtons[] = array(
+	        'action' => 'row-align-none',
+	        'icon' => 'dashicons dashicons-align-none',
+	        'label' => __( 'Align None', 'pbsandwich' ),
+			'shortcode' => 'row',	
+			'priority' => 1104,			
+	    );			
+	    $toolbarButtons[] = array(
+	        'label' => '|',
+			'shortcode' => 'row',
+			'priority' => 1105,			
+	    );
 		$toolbarButtons[] = array(
 			'action' => 'column-edit-row',
 			'icon' => 'dashicons dashicons-edit',
 			'label' => __( 'Edit Row', 'pbsandwich' ),
 			'shortcode' => 'row',
-			'priority' => 1101,
+			'priority' => 1106,
 		);
 		$toolbarButtons[] = array(
 			'action' => 'column-columns',
 			'icon' => 'dashicons dashicons-tagcloud',
 			'label' => __( 'Change Columns', 'pbsandwich' ),
 			'shortcode' => 'row',
-			'priority' => 1102,
+			'priority' => 1107,
 		);
 		$toolbarButtons[] = array(
 			'action' => 'column-clone-row',
 			'icon' => 'dashicons dashicons-images-alt',
 			'label' => __( 'Change Columns', 'pbsandwich' ),
 			'shortcode' => 'row',
-			'priority' => 1103,
+			'priority' => 1108,
 		);
 		$toolbarButtons[] = array(
 			'action' => 'column-remove-row',
 			'icon' => 'dashicons dashicons-no-alt',
 			'label' => __( 'Delete Row', 'pbsandwich' ),
 			'shortcode' => 'row',
-			'priority' => 1104,
+			'priority' => 1109,
 		);
 		
 		return $toolbarButtons;

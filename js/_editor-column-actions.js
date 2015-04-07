@@ -253,9 +253,9 @@ jQuery('body').on('click', '.sandwich_modal .image_type', function(e) {
 	
 	frame.on('open',function() {
 		var selection = frame.state().get('selection');
-		ids = imageContainer.find('[id="background_image"]').val().split(',');
+		var ids = imageContainer.find('[id="background_image"]').val().split(',');
 		ids.forEach(function(id) {
-			attachment = wp.media.attachment(id);
+			var attachment = wp.media.attachment(id);
 			attachment.fetch();
 			selection.add( attachment ? [ attachment ] : [] );
 		});
@@ -268,7 +268,7 @@ jQuery('body').on('click', '.sandwich_modal .image_type', function(e) {
 		
 			// Get the preview image
 			var image = attachment.attributes.sizes.full;
-			if ( typeof attachment.attributes.sizes.thumbnail != 'undefined' ) {
+			if ( typeof attachment.attributes.sizes.thumbnail !== 'undefined' ) {
 				image = attachment.attributes.sizes.thumbnail;
 			}
 			var url = image.url;
@@ -646,4 +646,28 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
 	if ( e.which === 13 ) {
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
+});
+
+
+/**
+ * Content alignment buttons
+ */
+editor.on('toolbar-row-align-left', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass( 'pbs-align-right pbs-align-center' );
+	$(e.target).addClass('pbs-align-left');
+});
+editor.on('toolbar-row-align-center', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-right');
+	$(e.target).addClass('pbs-align-center');	
+});
+editor.on('toolbar-row-align-right', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center');
+	$(e.target).addClass('pbs-align-right');
+});
+editor.on('toolbar-row-align-none', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center pbs-align-right');
 });

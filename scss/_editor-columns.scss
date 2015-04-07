@@ -24,6 +24,37 @@ body#tinymce.wp-editor {
 		margin: 10px 0 20px;
 		table-layout: fixed;
         width: 100%;
+		clear: both;
+		> tbody > tr > td {
+			min-width: 150px;
+		}
+	}
+	
+	
+	/**
+	 * Row alignment
+	 */
+	.pbsandwich_column {
+		&.pbs-align-left {
+		    width: auto !important;
+		    margin-right: auto !important;
+		    margin-left: 0 !important;
+		}
+		&.pbs-align-right {
+		    width: auto !important;
+		    margin-right: 0 !important;
+		    margin-left: auto !important;
+		}
+		&.pbs-align-center {
+		    width: auto !important;
+		    margin-right: auto !important;
+		    margin-left: auto !important;
+		}
+		&.pbs-align-left, &.pbs-align-right, &.pbs-align-center {
+			> tbody > tr > td {
+				width: auto !important;
+			}
+		}
 	}
 
 

@@ -528,6 +528,9 @@ body#tinymce.wp-editor {
    * Default styles
    */
   /**
+   * Row alignment
+   */
+  /**
    * Don't show drag handlers for our tables
    */
   /**
@@ -552,7 +555,24 @@ body#tinymce.wp-editor {
   body#tinymce.wp-editor .pbsandwich_column {
     margin: 10px 0 20px;
     table-layout: fixed;
-    width: 100%; }
+    width: 100%;
+    clear: both; }
+    body#tinymce.wp-editor .pbsandwich_column > tbody > tr > td {
+      min-width: 150px; }
+  body#tinymce.wp-editor .pbsandwich_column.pbs-align-left {
+    width: auto !important;
+    margin-right: auto !important;
+    margin-left: 0 !important; }
+  body#tinymce.wp-editor .pbsandwich_column.pbs-align-right {
+    width: auto !important;
+    margin-right: 0 !important;
+    margin-left: auto !important; }
+  body#tinymce.wp-editor .pbsandwich_column.pbs-align-center {
+    width: auto !important;
+    margin-right: auto !important;
+    margin-left: auto !important; }
+  body#tinymce.wp-editor .pbsandwich_column.pbs-align-left > tbody > tr > td, body#tinymce.wp-editor .pbsandwich_column.pbs-align-right > tbody > tr > td, body#tinymce.wp-editor .pbsandwich_column.pbs-align-center > tbody > tr > td {
+    width: auto !important; }
   body#tinymce.wp-editor .pbsandwich_column[data-mce-selected="1"] ~ .mce-resizehandle, body#tinymce.wp-editor.pbsandwich_column_selected .mce-resizehandle {
     display: none !important; }
   body#tinymce.wp-editor .pbsandwich_column td:hover,
