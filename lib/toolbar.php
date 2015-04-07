@@ -75,42 +75,6 @@ class GambitPBSandwichToolbar {
 			'priority' => 0,
 		);
 		
-		
-		/**
-		 * Image shape buttons
-		 */
-		$toolbarButtons[] = array(
-			'label' => '|',
-			'shortcode' => 'image',
-			'priority' => 91,
-		);
-		$toolbarButtons[] = array(
-			'action' => 'image-circle',
-			'icon' => 'sandwich-circle',
-			'label' => __( 'Circle', 'pbsandwich' ),
-			'shortcode' => 'image',
-			'priority' => 90,
-		);
-		$toolbarButtons[] = array(
-			'action' => 'image-rounded',
-			'icon' => 'sandwich-rounded',
-			'label' => __( 'Rounded Corners', 'pbsandwich' ),
-			'shortcode' => 'image',
-			'priority' => 89,
-		);
-		$toolbarButtons[] = array(
-			'action' => 'image-rectangle',
-			'icon' => 'sandwich-rectangle',
-			'label' => __( 'Rectangle', 'pbsandwich' ),
-			'shortcode' => 'image',
-			'priority' => 88,
-		);
-		$toolbarButtons[] = array(
-			'label' => '|',
-			'shortcode' => 'image',
-			'priority' => 81,
-		);
-		
 		return $toolbarButtons;
 	}
 	

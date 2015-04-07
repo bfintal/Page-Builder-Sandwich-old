@@ -844,23 +844,6 @@ editor.on('toolbar-clone', function(e) {
 	}
 });
 
-
-/**
- * Image shape buttons
- */
-editor.on('toolbar-image-circle', function(e) {
-	var $ = jQuery;
-	$(e.target).css('borderRadius', '100%').attr('data-mce-style', 'border-radius: 100%');
-});
-editor.on('toolbar-image-rounded', function(e) {
-	var $ = jQuery;
-	$(e.target).css('borderRadius', '5px').attr('data-mce-style', 'border-radius: 5px');
-});
-editor.on('toolbar-image-rectangle', function(e) {
-	var $ = jQuery;
-	$(e.target).css('borderRadius', '0px').attr('data-mce-style', 'border-radius: 0px');
-});
-
 /**
  * Adds the toolbar
  * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
