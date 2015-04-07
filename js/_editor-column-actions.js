@@ -654,7 +654,6 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
  */
 editor.on('toolbar-row-align-left', function(e) {
 	var $ = jQuery;
-	console.log($(e.target));
 	$(e.target).removeClass( 'pbs-align-right pbs-align-center' );
 	$(e.target).addClass('pbs-align-left');
 });
