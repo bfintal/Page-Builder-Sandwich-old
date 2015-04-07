@@ -647,3 +647,27 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
 });
+
+
+/**
+ * Content alignment buttons
+ */
+editor.on('toolbar-row-align-left', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass( 'pbs-align-center pbs-align-center' );
+	$(e.target).addClass('pbs-align-left');
+});
+editor.on('toolbar-row-align-center', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-right');
+	$(e.target).addClass('pbs-align-center');	
+});
+editor.on('toolbar-row-align-right', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center');
+	$(e.target).addClass('pbs-align-right');
+});
+editor.on('toolbar-row-align-none', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center pbs-align-right');
+});

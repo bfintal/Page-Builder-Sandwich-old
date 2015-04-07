@@ -842,53 +842,6 @@ editor.on('toolbar-image-rectangle', function(e) {
 	$(e.target).css('borderRadius', '0px');
 });
 
-
-/**
- * Content alignment buttons
- */
-editor.on('toolbar-align-left', function(e) {
-	console.log('left');
-	var $ = jQuery;
-	$(e.target).removeClass('pbs-aligncenter');
-	$(e.target).removeClass('pbs-alignright');
-	$(e.target).addClass('pbs-alignleft');
-	console.log(e.target);
-	//$(e.target).find([data-wpview-type="pbs_button"]).replaceAlignAttribute( 'pbs-button', 'pbs-alignleft' );
-});
-editor.on('toolbar-align-center', function(e) {
-	console.log('center');	
-	var $ = jQuery;
-	$(e.target).removeClass('pbs-alignleft');
-	$(e.target).removeClass('pbs-alignright');
-	$(e.target).addClass('pbs-aligncenter');	
-	console.log(e.target);	
-});
-editor.on('toolbar-align-right', function(e) {
-	console.log('right');	
-	var $ = jQuery;
-	$(e.target).removeClass('pbs-alignleft');
-	$(e.target).removeClass('pbs-aligncenter');
-	$(e.target).addClass('pbs-alignright');
-	console.log(e.target);	
-});
-
-function replaceAlignAttribute( shortcode, alignment ) {
-
-	var parts = shortcode.split( /%20align%3D%22(\w+)%22/i );
-	
-	// No alignment attribute yet
-	if ( parts.length === 1 ) {
-		parts = shortcode.split( /(%5D)/i );
-		
-		if ( parts.length > 1 ) {
-			return parts[0] + "%20align%3D%22" + alignment + "%22" + parts[1];
-		}
-	} else {
-		
-		return parts[0] + "%20align%3D%22" + alignment + "%22" + parts[2];
-	}
-}
-
 /**
  * Adds the toolbar
  * @see http://wordpress.stackexchange.com/questions/74762/hook-for-image-edit-popup
@@ -1985,6 +1938,30 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
 	if ( e.which === 13 ) {
 		$(this).parents('.mce-window').find('.mce-primary button').trigger('click');
 	}
+});
+
+
+/**
+ * Content alignment buttons
+ */
+editor.on('toolbar-row-align-left', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass( 'pbs-align-center pbs-align-center' );
+	$(e.target).addClass('pbs-align-left');
+});
+editor.on('toolbar-row-align-center', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-right');
+	$(e.target).addClass('pbs-align-center');	
+});
+editor.on('toolbar-row-align-right', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center');
+	$(e.target).addClass('pbs-align-right');
+});
+editor.on('toolbar-row-align-none', function(e) {
+	var $ = jQuery;
+	$(e.target).removeClass('pbs-align-left pbs-align-center pbs-align-right');
 });
 
 /**
