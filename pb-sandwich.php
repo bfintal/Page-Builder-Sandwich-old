@@ -41,6 +41,7 @@ require_once( PBS_PATH . 'lib/shortcode/button.php' );
 require_once( PBS_PATH . 'lib/shortcode/embed.php' );
 require_once( PBS_PATH . 'lib/shortcode/html5video.php');
 require_once( PBS_PATH . 'lib/shortcode/html5video-remote.php');
+require_once( PBS_PATH . 'lib/shortcode/video-niconico.php');
 require_once( PBS_PATH . 'lib/shortcode/widget-archives.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-calendar.php' );
 require_once( PBS_PATH . 'lib/shortcode/widget-categories.php' );
