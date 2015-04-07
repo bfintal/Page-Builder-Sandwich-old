@@ -24,6 +24,9 @@ body#tinymce.wp-editor {
 		margin: 10px 0 20px;
 		table-layout: fixed;
         width: 100%;
+		> tbody > tr > td {
+			min-width: 150px;
+		}
 	}
 	
 	
@@ -46,8 +49,10 @@ body#tinymce.wp-editor {
 		    margin-right: auto !important;
 		    margin-left: auto !important;
 		}
-		td {
-			min-width: 150px;
+		&.pbs-align-left, &.pbs-align-right, &.pbs-align-center {
+			> tbody > tr > td {
+				width: auto !important;
+			}
 		}
 	}
 

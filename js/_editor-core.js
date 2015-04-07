@@ -259,14 +259,14 @@ function fixShortcakeDragging( editor ) {
 			try {
 				$(editor.getBody()).sortable('disable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (e) { }
+			} catch (error) { }
 
 			parent.trigger('mouseup');
 
 			try {
 				$(editor.getBody()).sortable('enable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (e) { }
+			} catch (error) { }
 			
 		}
 	})
@@ -282,14 +282,14 @@ function fixShortcakeDragging( editor ) {
 			try {
 				$(editor.getBody()).sortable('disable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (e) { }
+			} catch (error) { }
 
 			iframe.parents('.wpview-wrap:eq(0)').trigger('mouseup');
 
 			try {
 				$(editor.getBody()).sortable('enable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (e) { }
+			} catch (error) { }
 			
 		}
 	})
@@ -361,12 +361,12 @@ function fixTableParagraphs( editor ) {
 		}
 		
 		// Columns that get emptied should still have a paragraph
-		if ( $(this).children().length == 0 ) {
+		if ( $(this).children().length === 0 ) {
 			$(this).append('<p></p>');
 		}
 		
 		// Columns with just a blank paragraph will not be edited unless they have a space
-		if ( $(this).children().length == 1 ) {
+		if ( $(this).children().length === 1 ) {
 			var firstChild = $(this).children(':eq(0)');
 			if ( firstChild.is('p') && firstChild.text() === '' ) {
 				firstChild.text( '\u00a0' );
@@ -413,7 +413,7 @@ editor.on('init', function(e) {
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
 		 * always gets dragged
 		 */
-		if ( ! $(e.target).is('.toolbar .dashicons') && ! $(e.target).parents('.toolbar').length > 0 ) {
+		if ( ! $(e.target).is('.toolbar .dashicons') && $(e.target).parents('.toolbar').length > 0 ) {
 			if ( wrapper.find('iframe').length > 0 ) {
 				e.stopPropagation();
 				if ( $(this).is('[data-check-move="1"]') ) {

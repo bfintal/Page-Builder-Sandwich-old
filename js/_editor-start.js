@@ -1,11 +1,6 @@
-
 (function() {
 	
 	/**
 	 * Add the button
 	 */
-    tinymce.PluginManager.add( 'pbsandwich', function( editor, url ) {
-		
-		
-		
-		
+    tinyMCE.PluginManager.add( 'pbsandwich', function( editor, url ) {

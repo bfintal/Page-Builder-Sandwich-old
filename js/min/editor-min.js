@@ -5,7 +5,6 @@
 // @codekit-append "_editor-toolbar-actions.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
-
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
 
@@ -20,17 +19,12 @@ jQuery(document).ready(function($) {
 	});
 });
 
-
 (function() {
 	
 	/**
 	 * Add the button
 	 */
-    tinymce.PluginManager.add( 'pbsandwich', function( editor, url ) {
-		
-		
-		
-		
+    tinyMCE.PluginManager.add( 'pbsandwich', function( editor, url ) {
 
 var sortableInit = false;
 
@@ -293,14 +287,14 @@ function fixShortcakeDragging( editor ) {
 			try {
 				$(editor.getBody()).sortable('disable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (e) { }
+			} catch (error) { }
 
 			parent.trigger('mouseup');
 
 			try {
 				$(editor.getBody()).sortable('enable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (e) { }
+			} catch (error) { }
 			
 		}
 	})
@@ -316,14 +310,14 @@ function fixShortcakeDragging( editor ) {
 			try {
 				$(editor.getBody()).sortable('disable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (e) { }
+			} catch (error) { }
 
 			iframe.parents('.wpview-wrap:eq(0)').trigger('mouseup');
 
 			try {
 				$(editor.getBody()).sortable('enable');
 				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (e) { }
+			} catch (error) { }
 			
 		}
 	})
@@ -395,12 +389,12 @@ function fixTableParagraphs( editor ) {
 		}
 		
 		// Columns that get emptied should still have a paragraph
-		if ( $(this).children().length == 0 ) {
+		if ( $(this).children().length === 0 ) {
 			$(this).append('<p></p>');
 		}
 		
 		// Columns with just a blank paragraph will not be edited unless they have a space
-		if ( $(this).children().length == 1 ) {
+		if ( $(this).children().length === 1 ) {
 			var firstChild = $(this).children(':eq(0)');
 			if ( firstChild.is('p') && firstChild.text() === '' ) {
 				firstChild.text( '\u00a0' );
@@ -442,12 +436,12 @@ editor.on('init', function(e) {
 		if ( wrapper === null ) {
 			return;
 		}
-		
+
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
 		 * always gets dragged
 		 */
-		if ( ! $(e.target).is('.toolbar .dashicons') && ! $(e.target).parents('.toolbar').length > 0 ) {
+		if ( ! $(e.target).is('.toolbar .dashicons') && $(e.target).parents('.toolbar').length > 0 ) {
 			if ( wrapper.find('iframe').length > 0 ) {
 				e.stopPropagation();
 				if ( $(this).is('[data-check-move="1"]') ) {
@@ -511,6 +505,7 @@ editor.on('wp-body-class-change change', function(e) {
 	$(editor.getBody()).find('.wpview-body .wpview-content:has(iframe):not(:has( ~ .wpview-overlay))').after( '<div class="wpview-overlay"></div>' );
 
 });
+
 
 /**
  * Toolbar functionality
@@ -890,7 +885,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );
 	
-	var left = rectangle.x + rectangle.w / 2;
+	left = rectangle.x + rectangle.w / 2;
 		
 	// Adjust the location if the toolbar goes past the right side
 	if ( left + $(toolbar).width() - $(toolbar).width() / 2 > editorWidth ) {
@@ -941,7 +936,9 @@ function _pbsandwich_removeColumnToolbar( editor ) {
 function _pbsandwich_columns_sprintf( format, etc ) {
     var arg = arguments;
     var i = 1;
-    return format.replace(/%((%)|s)/g, function (m) { return m[2] || arg[i++] })
+    return format.replace(/%((%)|s)/g, function (m) { 
+		return m[2] || arg[ i++ ];
+	});
 }
 
 
@@ -958,7 +955,7 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 	var contents = [];
 	
 	var $content = $('<div></div>').html(content);
-	if ( $content.find('table.pbsandwich_column').length == 0 ) {
+	if ( $content.find('table.pbsandwich_column').length === 0 ) {
 		return pbsandwich_column.dummy_content;
 	}
 	
@@ -975,7 +972,7 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 					} else {
 						innerHTML = $('<p></p>').html(content);
 					}
-				} catch (e) {
+				} catch (error) {
 					innerHTML = $('<p></p>').html(content);
 				}
 				
@@ -1051,7 +1048,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 			} else {
 				innerHTML = $('<p></p>').html(columnContent);
 			}
-		} catch (e) {
+		} catch (error) {
 			innerHTML = $('<p></p>').html(columnContent);
 		}
 		
@@ -1545,9 +1542,9 @@ jQuery('body').on('click', '.sandwich_modal .image_type', function(e) {
 	
 	frame.on('open',function() {
 		var selection = frame.state().get('selection');
-		ids = imageContainer.find('[id="background_image"]').val().split(',');
+		var ids = imageContainer.find('[id="background_image"]').val().split(',');
 		ids.forEach(function(id) {
-			attachment = wp.media.attachment(id);
+			var attachment = wp.media.attachment(id);
 			attachment.fetch();
 			selection.add( attachment ? [ attachment ] : [] );
 		});
@@ -1560,7 +1557,7 @@ jQuery('body').on('click', '.sandwich_modal .image_type', function(e) {
 		
 			// Get the preview image
 			var image = attachment.attributes.sizes.full;
-			if ( typeof attachment.attributes.sizes.thumbnail != 'undefined' ) {
+			if ( typeof attachment.attributes.sizes.thumbnail !== 'undefined' ) {
 				image = attachment.attributes.sizes.thumbnail;
 			}
 			var url = image.url;
@@ -1946,7 +1943,8 @@ jQuery('body').on('keypress', '.sandwich_modal input, .sandwich_modal select', f
  */
 editor.on('toolbar-row-align-left', function(e) {
 	var $ = jQuery;
-	$(e.target).removeClass( 'pbs-align-center pbs-align-center' );
+	console.log($(e.target));
+	$(e.target).removeClass( 'pbs-align-right pbs-align-center' );
 	$(e.target).addClass('pbs-align-left');
 });
 editor.on('toolbar-row-align-center', function(e) {
@@ -1968,7 +1966,7 @@ editor.on('toolbar-row-align-none', function(e) {
  * Jetpack Contact Form
  * Make Shortcake's edit button open up Jetpack's Contact Form UI instead
  */
-editor.on('init', function(e) {
+editor.on('init', function() {
 	var $ = jQuery;
 	
 	$( editor.getBody() ).on('mousedown', '[data-wpview-type="contact-form"] .toolbar .edit', function(e) {

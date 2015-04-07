@@ -46,7 +46,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	editor.getBody().appendChild( toolbar );
 	rectangle = dom.getRect( node );
 	
-	var left = rectangle.x + rectangle.w / 2;
+	left = rectangle.x + rectangle.w / 2;
 		
 	// Adjust the location if the toolbar goes past the right side
 	if ( left + $(toolbar).width() - $(toolbar).width() / 2 > editorWidth ) {
@@ -97,7 +97,9 @@ function _pbsandwich_removeColumnToolbar( editor ) {
 function _pbsandwich_columns_sprintf( format, etc ) {
     var arg = arguments;
     var i = 1;
-    return format.replace(/%((%)|s)/g, function (m) { return m[2] || arg[i++] })
+    return format.replace(/%((%)|s)/g, function (m) { 
+		return m[2] || arg[ i++ ];
+	});
 }
 
 
@@ -114,7 +116,7 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 	var contents = [];
 	
 	var $content = $('<div></div>').html(content);
-	if ( $content.find('table.pbsandwich_column').length == 0 ) {
+	if ( $content.find('table.pbsandwich_column').length === 0 ) {
 		return pbsandwich_column.dummy_content;
 	}
 	
@@ -131,7 +133,7 @@ function _pbsandwich_columns_formContent( content, numColumns ) {
 					} else {
 						innerHTML = $('<p></p>').html(content);
 					}
-				} catch (e) {
+				} catch (error) {
 					innerHTML = $('<p></p>').html(content);
 				}
 				
@@ -207,7 +209,7 @@ function _pbsandwich_columns_formTable( columns, content ) {
 			} else {
 				innerHTML = $('<p></p>').html(columnContent);
 			}
-		} catch (e) {
+		} catch (error) {
 			innerHTML = $('<p></p>').html(columnContent);
 		}
 		
