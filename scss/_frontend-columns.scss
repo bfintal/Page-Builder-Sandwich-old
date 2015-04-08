@@ -57,6 +57,13 @@
 			width: auto;
 		}
 	}
+	&.pbs-align-center {
+		text-align: left; // This is needed to make sure the row centers
+		.row {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
 	&.pbs-align-right .row {
 		float: right;
 	}

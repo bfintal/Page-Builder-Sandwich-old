@@ -1066,6 +1066,11 @@
  */
 .pbsandwich_column.pbs-align-left > .row > div, .pbsandwich_column.pbs-align-right > .row > div, .pbsandwich_column.pbs-align-center > .row > div {
   width: auto; }
+.pbsandwich_column.pbs-align-center {
+  text-align: left; }
+  .pbsandwich_column.pbs-align-center .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
 .pbsandwich_column.pbs-align-right .row {
   float: right; }
 .pbsandwich_column.pbs-align-center > .row {
