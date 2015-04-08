@@ -169,7 +169,7 @@ function sandwich_buttons() {
                     'label' => __( 'Open link in a new window?', 'pbsandwich' ),
                     'attr' => 'target',
                     'type' => 'checkbox',
-					'value' => 'true',
+					'value' => 'false',
                 ),
                 array(
                     'label' => __( 'Alignment', 'pbsandwich' ),
@@ -205,7 +205,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'border' => '',
         'radius' => '',
         'url' => '#',
-        'target' => 'true',
+        'target' => 'false',
 		'align' => 'center',
         'full_width' => 'false',
     ) );
@@ -223,7 +223,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	}
 
 	$appendices = ' href="' . esc_url( $attr['url'] ) . '"';
-	if ( $attr['target'] == 'true' ) {
+	if ( $attr['target'] == 'true' || $attr['target'] === true ) {
 		$appendices .= ' target="_blank"';
 	}
 
