@@ -2000,10 +2000,10 @@ editor.on('init', function() {
 	});
 });
 
-jQuery(document).ready(function($) {
-		var doc = $('pbs-nnd-video-thumb', window.parent.document ).contents();
-		var nur = doc.height('auto');
-		console.log(nur);
+$(document).ready(function() {
+		var doc = $('pbs-nnd-video-thumb', window.parent.document ).find('html');
+		doc.height('auto');
+		console.log(doc);
 });
 /**
  * Click handler for the "Add Post Element" button. Basically we open the WP Media Manager then activate the shortcake state
