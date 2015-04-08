@@ -6,4 +6,11 @@
 			text-decoration: none;
 		}
 	}
+	text-align: center;
+	&.pbs_button_align_left {
+		text-align: left;
+	}
+	&.pbs_button_align_right {
+		text-align: right;
+	}
 }

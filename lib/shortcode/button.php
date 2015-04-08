@@ -44,6 +44,18 @@ function sandwich_buttons_button_type() {
 }
 
 /**
+ * Selections for button alignment
+ */
+
+function sandwich_buttons_align() {
+	$output = array();
+	$output['left'] = __( "left", 'pbsandwich' );
+	$output['center'] = __( "center", 'pbsandwich' );
+	$output['right'] = __( "right", 'pbsandwich' );
+	return $output;
+}
+
+/**
  * Creates the view for Bootstrap Buttons
  */
 
@@ -160,6 +172,13 @@ function sandwich_buttons() {
 					'value' => 'true',
                 ),
                 array(
+                    'label' => __( 'Alignment', 'pbsandwich' ),
+                    'attr' => 'align',
+                    'type' => 'select',
+					'options' => sandwich_buttons_align(),
+					'value' => 'center',
+                ),
+                array(
                     'label' => __( 'Full-width Button', 'pbsandwich' ),
                     'attr' => 'full_width',
                     'type' => 'checkbox',
@@ -187,6 +206,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
         'radius' => '',
         'url' => '#',
         'target' => 'true',
+		'align' => 'center',
         'full_width' => 'false',
     ) );
 
@@ -259,7 +279,7 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 
 	?>
 
-	<div class="sandwich pbs_button_element">
+	<div class="sandwich pbs_button pbs_button_align_<?php echo esc_attr( $attr['align'] ) ?>">
 		<a id="pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>" class="pbs_button btn<?php echo $btnclass ?>" <?php echo $appendices ?> <?php echo $styling ?>>
 			<?php echo esc_attr( $attr['label'] ) ?>
 		</a>

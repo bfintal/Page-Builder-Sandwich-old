@@ -1015,9 +1015,14 @@
  * Button shortcode
  */
 .sandwich .pbs_button {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  text-align: center; }
   .sandwich .pbs_button, .sandwich .pbs_button:hover, .sandwich .pbs_button a, .sandwich .pbs_button a:hover, .sandwich .pbs_button a:link, .sandwich .pbs_button a:link:hover, .sandwich .pbs_button a:visited, .sandwich .pbs_button a:visited:hover {
     text-decoration: none; }
+  .sandwich .pbs_button.pbs_button_align_left {
+    text-align: left; }
+  .sandwich .pbs_button.pbs_button_align_right {
+    text-align: right; }
 
 /**
  * Fix box-sizing widths
