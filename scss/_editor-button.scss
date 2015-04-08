@@ -1,3 +1,9 @@
 .sandwich .pbs_button {
 	box-sizing: border-box;
+	text-decoration: none;
+	a, a:link, a:visited {
+		&, &:hover {
+			text-decoration: none;
+		}
+	}
 }

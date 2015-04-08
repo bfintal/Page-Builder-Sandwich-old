@@ -3,4 +3,9 @@
  */
 .sandwich .pbs_button {
 	margin-bottom: 20px;
+	&, a, a:link, a:visited {
+		&, &:hover {
+			text-decoration: none;
+		}
+	}
 }

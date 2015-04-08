@@ -1016,6 +1016,8 @@
  */
 .sandwich .pbs_button {
   margin-bottom: 20px; }
+  .sandwich .pbs_button, .sandwich .pbs_button:hover, .sandwich .pbs_button a, .sandwich .pbs_button a:hover, .sandwich .pbs_button a:link, .sandwich .pbs_button a:link:hover, .sandwich .pbs_button a:visited, .sandwich .pbs_button a:visited:hover {
+    text-decoration: none; }
 
 /**
  * Fix box-sizing widths
