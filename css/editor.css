@@ -851,3 +851,6 @@ form#event-form h3, form#event-form .inside {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+.pbs-niconicovideo iframe > html {
+  overflow-y: hidden !important; }
