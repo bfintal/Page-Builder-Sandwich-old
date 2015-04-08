@@ -697,7 +697,10 @@ editor.on('show-toolbar-column', function(e) {
 				newButton = $('<div class="sep" data-mce-bogus="1"></div>');
 				
 			} else if ( button.action === '' ) {
-				newButton = $('<div class="toolbar-label" data-mce-bogus="1"></div>').text( button.label );
+				// Instead of outright printing the label, add it as a pseudo element so it won't get printed in the content
+				newButton = $('<div class="toolbar-label" data-mce-bogus="1"></div>')
+				.addClass('hash-' + button.hash)
+				.append('<style>.hash-' + button.hash + ':before { content: "' + button.label.replace(/"/g, '\\\"') + '" }</style>');
 				
 				
 			} else {
