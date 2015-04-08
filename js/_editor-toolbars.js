@@ -215,6 +215,15 @@ editor.on('show-toolbar-column', function(e) {
 		});
 
 	}
+	
+	
+	// Dispatch toolbar show event
+	editor.fire( 'toolbar-column-buttons-done', {
+		'editor': editor,
+		'target': e.target,
+		'toolbar': e.toolbar,
+		'node': e.node
+	} );
 });
 
 

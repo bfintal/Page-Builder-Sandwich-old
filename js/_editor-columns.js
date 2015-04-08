@@ -35,8 +35,6 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	dom.setAttrib( node, 'data-wp-columnselect', 1 );
 
 	// Create the toolbar
-	var editorWidth = $(editor.getDoc()).width();
-		
 	toolbar = dom.create( 'div', {
 		'id': 'wp-column-toolbar',
 		'data-mce-bogus': '1',
@@ -44,8 +42,37 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 	});
 
 	editor.getBody().appendChild( toolbar );
+	
+	// Dispatch toolbar show event
+	editor.fire( 'show-toolbar-column', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
+		'toolbar': toolbar,
+		'node': node
+	} );
+}
+
+
+/**
+ * Makes sure that the column toolbar is always visible
+ */
+editor.on('toolbar-column-buttons-done', function(e) {
+	var $ = jQuery;
+	var rectangle, left, 
+	node = e.node,
+	dom = editor.dom
+	toolbar = e.toolbar,
+	editorWidth = $(editor.getDoc()).width();
+	
+	// Get the column selected
+	if ( ! $(node).is('td') ) {
+		node = $(node).parents('td:eq(0)')[0];
+	}
+	
+	// Get the column area
 	rectangle = dom.getRect( node );
 	
+	// This is the left location of the toolbar
 	left = rectangle.x + rectangle.w / 2;
 		
 	// Adjust the location if the toolbar goes past the right side
@@ -68,14 +95,7 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		top: top,
 		left: left
 	});
-	
-	// Dispatch toolbar show event
-	editor.fire( 'show-toolbar-column', {
-		'editor': editor,
-		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
-		'toolbar': toolbar
-	} );
-}
+});
 
 
 /**
