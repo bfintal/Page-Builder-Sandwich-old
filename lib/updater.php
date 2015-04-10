@@ -28,8 +28,8 @@ class GambitPBSandwichExtUpdater {
 	protected $extensions;
 	
 	function __construct() {
-		add_action( 'admin_menu', array( $this, 'gatherExtensions' ), 0 );
-		add_action( 'admin_init', array( $this, 'checkForUpdates' ), 1 );
+		add_action( 'admin_menu', array( $this, 'gatherExtensions' ), 1 );
+		add_action( 'admin_init', array( $this, 'checkForUpdates' ), 2 );
 		add_action( 'admin_menu', array( $this, 'createLicensesPage' ) );
 		add_action( 'admin_init', array( $this, 'activateDeactivateLicense' ) );
 	}
@@ -179,9 +179,6 @@ class GambitPBSandwichExtUpdater {
 	public function activateDeactivateLicense() {
 		
 		// Security checks
-		if ( ! is_admin() ) {
-			return;
-		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
