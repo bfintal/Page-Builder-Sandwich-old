@@ -28,12 +28,16 @@ class GambitPBSandwichExtUpdater {
 	protected $extensions;
 	
 	function __construct() {
-		add_action( 'admin_menu', array( $this, 'gatherExtensions' ), 1 );
 		add_action( 'admin_init', array( $this, 'checkForUpdates' ), 2 );
-		add_action( 'admin_menu', array( $this, 'createLicensesPage' ) );
 		add_action( 'admin_init', array( $this, 'activateDeactivateLicense' ) );
 
-		add_action( 'network_admin_menu', array( $this, 'createLicensesPage' ) );
+		if ( ! is_multisite() ) {
+			add_action( 'admin_menu', array( $this, 'gatherExtensions' ), 1 );
+			add_action( 'admin_menu', array( $this, 'createLicensesPage' ) );
+		} else {
+			add_action( 'network_admin_menu', array( $this, 'gatherExtensions' ), 1 );
+			add_action( 'network_admin_menu', array( $this, 'createLicensesPage' ) );
+		}
 	}
 	
 	public function gatherExtensions() {
