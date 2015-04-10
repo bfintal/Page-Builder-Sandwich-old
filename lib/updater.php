@@ -142,7 +142,11 @@ class GambitPBSandwichExtUpdater {
 							<?php $licenseStatus = get_option( 'sandwich_license_status_' . $slug ); ?>
 							<tr valign="top">	
 								<th>
-									<?php echo $extension['name'] ?>
+									<?php if ( ! empty( $extension['url'] ) ) : ?>
+										<a href='<?php echo esc_url( $extension['url'] ) ?>'><?php echo $extension['name'] ?></a>
+									<?php else : ?>
+										<?php echo $extension['name'] ?>
+									<?php endif; ?>
 								</th>
 								<td>
 									<?php if ( $licenseStatus == 'valid' ) : ?>
