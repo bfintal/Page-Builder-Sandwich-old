@@ -32,6 +32,8 @@ class GambitPBSandwichExtUpdater {
 		add_action( 'admin_init', array( $this, 'checkForUpdates' ), 2 );
 		add_action( 'admin_menu', array( $this, 'createLicensesPage' ) );
 		add_action( 'admin_init', array( $this, 'activateDeactivateLicense' ) );
+
+		add_action( 'network_admin_menu', array( $this, 'createLicensesPage' ) );
 	}
 	
 	public function gatherExtensions() {
@@ -53,13 +55,17 @@ class GambitPBSandwichExtUpdater {
 		foreach ( $this->extensions as $extension ) {
 		
 			// Only check for updates every 3 hours
-			$updateChecker = get_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'] );
+			if ( ! is_multisite() ) {
+				$updateChecker = get_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'] );
+			} else {
+				$updateChecker = get_site_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'] );
+			}
 			if ( false !== $updateChecker && ! self::DEBUG ) {
 				continue;
 			}
 			
 			// retrieve our license key from the DB
-			$licenseKey = get_option( 'sandwich_license_' . $extension['slug'] );
+			$licenseKey = get_site_option( 'sandwich_license_' . $extension['slug'] );
 			if ( empty( $licenseKey ) ) {
 				continue;
 			}
@@ -73,15 +79,19 @@ class GambitPBSandwichExtUpdater {
 					'author' => $extension['author'], // author of this plugin
 				)
 			);
-			
-			set_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'], '1', 3 * HOUR_IN_SECONDS );
+
+			if ( ! is_multisite() ) {
+				set_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'], '1', 3 * HOUR_IN_SECONDS );
+			} else {
+				set_site_transient( self::UPDATE_CHECKER_TRANSIENT . $extension['slug'], '1', 3 * HOUR_IN_SECONDS );
+			}
 			
 		}
 	}
 	
 	public function createLicensesPage() {
 		if ( count( $this->extensions ) ) {
-			add_plugins_page( 'PB Sandwich', 'PB Sandwich', 'manage_options', self::LICENSES_ADMIN_SLUG, array( $this, 'renderLicensesPage' ) );
+			add_submenu_page( 'plugins.php', 'PB Sandwich', 'PB Sandwich', 'manage_options', self::LICENSES_ADMIN_SLUG, array( $this, 'renderLicensesPage' ) );
 		}
 	}
 	
@@ -139,7 +149,7 @@ class GambitPBSandwichExtUpdater {
 					
 					<tbody>
 						<?php foreach ( $this->extensions as $slug => $extension ) : ?>
-							<?php $licenseStatus = get_option( 'sandwich_license_status_' . $slug ); ?>
+							<?php $licenseStatus = get_site_option( 'sandwich_license_status_' . $slug ); ?>
 							<tr valign="top">	
 								<th>
 									<?php if ( ! empty( $extension['url'] ) ) : ?>
@@ -157,7 +167,7 @@ class GambitPBSandwichExtUpdater {
 								</td>
 								<td>
 									<input type="hidden" name="extension" value="<?php echo esc_attr( $slug ) ?>"/>
-									<input id="license_key_<?php echo esc_attr( $slug ) ?>" name="license_key_<?php echo esc_attr( $slug ) ?>" type="text" class="regular-text" value="<?php echo esc_attr( get_option( 'sandwich_license_' . $slug ) ) ?>" />
+									<input id="license_key_<?php echo esc_attr( $slug ) ?>" name="license_key_<?php echo esc_attr( $slug ) ?>" type="text" class="regular-text" value="<?php echo esc_attr( get_site_option( 'sandwich_license_' . $slug ) ) ?>" />
 									<?php if ( $licenseStatus == 'valid' ) : ?>
 										<button class="button-secondary edd_license_deactivate"><?php _e( 'Deactivate License', 'pbsandwich' ) ?></button>
 									<?php else : ?>
@@ -202,7 +212,11 @@ class GambitPBSandwichExtUpdater {
 				$license = esc_attr( $_POST['license_key_' . $_POST['extension_being_activated'] ] );
 				
 				// Save the license
-				update_option( 'sandwich_license_' . $slug, $license );
+				if ( ! is_multisite() ) {
+					update_option( 'sandwich_license_' . $slug, $license );
+				} else {
+					update_site_option( 'sandwich_license_' . $slug, $license );
+				}
 				
 				if ( empty( $license ) ) {
 					continue;
@@ -230,30 +244,46 @@ class GambitPBSandwichExtUpdater {
 				if ( $_POST['license_action'] == 'activate_license' ) {
 					
 					// $$licenseData->license will be either "valid" or "invalid"
-					update_option( 'sandwich_license_status_' . $slug, $licenseData->license );
+					if ( ! is_multisite() ) {
+						update_option( 'sandwich_license_status_' . $slug, $licenseData->license );
+					} else {
+						update_site_option( 'sandwich_license_status_' . $slug, $licenseData->license );
+					}
 		
 				} else {
 		
 					// $license_data->license will be either "deactivated" or "failed"
 					if ( $licenseData->license == 'deactivated' ) {
-						delete_option( 'sandwich_license_status_' . $slug );
+						if ( ! is_multisite() ) {
+							delete_option( 'sandwich_license_status_' . $slug );
+						} else {
+							delete_site_option( 'sandwich_license_status_' . $slug );
+						}
 					}
 				}
 				
-				delete_transient( self::UPDATE_CHECKER_TRANSIENT . $slug );
+				if ( ! is_multisite() ) {
+					delete_transient( self::UPDATE_CHECKER_TRANSIENT . $slug );
+				} else {
+					delete_site_transient( self::UPDATE_CHECKER_TRANSIENT . $slug );
+				}
 		
 			// Just save the licenses of the extensions which are not active
 			} else {
 				
 				// Check if it's license is active
-				$licenseStatus = get_option( 'sandwich_license_status_' . $slug );
+				$licenseStatus = get_site_option( 'sandwich_license_status_' . $slug );
 				if ( $licenseStatus != 'valid' ) {
-					update_option( 'sandwich_license_' . $slug, esc_attr( $_POST[ 'license_key_' . $slug ] ) );
+					if ( ! is_multisite() ) {
+						update_option( 'sandwich_license_' . $slug, esc_attr( $_POST[ 'license_key_' . $slug ] ) );
+					} else {
+						update_site_option( 'sandwich_license_' . $slug, esc_attr( $_POST[ 'license_key_' . $slug ] ) );
+					}
 				}
 			}
 		}
 
-		wp_redirect( admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG ) );
+		wp_redirect( network_admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG ) );
 	}
 
 }
