@@ -89,9 +89,9 @@ class GambitPBSandwichExtUpdater {
 		?>
 		<script>
 		jQuery(document).ready(function($) {
-			$('body').on('keypress', '#pbs_licenses input', function(e) {
+			$('body').on('keypress', '#pbs_licenses input[type="text"]', function(e) {
 				if ( e.which === 13 ) {
-					$('[name="edd_license_activate"],[name="edd_license_deactivate"]').trigger('click');
+					$(this).parent().find('button').trigger('click');
 					return false;
 				}
 			});
