@@ -24,6 +24,7 @@ class GambitPBSandwichExtUpdater {
 	 * 	'version' => string The current version of the extension plugin
 	 * 	'author' => string The author name of the extension
 	 * 	'ssl' => boolean Whether to use SSL for authentication
+	 * 	'url' => string The extension's home url, for linking purposes
 	 */
 	protected $extensions;
 	
