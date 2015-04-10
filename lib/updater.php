@@ -30,6 +30,7 @@ class GambitPBSandwichExtUpdater {
 	function __construct() {
 		add_action( 'admin_init', array( $this, 'checkForUpdates' ), 2 );
 		add_action( 'admin_init', array( $this, 'activateDeactivateLicense' ) );
+		add_action( 'admin_notices', array( $this, 'displayErrorNotice' ) );
 
 		if ( ! is_multisite() ) {
 			add_action( 'admin_menu', array( $this, 'gatherExtensions' ), 1 );
@@ -39,6 +40,7 @@ class GambitPBSandwichExtUpdater {
 			add_action( 'network_admin_menu', array( $this, 'createLicensesPage' ) );
 		}
 	}
+	
 	
 	public function gatherExtensions() {
 		$extensions = apply_filters( 'pbs_extension_updater', array() );
@@ -54,6 +56,7 @@ class GambitPBSandwichExtUpdater {
 		// Sort by name
 		ksort( $this->extensions );
 	}
+	
 	
 	public function checkForUpdates() {
 		foreach ( $this->extensions as $extension ) {
@@ -93,11 +96,15 @@ class GambitPBSandwichExtUpdater {
 		}
 	}
 	
+	
 	public function createLicensesPage() {
 		if ( count( $this->extensions ) ) {
 			add_submenu_page( 'plugins.php', 'PB Sandwich', 'PB Sandwich', 'manage_options', self::LICENSES_ADMIN_SLUG, array( $this, 'renderLicensesPage' ) );
+		} else {
+			add_submenu_page( 'plugins.php', 'PB Sandwich', 'PB Sandwich', 'manage_options', self::LICENSES_ADMIN_SLUG, array( $this, 'renderLicensesPage' ) );
 		}
 	}
+	
 	
 	public function renderLicensesPage() {
 		?>
@@ -190,6 +197,7 @@ class GambitPBSandwichExtUpdater {
 		<?php
 	}
 	
+	
 	public function activateDeactivateLicense() {
 		
 		// Security checks
@@ -208,6 +216,7 @@ class GambitPBSandwichExtUpdater {
 			return; // get out if we didn't click the Activate button
 		}
 		
+		$errorMessage = '';
 		foreach ( $this->extensions as $slug => $extension ) {
 			
 			// The license which is being activated/deactivated
@@ -239,6 +248,7 @@ class GambitPBSandwichExtUpdater {
 
 				// make sure the response came back okay
 				if ( is_wp_error( $response ) ) {
+					$errorMessage = $response->get_error_message();
 					continue;
 				}
 				
@@ -287,7 +297,27 @@ class GambitPBSandwichExtUpdater {
 			}
 		}
 
-		wp_redirect( network_admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG ) );
+		if ( $errorMessage ) {
+			wp_redirect( network_admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG . '&error=' . urlencode( $errorMessage ) ) );
+		} else {
+			wp_redirect( network_admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG ) );
+		}
+	}
+	
+	
+	public function displayErrorNotice() {
+		// Security checks
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		if ( empty( $_GET['page'] ) || empty( $_GET['error'] ) ) {
+			return;
+		}
+		if ( $_GET['page'] !== self::LICENSES_ADMIN_SLUG ) {
+			return;
+		}
+		
+		?><div class="error"><p><?php _e( 'There was an error with the activation/deactivation of your license key. We got this message:', 'pbsandwich' ) ?></p><p><?php echo esc_html( $_GET['error'] ) ?></p></div><?php
 	}
 
 }
