@@ -60,6 +60,12 @@ class GambitPBSandwichExtUpdater {
 	
 	
 	public function checkForUpdates() {
+		
+		// This errors out when creating Shortcake UIs
+		if ( ! is_array( $this->extensions ) ) {
+			return;
+		}
+		
 		foreach ( $this->extensions as $extension ) {
 		
 			// Only check for updates every 3 hours
