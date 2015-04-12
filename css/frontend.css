@@ -1134,3 +1134,6 @@
  */
 .sandwich.hide_title .widgettitle {
   display: none; }
+
+.pbs-niconicovideo iframe > html {
+  overflow-y: hidden !important; }
