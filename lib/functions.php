@@ -63,7 +63,9 @@ function sandwich_functions_posttype_list ( $type = "forum", $id = "false" ) {
  */
 
 function sandwich_functions_taxonomy_list( $type = "taxonomy" ) {
-	$output = array();
+	$output = array(
+		0 => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) )
+	);
 	foreach ( get_taxonomies() as $taxonomy ) {
 		$tax = get_taxonomy( $taxonomy );
 		if ( ( ! $tax->show_tagcloud || empty( $tax->labels->name ) ) && $type == "tag" ) {

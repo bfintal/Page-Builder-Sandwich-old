@@ -1194,15 +1194,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/README.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/README.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,
 		"enableSmartyPants": 1,
@@ -2733,7 +2724,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Benjamin Intal",
+"lastSavedByUser": "Hermann Malapit",
 "manualImportLinks": {
 	},
 "projectAttributes": {
