@@ -661,6 +661,12 @@ editor.on('init', function(e) {
 
 		}
 		
+		editor.fire( 'show-toolbar-image', {
+			'editor': editor,
+			'target': e.target,
+			'toolbar': $('.mce-wp-image-toolbar')[0]
+		} );
+		
 	});
 });
 
