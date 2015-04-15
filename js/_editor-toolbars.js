@@ -243,6 +243,19 @@ editor.on('show-toolbar-column', function(e) {
 		'toolbar': e.toolbar,
 		'node': e.node
 	} );
+
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': e.target,
+		'shortcode': 'column',
+		'toolbar': e.toolbar,
+	} );
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': $(e.target).parents('.pbsandwich_column:eq(0)')[0],
+		'shortcode': 'row',
+		'toolbar': e.toolbar,
+	} );
 });
 
 
