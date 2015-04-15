@@ -351,11 +351,12 @@ editor.on('init', function(e) {
 		// This fixes embed dragging. Clicking embeds (mousedown then mouseup, no mousemove) triggers
 		// a sortable drag. This fixes the problem.
 		if ( wrapper.is('[data-wpview-type="embed"]') ) {
-			e.stopImmediatePropagation();
+			e.stopPropagation();
 		}
 		
 		waitingForDrag = true;
-
+		return;
+		
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
 		 * always gets dragged
