@@ -13,5 +13,10 @@ jQuery(document).ready(function($) {
 	
 });
 
+function _gambit_microtime() {
+	return ( new Date ).getTime() / 1000;
+}
+
 // @codekit-prepend "_admin-jetpack.js"
+// @codekit-prepend "_util.js"
 

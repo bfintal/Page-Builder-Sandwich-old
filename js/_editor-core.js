@@ -69,8 +69,23 @@ function enhancedSortableScroll( event, ui ) {
 	
 	var editorTop = $('#wp-content-editor-tools').height() + parseInt($('#wp-content-editor-tools').css('paddingTop')) + parseInt($('.mce-edit-area').css('paddingTop')) + $('#wpadminbar').height();
 	var editorBottom = $(window).height() - $('.mce-statusbar').height() - $('#post-status-info').height();
+	
+	// For faster performance, use this instead of $('.mce-edit-area').offset().top
+	var element = $('.mce-edit-area')[0]
+	var editAreaOffsetTop = element.offsetTop;
+	while (element.parentNode) {
+	    element = element.parentNode;
+		
+		// We found these elements to contribute to the correct value of $('.mce-edit-area').offset().top
+		// via experimentation in the admin
+		if ( $(element).is('#wp-content-wrap, #post-body-content, #poststuff, body') ) {
+			if ( ! isNaN( element.offsetTop ) ) {
+			    editAreaOffsetTop += element.offsetTop;
+			}
+		}
+	}
 
-	var mouseTop = $('.mce-edit-area').offset().top + parseInt($('.mce-edit-area').css('paddingTop')) - $(window).scrollTop() + event.pageY;
+	var mouseTop = editAreaOffsetTop + parseInt($('.mce-edit-area').css('paddingTop')) - $(window).scrollTop() + event.pageY;
 
 	// Scroll up
 	if ( mouseTop - editorTop < 60 ) {
@@ -91,7 +106,7 @@ function enhancedSortableScroll( event, ui ) {
  */
 function enhancedSortableSort( event, ui ) {
 	var $ = jQuery;
-	
+		
 	// Also perform an enhanced scroll
 	enhancedSortableScroll( event, ui );
 	
@@ -106,19 +121,35 @@ function enhancedSortableSort( event, ui ) {
 	
 	// Find out the closest element from the one being dragged
 	ui.item.parents('body:eq(0)').find('.ui-sortable-handle:not(.ui-sortable-helper)').each(function() {
-		
+
 		// Don't include the current one being dragged
 		if ( $(this).parents('.ui-sortable-helper').length > 0 ) {
 			return;
 		}
+
+		var element = $(this)[0];
+		var childTop,
+			childLeft,
+			childHeight = element.offsetHeight,
+			childWidth = element.offsetWidth;
 		
-		var childTop = $(this).offset().top,
-			childHeight = $(this).outerHeight(),
-			childBottom = childTop + childHeight,
-			childLeft = $(this).offset().left,
-			childWidth = $(this).outerWidth(),
+		// Instead of using $(this).offset().top & $(this).offset().left, this is x10 FASTER!
+		childTop = element.offsetTop;
+		childLeft = element.offsetLeft;
+		while (element.parentNode) {
+		    element = element.parentNode;
+			if ( isNaN( element.offsetTop ) || isNaN( element.offsetLeft ) ) {
+				break;
+			}
+		    childTop += element.offsetTop;
+		    childLeft += element.offsetLeft;
+		}
+
+
+		var childBottom = childTop + childHeight,
 			childRight = childLeft + childWidth;
-			
+
+		// Check for element intersections
 		if ( childLeft <= pointerLeft && pointerLeft <= childRight ) {
 			
 			dist = Math.abs( childTop - pointerTop );
@@ -138,6 +169,7 @@ function enhancedSortableSort( event, ui ) {
 				}
 			}
 		}
+
 	});
 	
 	// Move the placeholder to the correct location
@@ -429,6 +461,11 @@ editor.on('init', function(e) {
 	 */
 	$( editor.getBody() ).on('mouseup', function(e) {
 		
+		if ( typeof e.sandwichStop !== 'undefined' ) {
+			return;
+		}
+		
+		e.preventDefault();
 		var wrapper = null;
 		if ( $(e.target).is('.wpview-wrap') ) {
 			wrapper = $(e.target);
@@ -441,10 +478,12 @@ editor.on('init', function(e) {
 		}
 		
 		// Stop the drag
-		if ( $(e.target).is('[data-mce-selected]') === false ) {
+		if ( wrapper.is('[data-mce-selected]') ) {
 			e.stopPropagation();
-			$(this).trigger('mouseup');
+			e.sandwichStop = true;
+			$(this).trigger(e);
 		}
+		
 		
 	});
 });

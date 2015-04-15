@@ -5,3 +5,5 @@
 // @codekit-prepend "_frontend-embed.js"; // Fixes video embeds inside columns
 // @codekit-prepend "_frontend-column-fullwidth.js"; // Used by columns to render rows as full width
 // @codekit-prepend "_fitvids.js"; // Used by above fix
+
+// @codekit-prepend "_util.js";
