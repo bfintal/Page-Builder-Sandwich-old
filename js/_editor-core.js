@@ -337,6 +337,11 @@ editor.on('init', function(e) {
 	
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
+		// Continue as normal when the toolbar is clicked
+		if ( $(e.target).is('.toolbar .dashicons') || $(e.target).parents('.toolbar').length > 0 ) {
+			return;
+		}
+		
 		// Get the shortcode being dragged
 		var wrapper = null;
 		if ( $(e.target).is('.wpview-wrap') ) {
@@ -382,6 +387,11 @@ editor.on('init', function(e) {
 	 * Fixes a bug where clicking views/elements in some areas for the first time initiates a drag
 	 */
 	$( editor.getBody() ).on('mouseup', function(e) {
+		
+		// Continue as normal when the toolbar is clicked
+		if ( $(e.target).is('.toolbar .dashicons') || $(e.target).parents('.toolbar').length > 0 ) {
+			return;
+		}
 		
 		e.preventDefault();
 		
