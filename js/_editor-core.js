@@ -71,21 +71,21 @@ function enhancedSortableScroll( event, ui ) {
 	var editorBottom = $(window).height() - $('.mce-statusbar').height() - $('#post-status-info').height();
 	
 	// For faster performance, use this instead of $('.mce-edit-area').offset().top
-	var element = $('.mce-edit-area')[0]
-	var editAreaOffsetTop = element.offsetTop;
-	while (element.parentNode) {
-	    element = element.parentNode;
-		
-		// We found these elements to contribute to the correct value of $('.mce-edit-area').offset().top
-		// via experimentation in the admin
-		if ( $(element).is('#wp-content-wrap, #post-body-content, #poststuff, body') ) {
-			if ( ! isNaN( element.offsetTop ) ) {
-			    editAreaOffsetTop += element.offsetTop;
-			}
-		}
-	}
+	// var element = $('.mce-edit-area')[0]
+	// var editAreaOffsetTop = element.offsetTop;
+	// while (element.parentNode) {
+	//     element = element.parentNode;
+	//
+	// 	// We found these elements to contribute to the correct value of $('.mce-edit-area').offset().top
+	// 	// via experimentation in the admin
+	// 	if ( $(element).is('#wp-content-wrap, #post-body-content, #poststuff, body') ) {
+	// 		if ( ! isNaN( element.offsetTop ) ) {
+	// 		    editAreaOffsetTop += element.offsetTop;
+	// 		}
+	// 	}
+	// }
 
-	var mouseTop = editAreaOffsetTop + parseInt($('.mce-edit-area').css('paddingTop')) - $(window).scrollTop() + event.pageY;
+	var mouseTop = $('.mce-edit-area').offset().top + parseInt($('.mce-edit-area').css('paddingTop')) - $(window).scrollTop() + event.pageY;
 
 	// Scroll up
 	if ( mouseTop - editorTop < 60 ) {
@@ -265,102 +265,6 @@ jQuery('body').on('click', '.wp-switch-editor', function() {
 
 
 /**
- * When unselected, single clicking Shortcake / TinyMCE views will somehow start a sortable drag event.
- * This makes the view hard to release. This function fixes it. 
- * When the view is clicked (mousedown then mouseup only), it doesn't trigger a sortable drag event
- * When the view is click dragged for the first time, normal sortable drag event is handled normally.
- */
-function fixShortcakeDragging( editor ) {
-	var $ = jQuery;
-
-	// For views with iframes (e.g. video & audio), clicking on the iframe to play a preview
-	// won't work with sortable sorting. Our semi work-around is to just deselect the iframe
-	// so that it can still be dragged around after moving the mouse around/outside the iframe.
-	$(editor.getBody())
-	.on('mousemove', '.wpview-wrap[data-mce-selected="1"] .toolbar', function(e) {
-
-		var parent = $(this).parents('.wpview-wrap:eq(0)');
-		if ( ! parent.is('[data-check-move="1"]') ) {
-			return;
-		}
-		if ( parent.find('iframe').length === 0 ) {
-			return;
-		}
-		
-		if ( e.which !== 1 ) {
-			try {
-				$(editor.getBody()).sortable('disable');
-				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (error) { }
-
-			parent.trigger('mouseup');
-
-			try {
-				$(editor.getBody()).sortable('enable');
-				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (error) { }
-			
-		}
-	})
-	.on('mousemove', function(e) {
-		
-		var iframe = $(this).find('.wpview-wrap[data-mce-selected="1"] iframe');
-		if ( iframe.length === 0 ) {
-			return;
-		}
-		
-		if ( e.which !== 1 ) {
-		
-			try {
-				$(editor.getBody()).sortable('disable');
-				$(editor.getBody()).find('.pbsandwich_column td').sortable('disable');
-			} catch (error) { }
-
-			iframe.parents('.wpview-wrap:eq(0)').trigger('mouseup');
-
-			try {
-				$(editor.getBody()).sortable('enable');
-				$(editor.getBody()).find('.pbsandwich_column td').sortable('enable');
-			} catch (error) { }
-			
-		}
-	})
-	
-	
-	/**
-	 * All these below are weird hacky stuff that was written via trial and error
-	 * These do/fix:
-	 *	- clicking on a view should do nothing (sometimes, clicking starts a drag)
-	 * 	- click + drag on a view should drag it
-	 * 	- mouseup after a drag should release the drag (mouse up after a drag somehow doesn't work)
-	 */
-	.on('click', '.wpview-wrap', function(e) {
-		if ( $(this).is('[data-check-move="1"]') ) {
-			$(this).trigger('mouseup');
-		}
-	})
-	.on('mousemove', '.wpview-wrap', function(e) {
-		if ( $(this).is('[data-check-move="1"]') ) {
-			$(this).removeAttr('data-check-move');
-		}
-	})
-	.on('mouseup', '.wpview-wrap', function( e, stopRecurse ) {
-		if ( stopRecurse ) {
-			return false;
-		}
-		var $this = $(this);
-		setTimeout(function() {
-			$this.trigger('mousemove').trigger('mouseup', [ e, true ]);
-		}, 100);
-	})
-	.on('mousedown', '.wpview-wrap', function(e) {
-		$(this).attr('data-check-move', '1');
-	});
-	
-}
-
-
-/**
  * Paragraph tags are being removed inside tables. Fix it
  * @see WordPress bug https://core.trac.wordpress.org/ticket/20943
  */
@@ -415,7 +319,6 @@ function fixTableParagraphs( editor ) {
 editor.on('mousemove', function(e) {
 	if ( ! sortableInit ) {
 		updateSortable( editor );
-		fixShortcakeDragging( editor );
 		sortableInit = true;
 	}
 } );
@@ -427,18 +330,31 @@ editor.on('mousemove', function(e) {
 editor.on('init', function(e) {
 	var $ = jQuery;
 	
+	var waitingForDrag = false;
+	
+	var waitingForEmbedDrag = false;
+	var startEmbedDrag = false;
+	
 	$( editor.getBody() ).on('mousedown', function(e) {
 		
+		// Get the shortcode being dragged
 		var wrapper = null;
 		if ( $(e.target).is('.wpview-wrap') ) {
 			wrapper = $(e.target);
 		} else if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
 			wrapper = $(e.target).parents('.wpview-wrap:eq(0)');
 		}
-		
 		if ( wrapper === null ) {
 			return;
 		}
+		
+		// This fixes embed dragging. Clicking embeds (mousedown then mouseup, no mousemove) triggers
+		// a sortable drag. This fixes the problem.
+		if ( wrapper.is('[data-wpview-type="embed"]') ) {
+			e.stopImmediatePropagation();
+		}
+		
+		waitingForDrag = true;
 
 		/**
 		 * Fixes the bug in Firefox when a view with an iframe is clicked, it
@@ -455,35 +371,41 @@ editor.on('init', function(e) {
 		
 	});
 	
+	$( editor.getBody() ).on('mousemove', function(e) {
+		// We dragged, don't stop 
+		waitingForDrag = false;
+	});
+	
 
 	/**
 	 * Fixes a bug where clicking views/elements in some areas for the first time initiates a drag
 	 */
 	$( editor.getBody() ).on('mouseup', function(e) {
 		
-		if ( typeof e.sandwichStop !== 'undefined' ) {
-			return;
-		}
-		
 		e.preventDefault();
+		
+		// Get the shortcode being dragged
 		var wrapper = null;
 		if ( $(e.target).is('.wpview-wrap') ) {
 			wrapper = $(e.target);
 		} else if ( $(e.target).parents('.wpview-wrap:eq(0)').length > 0 ) {
 			wrapper = $(e.target).parents('.wpview-wrap:eq(0)');
 		}
-		
 		if ( wrapper === null ) {
 			return;
 		}
+
+		// Bugfix: Firefox does not want to release the sortable even after mouseup, this fixes it
+		$(editor.getBody()).mouseup();
 		
-		// Stop the drag
-		if ( wrapper.is('[data-mce-selected]') ) {
-			e.stopPropagation();
-			e.sandwichStop = true;
-			$(this).trigger(e);
+		// Waiting for drag remains true, this means we just clicked on the shortcode,
+		// don't initiate a drag
+		if ( waitingForDrag ) {
+			e.stopImmediatePropagation();
+
+			$(this).trigger('mouseup');
+			return;
 		}
-		
 		
 	});
 });
