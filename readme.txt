@@ -176,6 +176,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 
 = 0.12 =
 
+* Sped up & optimized dragging experience, previously, more content meant more lag when dragging
 * [New Toolbar API](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Adding-Toolbar-Buttons)
 * Added alignment buttons for rows for greater content control, now you can add items side by side
 * Added Jetpack Google Map shortcode (although existing googlemaps shortcodes will not work because of an existing issue)
@@ -183,7 +184,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Added a page break button in TinyMCE for convenience
 * Security fixes for CWE-200
 * Images now won't make columns wider
-* Stability & bug fixes
+* A ton of stability & bug fixes
 
 = 0.11 =
 

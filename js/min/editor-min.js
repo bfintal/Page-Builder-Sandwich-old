@@ -575,6 +575,13 @@ editor.on('init', function(e) {
 
 		}
 		
+		editor.fire( 'show-toolbar', {
+			'editor': editor,
+			'target': e.target,
+			'shortcode': wrapper.attr('data-wpview-type'),
+			'toolbar': wrapper.find('.toolbar')[0]
+		} );
+		
 	});
 	
 	
@@ -637,6 +644,12 @@ editor.on('init', function(e) {
 		editor.fire( 'show-toolbar-image', {
 			'editor': editor,
 			'target': e.target,
+			'toolbar': $('.mce-wp-image-toolbar')[0]
+		} );
+		editor.fire( 'show-toolbar', {
+			'editor': editor,
+			'target': e.target,
+			'shortcode': wrapper.attr('data-wpview-type'),
 			'toolbar': $('.mce-wp-image-toolbar')[0]
 		} );
 		
@@ -886,6 +899,18 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
 		'toolbar': toolbar,
 		'node': node
+	} );
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
+		'shortcode': 'column',
+		'toolbar': toolbar
+	} );
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' ).parents('.pbsandwich_column:eq(0)')[0],
+		'shortcode': 'row',
+		'toolbar': toolbar
 	} );
 }
 

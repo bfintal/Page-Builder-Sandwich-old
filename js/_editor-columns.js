@@ -50,6 +50,18 @@ function _pbsandwich_addColumnToolbar( editor, node ) {
 		'toolbar': toolbar,
 		'node': node
 	} );
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' )[0],
+		'shortcode': 'column',
+		'toolbar': toolbar
+	} );
+	editor.fire( 'show-toolbar', {
+		'editor': editor,
+		'target': $(editor.getBody()).find( '[data-wp-columnselect]' ).parents('.pbsandwich_column:eq(0)')[0],
+		'shortcode': 'row',
+		'toolbar': toolbar
+	} );
 }
 
 
