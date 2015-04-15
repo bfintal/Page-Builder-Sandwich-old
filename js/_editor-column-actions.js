@@ -558,6 +558,8 @@ editor.on('toolbar-column-edit-row', function(e) {
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
+			height: $(window).height() * .8,
+			width: $(window).width() * .7 > 900 ? 900 : $(window).width() * .7,
 			body: [{
 			type: 'container',
 			html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )

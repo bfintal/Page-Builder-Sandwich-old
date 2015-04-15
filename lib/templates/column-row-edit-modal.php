@@ -3,7 +3,18 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <script type="text/html" id="tmpl-pbs-column-row-edit-modal">
-		
+	
+	<?php
+	// TODO MAKE EXTENSIBLE
+	?>
+	<div class="pbsandwich_modal_tabs">
+		<div class="pbsandwich_modal_tab active" data-for="pbsandwich_column_row_edit">Styles</div>
+		<div class="pbsandwich_modal_tab" data-for="pbsandwich_row_parallax">Parallax & Video Background</div>
+	</div>
+	
+	<div id="pbsandwich_row_parallax" class="sandwich_modal">
+	</div>
+	
 	<div id="pbsandwich_column_row_edit" class="sandwich_modal">
 		
 		<div class="style_area" style="display: inline-block; margin-right: 20px">
