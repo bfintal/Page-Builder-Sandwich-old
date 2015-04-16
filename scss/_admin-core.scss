@@ -18,6 +18,7 @@
 	margin: 0 6px 6px 0;
 }
 
+// Tinymce modal window tabs
 .mce-container {
 	.pbsandwich_modal_tabs {
 	    border-bottom: 1px solid #ddd;
@@ -40,6 +41,29 @@
 	}
 }
 
+// Styles descriptions and hr in tinymce modal windows
+.mce-container {
+	.sandwich_modal {
+		h4 + p.desc {
+			position: relative;
+			-webkit-transform: translateY(-15px);
+			-moz-transform: translateY(-15px);
+			-ms-transform: translateY(-15px);
+			-o-transform: translateY(-15px);
+			transform: translateY(-15px);
+			font-style: italic;
+			font-size: .9em;
+			opacity: .8;
+		}
+		hr {
+			height: 1px;
+			background: #ddd;
+			margin: 20px 0;
+		}
+	}
+}
+
+// Fix the scrollable area of tinymce modal windows
 body .mce-window > div > .mce-container-body.mce-abs-layout {
 	overflow-y: scroll;
 	overflow-x: hidden;
