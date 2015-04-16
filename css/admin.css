@@ -229,6 +229,33 @@
   padding-left: 30px;
   margin: 0 6px 6px 0; }
 
+.mce-container .pbsandwich_modal_tabs {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  margin-bottom: 20px; }
+.mce-container .pbsandwich_modal_tab {
+  display: inline-block;
+  padding: .5em 1em;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  margin-bottom: -1px;
+  background: #eee; }
+  .mce-container .pbsandwich_modal_tab.active {
+    border-bottom: 1px solid #fff;
+    background: transparent; }
+
+body .mce-window > div > .mce-container-body.mce-abs-layout {
+  overflow-y: scroll;
+  overflow-x: hidden; }
+  body .mce-window > div > .mce-container-body.mce-abs-layout .mce-container-body {
+    overflow: hidden; }
+
+@media screen and (max-width: 900px) {
+  body .mce-window > div > .mce-container-body.mce-abs-layout {
+    overflow-y: scroll;
+    overflow-x: scroll; } }
 .mce-container .mce-widget.mce-btn.sep {
   display: inline-block;
   width: 1px;

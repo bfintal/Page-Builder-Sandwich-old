@@ -13,10 +13,25 @@ jQuery(document).ready(function($) {
 	
 });
 
+jQuery(document).ready(function($) {
+	/**
+	 * Tabs
+	 */
+	$('body').on('click', '.pbsandwich_modal_tab[data-for]', function() {
+		var modal = $(this).parents('.mce-container:eq(0)');
+		var tabContainer = $(this).parents('.pbsandwich_modal_tabs:eq(0)');
+		tabContainer.siblings().hide();
+		modal.find('#' + $(this).attr('data-for')).show();
+		tabContainer.find('.pbsandwich_modal_tab').removeClass('active');
+		$(this).addClass('active');
+	});
+});
+
 function _gambit_microtime() {
 	return ( new Date ).getTime() / 1000;
 }
 
 // @codekit-prepend "_admin-jetpack.js"
+// @codekit-prepend "_admin-core.js"
 // @codekit-prepend "_util.js"
 

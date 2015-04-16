@@ -5,6 +5,7 @@
 // @codekit-append "_editor-toolbar-actions.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
+// @codekit-append "_editor-modal.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
 // @codekit-append "_util.js";
@@ -1470,7 +1471,7 @@ editor.on('toolbar-column-edit-area', function(e) {
 		background_repeat: $selectedColumn.css('backgroundRepeat'),
 		background_position: $selectedColumn.css('backgroundPosition')
 	};
-	
+
 	var colModal = editor.windowManager.open( {
 		title: pbsandwich_column.column_settings,
 		body: [{
@@ -1537,6 +1538,14 @@ editor.on('toolbar-column-edit-area', function(e) {
 	$('#pbsandwich_column_area_edit').find('#border_color, #background_color').wpColorPicker();
 	
 	_pbsandwich_removeColumnToolbar( editor );
+	
+	editor.fire( 'pre-modal-create-tabs', {
+		'editor': e.editor,
+		'target': $('#pbsandwich_column_area_edit').parent()[0],
+		'action': e.action,
+		'shortcode': e.shortcode,
+		'origin': e.target
+	} );
 });
 
 /**
@@ -1858,6 +1867,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 
 	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
 
+	var action = e.action,
+		shortcode = e.sortcode,
+		origin = e.target;
+	
 	if ( bgImageURL === 'none' ) {
 		bgImageURL = '';
 	}
@@ -1891,10 +1904,12 @@ editor.on('toolbar-column-edit-row', function(e) {
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
+			height: $(window).height() * .8,
+			width: $(window).width() * .7 > 900 ? 900 : $(window).width() * .7,
 			body: [{
-			type: 'container',
-			html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
-		}],
+				type: 'container',
+				html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
+			}],
 		/**
 		 * Apply all our new styles on submit
 		 */
@@ -1961,12 +1976,28 @@ editor.on('toolbar-column-edit-row', function(e) {
 
 			// Make the styles permanent
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
+			
+			editor.fire( 'modal-save', {
+				'editor': editor,
+				'target': $selectedRow[0],
+				'action': action,
+				'shortcode': 'row',
+				'origin': origin
+			} );
 		}
 	});
 
 	$('#pbsandwich_column_row_edit').find('#border_color, #background_color').wpColorPicker();
 	
 	_pbsandwich_removeColumnToolbar( editor );
+	
+	editor.fire( 'pre-modal-create-tabs', {
+		'editor': e.editor,
+		'target': $('#pbsandwich_column_row_edit').parent()[0],
+		'action': e.action,
+		'shortcode': e.shortcode,
+		'origin': e.target
+	} );
 });
 
 
@@ -2003,6 +2034,69 @@ editor.on('toolbar-row-align-right', function(e) {
 editor.on('toolbar-row-align-none', function(e) {
 	var $ = jQuery;
 	$(e.target).removeClass('pbs-align-left pbs-align-center pbs-align-right');
+});
+
+/**
+ * Creates tabs for modal windows
+ */
+editor.on( 'pre-modal-create-tabs', function(e) {
+	
+	if ( typeof pbsandwich_column.modal_tabs === 'undefined' ) {
+		return;
+	}
+	
+	if ( $(e.target).find('.pbsandwich_modal_tabs').length === 0 ) {
+		return;
+	}
+	
+	$.each( pbsandwich_column.modal_tabs, function(i, newTabInfo) {
+		if ( e.shortcode !== newTabInfo.shortcode ) {
+			return;
+		}
+		
+		// Show the tab headings, since they're hidden by default
+		$(e.target).find('.pbsandwich_modal_tabs').css('display', '');
+		
+		// Fire the event to handle template population
+		pbs_modal_fields[ newTabInfo.template_id ] = {};
+		editor.fire( 'modal-tab-populate-data', {
+			'editor': editor,
+			'target': e.target,
+			'template_id': newTabInfo.template_id
+		} );
+		
+		// Add the tab
+		$('<div></div>')
+			.addClass('pbsandwich_modal_tab')
+			.attr( 'data-for', newTabInfo.template_id )
+			.text( newTabInfo.name )
+			.appendTo( $(e.target).find('.pbsandwich_modal_tabs') );
+
+		// Add the tab's contents
+		$('<div></div>')
+			.addClass('sandwich_modal')
+			.attr( 'id', newTabInfo.template_id )
+			.append( wp.template( newTabInfo.template_id )( pbs_modal_fields[ newTabInfo.template_id ] ) )
+			.appendTo( $(e.target) );
+
+	});
+	
+});
+
+
+editor.on( 'modal-save', function(e) {
+	var $ = jQuery;
+	if ( $('.pbsandwich_modal_tabs:visible').length > 0 ) {
+		$('.pbsandwich_modal_tabs .pbsandwich_modal_tab').each(function() {
+			editor.fire( 'modal-tab-save', {
+				'template_id': $(this).attr('data-for'),
+				'target': e.target,
+				'tab': $('#' + $(this).attr('data-for') + ':visible')[0],
+				'action': e.action,
+				'shortcode': e.shortcode
+			} );
+		});
+	}
 });
 
 /**

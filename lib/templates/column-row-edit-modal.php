@@ -3,7 +3,15 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <script type="text/html" id="tmpl-pbs-column-row-edit-modal">
-		
+	
+	<?php
+	// Placeholder tabs
+	?>
+	<div class="pbsandwich_modal_tabs" style="display: none">
+		<div class="pbsandwich_modal_tab active" data-for="pbsandwich_column_row_edit">{{ data.styles }}</div>
+	</div>
+	
+	
 	<div id="pbsandwich_column_row_edit" class="sandwich_modal">
 		
 		<div class="style_area" style="display: inline-block; margin-right: 20px">

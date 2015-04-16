@@ -137,7 +137,7 @@ editor.on('toolbar-column-edit-area', function(e) {
 		background_repeat: $selectedColumn.css('backgroundRepeat'),
 		background_position: $selectedColumn.css('backgroundPosition')
 	};
-	
+
 	var colModal = editor.windowManager.open( {
 		title: pbsandwich_column.column_settings,
 		body: [{
@@ -204,6 +204,14 @@ editor.on('toolbar-column-edit-area', function(e) {
 	$('#pbsandwich_column_area_edit').find('#border_color, #background_color').wpColorPicker();
 	
 	_pbsandwich_removeColumnToolbar( editor );
+	
+	editor.fire( 'pre-modal-create-tabs', {
+		'editor': e.editor,
+		'target': $('#pbsandwich_column_area_edit').parent()[0],
+		'action': e.action,
+		'shortcode': e.shortcode,
+		'origin': e.target
+	} );
 });
 
 /**
@@ -525,6 +533,10 @@ editor.on('toolbar-column-edit-row', function(e) {
 
 	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
 
+	var action = e.action,
+		shortcode = e.sortcode,
+		origin = e.target;
+	
 	if ( bgImageURL === 'none' ) {
 		bgImageURL = '';
 	}
@@ -558,10 +570,12 @@ editor.on('toolbar-column-edit-row', function(e) {
 	//
 	var colModal = editor.windowManager.open( {
 			title: pbsandwich_column.row_settings,
+			height: $(window).height() * .8,
+			width: $(window).width() * .7 > 900 ? 900 : $(window).width() * .7,
 			body: [{
-			type: 'container',
-			html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
-		}],
+				type: 'container',
+				html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
+			}],
 		/**
 		 * Apply all our new styles on submit
 		 */
@@ -628,12 +642,28 @@ editor.on('toolbar-column-edit-row', function(e) {
 
 			// Make the styles permanent
 			$selectedRow.attr('data-mce-style', $selectedRow.attr('style'));
+			
+			editor.fire( 'modal-save', {
+				'editor': editor,
+				'target': $selectedRow[0],
+				'action': action,
+				'shortcode': 'row',
+				'origin': origin
+			} );
 		}
 	});
 
 	$('#pbsandwich_column_row_edit').find('#border_color, #background_color').wpColorPicker();
 	
 	_pbsandwich_removeColumnToolbar( editor );
+	
+	editor.fire( 'pre-modal-create-tabs', {
+		'editor': e.editor,
+		'target': $('#pbsandwich_column_row_edit').parent()[0],
+		'action': e.action,
+		'shortcode': e.shortcode,
+		'origin': e.target
+	} );
 });
 
 
