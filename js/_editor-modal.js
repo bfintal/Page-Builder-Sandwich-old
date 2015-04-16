@@ -53,7 +53,7 @@ editor.on( 'modal-save', function(e) {
 			editor.fire( 'modal-tab-save', {
 				'template_id': $(this).attr('data-for'),
 				'target': e.target,
-				'tab': $('#' + $(this).attr('data-for') + ':visible')[0],
+				'tab': $('#' + $(this).attr('data-for'))[0],
 				'action': e.action,
 				'shortcode': e.shortcode
 			} );
