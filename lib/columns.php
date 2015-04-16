@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class GambitPBSandwichColumns {
 	
+	protected $modalTabs = array();
+	
 
 	/**
 	 * Hook onto WordPress
@@ -25,6 +27,11 @@ class GambitPBSandwichColumns {
 		add_action( 'wp_head', array( $this, 'renderColumnStyles' ) );
 		add_action( 'admin_footer', array( $this, 'addColumnTemplates' ) );
 		add_filter( 'pbs_toolbar_buttons', array( $this, 'addColumnToolbarButtons' ), 1 );
+
+		add_action( 'admin_head', array( $this, 'addModalVar' ) );
+		add_action( 'admin_init', array( $this, 'addModalTabs' ) );
+		add_action( 'admin_footer', array( $this, 'addModalTabTemplates' ) );
+		add_filter( 'pbs_js_vars', array( $this, 'addModalTabVars' ) );
 	}
 	
 	
@@ -168,6 +175,8 @@ class GambitPBSandwichColumns {
 			'full_width_9' => sprintf( __( 'Break out of %s containers', 'pbsandwich' ), '9' ),
 			'full_width_99' => __( 'Break out of all containers', 'pbsandwich' ),
 			'full_width_desc' => 'Rows are restricted to the content areas defined by your theme. You can use this to break out of the constraint and turn your row into a full width row.',
+			
+			'modal_tabs' => array(),
 			
 		);
 		$columnVars = apply_filters( 'pbs_column_vars', $columnVars );
@@ -518,6 +527,67 @@ class GambitPBSandwichColumns {
 		);
 		
 		return $toolbarButtons;
+	}
+	
+	
+	public function addModalVar() {
+	
+	    // check user permissions
+	    if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+		    return;
+	    }
+		
+		// Print out our variables
+		?>
+		<script type="text/javascript">
+		var pbs_modal_fields = {};
+        </script>
+		<?php
+	}
+	
+	public function addModalTabs() {
+		$this->modalTabs = apply_filters( 'pbs_modal_tabs', array() );
+		
+		foreach ( $this->modalTabs as $key => $tab ) {
+			$defaults = array(
+				'template' => '',
+				'template_id' => '',
+				'name' => '',
+				'shortcode' => 'row',
+			);
+		    $this->modalTabs[ $key ] = array_merge( $defaults, $tab );
+		}
+	}
+	
+	public function addModalTabTemplates() {
+	    // check user permissions
+	    if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+		    return;
+	    }
+		
+		foreach ( $this->modalTabs as $key => $tab ) {
+			if ( ! empty( $tab['template'] ) ) {
+				include_once $tab['template'];
+			}
+		}
+	}
+	
+	
+	public function addModalTabVars( $columnVars ) {
+		if ( empty( $this->modalTabs ) ) {
+			return $columnVars;
+		}
+		
+		$varsToOutput = array();
+		foreach ( $this->modalTabs as $tab ) {
+			// for security, don't include the template path
+			unset( $tab['template'] );
+			$varsToOutput[] = $tab;
+		}
+		
+		$columnVars['modal_tabs'] = $varsToOutput;
+		
+		return $columnVars;
 	}
 	
 }

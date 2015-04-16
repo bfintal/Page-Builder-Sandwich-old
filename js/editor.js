@@ -5,6 +5,7 @@
 // @codekit-append "_editor-toolbar-actions.js";
 // @codekit-append "_editor-columns.js";
 // @codekit-append "_editor-column-actions.js";
+// @codekit-append "_editor-modal.js";
 // @codekit-append "_editor-jetpack.js";
 // @codekit-append "_editor-end.js";
 // @codekit-append "_util.js";

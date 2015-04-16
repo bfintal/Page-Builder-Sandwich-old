@@ -5,15 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <script type="text/html" id="tmpl-pbs-column-row-edit-modal">
 	
 	<?php
-	// TODO MAKE EXTENSIBLE
+	// Placeholder tabs
 	?>
-	<div class="pbsandwich_modal_tabs">
-		<div class="pbsandwich_modal_tab active" data-for="pbsandwich_column_row_edit">Styles</div>
-		<div class="pbsandwich_modal_tab" data-for="pbsandwich_row_parallax">Parallax & Video Background</div>
+	<div class="pbsandwich_modal_tabs" style="display: none">
+		<div class="pbsandwich_modal_tab active" data-for="pbsandwich_column_row_edit">{{ data.styles }}</div>
 	</div>
 	
-	<div id="pbsandwich_row_parallax" class="sandwich_modal">
-	</div>
 	
 	<div id="pbsandwich_column_row_edit" class="sandwich_modal">
 		
