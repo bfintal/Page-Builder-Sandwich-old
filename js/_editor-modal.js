@@ -23,7 +23,8 @@ editor.on( 'pre-modal-create-tabs', function(e) {
 		pbs_modal_fields[ newTabInfo.template_id ] = {};
 		editor.fire( 'modal-tab-populate-data', {
 			'editor': editor,
-			'target': e.target,
+			'target': e.origin,
+			'modal': e.target,
 			'template_id': newTabInfo.template_id
 		} );
 		
