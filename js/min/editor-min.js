@@ -137,7 +137,7 @@ function enhancedSortableScroll( event, ui ) {
  */
 function enhancedSortableSort( event, ui ) {
 	var $ = jQuery;
-		
+
 	// Also perform an enhanced scroll
 	enhancedSortableScroll( event, ui );
 	
@@ -158,8 +158,9 @@ function enhancedSortableSort( event, ui ) {
 			return;
 		}
 
-		var element = $(this)[0];
-		var childTop,
+		var element = $(this)[0],
+			origElement = element,
+			childTop,
 			childLeft,
 			childHeight = element.offsetHeight,
 			childWidth = element.offsetWidth;
@@ -167,28 +168,37 @@ function enhancedSortableSort( event, ui ) {
 		// Instead of using $(this).offset().top & $(this).offset().left, this is x10 FASTER!
 		childTop = element.offsetTop;
 		childLeft = element.offsetLeft;
+		
 		while (element.parentNode) {
+			
 		    element = element.parentNode;
-			if ( isNaN( element.offsetTop ) || isNaN( element.offsetLeft ) ) {
-				break;
+			
+			if ( ! isNaN( element.offsetTop ) ) {
+			    childTop += element.offsetTop;
 			}
-		    childTop += element.offsetTop;
-		    childLeft += element.offsetLeft;
+			
+			// For views, childLeft is computed correctly,
+			// Paragraph tags is incorrect though
+			if ( origElement.tagName === 'P' ) {
+				if ( ! isNaN( element.offsetLeft ) ) {
+				    childLeft += element.offsetLeft;
+				}
+			}
+			
 		}
-
-
+		
 		var childBottom = childTop + childHeight,
 			childRight = childLeft + childWidth;
 
-		// Check for element intersections
 		if ( childLeft <= pointerLeft && pointerLeft <= childRight ) {
-			
+
 			dist = Math.abs( childTop - pointerTop );
 			dist2 = Math.abs( childBottom - pointerTop );
+			
 			if ( dist > dist2 ) {
 				dist = dist2;
 			}
-			
+
 			if ( closestDist > dist ) {
 				closestDist = dist;
 				closestElement = $(this);
@@ -2100,6 +2110,70 @@ editor.on('toolbar-row-align-right', function(e) {
 editor.on('toolbar-row-align-none', function(e) {
 	var $ = jQuery;
 	$(e.target).removeClass('pbs-align-left pbs-align-center pbs-align-right');
+});
+
+/**
+ * Creates tabs for modal windows
+ */
+editor.on( 'pre-modal-create-tabs', function(e) {
+	
+	if ( typeof pbsandwich_column.modal_tabs === 'undefined' ) {
+		return;
+	}
+	
+	if ( $(e.target).find('.pbsandwich_modal_tabs').length === 0 ) {
+		return;
+	}
+	
+	$.each( pbsandwich_column.modal_tabs, function(i, newTabInfo) {
+		if ( e.shortcode !== newTabInfo.shortcode ) {
+			return;
+		}
+		
+		// Show the tab headings, since they're hidden by default
+		$(e.target).find('.pbsandwich_modal_tabs').css('display', '');
+		
+		// Fire the event to handle template population
+		pbs_modal_fields[ newTabInfo.template_id ] = {};
+		editor.fire( 'modal-tab-populate-data', {
+			'editor': editor,
+			'target': e.origin,
+			'modal': e.target,
+			'template_id': newTabInfo.template_id
+		} );
+		
+		// Add the tab
+		$('<div></div>')
+			.addClass('pbsandwich_modal_tab')
+			.attr( 'data-for', newTabInfo.template_id )
+			.text( newTabInfo.name )
+			.appendTo( $(e.target).find('.pbsandwich_modal_tabs') );
+
+		// Add the tab's contents
+		$('<div></div>')
+			.addClass('sandwich_modal')
+			.attr( 'id', newTabInfo.template_id )
+			.append( wp.template( newTabInfo.template_id )( pbs_modal_fields[ newTabInfo.template_id ] ) )
+			.appendTo( $(e.target) );
+
+	});
+	
+});
+
+
+editor.on( 'modal-save', function(e) {
+	var $ = jQuery;
+	if ( $('.pbsandwich_modal_tabs:visible').length > 0 ) {
+		$('.pbsandwich_modal_tabs .pbsandwich_modal_tab').each(function() {
+			editor.fire( 'modal-tab-save', {
+				'template_id': $(this).attr('data-for'),
+				'target': e.target,
+				'tab': $('#' + $(this).attr('data-for'))[0],
+				'action': e.action,
+				'shortcode': e.shortcode
+			} );
+		});
+	}
 });
 
 /**

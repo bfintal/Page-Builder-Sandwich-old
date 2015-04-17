@@ -106,7 +106,7 @@ function enhancedSortableScroll( event, ui ) {
  */
 function enhancedSortableSort( event, ui ) {
 	var $ = jQuery;
-		
+
 	// Also perform an enhanced scroll
 	enhancedSortableScroll( event, ui );
 	
@@ -127,8 +127,9 @@ function enhancedSortableSort( event, ui ) {
 			return;
 		}
 
-		var element = $(this)[0];
-		var childTop,
+		var element = $(this)[0],
+			origElement = element,
+			childTop,
 			childLeft,
 			childHeight = element.offsetHeight,
 			childWidth = element.offsetWidth;
@@ -136,28 +137,37 @@ function enhancedSortableSort( event, ui ) {
 		// Instead of using $(this).offset().top & $(this).offset().left, this is x10 FASTER!
 		childTop = element.offsetTop;
 		childLeft = element.offsetLeft;
+		
 		while (element.parentNode) {
+			
 		    element = element.parentNode;
-			if ( isNaN( element.offsetTop ) || isNaN( element.offsetLeft ) ) {
-				break;
+			
+			if ( ! isNaN( element.offsetTop ) ) {
+			    childTop += element.offsetTop;
 			}
-		    childTop += element.offsetTop;
-		    childLeft += element.offsetLeft;
+			
+			// For views, childLeft is computed correctly,
+			// Paragraph tags is incorrect though
+			if ( origElement.tagName === 'P' ) {
+				if ( ! isNaN( element.offsetLeft ) ) {
+				    childLeft += element.offsetLeft;
+				}
+			}
+			
 		}
-
-
+		
 		var childBottom = childTop + childHeight,
 			childRight = childLeft + childWidth;
 
-		// Check for element intersections
 		if ( childLeft <= pointerLeft && pointerLeft <= childRight ) {
-			
+
 			dist = Math.abs( childTop - pointerTop );
 			dist2 = Math.abs( childBottom - pointerTop );
+			
 			if ( dist > dist2 ) {
 				dist = dist2;
 			}
-			
+
 			if ( closestDist > dist ) {
 				closestDist = dist;
 				closestElement = $(this);
