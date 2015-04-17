@@ -106,6 +106,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/welcome-extensions.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 97405,
+		"inputAbbreviatedPath": "\/images\/welcome-extensions.jpg",
+		"outputAbbreviatedPath": "\/images\/welcome-extensions.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/welcome-rows.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

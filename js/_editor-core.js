@@ -471,7 +471,6 @@ editor.on('wp-body-class-change change', function(e) {
 	var $ = jQuery;
 	
 	$(editor.getBody()).find('.wpview-body .wpview-content:has(iframe):not(:has( ~ .wpview-overlay))').after( '<div class="wpview-overlay"></div>' );
-
 });
 
 
@@ -487,7 +486,8 @@ editor.on('keyup', function(e) {
  * Prevent delete & backspace buttons from deleting single column rows
  */
 editor.on('keydown', function(e) {
-
+	var $ = jQuery;
+	
 	// If backspace is pressed and we are at the start of the line, ignore
 	if ( e.keyCode === 8 ) {
 		var range = editor.selection.getRng();
@@ -521,4 +521,21 @@ editor.on('keydown', function(e) {
             }
         } catch (e) {}
     }
+});
+
+
+/**
+ * Properly resize videos, fitvids don't work here, do things manually
+ */
+editor.on('init', function() {
+	var $ = jQuery;
+	
+	$(editor.getBody()).on('DOMNodeInserted', function() {
+		setTimeout( function() {
+			$(editor.getBody()).find('[data-wpview-type="embed"] iframe').each(function() {
+				$(this).height( $(this).width() * 9 / 16 );
+			});
+		}, 1 );
+	});
+	
 });
