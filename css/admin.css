@@ -256,6 +256,11 @@
   font-style: italic;
   font-size: .9em;
   opacity: .8; }
+.mce-container .sandwich_modal p.desc {
+  font-style: italic;
+  font-size: .9em;
+  opacity: .8;
+  margin-left: 0; }
 .mce-container .sandwich_modal hr {
   height: 1px;
   background: #ddd;
