@@ -32,7 +32,7 @@ class GambitPBSandwichWelcome {
 		add_action( 'admin_init', array( $this, 'welcome' ) );
 
 		$this->header_text = sprintf( __( 'Welcome to Page Builder Sandwich %s', 'pbsandwich' ), PBS_VERSION );
-		$this->header_desc = sprintf( __( 'Thank you for updating! PB Sandwich %s reinvents what you know about page builders.', 'pbsandwich' ), PBS_VERSION );
+		$this->header_desc = sprintf( __( 'Thank you for updating! PB Sandwich %s offers a more stable experience.', 'pbsandwich' ), PBS_VERSION );
 	}
 
 	/**
@@ -182,6 +182,21 @@ class GambitPBSandwichWelcome {
 				<div class="feature-section col two-col">
 
 					<div class="col-1">
+						<h3><?php _e( 'Add Features with Extensions', 'pbsandwich' );?></h3>
+						<p><?php printf( __( 'We have included a ton of awesome features in Page Builder Sandwich. But we thought of nice-to-have features that we think will enhance your page building experience even better. From adding parallax and video backgrounds, to adding support for third-party eCommerce plugin shortcodes. View them from our website at %s', 'pbsandwich' ), '<a href="http://pbsandwi.ch/extensions" target="_blank">www.pbsandwi.ch</a>' ) ?></p>
+					</div>
+
+					<div class="col-2 last-feature">
+						<img src="<?php echo PBS_URL . 'images/welcome-extensions.jpg'; ?>">
+					</div>
+
+				</div>
+			
+				<hr />
+
+				<div class="feature-section col two-col">
+
+					<div class="col-1">
 						<h4><?php _e( 'Row & Column Settings', 'pbsandwich' );?></h4>
 						<p><?php _e( 'New settings have been added to columns. Now you can edit margins, paddings, borders as well as add a background color or background image to them.', 'pbsandwich' ) ?></p>
 					</div>
@@ -318,6 +333,21 @@ class GambitPBSandwichWelcome {
 
 				<div class="col-2 last-feature">
 					<img src="<?php echo PBS_URL . 'images/guide-columns.jpg'; ?>">
+				</div>
+
+			</div>
+			
+			<hr />
+
+			<div class="feature-section col two-col">
+
+				<div class="col-1">
+					<h3><?php _e( 'Add Features with Extensions', 'pbsandwich' );?></h3>
+					<p><?php printf( __( 'We have included a ton of awesome features in Page Builder Sandwich. But we thought of nice-to-have features that we think will enhance your page building experience even better. From adding parallax and video backgrounds, to adding support for third-party eCommerce plugin shortcodes. View them from our website at %s', 'pbsandwich' ), '<a href="http://pbsandwi.ch/extensions" target="_blank">www.pbsandwi.ch</a>' ) ?></p>
+				</div>
+
+				<div class="col-2 last-feature">
+					<img src="<?php echo PBS_URL . 'images/welcome-extensions.jpg'; ?>">
 				</div>
 
 			</div>
