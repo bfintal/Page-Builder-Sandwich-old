@@ -176,6 +176,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 
 = 1.0 =
 
+* A waaay better dragging and dropping experience
 * Sped up & optimized dragging experience, previously, more content meant more lag when dragging
 * [New Toolbar API](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Adding-Toolbar-Buttons)
 * Added alignment buttons for rows for greater content control, now you can add items side by side
