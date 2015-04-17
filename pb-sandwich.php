@@ -209,7 +209,9 @@ class GambitPBSandwich {
 	
 	
 	public function addShortcodeButton() {
-		echo '<a href="#" class="button sandwich-add-shortcode"><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span> ' . __( 'Add Post Element', 'pbsandwich' ) . '</a>';
+		if ( apply_filters( 'pbs_add_shortcode_button', true ) ) {
+			echo '<a href="#" class="button sandwich-add-shortcode"><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span><span class="wp-media-buttons-icon dashicons dashicons-migrate"></span> ' . __( 'Add Post Element', 'pbsandwich' ) . '</a>';
+		}
 	}
 	
 	
