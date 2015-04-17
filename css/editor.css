@@ -728,7 +728,7 @@ body#tinymce.wp-editor .sortable-placeholder:before {
  * Move cursor and hover color for shortcake & views
  */
 body#tinymce.wp-editor .wpview-wrap:hover {
-  background: #f1f1f1; }
+  background: rgba(222, 226, 228, 0.5); }
 
 body#tinymce.wp-editor .wpview-wrap, body#tinymce.wp-editor .wpview-wrap * {
   cursor: move !important; }
