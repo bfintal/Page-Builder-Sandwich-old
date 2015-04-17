@@ -473,3 +473,52 @@ editor.on('wp-body-class-change change', function(e) {
 	$(editor.getBody()).find('.wpview-body .wpview-content:has(iframe):not(:has( ~ .wpview-overlay))').after( '<div class="wpview-overlay"></div>' );
 
 });
+
+
+/**
+ * Prevent row/column content deletion from making the column untypable
+ */
+editor.on('keyup', function(e) {
+	fixTableParagraphs( editor );
+});
+
+
+/**
+ * Prevent delete & backspace buttons from deleting single column rows
+ */
+editor.on('keydown', function(e) {
+
+	// If backspace is pressed and we are at the start of the line, ignore
+	if ( e.keyCode === 8 ) {
+		var range = editor.selection.getRng();
+		if ( range.startOffset === 0 ) {
+			return true;
+		}
+	}
+	
+	// If delete key is pressed and we have a single character, ignore (else the column will get deleted)
+	if ( e.keyCode === 46 ) {
+        var elem = editor.selection.getNode().parentNode;
+        if ( $(editor.selection.getNode().parentNode).is('.pbsandwich_column > tbody > tr > td') ) {
+			var range = editor.selection.getRng();
+			
+            if (range.startOffset === 1 && elem.textContent.length == 1) {
+				return true;
+            }
+        }
+	}
+	
+    // Prevent delete & backspace from deleting the whole row
+    if ( e.keyCode === 8 || e.keyCode === 46 ) {
+        try {
+            var elem = editor.selection.getNode().parentNode;
+            if ( $(editor.selection.getNode().parentNode).is('.pbsandwich_column > tbody > tr > td') ) {
+                if (elem.textContent.length == 1) {
+					editor.selection.getNode().textContent = '';
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        } catch (e) {}
+    }
+});
