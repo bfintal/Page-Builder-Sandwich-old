@@ -306,7 +306,7 @@ class GambitPBSandwichColumns {
 		// Remove stray jQuery sortable classes
 		$html = preg_replace( '/(ui-sortable-handle|ui-sortable)/', '', $content );
 		$html = str_get_html( $html );
-
+		
 		$tables = $html->find( 'table.pbsandwich_column' );
 		$hashes = array();
 		while ( count( $tables ) > 0 ) {
@@ -336,12 +336,20 @@ class GambitPBSandwichColumns {
 					continue;
 				}
 				
+				$innerHTML = trim( $td->innertext );
+				
 				// Only add in paragraph tags if there aren't any. 
 				// This is to ensure that the spacing remains correct.
-				$innerHTML = $td->innertext;
-				if ( preg_match( '/<p>/', $innerHTML ) !== false ) {
-					$innerHTML = '<p>' . $td->innertext . '</p>';
+				// @see http://www.htmlhelp.com/reference/html40/inline.html
+				if ( preg_match( '/^<(a|abbr|acronym|b|bdo|big|br|cite|code|dfn|em|i|img|input|kbd|label|q|samp|select|small|span|strong|sub|sup|textarea|tt|var|button|del|ins|map|object|script)[^>]+>/', $innerHTML ) === 1 ) {
+					$innerHTML = '<p>' . $innerHTML . '</p>';
 				}
+				
+				// Remove blank classes
+				$innerHTML = preg_replace( '/\sclass=[\'"]\s*[\'"]/', '', $innerHTML );
+				
+				// Cleanup ends
+				$innerHTML = trim( $innerHTML );
 				
 				// Remove the widths since we are using classes for those:
 				$columnStyle = trim( preg_replace( '/(^|\s)width:[^;]+;\s?/', '', $td->style ) );
@@ -371,7 +379,6 @@ class GambitPBSandwichColumns {
 			$hash = crc32( $styleDump );
 			$hashes[] = $hash;
 			
-			
 			/**
 			 * Build our converted <table>
 			 */
@@ -398,9 +405,11 @@ class GambitPBSandwichColumns {
 						
 			$html->find( 'table.pbsandwich_column', 0 )->outertext = $newDivs;
 			
+			// Save the new HTML with the table replaced
 			$html = $html->save();
 			$html = str_get_html( $html );
-		
+			
+			// Move on to the next table
 			$tables = $html->find( 'table.pbsandwich_column' );
 		}
 		
@@ -414,8 +423,23 @@ class GambitPBSandwichColumns {
 			$columnStyles = str_replace( '%' . ( $key + 1 ) . '$s', $hash, $columnStyles );
 		}
 		
+		// Remove blank paragraphs (not &nbsp;)
+		$newHTML = (string) $html;
+		
+		// Remove weirdly appended paragraph tags (they are there for some odd reason)
+		$newHTML = preg_replace( '/(<p[^>]*>)([^<]*$)/', '$2', $newHTML );
+		
+		// Sometimes, our rows/columns get tangled up inside paragraphs, get rid of those
+		$newHTML = preg_replace( '/<p[^>]*>\s*(<div)/', '$1', $newHTML );
+		$newHTML = preg_replace( '/(<\/div>)\s*<\/p>/', '$1', $newHTML );
+		
+		// Since we're dealing with wrong paragraph tags, remove other wrong stuff such as
+		// multiple end paragraphs & multiple start paragraphs
+		$newHTML = preg_replace( '/(<\/p>)\s*<\/p>/', '$1', $newHTML );
+		$newHTML = preg_replace( '/<p[^>]+>\s*(<p[^>]+>)/', '$1', $newHTML );
+		
 		return array(
-			'content' => (string) $html,
+			'content' => $newHTML,
 			'styles' => $columnStyles,
 		);
 	}

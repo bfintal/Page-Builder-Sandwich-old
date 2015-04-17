@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 4.1
 Tested up to: 4.1.1
-Stable tag: 0.12
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -174,7 +174,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 
 == Changelog ==
 
-= 0.12 =
+= 1.0 =
 
 * Sped up & optimized dragging experience, previously, more content meant more lag when dragging
 * [New Toolbar API](https://github.com/gambitph/Page-Builder-Sandwich/wiki/Adding-Toolbar-Buttons)
@@ -184,6 +184,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Added a page break button in TinyMCE for convenience
 * Security fixes for CWE-200
 * Images now won't make columns wider
+* Fixed video sizes while in the editor
 * A ton of stability & bug fixes
 
 = 0.11 =
