@@ -148,6 +148,54 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/inc\/shortcake\/css\/sass\/_field-image.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/_field-image.scss",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/_field-image.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/inc\/shortcake\/css\/sass\/shortcode-ui-editor-styles.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/shortcode-ui-editor-styles.scss",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/shortcode-ui-editor-styles.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/inc\/shortcake\/css\/sass\/shortcode-ui.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/css\/sass\/shortcode-ui.scss",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/css\/css\/shortcode-ui.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/inc\/shortcake\/css\/shortcode-ui-editor-styles.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -228,6 +276,28 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/inc\/shortcake\/js\/build\/field-attachment.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/build\/field-attachment.js",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/build\/min\/field-attachment-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/inc\/shortcake\/js\/build\/field-color.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/build\/field-color.js",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/build\/min\/field-color-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/inc\/shortcake\/js\/build\/shortcode-ui.js": {
 		"fileType": 64,
@@ -339,17 +409,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/inc\/shortcake\/js\/utils\/dom.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/utils\/dom.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/utils\/min\/dom-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/inc\/shortcake\/js\/utils\/shortcode-view-constructor.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -416,23 +475,34 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/inc\/shortcake\/js\/views\/media-frame.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/media-frame.js",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/min\/media-frame-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/inc\/shortcake\/js\/views\/media-toolbar.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/media-toolbar.js",
+		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/min\/media-toolbar-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/inc\/shortcake\/js\/views\/search-shortcode.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/search-shortcode.js",
 		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/min\/search-shortcode-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/js\/views\/shortcode-frame.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/shortcode-frame.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/min\/shortcode-frame-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -470,38 +540,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/js\/views\/toolbar.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/toolbar.js",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/js\/views\/min\/toolbar-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/inc\/shortcake\/README.md": {
-		"enableFootnoteSupport": 0,
-		"enableSmartyPants": 1,
-		"expandTabs": 1,
-		"fileType": 4096,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/README.md",
-		"outputAbbreviatedPath": "\/inc\/shortcake\/README.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/inc\/shortcake\/shortcode-ui.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/inc\/shortcake\/shortcode-ui.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
 		},
 	"\/inc\/simple_html_dom.php": {
 		"fileType": 8192,
