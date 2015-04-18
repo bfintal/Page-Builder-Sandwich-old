@@ -702,7 +702,7 @@ body#tinymce.wp-editor [name="_mc4wp_required_but_not_really"] {
  */
 body#tinymce.wp-editor .sortable-placeholder {
   display: block;
-  height: 30px;
+  height: 20px;
   width: auto;
   background: rgba(108, 122, 137, 0.25);
   border-radius: 3px;
