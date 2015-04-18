@@ -12,7 +12,7 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 == Description ==
 
-= Call it PB Sandwich for short =
+= Visit our website at [pbsandwi.ch](http://pbsandwi.ch). We now have [awesome extensions](http://pbsandwi.ch/downloads) to further empower your page building experience. =
 
 = The page builder that: =
 
@@ -126,6 +126,10 @@ Report bugs and help out in the code from the [Github repository](https://github
 
 == Frequently Asked Questions ==
 
+= I want more features! =
+
+We now have [awesome extensions](http://pbsandwi.ch/downloads) to further empower your page building experience.
+
 = I just installed Sandwich. Where is it? =
 
 Go ahead and edit a post or page using the visual editor. You might not notice it, but your visual editor is now a page builder *(mic drop)*.
@@ -186,6 +190,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Security fixes for CWE-200
 * Images now won't make columns wider
 * Fixed video sizes while in the editor
+* Fixed issue where empty paragraph tags were added in the frontend
 * A ton of stability & bug fixes
 
 = 0.11 =
