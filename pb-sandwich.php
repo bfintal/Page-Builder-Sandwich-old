@@ -11,6 +11,13 @@
 * Domain Path: /languages
 */
 
+/**
+ * NOTES WHEN UPDATING SHORTCAKE:
+ * 1. Only include the final files, no need to include tests, dev files, etc
+ * 2. Add this on the main script: if ( ! defined( 'ABSPATH' ) ) exit;
+ * 3. Remove the plugin header to prevent activation errors
+ */
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 

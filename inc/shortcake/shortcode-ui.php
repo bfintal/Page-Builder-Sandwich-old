@@ -4,13 +4,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Plugin Name: Shortcode UI
- * Version: v0.3-alpha
- * Description: User Interface for adding shortcodes.
- * Author: Fusion Engineering and community
- * Author URI: http://next.fusion.net/tag/shortcode-ui/
- * Text Domain: shortcode-ui
- * License: GPL v2 or later
+ * Shortcode UI
+ * v0.3-alpha
+ * Description User Interface for adding shortcodes.
+ * Author Fusion Engineering and community
+ * Author URI http://next.fusion.net/tag/shortcode-ui/
+ * Text Domain shortcode-ui
+ * License GPL v2 or later
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
