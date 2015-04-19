@@ -116,3 +116,13 @@ You'll get this as your output:
 * We're looking to add common shortcodes via Shortcake to be included in the page builder. You can see our guides on the developer resources.
 
 [View Developer Resources](https://github.com/gambitph/Page-Builder-Sandwich/wiki)
+
+# Running Tests
+
+Initialize testing environment:
+
+```
+curl -sS https://getcomposer.org/installer | php
+curl -O https://phar.phpunit.de/phpunit.phar
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+```
