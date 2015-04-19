@@ -12,7 +12,7 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 == Description ==
 
-= Visit our website at [pbsandwi.ch](http://pbsandwi.ch). We now have [awesome extensions](http://pbsandwi.ch/downloads) to further empower your page building experience. =
+Visit our website at [pbsandwi.ch](http://pbsandwi.ch). We now have [awesome extensions](http://pbsandwi.ch/downloads) to further empower your page building experience.
 
 = The page builder that: =
 
