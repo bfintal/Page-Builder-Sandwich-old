@@ -538,7 +538,7 @@ class GambitPBSandwichColumns {
 		$toolbarButtons[] = array(
 			'action' => 'column-clone-row',
 			'icon' => 'dashicons dashicons-images-alt',
-			'label' => __( 'Change Columns', 'pbsandwich' ),
+			'label' => __( 'Clone Row', 'pbsandwich' ),
 			'shortcode' => 'row',
 			'priority' => 1108,
 		);
