@@ -7,7 +7,9 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-require_once( PBS_PATH . 'inc/EDD_SL_Plugin_Updater.php' );
+if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
+	require_once( PBS_PATH . 'inc/EDD_SL_Plugin_Updater.php' );
+}
 
 class GambitPBSandwichExtUpdater {
 	
