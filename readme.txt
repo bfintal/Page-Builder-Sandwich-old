@@ -12,6 +12,8 @@ The native visual editor page builder. Empower your visual editor with shortcode
 
 == Description ==
 
+Page Builder Sandwich is a drag and drop page builder that enables you to easily layout your pages all within the familiar visual editor. Sandwich empowers WordPress' visual editor to let you manipulate your rendered shortcodes, and lets you layout your content without those infamous shortcode square brackets.
+
 Visit our website at [pbsandwi.ch](http://pbsandwi.ch). We now have [awesome extensions](http://pbsandwi.ch/downloads) to further empower your page building experience.
 
 = The page builder that: =
@@ -25,22 +27,7 @@ Visit our website at [pbsandwi.ch](http://pbsandwi.ch). We now have [awesome ext
 * just works without any set ups and hassles, and
 * you'll forget that you have it turned on since it blends so well with WordPress
 
-*Check out the screenshots to see how PB Sandwich works.*
-
 **Requires PHP 5.3+**
-
-= What can you do with it =
-
-* Content areas with custom background images & colors
-* Create editable, nestable columns
-* Edit text and content using the TinyMCE visual editor like how you normally would
-* Live working preview of embedded content (e.g. put in a YouTube video and you can play it while still being able to drag it)
-* Drag and drop TinyMCE views into other locations
-* Clone shortcodes/embeds & columns
-* Create different shortcodes
-* Working undo
-
-= TLDR Intro =
 
 One of the most frustrating things when creating content is layouting and writing them inside the visual editor.
 
