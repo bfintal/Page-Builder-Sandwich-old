@@ -50,13 +50,19 @@ class GambitPBSandwichToolbar {
 		}
 		
 		// Sort via priority (most to least)
-		usort( $toolbarButtons, function( $a, $b ) {
-		    return $b['priority'] - $a['priority'];
-		});
+		usort( $toolbarButtons, array( $this, 'toolbarPrioritySort' ) );
 		
 		$columnVars['toolbar_buttons'] = $toolbarButtons;
 		
 		return $columnVars;
+	}
+	
+	
+	/**
+	 * Sort via priority property
+	 */
+	public function toolbarPrioritySort( $a, $b ) {
+		return $b['priority'] - $a['priority'];
 	}
 	
 	
