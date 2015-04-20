@@ -111,7 +111,7 @@ editor.on('toolbar-column-edit-area', function(e) {
 	
 	var $innerColumn = $selectedColumn.find('> .inner-column:eq(0)');
 	
-	var bgImageURL = $selectedColumn.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
+	var bgImageURL = $selectedColumn.css('background-image').replace( /url\(('|")?([^\)"']+)('|")?\)/g, '$2' );
 	
 	if ( bgImageURL === 'none' ) {
 		bgImageURL = '';
@@ -531,7 +531,7 @@ editor.on('toolbar-column-edit-row', function(e) {
 	
 	var $selectedRow = $(editor.getBody()).find('[data-wp-columnselect="1"]').parents('.pbsandwich_column:eq(0)');
 
-	var bgImageURL = $selectedRow.css('background-image').replace( /url\(([^\)]+)\)/g, '$1' );
+	var bgImageURL = $selectedRow.css('background-image').replace( /url\(('|")?([^\)"']+)('|")?\)/g, '$2' );
 
 	var action = e.action,
 		shortcode = e.sortcode,
