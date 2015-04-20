@@ -2,6 +2,7 @@
  * Creates tabs for modal windows
  */
 editor.on( 'pre-modal-create-tabs', function(e) {
+	var $ = jQuery;
 	
 	if ( typeof pbsandwich_column.modal_tabs === 'undefined' ) {
 		return;
