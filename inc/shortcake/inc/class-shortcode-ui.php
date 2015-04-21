@@ -5,7 +5,7 @@ class Shortcode_UI {
 	private $plugin_dir;
 	private $plugin_url;
 
-	private $shortcodes = array();
+	public $shortcodes = array();
 
 	private static $instance = null;
 

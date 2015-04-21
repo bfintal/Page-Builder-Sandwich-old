@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Commonly-used variables stored here for better management.
  */
 
-function sandwich_functions_display_order () {
+function sandwich_functions_display_order() {
+	$output = array();
 	$output['author'] = __( 'Author', 'pbsandwich' );
 	$output['date'] = __( 'Item Date', 'pbsandwich' );
 	$output['title'] = __( 'Title', 'pbsandwich' );
@@ -20,7 +21,8 @@ function sandwich_functions_display_order () {
 	return $output;
 }
 
-function sandwich_functions_display_dir () {
+function sandwich_functions_display_dir() {
+	$output = array();
 	$output['ASC'] = __( 'Ascending', 'pbsandwich' );
 	$output['DESC'] = __( 'Descending', 'pbsandwich' );
 	return $output;
@@ -32,7 +34,7 @@ function sandwich_functions_display_dir () {
  * To output the ID of the post beside the title (for coherence purposes, set $id to true in its arguments)
  */
 
-function sandwich_functions_posttype_list ( $type = "forum", $id = "false" ) {
+function sandwich_functions_posttype_list( $type = "forum", $id = "false" ) {
 	$args = array(
 		'post_type' => $type,
 		'posts_per_page' => '-1'
@@ -82,7 +84,7 @@ function sandwich_functions_taxonomy_list( $type = "taxonomy" ) {
  * Choose between array, comma-separated string or slug.
  */
 
-function sandwich_functions_term_list ( $taxonomyName ) {
+function sandwich_functions_term_list( $taxonomyName ) {
 	$terms = get_terms( $taxonomyName, array( 'parent' => 0 ) );
 	
 	$output = array(
