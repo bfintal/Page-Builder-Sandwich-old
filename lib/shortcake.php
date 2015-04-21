@@ -38,7 +38,7 @@ class GambitPBSandwichShortcake {
 			$pattern .= empty( $pattern ) ? $tag : '|' . $tag;
 		}
 		
-		if ( ! preg_match( '/\[(' . $pattern . ')\s/', $shortcode ) ) {
+		if ( ! preg_match( '/\[(' . $pattern . ')(]|\s)/', $shortcode ) ) {
 			return;
 		}
 		
