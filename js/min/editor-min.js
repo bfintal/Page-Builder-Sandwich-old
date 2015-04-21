@@ -1193,13 +1193,15 @@ function _pbsandwich_columns_formTable( columns, content ) {
 	table += '</tr></tbody></table>';
 	
 	// Copy the data/styles of the table to the new replacement one
-	table = $(table);
-	$.each( $(content)[0].attributes, function() {
-		if ( this.specified ) {
-			table.attr( this.name, this.value );
-		}
-	} );
-	table = table[0].outerHTML;
+	if ( $(content).is('table') ) {
+		table = $(table);
+		$.each( $(content)[0].attributes, function() {
+			if ( this.specified ) {
+				table.attr( this.name, this.value );
+			}
+		} );
+		table = table[0].outerHTML;
+	}
 	
 	return table;
 }
