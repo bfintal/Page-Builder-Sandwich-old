@@ -33,7 +33,7 @@ class GambitPBSandwichToolbar {
 			'icon' => empty( $args['icon'] ) ? 'dashicons dashicons-edit' : $args['icon'],
 			'label' => empty( $args['label'] ) ? '' : $args['label'],
 			'shortcode' => empty( $args['shortcode'] ) ? '' : $args['shortcode'],
-			'priority' => empty( $args['priority'] ) ? 10 : ( (int) $args['priority'] != 0 ? 10 : $args['priority'] ),
+			'priority' => empty( $args['priority'] ) ? 10 : ( (int) $args['priority'] === 0 ? 10 : $args['priority'] ),
 			'hash' => substr( md5( microtime() ), 0, 8 ),
 		);
 	}
