@@ -1355,6 +1355,7 @@ editor.addButton( 'pbsandwich_column', {
 			onclick: function() {
 			    editor.windowManager.open( {
 			        title: pbsandwich_column.custom_columns,
+					id: 'pbs-modal',
 			        body: [{
 			            type: 'textbox',
 			            name: 'columns',
@@ -1433,6 +1434,7 @@ editor.on('keyup', function(e) {
  */
 editor.on('toolbar-column-columns', function(e) {
 	var colModal = editor.windowManager.open( {
+		id: 'pbs-modal',
 		title: pbsandwich_column.change_column,
 		buttons: [{
 			text: pbsandwich_column.cancel,
@@ -1570,6 +1572,7 @@ editor.on('toolbar-column-edit-area', function(e) {
 
 	var colModal = editor.windowManager.open( {
 		title: pbsandwich_column.column_settings,
+		id: 'pbs-modal',
 		body: [{
 			type: 'container',
 			html: wp.template( 'pbs-column-area-edit-modal' )( pbsandwich_column )
@@ -1999,13 +2002,14 @@ editor.on('toolbar-column-edit-row', function(e) {
 
 	//
 	var colModal = editor.windowManager.open( {
-			title: pbsandwich_column.row_settings,
-			height: $(window).height() * .8,
-			width: $(window).width() * .7 > 900 ? 900 : $(window).width() * .7,
-			body: [{
-				type: 'container',
-				html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
-			}],
+		title: pbsandwich_column.row_settings,
+		id: 'pbs-modal',
+		height: $(window).height() * .8,
+		width: $(window).width() * .7 > 900 ? 900 : $(window).width() * .7,
+		body: [{
+			type: 'container',
+			html: wp.template( 'pbs-column-row-edit-modal' )( pbsandwich_column )
+		}],
 		/**
 		 * Apply all our new styles on submit
 		 */

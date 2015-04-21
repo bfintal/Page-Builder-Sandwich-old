@@ -276,6 +276,12 @@ body .mce-window > div > .mce-container-body.mce-abs-layout {
   body .mce-window > div > .mce-container-body.mce-abs-layout {
     overflow-y: scroll;
     overflow-x: scroll; } }
+.mce-container[id="pbs-modal"] .mce-container-body .mce-container-body {
+  overflow: visible !important; }
+  .mce-container[id="pbs-modal"] .mce-container-body .mce-container-body .mce-container-body {
+    height: auto !important;
+    overflow: hidden !important; }
+
 .mce-container .mce-widget.mce-btn.sep {
   display: inline-block;
   width: 1px;

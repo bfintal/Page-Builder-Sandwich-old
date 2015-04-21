@@ -83,3 +83,14 @@ body .mce-window > div > .mce-container-body.mce-abs-layout {
 		overflow-x: scroll;
 	}
 }
+
+// Color pickers change the height of the modal, this fixes the modal
+.mce-container[id="pbs-modal"] {
+	.mce-container-body .mce-container-body {
+		overflow: visible !important;
+		.mce-container-body {
+			height: auto !important;
+			overflow: hidden !important;
+		}
+	}
+}

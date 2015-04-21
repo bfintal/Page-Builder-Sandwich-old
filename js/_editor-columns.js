@@ -406,6 +406,7 @@ editor.addButton( 'pbsandwich_column', {
 			onclick: function() {
 			    editor.windowManager.open( {
 			        title: pbsandwich_column.custom_columns,
+					id: 'pbs-modal',
 			        body: [{
 			            type: 'textbox',
 			            name: 'columns',
