@@ -75,7 +75,16 @@ function sortStartHandler( editor ) {
  * Sortable end handler
  */
 function sortEndHandler( editor ) {
-	var editorBody = jQuery( editor.getBody() );
+	var $ = jQuery;
+	
+	var editorBody = $( editor.getBody() );
+	
+	// Issue #141: Embeds cannot be dragged while it's selected, to make the experience better
+	// unselect it so it can be dragged agian right away	
+	setTimeout( function() {
+		$( editor.getBody() ).find('.wpview-wrap[data-wpview-type="embed"][data-mce-selected="1"]').removeAttr('data-mce-selected');
+	}, 1 );
+
 	try {
 		editorBody.sortable('refresh');
 		editorBody.find('.pbsandwich_column td').sortable('refresh');
