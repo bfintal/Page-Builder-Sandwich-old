@@ -443,8 +443,6 @@ editor.on('init', function(e) {
 			return;
 		}
 		
-		e.preventDefault();
-		
 		// Get the shortcode being dragged
 		var wrapper = null;
 		if ( $(e.target).is('.wpview-wrap') ) {
