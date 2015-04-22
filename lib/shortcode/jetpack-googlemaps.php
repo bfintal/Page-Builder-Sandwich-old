@@ -44,13 +44,6 @@ function sandwich_jetpack_googlemaps() {
             'listItemImage' => 'dashicons-location-alt',
             'attrs' => array(
                 array(
-                    'label' => __( 'IFrame embed code', 'pbsandwich' ),
-                    'attr' => 'content',
-                    'type' => 'textarea',
-					'value' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d59371640.34088013!2d-97.61066094515606!3d24.73520958531114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1428309298913" width="600" height="450" frameborder="0" style="border:0"></iframe>',
-					'description' => __( 'Enter iframe embed code generated from Google Maps.', 'pbsandwich' ),
-                ),
-                array(
                     'label' => __( 'Height', 'pbsandwich' ),
                     'attr' => 'height',
                     'type' => 'text',
@@ -58,6 +51,11 @@ function sandwich_jetpack_googlemaps() {
 					'value' => '300'
                 ),
             ),
+			'inner_content' => array(
+				'value' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d59371640.34088013!2d-97.61066094515606!3d24.73520958531114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1428309298913" width="600" height="450" frameborder="0" style="border:0"></iframe>',
+				'type' => 'textarea',
+				'description' => __( 'Enter iframe embed code generated from Google Maps.', 'pbsandwich' ),
+			),
         )
     );	
 	
