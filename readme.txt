@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 4.1
 Tested up to: 4.1.1
-Stable tag: 1.0.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,6 +164,18 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.1 =
+
+* Selecting shortcodes then creating a column now correctly puts them inside the new column
+* Modal window now resizes correctly for colorpickers
+* Fixed insert via URL
+* Now properly stops ctrl/option+backspace from deleting a single column
+* Fixed bug that prevented clicks on columns
+* You can now drag videos right after dragging them
+* Fixed bug where row styles got deleted when changing a row layout
+* Fixed bug that modified the background image path when opening an edit modal window
+* Added unit tests to ensure future builds
 
 = 1.0.2 =
 
