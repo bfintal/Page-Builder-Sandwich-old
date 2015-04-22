@@ -258,7 +258,7 @@ class GambitPBSandwichExtUpdater {
 				);
 				
 				// Call the license validation API
-				$response = wp_remote_get( add_query_arg( $apiParams, $extension['store_url'] ), array( 'timeout' => 15, 'sslverify' => $extension['ssl'] ) );
+				$response = wp_remote_get( esc_url_raw( add_query_arg( $apiParams, $extension['store_url'] ) ), array( 'timeout' => 15, 'sslverify' => $extension['ssl'] ) );
 
 				// make sure the response came back okay
 				if ( is_wp_error( $response ) ) {
