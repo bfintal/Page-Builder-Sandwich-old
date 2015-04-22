@@ -143,7 +143,7 @@ editor.on('init', function(e) {
 		editor.fire( 'show-toolbar', {
 			'editor': editor,
 			'target': e.target,
-			'shortcode': wrapper.attr('data-wpview-type'),
+			'shortcode': 'image',
 			'toolbar': $('.mce-wp-image-toolbar')[0]
 		} );
 		
