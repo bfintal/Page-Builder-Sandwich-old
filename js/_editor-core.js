@@ -525,6 +525,20 @@ editor.on('keydown', function(e) {
         }
 	}
 	
+    // Prevent shift + delete & backspace from deleting with the whole row
+    if ( ( e.metaKey || e.altKey || e.ctrlKey ) && ( e.keyCode === 8 || e.keyCode === 46 ) ) {
+        try {
+            var elem = editor.selection.getNode().parentNode;
+            if ( $(editor.selection.getNode().parentNode).is('.pbsandwich_column > tbody > tr > td') ) {
+                if ( elem.textContent.length >= 1 && elem.textContent.match( /^[0-9a-zA-Z_]*\s?$/ ) ) {
+					editor.selection.getNode().textContent = '';
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        } catch (e) {}
+    }
+	
     // Prevent delete & backspace from deleting the whole row
     if ( e.keyCode === 8 || e.keyCode === 46 ) {
         try {
