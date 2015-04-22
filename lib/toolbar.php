@@ -64,7 +64,7 @@ class GambitPBSandwichToolbar {
 	
 	public function toolbarPrioritySort( $a, $b ) {
 	    return $b['priority'] - $a['priority'];
-	});
+	}
 	
 	
 	/**
