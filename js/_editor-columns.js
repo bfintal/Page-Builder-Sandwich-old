@@ -213,12 +213,15 @@ function _pbsandwich_columns_formTable( columns, content ) {
 		newTd = $('<td></td>');
 		
 		// Retain current column styles
-		if ( $(content).is('table') ) {
-			var oldColumn = $(content).find('> tbody > tr > td:eq(' + i + ')');
-			if ( oldColumn.length > 0 ) {
-				newTd.attr('style', oldColumn.attr('style') );
-				newTd.attr('data-mce-style', oldColumn.attr('data-mce-style') );
+		try {
+			if ( $(content).is('table') ) {
+				var oldColumn = $(content).find('> tbody > tr > td:eq(' + i + ')');
+				if ( oldColumn.length > 0 ) {
+					newTd.attr('style', oldColumn.attr('style') );
+					newTd.attr('data-mce-style', oldColumn.attr('data-mce-style') );
+				}
 			}
+		} catch (error) {
 		}
 		
 		// Wrap the contents in paragraphs so it can be edited
@@ -244,14 +247,17 @@ function _pbsandwich_columns_formTable( columns, content ) {
 	table += '</tr></tbody></table>';
 	
 	// Copy the data/styles of the table to the new replacement one
-	if ( $(content).is('table') ) {
-		table = $(table);
-		$.each( $(content)[0].attributes, function() {
-			if ( this.specified ) {
-				table.attr( this.name, this.value );
-			}
-		} );
-		table = table[0].outerHTML;
+	try {
+		if ( $(content).is('table') ) {
+			table = $(table);
+			$.each( $(content)[0].attributes, function() {
+				if ( this.specified ) {
+					table.attr( this.name, this.value );
+				}
+			} );
+			table = table[0].outerHTML;
+		}
+	} catch ( error ) {
 	}
 	
 	return table;
