@@ -2197,7 +2197,8 @@ editor.on( 'pre-modal-create-tabs', function(e) {
 			.addClass('sandwich_modal')
 			.attr( 'id', newTabInfo.template_id )
 			.append( wp.template( newTabInfo.template_id )( pbs_modal_fields[ newTabInfo.template_id ] ) )
-			.appendTo( $(e.target) );
+			.appendTo( $(e.target) )
+			.hide();
 
 	});
 	

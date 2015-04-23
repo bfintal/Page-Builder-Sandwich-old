@@ -29,6 +29,7 @@ require_once( PBS_PATH . 'lib/shortcake.php' );
 require_once( PBS_PATH . 'lib/functions.php' );
 require_once( PBS_PATH . 'lib/toolbar.php' );
 require_once( PBS_PATH . 'lib/updater.php' );
+require_once( PBS_PATH . 'lib/extension-ads.php' );
 
 // General list of shortcakes available to PB Sandwich. They include integrations from 3rd party plugins.
 require_once( PBS_PATH . 'lib/shortcode/hello-dolly.php' );

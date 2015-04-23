@@ -61,10 +61,23 @@
 			opacity: .8;
 			margin-left: 0;
 		}
+		* {
+			white-space: normal;
+		}
+		p + p {
+			margin-top: 1em;
+		}
 		hr {
 			height: 1px;
 			background: #ddd;
 			margin: 20px 0;
+		}
+		a, a:visited {
+			font-size: 1em;
+			color: #06a6ce;
+			&:hover {
+				color: #333;
+			}
 		}
 	}
 }
@@ -91,6 +104,7 @@ body .mce-window > div > .mce-container-body.mce-abs-layout {
 		.mce-container-body {
 			height: auto !important;
 			overflow: hidden !important;
+			position: relative;
 		}
 	}
 }

@@ -204,13 +204,6 @@
 .mce-container-body {
   overflow: auto; }
 
-/**
- * Edit column modal window
- */
-#pbsandwich_column_area_edit {
-  max-height: 400px;
-  overflow: scroll; }
-
 .wp-media-buttons .sandwich-add-shortcode span.wp-media-buttons-icon:nth-of-type(1) {
   overflow: hidden;
   width: 6px; }
@@ -261,10 +254,19 @@
   font-size: .9em;
   opacity: .8;
   margin-left: 0; }
+.mce-container .sandwich_modal * {
+  white-space: normal; }
+.mce-container .sandwich_modal p + p {
+  margin-top: 1em; }
 .mce-container .sandwich_modal hr {
   height: 1px;
   background: #ddd;
   margin: 20px 0; }
+.mce-container .sandwich_modal a, .mce-container .sandwich_modal a:visited {
+  font-size: 1em;
+  color: #06a6ce; }
+  .mce-container .sandwich_modal a:hover, .mce-container .sandwich_modal a:visited:hover {
+    color: #333; }
 
 body .mce-window > div > .mce-container-body.mce-abs-layout {
   overflow-y: scroll;
@@ -280,7 +282,8 @@ body .mce-window > div > .mce-container-body.mce-abs-layout {
   overflow: visible !important; }
   .mce-container[id="pbs-modal"] .mce-container-body .mce-container-body .mce-container-body {
     height: auto !important;
-    overflow: hidden !important; }
+    overflow: hidden !important;
+    position: relative; }
 
 .mce-container .mce-widget.mce-btn.sep {
   display: inline-block;
