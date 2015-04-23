@@ -520,15 +520,15 @@ body#tinymce.wp-editor .sandwich .progress-bar-danger {
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
-.sandwich .pbs_button {
+.sandwich.pbs_button {
   box-sizing: border-box;
   text-decoration: none;
   text-align: center; }
-  .sandwich .pbs_button a, .sandwich .pbs_button a:hover, .sandwich .pbs_button a:link, .sandwich .pbs_button a:link:hover, .sandwich .pbs_button a:visited, .sandwich .pbs_button a:visited:hover {
+  .sandwich.pbs_button a, .sandwich.pbs_button a:hover, .sandwich.pbs_button a:link, .sandwich.pbs_button a:link:hover, .sandwich.pbs_button a:visited, .sandwich.pbs_button a:visited:hover {
     text-decoration: none; }
-  .sandwich .pbs_button.pbs_button_align_left {
+  .sandwich.pbs_button.pbs_button_align_left {
     text-align: left; }
-  .sandwich .pbs_button.pbs_button_align_right {
+  .sandwich.pbs_button.pbs_button_align_right {
     text-align: right; }
 
 body#tinymce.wp-editor {
