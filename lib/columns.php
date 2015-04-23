@@ -97,6 +97,7 @@ class GambitPBSandwichColumns {
         add_filter( 'mce_buttons', array( $this, 'registerTinyMCEButton' ) );
 		
 		$columnVars = array(
+			'wp_version' => get_bloginfo( 'version' ),
 			'dummy_content' => __( 'Column text', 'pbsandwich' ),
 			'modal_title' => __( 'Columns', 'pbsandwich' ),
         	'modal_description' => __( 'Enter a composition here of column ratios separated by spaces.<br>Make sure the ratios sum up to 1.<br>For example: ', 'pbsandwich' ),

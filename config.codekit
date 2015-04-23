@@ -769,6 +769,17 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/backward-compatibility\/4.1\/_editor-toolbars.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/backward-compatibility\/4.1\/_editor-toolbars.js",
+		"outputAbbreviatedPath": "\/js\/backward-compatibility\/4.1\/min\/_editor-toolbars-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/bootstrap\/_collapse.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -851,6 +862,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lib\/columns.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/extension-ads.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/extension-ads.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -1202,6 +1222,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lib\/templates\/column-custom-modal-description.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/templates\/column-row-backgrounds.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/templates\/column-row-backgrounds.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2896,7 +2925,7 @@
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
 	"displayValue": "Page-Builder-Sandwich",
-	"displayValueWasSetByUser": 0,
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "pencil_gray"
 	},
 "projectSettings": {
