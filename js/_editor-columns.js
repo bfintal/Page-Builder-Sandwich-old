@@ -338,7 +338,22 @@ editor.on('init', function(e) {
 
 /**
  * Our column button itself
+ * 
+ * The 4.2 method of adding new columns is new. In the old 4.1 method, if you select a wpview,
+ * then create a column, it creates a jumbled up row. The process before was an outright
+ * replace the selected content
+ *
+ * This was changed in 4.2 to a render new content -> clear selected content -> insert new content.
+ * This works even when creating a new column without any selected content
  */
+editor._pbsCreateNewColumn = function( columnConfig ) {
+	preUpdateSortable( editor );
+	var newContent = _pbsandwich_columns_formTable( columnConfig, editor.selection.getContent() );
+	jQuery(editor.getBody()).find('.wpview-wrap[data-mce-selected="1"]').remove();
+	editor.selection.setContent( newContent );
+	updateSortable( editor );
+	fixTableParagraphs( editor );
+}
 editor.addButton( 'pbsandwich_column', {
     title: pbsandwich_column.modal_title,
     icon: 'wp_tagcloud',
@@ -347,66 +362,31 @@ editor.addButton( 'pbsandwich_column', {
 		{
             text: pbsandwich_column.column_1,
             value: '1/1',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_2,
             value: '1/2+1/2',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_3,
             value: '1/3+1/3+1/3',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_4,
             value: '1/4+1/4+1/4+1/4',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_1323,
             value: '1/3+2/3',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_2313,
             value: '2/3+1/3',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.column_141214,
             value: '1/4+1/2+1/4',
-            onclick: function() {
-				preUpdateSortable( editor );
-                editor.insertContent( _pbsandwich_columns_formTable( this.value(), editor.selection.getContent() ) );
-				updateSortable( editor );
-				fixTableParagraphs( editor );
-            }
+            onclick: function() { editor._pbsCreateNewColumn( this.value() ); }
 		}, {
             text: pbsandwich_column.custom_columns,
 			onclick: function() {
@@ -423,12 +403,7 @@ editor.addButton( 'pbsandwich_column', {
 						type: 'container',
 						html: wp.template( 'pbs-column-custom-modal-description' )( pbsandwich_column )
 					}],
-			        onsubmit: function( e ) {
-						preUpdateSortable( editor );
-	                    editor.insertContent( _pbsandwich_columns_formTable( e.data.columns, editor.selection.getContent() ) );
-						updateSortable( editor );
-						fixTableParagraphs( editor );
-			        }
+			        onsubmit: function( e ) { editor._pbsCreateNewColumn( e.data.columns ); }
 			    });
 			}
 		}
