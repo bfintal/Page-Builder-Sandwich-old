@@ -39,7 +39,7 @@ install_wp() {
 	download https://raw.github.com/markoheijnen/wp-mysqli/master/db.php $WP_CORE_DIR/wp-content/db.php
 	
 	download https://downloads.wordpress.org/plugin/bbpress.zip /tmp/bbpress.zip
-	unzip -o /tmp/bbpress.zip -d $WP_CORE_DIR/wp-content/plugins
+	unzip -o /tmp/bbpress.zip -d ${WP_CORE_DIR}wp-content/plugins
 }
 
 install_test_suite() {
