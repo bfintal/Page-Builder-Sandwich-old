@@ -16,9 +16,10 @@ class PBSTestFunctions extends WP_UnitTestCase {
 		
 		$this->assertInternalType( 'array', sandwich_functions_taxonomy_list() );
 
-		$this->assertInternalType( 'array', sandwich_functions_term_list( 'dummy' ) );
-		$this->assertCount( 1, sandwich_functions_term_list( 'dummy' ) );
-		$this->assertCount( 2, sandwich_functions_term_list( 'category' ) );
+		$this->assertInternalType( 'array', sandwich_functions_term_list( 'invalid_term' ), 'Invalid taxonomy should not error' );
+		
+		$this->assertInternalType( 'array', sandwich_functions_term_list( 'post_tag' ) );
+		$this->assertCount( 1, sandwich_functions_term_list( 'post_tag' ) );
 	}
 }
 

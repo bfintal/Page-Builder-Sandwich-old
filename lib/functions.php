@@ -83,22 +83,38 @@ function sandwich_functions_taxonomy_list( $type = "taxonomy" ) {
  * Encodes the list of terms in a given taxonomy into an array variable.
  * Choose between array, comma-separated string or slug.
  */
-
-function sandwich_functions_term_list( $taxonomyName ) {
-	$terms = get_terms( $taxonomyName, array( 'parent' => 0 ) );
+function sandwich_functions_term_list( $taxonomyName = 'post_tag' ) {
+	$terms = get_terms( $taxonomyName, array( 
+		'parent' => 0,
+		'hide_empty' => false,
+	) );
 	
 	$output = array(
 		0 => sprintf( '— %s —', __( 'Select', 'pbsandwich' ) )
 	);
 	
+	if ( is_wp_error( $terms ) ) {
+		return $output;
+	}
+
 	foreach( $terms as $term ) {
 		
 		$output[ $term->slug ] = $term->name;
 		$term_children = get_term_children( $term->term_id, $taxonomyName );
 		
+		if ( is_wp_error( $term_children ) ) {
+			continue;
+		}
+		
 		foreach( $term_children as $term_child_id ) {
+			
 			$term_child = get_term_by( 'id', $term_child_id, $taxonomyName );
-			$output[ $term_child->slug ] = "-" . $term_child->name;
+			
+			if ( is_wp_error( $term_child ) ) {
+				continue;
+			}
+			
+			$output[ $term_child->slug ] = $term_child->name;
 		}
 		
 	}
