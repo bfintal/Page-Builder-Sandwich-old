@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Page Builder Sandwich\n"
-"POT-Creation-Date: 2015-04-19 00:01+0800\n"
-"PO-Revision-Date: 2015-04-19 00:01+0800\n"
+"POT-Creation-Date: 2015-04-25 00:41+0800\n"
+"PO-Revision-Date: 2015-04-25 00:41+0800\n"
 "Last-Translator: Benjamin Intal <bf.intal@gambit.ph>\n"
 "Language-Team: Gambit <bf.intal@gambit.ph>\n"
 "Language: en_US\n"
@@ -16,361 +16,366 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../pb-sandwich.php\n"
 "X-Poedit-SearchPath-1: ../lib\n"
 
-#: ../lib/columns.php:100
+#: ../lib/columns.php:101
 msgctxt "pbsandwich"
 msgid "Column text"
 msgstr ""
 
-#: ../lib/columns.php:101
+#: ../lib/columns.php:102
 msgctxt "pbsandwich"
 msgid "Columns"
 msgstr ""
 
-#: ../lib/columns.php:102
+#: ../lib/columns.php:103
 msgctxt "pbsandwich"
 msgid ""
 "Enter a composition here of column ratios separated by spaces.<br>Make sure "
 "the ratios sum up to 1.<br>For example: "
 msgstr ""
 
-#: ../lib/columns.php:103
+#: ../lib/columns.php:104
 msgctxt "pbsandwich"
 msgid "Custom Columns"
 msgstr ""
 
-#: ../lib/columns.php:104
+#: ../lib/columns.php:105
 #, php-format
 msgctxt "pbsandwich"
 msgid "%s Column"
 msgstr ""
 
-#: ../lib/columns.php:105 ../lib/columns.php:106 ../lib/columns.php:107
-#: ../lib/columns.php:108 ../lib/columns.php:109 ../lib/columns.php:110
+#: ../lib/columns.php:106 ../lib/columns.php:107 ../lib/columns.php:108
+#: ../lib/columns.php:109 ../lib/columns.php:110 ../lib/columns.php:111
 #, php-format
 msgctxt "pbsandwich"
 msgid "%s Columns"
 msgstr ""
 
-#: ../lib/columns.php:111
+#: ../lib/columns.php:112
 msgctxt "pbsandwich"
 msgid "Delete"
 msgstr ""
 
-#: ../lib/columns.php:112
+#: ../lib/columns.php:113
 msgctxt "pbsandwich"
 msgid "Edit"
 msgstr ""
 
-#: ../lib/columns.php:113
+#: ../lib/columns.php:114
 msgctxt "pbsandwich"
 msgid "Change Column"
 msgstr ""
 
-#: ../lib/columns.php:114 ../lib/toolbar.php:74
+#: ../lib/columns.php:115 ../lib/toolbar.php:81
 msgctxt "pbsandwich"
 msgid "Clone"
 msgstr ""
 
-#: ../lib/columns.php:115 ../lib/columns.php:534 ../lib/columns.php:541
+#: ../lib/columns.php:116 ../lib/columns.php:537
 msgctxt "pbsandwich"
 msgid "Change Columns"
 msgstr ""
 
-#: ../lib/columns.php:116
+#: ../lib/columns.php:117
 msgctxt "pbsandwich"
 msgid "Cancel"
 msgstr ""
 
-#: ../lib/columns.php:117
+#: ../lib/columns.php:118
 msgctxt "pbsandwich"
 msgid "Preset"
 msgstr ""
 
-#: ../lib/columns.php:118
+#: ../lib/columns.php:119
 msgctxt "pbsandwich"
 msgid "You can change the number of columns below:"
 msgstr ""
 
-#: ../lib/columns.php:119
+#: ../lib/columns.php:120
 msgctxt "pbsandwich"
 msgid "Use custom"
 msgstr ""
 
-#: ../lib/columns.php:120
+#: ../lib/columns.php:121
 msgctxt "pbsandwich"
 msgid "Custom"
 msgstr ""
 
-#: ../lib/columns.php:122
+#: ../lib/columns.php:123 ../lib/columns.php:544
 msgctxt "pbsandwich"
 msgid "Clone Row"
 msgstr ""
 
-#: ../lib/columns.php:123 ../lib/columns.php:548
+#: ../lib/columns.php:124 ../lib/columns.php:551
 msgctxt "pbsandwich"
 msgid "Delete Row"
 msgstr ""
 
-#: ../lib/columns.php:124 ../lib/columns.php:527
+#: ../lib/columns.php:125 ../lib/columns.php:530
 msgctxt "pbsandwich"
 msgid "Edit Row"
 msgstr ""
 
-#: ../lib/columns.php:125
+#: ../lib/columns.php:126
 msgctxt "pbsandwich"
 msgid "Edit Area"
 msgstr ""
 
-#: ../lib/columns.php:126
+#: ../lib/columns.php:127
 msgctxt "pbsandwich"
 msgid "Clone Area"
 msgstr ""
 
-#: ../lib/columns.php:127
+#: ../lib/columns.php:128
 msgctxt "pbsandwich"
 msgid "Delete Area"
 msgstr ""
 
-#: ../lib/columns.php:128 ../lib/columns.php:451
+#: ../lib/columns.php:129 ../lib/columns.php:454
 msgctxt "pbsandwich"
 msgid "Column"
 msgstr ""
 
-#: ../lib/columns.php:129 ../lib/columns.php:483
+#: ../lib/columns.php:130 ../lib/columns.php:486
 msgctxt "pbsandwich"
 msgid "Row"
 msgstr ""
 
-#: ../lib/columns.php:132
+#: ../lib/columns.php:133
 msgctxt "pbsandwich"
 msgid "Column Settings"
 msgstr ""
 
-#: ../lib/columns.php:133
+#: ../lib/columns.php:134
 msgctxt "pbsandwich"
 msgid "Styles"
 msgstr ""
 
-#: ../lib/columns.php:134
+#: ../lib/columns.php:135
 msgctxt "pbsandwich"
 msgid "Style"
 msgstr ""
 
-#: ../lib/columns.php:135
+#: ../lib/columns.php:136
 msgctxt "pbsandwich"
 msgid "Border"
 msgstr ""
 
-#: ../lib/columns.php:136
+#: ../lib/columns.php:137
 msgctxt "pbsandwich"
 msgid "Padding"
 msgstr ""
 
-#: ../lib/columns.php:137
+#: ../lib/columns.php:138
 msgctxt "pbsandwich"
 msgid "None"
 msgstr ""
 
-#: ../lib/columns.php:138
+#: ../lib/columns.php:139
 msgctxt "pbsandwich"
 msgid "Dotted"
 msgstr ""
 
-#: ../lib/columns.php:139
+#: ../lib/columns.php:140
 msgctxt "pbsandwich"
 msgid "Dashed"
 msgstr ""
 
-#: ../lib/columns.php:140
+#: ../lib/columns.php:141
 msgctxt "pbsandwich"
 msgid "Solid"
 msgstr ""
 
-#: ../lib/columns.php:141
+#: ../lib/columns.php:142
 msgctxt "pbsandwich"
 msgid "Double"
 msgstr ""
 
-#: ../lib/columns.php:142
+#: ../lib/columns.php:143
 msgctxt "pbsandwich"
 msgid "Groove"
 msgstr ""
 
-#: ../lib/columns.php:143
+#: ../lib/columns.php:144
 msgctxt "pbsandwich"
 msgid "Ridge"
 msgstr ""
 
-#: ../lib/columns.php:144
+#: ../lib/columns.php:145
 msgctxt "pbsandwich"
 msgid "Inset"
 msgstr ""
 
-#: ../lib/columns.php:145
+#: ../lib/columns.php:146
 msgctxt "pbsandwich"
 msgid "Outset"
 msgstr ""
 
-#: ../lib/columns.php:146
+#: ../lib/columns.php:147
 msgctxt "pbsandwich"
 msgid "Color"
 msgstr ""
 
-#: ../lib/columns.php:147
+#: ../lib/columns.php:148
 msgctxt "pbsandwich"
 msgid "Radius"
 msgstr ""
 
-#: ../lib/columns.php:148
+#: ../lib/columns.php:149
 msgctxt "pbsandwich"
 msgid "Background"
 msgstr ""
 
-#: ../lib/columns.php:149
+#: ../lib/columns.php:150
 msgctxt "pbsandwich"
 msgid "Image"
 msgstr ""
 
-#: ../lib/columns.php:150
+#: ../lib/columns.php:151
 msgctxt "pbsandwich"
 msgid "Size"
 msgstr ""
 
-#: ../lib/columns.php:151
+#: ../lib/columns.php:152
 msgctxt "pbsandwich"
 msgid "Inherit"
 msgstr ""
 
-#: ../lib/columns.php:152
+#: ../lib/columns.php:153
 msgctxt "pbsandwich"
 msgid "Cover"
 msgstr ""
 
-#: ../lib/columns.php:153
+#: ../lib/columns.php:154
 msgctxt "pbsandwich"
 msgid "Contain"
 msgstr ""
 
-#: ../lib/columns.php:154
+#: ../lib/columns.php:155
 msgctxt "pbsandwich"
 msgid "Repeat"
 msgstr ""
 
-#: ../lib/columns.php:155
+#: ../lib/columns.php:156
 msgctxt "pbsandwich"
 msgid "Repeat-x"
 msgstr ""
 
-#: ../lib/columns.php:156
+#: ../lib/columns.php:157
 msgctxt "pbsandwich"
 msgid "Repeat-y"
 msgstr ""
 
-#: ../lib/columns.php:157
+#: ../lib/columns.php:158
 msgctxt "pbsandwich"
 msgid "No-repeat"
 msgstr ""
 
-#: ../lib/columns.php:158
+#: ../lib/columns.php:159
 msgctxt "pbsandwich"
 msgid "Round"
 msgstr ""
 
-#: ../lib/columns.php:159
+#: ../lib/columns.php:160
 msgctxt "pbsandwich"
 msgid "Space"
 msgstr ""
 
-#: ../lib/columns.php:160
+#: ../lib/columns.php:161
 msgctxt "pbsandwich"
 msgid "Position"
 msgstr ""
 
-#: ../lib/columns.php:161
+#: ../lib/columns.php:162
 msgctxt "pbsandwich"
 msgid "Margin"
 msgstr ""
 
-#: ../lib/columns.php:162
+#: ../lib/columns.php:163
 msgctxt "pbsandwich"
 msgid "Row Settings"
 msgstr ""
 
-#: ../lib/columns.php:165
+#: ../lib/columns.php:166
 msgctxt "pbsandwich"
 msgid "Full-width"
 msgstr ""
 
-#: ../lib/columns.php:166
+#: ../lib/columns.php:167
 msgctxt "pbsandwich"
 msgid "Do not break out into full width"
 msgstr ""
 
-#: ../lib/columns.php:167
+#: ../lib/columns.php:168
 #, php-format
 msgctxt "pbsandwich"
 msgid "Break out of %s container"
 msgstr ""
 
-#: ../lib/columns.php:168 ../lib/columns.php:169 ../lib/columns.php:170
-#: ../lib/columns.php:171 ../lib/columns.php:172 ../lib/columns.php:173
-#: ../lib/columns.php:174 ../lib/columns.php:175
+#: ../lib/columns.php:169 ../lib/columns.php:170 ../lib/columns.php:171
+#: ../lib/columns.php:172 ../lib/columns.php:173 ../lib/columns.php:174
+#: ../lib/columns.php:175 ../lib/columns.php:176
 #, php-format
 msgctxt "pbsandwich"
 msgid "Break out of %s containers"
 msgstr ""
 
-#: ../lib/columns.php:176
+#: ../lib/columns.php:177
 msgctxt "pbsandwich"
 msgid "Break out of all containers"
 msgstr ""
 
-#: ../lib/columns.php:458
+#: ../lib/columns.php:461
 msgctxt "pbsandwich"
 msgid "Edit Column"
 msgstr ""
 
-#: ../lib/columns.php:465
+#: ../lib/columns.php:468
 msgctxt "pbsandwich"
 msgid "Clone Column"
 msgstr ""
 
-#: ../lib/columns.php:472
+#: ../lib/columns.php:475
 msgctxt "pbsandwich"
 msgid "Delete Column"
 msgstr ""
 
-#: ../lib/columns.php:491
+#: ../lib/columns.php:494
 msgctxt "pbsandwich"
 msgid "Align Left"
 msgstr ""
 
-#: ../lib/columns.php:499
+#: ../lib/columns.php:502
 msgctxt "pbsandwich"
 msgid "Align Center"
 msgstr ""
 
-#: ../lib/columns.php:507
+#: ../lib/columns.php:510
 msgctxt "pbsandwich"
 msgid "Align Right"
 msgstr ""
 
-#: ../lib/columns.php:515
+#: ../lib/columns.php:518
 msgctxt "pbsandwich"
 msgid "Align None"
 msgstr ""
 
-#: ../lib/functions.php:16
-msgctxt "pbsandwich"
-msgid "Author"
+#: ../lib/extension-ads.php:23
+msgctxt "pbsandwich_backgrounds"
+msgid "Parallax & Video Backgrounds"
 msgstr ""
 
 #: ../lib/functions.php:17
 msgctxt "pbsandwich"
+msgid "Author"
+msgstr ""
+
+#: ../lib/functions.php:18
+msgctxt "pbsandwich"
 msgid "Item Date"
 msgstr ""
 
-#: ../lib/functions.php:18 ../lib/shortcode/contact-form-7.php:48
+#: ../lib/functions.php:19 ../lib/shortcode/contact-form-7.php:48
 #: ../lib/shortcode/toggle.php:32 ../lib/shortcode/widget-archives.php:32
 #: ../lib/shortcode/widget-calendar.php:32
 #: ../lib/shortcode/widget-categories.php:32
@@ -389,150 +394,150 @@ msgctxt "pbsandwich"
 msgid "Title"
 msgstr ""
 
-#: ../lib/functions.php:19
+#: ../lib/functions.php:20
 msgctxt "pbsandwich"
 msgid "Randomized"
 msgstr ""
 
-#: ../lib/functions.php:24
+#: ../lib/functions.php:26
 msgctxt "pbsandwich"
 msgid "Ascending"
 msgstr ""
 
-#: ../lib/functions.php:25
+#: ../lib/functions.php:27
 msgctxt "pbsandwich"
 msgid "Descending"
 msgstr ""
 
-#: ../lib/functions.php:43 ../lib/functions.php:67 ../lib/functions.php:89
+#: ../lib/functions.php:45 ../lib/functions.php:69 ../lib/functions.php:93
 #: ../lib/shortcode/contact-form-7.php:27 ../lib/shortcode/ninja-forms.php:32
 #: ../lib/shortcode/widget-custom-menu.php:26
 msgctxt "pbsandwich"
 msgid "Select"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:15
-msgctxt "pbsandwich"
-msgid "Popular"
-msgstr ""
-
-#: ../lib/shortcode/bbpress.php:16
-msgctxt "pbsandwich"
-msgid "No Replies"
-msgstr ""
-
-#: ../lib/shortcode/bbpress.php:74
+#: ../lib/shortcode/bbpress.php:62
 msgctxt "pbsandwich"
 msgid "BBPress Forum Index"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:82
+#: ../lib/shortcode/bbpress.php:70
 msgctxt "pbsandwich"
 msgid "BBPress Forum Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:91
+#: ../lib/shortcode/bbpress.php:79
 msgctxt "pbsandwich"
 msgid "BBPress Single Forum Display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:95
+#: ../lib/shortcode/bbpress.php:83
 msgctxt "pbsandwich"
 msgid "Select Forum to display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:107
+#: ../lib/shortcode/bbpress.php:95
 msgctxt "pbsandwich"
 msgid "BBPress Topic Index"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:116
+#: ../lib/shortcode/bbpress.php:104
 msgctxt "pbsandwich"
 msgid "BBPress Topic Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:120
+#: ../lib/shortcode/bbpress.php:108
 msgctxt "pbsandwich"
 msgid "Select Forum to display the New Topic form in"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:133
+#: ../lib/shortcode/bbpress.php:121
 msgctxt "pbsandwich"
 msgid "BBPress Single Topic display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:137
+#: ../lib/shortcode/bbpress.php:125
 msgctxt "pbsandwich"
 msgid "Select the Topic to display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:149
+#: ../lib/shortcode/bbpress.php:137
 msgctxt "pbsandwich"
 msgid "BBPress Reply Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:158
+#: ../lib/shortcode/bbpress.php:146
 msgctxt "pbsandwich"
 msgid "BBPress Single Reply display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:162
+#: ../lib/shortcode/bbpress.php:150
 msgctxt "pbsandwich"
 msgid "Select the Reply to display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:174
+#: ../lib/shortcode/bbpress.php:162
 msgctxt "pbsandwich"
 msgid "BBPress Topic Tags"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:183
+#: ../lib/shortcode/bbpress.php:171
 msgctxt "pbsandwich"
 msgid "BBPress Single Tag display"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:187
+#: ../lib/shortcode/bbpress.php:175
 msgctxt "pbsandwich"
 msgid "Select the Tag to display topics associated with it"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:200
+#: ../lib/shortcode/bbpress.php:188
 msgctxt "pbsandwich"
 msgid "BBPress Single View"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:204
+#: ../lib/shortcode/bbpress.php:192
 msgctxt "pbsandwich"
 msgid ""
 "Select the viewing type to display topics according to a certain attribute."
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:216
+#: ../lib/shortcode/bbpress.php:196
+msgctxt "pbsandwich"
+msgid "Popular"
+msgstr ""
+
+#: ../lib/shortcode/bbpress.php:197
+msgctxt "pbsandwich"
+msgid "No Replies"
+msgstr ""
+
+#: ../lib/shortcode/bbpress.php:207
 msgctxt "pbsandwich"
 msgid "BBPress Search Input Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:224
+#: ../lib/shortcode/bbpress.php:215
 msgctxt "pbsandwich"
 msgid "BBPress Search Input Template"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:233
+#: ../lib/shortcode/bbpress.php:224
 msgctxt "pbsandwich"
 msgid "BBPress Login Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:242
+#: ../lib/shortcode/bbpress.php:233
 msgctxt "pbsandwich"
 msgid "BBPress Registration Screen"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:251
+#: ../lib/shortcode/bbpress.php:242
 msgctxt "pbsandwich"
 msgid "BBPress Lost Password Form"
 msgstr ""
 
-#: ../lib/shortcode/bbpress.php:259
+#: ../lib/shortcode/bbpress.php:250
 msgctxt "pbsandwich"
 msgid "BBPress Statistics"
 msgstr ""
@@ -782,17 +787,12 @@ msgctxt "pbsandwich"
 msgid "Select a contact form"
 msgstr ""
 
-#: ../lib/shortcode/embed.php:22
+#: ../lib/shortcode/embed.php:42
 msgctxt "pbsandwich"
 msgid "Media / URL Embed"
 msgstr ""
 
-#: ../lib/shortcode/embed.php:26
-msgctxt "pbsandwich"
-msgid "Media URL"
-msgstr ""
-
-#: ../lib/shortcode/embed.php:29
+#: ../lib/shortcode/embed.php:49
 msgctxt "pbsandwich"
 msgid ""
 "Enter the URL of the media you wish to embed. Supported sites include "
@@ -1054,25 +1054,20 @@ msgstr ""
 
 #: ../lib/shortcode/jetpack-googlemaps.php:47
 msgctxt "pbsandwich"
-msgid "IFrame embed code"
-msgstr ""
-
-#: ../lib/shortcode/jetpack-googlemaps.php:51
-msgctxt "pbsandwich"
-msgid "Enter iframe embed code generated from Google Maps."
-msgstr ""
-
-#: ../lib/shortcode/jetpack-googlemaps.php:54
-msgctxt "pbsandwich"
 msgid "Height"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:57
+#: ../lib/shortcode/jetpack-googlemaps.php:50
 msgctxt "pbsandwich"
 msgid "Enter height in pixels"
 msgstr ""
 
-#: ../lib/shortcode/jetpack-googlemaps.php:105
+#: ../lib/shortcode/jetpack-googlemaps.php:57
+msgctxt "pbsandwich"
+msgid "Enter iframe embed code generated from Google Maps."
+msgstr ""
+
+#: ../lib/shortcode/jetpack-googlemaps.php:103
 #: ../lib/shortcode/jetpack-twitter-timeline.php:76
 msgctxt "pbsandwich"
 msgid "Requires Jetpack's Shortcode Embed module"
@@ -1942,12 +1937,35 @@ msgctxt "pbsandwich"
 msgid "Taxonomy"
 msgstr ""
 
-#: ../lib/updater.php:147
+#: ../lib/templates/column-row-backgrounds.php:8
+msgctxt "pbsandwich"
+msgid ""
+"Parallax backgrounds are a cool features where your background scrolls with "
+"a different speed with the page, this look creates a depth illusion that is "
+"great for headlines and spacers."
+msgstr ""
+
+#: ../lib/templates/column-row-backgrounds.php:11
+msgctxt "pbsandwich"
+msgid ""
+"Video backgrounds allow you to play & loop any YouTube or Vimeo video as the "
+"background for your row, perfect for page headers."
+msgstr ""
+
+#: ../lib/templates/column-row-backgrounds.php:14
+#, php-format
+msgctxt "pbsandwich_backgrounds"
+msgid ""
+"These features are available with the %sPage Builder Sandwich - Backgrounds "
+"Extension%s"
+msgstr ""
+
+#: ../lib/updater.php:154
 msgctxt "pbsandwich"
 msgid "Page Builder Sandwich Extension License Activation"
 msgstr ""
 
-#: ../lib/updater.php:148
+#: ../lib/updater.php:155
 #, php-format
 msgctxt "pbsandwich"
 msgid ""
@@ -1957,42 +1975,42 @@ msgid ""
 "keys when you purchase extensions from our website at %s"
 msgstr ""
 
-#: ../lib/updater.php:162
+#: ../lib/updater.php:169
 msgctxt "pbsandwich"
 msgid "Extension"
 msgstr ""
 
-#: ../lib/updater.php:163
+#: ../lib/updater.php:170
 msgctxt "pbsandwich"
 msgid "License Status"
 msgstr ""
 
-#: ../lib/updater.php:164
+#: ../lib/updater.php:171
 msgctxt "pbsandwich"
 msgid "License Key"
 msgstr ""
 
-#: ../lib/updater.php:181
+#: ../lib/updater.php:188
 msgctxt "pbsandwich"
 msgid "Active"
 msgstr ""
 
-#: ../lib/updater.php:183
+#: ../lib/updater.php:190
 msgctxt "pbsandwich"
 msgid "Inactive"
 msgstr ""
 
-#: ../lib/updater.php:190
+#: ../lib/updater.php:197
 msgctxt "pbsandwich"
 msgid "Deactivate License"
 msgstr ""
 
-#: ../lib/updater.php:192
+#: ../lib/updater.php:199
 msgctxt "pbsandwich"
 msgid "Activate License"
 msgstr ""
 
-#: ../lib/updater.php:327
+#: ../lib/updater.php:334
 msgctxt "pbsandwich"
 msgid ""
 "There was an error with the activation/deactivation of your license key. We "
@@ -2247,7 +2265,7 @@ msgctxt "pbsandwich"
 msgid "View %s"
 msgstr ""
 
-#: ../pb-sandwich.php:213
+#: ../pb-sandwich.php:214
 msgctxt "pbsandwich"
 msgid "Add Post Element"
 msgstr ""
