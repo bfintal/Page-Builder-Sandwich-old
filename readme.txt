@@ -3,7 +3,7 @@ Contributors: bfintal
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2MK28E7BDLHC
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 4.1
-Tested up to: 4.1.1
+Tested up to: 4.2
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -167,6 +167,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 
 = 1.1 =
 
+* WordPress 4.2 compatibility
 * Selecting shortcodes then creating a column now correctly puts them inside the new column
 * Modal window now resizes correctly for colorpickers
 * Fixed insert via URL
@@ -176,6 +177,7 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 * Fixed bug where row styles got deleted when changing a row layout
 * Fixed bug that modified the background image path when opening an edit modal window
 * Added unit tests to ensure future builds
+* Button alignment attribute now works properly
 
 = 1.0.2 =
 
