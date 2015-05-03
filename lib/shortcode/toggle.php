@@ -33,11 +33,11 @@ function sandwich_toggle() {
                     'attr'  => 'title',
                     'type'  => 'text',
                 ),
-                array(
-                    'label' => __( 'Toggled Content', 'pbsandwich' ),
-                    'attr'  => 'content',
-                    'type'  => 'textarea',
-                ),
+			),
+			'inner_content' => array(
+				'value' => 'CHANGE ME NOW',
+				'type' => 'textarea',
+				'description' => __( 'Toggled Content', 'pbsandwich' ),
 			),
         )
     );
