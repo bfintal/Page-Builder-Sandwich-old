@@ -51,11 +51,6 @@ function sandwich_myshortcode() {
 			'listItemImage' => 'dashicons-wordpress',
 			'attrs' => array(
 				array(
-					'label' => __( 'Content', 'pbsandwich' ),
-					'attr' => 'content',
-					'type' => 'textarea',
-				),
-				array(
 					'label' => __( 'Some Text', 'pbsandwich' ),
 					'attr' => 'some_text',
 					'type' => 'text',
@@ -66,6 +61,11 @@ function sandwich_myshortcode() {
 					'type' => 'color',
 					'value' => '#333333',
 				),
+			),
+			'inner_content' => array(
+				'label' => __( 'Content', 'pbsandwich' ),
+				'value' => '',
+				'type' => 'textarea',
 			),
 		)
 	);

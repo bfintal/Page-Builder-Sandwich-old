@@ -1077,15 +1077,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/shortcode\/toggle.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/shortcode\/toggle.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/lib\/shortcode\/widget-archives.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -2966,7 +2957,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Benjamin Intal",
+"lastSavedByUser": "Hermann Malapit",
 "manualImportLinks": {
 	},
 "projectAttributes": {

@@ -1,2 +1,2 @@
 #!/bin/bash
-composer archive --format=zip
+php composer.phar archive --format=zip

@@ -50,19 +50,18 @@ function sandwich_events_manager() {
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
-					'label' => __( 'Event List caption', 'pbsandwich' ),
-					'attr' => 'content',
-					'type' => 'textarea',
-					'value' => '',
-					'description' => __( 'The Event List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTNAME<br />#_EVENTLINK<br />#_LOCATIONLINK<br />#_EVENTDATES<br />#_EVENTTIMES', 'pbsandwich' ),
-				),
-				array(
 					'label' => __( 'Event listing limit', 'pbsandwich' ),
 					'attr' => 'limit',
 					'type' => 'text',
 					'value' => '10',
 					'description' => __( 'Show up to the specified amount of events.', 'pbsandwich' ),
 				),
+			),
+			'inner_content' => array(
+				'label' => __( 'Event List caption', 'pbsandwich' ),
+				'value' => '',
+				'type' => 'textarea',
+				'description' => __( 'The Event List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTNAME<br />#_EVENTLINK<br />#_LOCATIONLINK<br />#_EVENTDATES<br />#_EVENTTIMES', 'pbsandwich' ),
 			),
 		)
 	);
@@ -75,19 +74,18 @@ function sandwich_events_manager() {
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
-					'label' => __( 'Grouped Event List caption', 'pbsandwich' ),
-					'attr' => 'content',
-					'type' => 'textarea',
-					'value' => '',
-					'description' => __( 'The Grouped Events List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTDATES<br />#_EVENTLINK<br />#_EVENTTIMES', 'pbsandwich' ),
-				),
-				array(
 					'label' => __( 'Event listing mode', 'pbsandwich' ),
 					'attr' => 'mode',
 					'type' => 'select',
 					'options' => sandwich_events_manager_mode_selection(),
 					'description' => __( 'Show events by these selections.', 'pbsandwich' ),
 				),
+			),
+			'inner_content' => array(
+				'label' => __( 'Grouped Event List caption', 'pbsandwich' ),
+				'value' => '',
+				'type' => 'textarea',
+				'description' => __( 'The Grouped Events List can be customized to include customized description. The following variables will be replaced with the actual relevant details:<br />#_EVENTDATES<br />#_EVENTLINK<br />#_EVENTTIMES', 'pbsandwich' ),
 			),
 		)
 	);
@@ -100,18 +98,17 @@ function sandwich_events_manager() {
 			'listItemImage' => 'dashicons-calendar',
 			'attrs' => array(
 				array(
-					'label' => __( 'Event caption', 'pbsandwich' ),
-					'attr' => 'content',
-					'type' => 'textarea',
-					'value' => '#_EVENTNAME',
-					'description' => __( 'The Event display can be customized to include elements like description. The #_EVENTNAME  variable will be replaced with the actual content.', 'pbsandwich' ),
-				),
-				array(
 					'label' => __( 'Show Event', 'pbsandwich' ),
 					'attr' => 'post_id',
 					'type' => 'select',
 					'options' => sandwich_functions_posttype_list( 'event' ),
 				),
+			),
+			'inner_content' => array(
+				'label' => __( 'Event caption', 'pbsandwich' ),
+				'value' => '#_EVENTNAME',
+				'type' => 'textarea',
+				'description' => __( 'The Event display can be customized to include elements like description. The #_EVENTNAME  variable will be replaced with the actual content.', 'pbsandwich' ),
 			),
 		)
 	);
