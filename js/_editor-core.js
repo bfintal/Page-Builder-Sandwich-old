@@ -290,6 +290,12 @@ jQuery('body').on('click', '.wp-switch-editor', function() {
 function fixTableParagraphs( editor ) {
 	var $ = jQuery;
 	
+	
+	// Issue #164 Sometimes, columns get wrapped inside paragraph tags. When this happens, 
+	// the table becomes undraggable. Unwrap from paragraph tags.
+	$(editor.getBody()).find('p .pbsandwich_column').unwrap();
+	
+	
 	$(editor.getBody()).find('.pbsandwich_column td').each(function() {
 		
 		// @see http://stackoverflow.com/questions/20183324/javascript-wrapping-unwrapped-plain-text
