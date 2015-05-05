@@ -268,8 +268,9 @@ function sandwich_buttons_shortcode( $attr, $content ) {
 	ob_start();
 
 	if ( ! empty ( $customstyle ) ) {
+		$bogus = is_admin() ? 'data-mce-bogus="1"' : '';
 		?>
-		<style>
+		<style <?php echo $bogus ?>>
 		#pbs_button-<?php echo esc_attr( $_sandwich_buttons_id ) ?>:hover {
 			<?php echo $customstyle ?>
 		}
