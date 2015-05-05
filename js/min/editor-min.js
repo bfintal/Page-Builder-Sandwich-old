@@ -10,7 +10,6 @@
 
 // Backward Compatibility: WP 4.1
 // @codekit-append "backward-compatibility/4.1/_editor-toolbars.js"
-// @codekit-append "backward-compatibility/4.1/_editor-columns.js"
 
 // @codekit-append "_editor-end.js";
 // @codekit-append "_util.js";
@@ -1242,20 +1241,12 @@ editor.on('init', function(e) {
 
 
 /**
- * Our column button itself
- * 
- * The 4.2 method of adding new columns is new. In the old 4.1 method, if you select a wpview,
- * then create a column, it creates a jumbled up row. The process before was an outright
- * replace the selected content
- *
- * This was changed in 4.2 to a render new content -> clear selected content -> insert new content.
- * This works even when creating a new column without any selected content
+ * Our column button itself, this method places the column/row into the editor. If something is selected,
+ * it is placed in the first column of the new row
  */
 editor._pbsCreateNewColumn = function( columnConfig ) {
 	preUpdateSortable( editor );
-	var newContent = _pbsandwich_columns_formTable( columnConfig, editor.selection.getContent() );
-	jQuery(editor.getBody()).find('.wpview-wrap[data-mce-selected="1"]').remove();
-	editor.selection.setContent( newContent );
+	editor.insertContent( _pbsandwich_columns_formTable( columnConfig, editor.selection.getContent() ) );
 	updateSortable( editor );
 	fixTableParagraphs( editor );
 }
@@ -2308,24 +2299,6 @@ editor.on('init', function(e) {
 	});
 });
 
-}
-
-/**
- * This is the 4.1 method of adding new columns. This version is buggy in 4.2, when you select
- * a wpview, then create a column, it creates a jumbled up row. The process here is an outright
- * replace the selected content
- *
- * This was changed in 4.2 to a render new content -> clear selected content -> insert new content
- *
- * The addButton below overwrites the 4.2 column button
- */
-if ( pbsandwich_column.wp_version.match( /^4.1/ ) ) {
-	editor._pbsCreateNewColumn = function( columnConfig ) {
-		preUpdateSortable( editor );
-		editor.insertContent( _pbsandwich_columns_formTable( columnConfig, editor.selection.getContent() ) );
-		updateSortable( editor );
-		fixTableParagraphs( editor );
-	}
 }
 
 /**

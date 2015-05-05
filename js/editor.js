@@ -10,7 +10,6 @@
 
 // Backward Compatibility: WP 4.1
 // @codekit-append "backward-compatibility/4.1/_editor-toolbars.js"
-// @codekit-append "backward-compatibility/4.1/_editor-columns.js"
 
 // @codekit-append "_editor-end.js";
 // @codekit-append "_util.js";
