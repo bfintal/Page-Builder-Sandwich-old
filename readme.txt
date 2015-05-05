@@ -3,8 +3,8 @@ Contributors: bfintal
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2MK28E7BDLHC
 Tags: page builder, builder, page, visual, editor, column, columns, shortcode, layout, table, nested, composer, build, post
 Requires at least: 4.1
-Tested up to: 4.2
-Stable tag: 1.1
+Tested up to: 4.2.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,6 +164,14 @@ Take a look at the [Page Builder Sandwich GitHub Repository](https://github.com/
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Fixed bug that prevented newly created columns/rows in new pages from being dragged
+* Updated Shortcake that fixes a bunch of errors, including:
+* Fixed bug that changed shortcodes into their loading state when the same shortcode attributes were used
+* Moved `content` attributes to `inner_content` attributes due to a change in Shortcake
+* Fixed handling of column creation when a shortcode was currently selected
 
 = 1.1 =
 
