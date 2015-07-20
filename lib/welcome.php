@@ -343,7 +343,7 @@ class GambitPBSandwichWelcome {
 
 				<div class="col-1">
 					<h3><?php _e( 'Add Features with Extensions', 'pbsandwich' );?></h3>
-					<p><?php printf( __( 'We have included a ton of awesome features in Page Builder Sandwich. But we thought of nice-to-have features that we think will enhance your page building experience even better. From adding parallax and video backgrounds, to adding support for third-party eCommerce plugin shortcodes. View them from our website at %s', 'pbsandwich' ), '<a href="http://pbsandwi.ch/extensions" target="_blank">www.pbsandwi.ch</a>' ) ?></p>
+					<p><?php printf( __( 'We have included a ton of awesome features in Page Builder Sandwich. But we thought of nice-to-have features that we think will enhance your page building experience even better. From adding parallax and video backgrounds, to adding support for third-party eCommerce plugin shortcodes. View them from our website at %s', 'pbsandwich' ), '<a href="http://pbsandwi.ch/downloads" target="_blank">www.pbsandwi.ch</a>' ) ?></p>
 				</div>
 
 				<div class="col-2 last-feature">

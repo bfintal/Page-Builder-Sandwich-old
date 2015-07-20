@@ -152,7 +152,7 @@ class GambitPBSandwichExtUpdater {
 		
 		<div class="wrap">
 			<h2><?php _e( 'Page Builder Sandwich Extension License Activation', 'pbsandwich' ) ?></h2>
-			<p class="desc"><?php printf( __( 'Enter the license keys that you have gotten when you purchased your PB Sandwich extensions in this page. You will get plugin updates for all your activated extensions along with our superb support. You can get your license keys when you purchase extensions from our website at %s', 'pbsandwich' ), '<a href="http://www.pbsandwi.ch/extensions" target="_blank">pbsandwi.ch</a>' ) ?></p>
+			<p class="desc"><?php printf( __( 'Enter the license keys that you have gotten when you purchased your PB Sandwich extensions in this page. You will get plugin updates for all your activated extensions along with our superb support. You can get your license keys when you purchase extensions from our website at %s', 'pbsandwich' ), '<a href="http://www.pbsandwi.ch/downloads" target="_blank">pbsandwi.ch</a>' ) ?></p>
 				
 			<form method="post" action="<?php admin_url( 'plugins.php?page=' . self::LICENSES_ADMIN_SLUG ) ?>" id="pbs_licenses">
 				
