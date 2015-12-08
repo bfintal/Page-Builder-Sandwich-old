@@ -7,7 +7,11 @@ Hey folks,
 I wasn't happy at all with how this *old* plugin worked. I just didn't see the point of backend page builders any more. There are a lot of plugins that do that already. The backend isn't exciting and I don't enjoy hitting the preview button multiple times just to see what my edits look like. I want to perform edits on actual content right then and there in the frontend, not on some form of adjusted representation of my content inside a text editor. Page builders should be in the frontend, where you should be able to edit stuff live without any hassle.. just click then type. So I decided to redo the plugin into something that's well suited for frontend editing.
 
 Cheers,
-Benjamin
+
+Benjamin Intal
+
+
+***(All the stuff below this line are from the old plugin)***
 
 ---
 
