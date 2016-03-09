@@ -1,6 +1,6 @@
 *This repo is no longer being maintained*
 
-# Page Builder Sandwich has been completely rebuilt from from the ground up into a Live Front End Page Builder. Please visit [http://pagebuildersandwich.com](http://pagebuildersandwich.com)
+# Page Builder Sandwich has been completely rebuilt from the ground up into a Live Front End Page Builder. Please visit [http://pagebuildersandwich.com](http://pagebuildersandwich.com)
 
 Hey folks, 
 
